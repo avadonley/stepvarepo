@@ -1,4 +1,4 @@
-Editor - Imaad Qureshi
+Editor - Imaad Qureshi.
 
 # Old Dominion Humane Society (ODHS) Medicine Tracker
 ## Purpose
