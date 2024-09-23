@@ -1,4 +1,4 @@
-<!-- This looks great! -Thomas -->
+<!-- This looks really, really great!  -Thomas -->
 
 <?php
 /*
