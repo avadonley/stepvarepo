@@ -1,5 +1,6 @@
 # Group changes during branch testing
 Thomas: I added a comment to the top of header.php
+Editor - Imaad Qureshi.
 
 # Old Dominion Humane Society (ODHS) Medicine Tracker
 ## Purpose
@@ -13,6 +14,8 @@ Modifications to the original Homebase code were made by the Fall 2022 semester'
 A major overhaul to the existing system took place during the Spring 2023 semester, throwing out and restructuring many of the existing database tables. Very little original Homebase code remains. This team consisted of Lauren Knight, Zack Burnley, Matt Nguyen, Rishi Shankar, Alip Yalikun, and Tamra Arant. Every page and feature of the app was changed by this team.
 
 The Gwyneth's Gifts VMS code was modified in the Fall of 2023, revamping the code into the present ODHS Medicine Tracker code. Many of the existing database tables were reused, and many other tables were added. Some portions of the software's functionality were reused from the Gwyneth's Gifts VMS code. Other functions were created to fill the needs of the ODHS Medicine Tracker. The team that made these modifications and changes consisted of Garrett Moore, Artis Hart, Riley Tugeau, Julia Barnes, Ryan Warren, and Collin Rugless.
+
+Ava Donley is a new contributor for this code.
 
 ## User Types
 There are two types of users (also referred to as 'roles') within the ODHS.
