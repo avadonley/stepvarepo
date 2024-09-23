@@ -1,3 +1,5 @@
+<!-- This looks great! -Thomas -->
+
 <?php
 /*
  * Copyright 2013 by Allen Tucker. 
