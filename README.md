@@ -1,3 +1,5 @@
+# Group changes during branch testing
+Thomas: I added a comment to the top of header.php
 Editor - Imaad Qureshi.
 
 # Old Dominion Humane Society (ODHS) Medicine Tracker
