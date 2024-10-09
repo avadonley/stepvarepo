@@ -65,25 +65,35 @@
             //     echo "<p>$key: $value</p>";
             // }
 
-            $required = array(
+            /*@@@$required = array(
                 'first-name', 'last-name', 'birthdate',
                 'address', 'city', 'state', 'zip', 
                 'email', 'phone', 'phone-type', 'contact-when', 'contact-method',
                 'start-date', 'password', 'gender'
+            );@@@*/
+
+            $required = array(
+                'first_name', 'last_name', 'birthdate',
+                'street_address', 'city', 'state', 'zip', 
+                'email', 'phone', 'phone_type', 'econtact_first_name',
+                'econtact_last_name', 'econtact_phone',
+                'econtact_relation', 'tshirt_size',
+                'school_affiliation', 'username', 'password', 'volunteer_or_participant'
             );
+
             $errors = false;
             if (!wereRequiredFieldsSubmitted($args, $required)) {
                 $errors = true;
             }
-            $first = $args['first-name'];
-            $last = $args['last-name'];
+            $first = $args['first_name'];
+            $last = $args['last_name'];
             $dateOfBirth = validateDate($args['birthdate']);
             if (!$dateOfBirth) {
                 $errors = true;
                 echo 'bad dob';
             }
 
-            $address = $args['address'];
+            $street_address = $args['street_address'];
             $city = $args['city'];
             $state = $args['state'];
             if (!valueConstrainedTo($state, array('AK', 'AL', 'AR', 'AZ', 'CA', 'CO', 'CT', 'DC', 'DE', 'FL', 'GA',
@@ -109,27 +119,32 @@
                 $errors = true;
                 echo 'bad phone';
             }
-            $phoneType = $args['phone-type'];
+            $phoneType = $args['phone_type'];
             if (!valueConstrainedTo($phoneType, array('cellphone', 'home', 'work'))) {
                 $errors = true;
                 echo 'bad phone type';
             }
-            $contactWhen = $args['contact-when'];
-            $contactMethod = $args['contact-method'];
+            //@@@$contactWhen = $args['contact-when'];
+            //@@@$contactMethod = $args['contact-method'];
             if (!valueConstrainedTo($contactMethod, array('phone', 'text', 'email'))) {
                 $errors = true;
                 echo 'bad contact method';
             }
 
-            $econtactName = $args['econtact-name'];
-            $econtactPhone = validateAndFilterPhoneNumber($args['econtact-phone']);
+            $econtactFirstName = $args['econtact_first_name'];
+            $econtactLastName = $args['econtact_last_name'];
+            $econtactPhone = validateAndFilterPhoneNumber($args['econtact_phone']);
             if (!$econtactPhone) {
                 $errors = true;
                 echo 'bad e-contact phone';
             }
-            $econtactRelation = $args['econtact-relation'];
+            $econtactRelation = $args['econtact_relation'];
 
-            $startDate = validateDate($args['start-date']);
+            $tshirtSize = $args['tshirt_size'];
+            $schoolAffiliation = $args['school_affiliation'];
+            $volunteerOrParticipant = $args['volunteer_or_participant'];
+
+            /*@@@$startDate = validateDate($args['start-date']);
             if (!$startDate) {
                 $errors = true;
                 echo 'bad start date';
@@ -139,11 +154,13 @@
                 $errors = true;
                 echo 'bad gender';
             }
+            @@@*/
 
             // May want to enforce password requirements at this step
+            $username = $args['username'];
             $password = password_hash($args['password'], PASSWORD_BCRYPT);
 
-            $days = array('sundays', 'mondays', 'tuesdays', 'wednesdays', 'thursdays', 'fridays', 'saturdays');
+            /*@@@$days = array('sundays', 'mondays', 'tuesdays', 'wednesdays', 'thursdays', 'fridays', 'saturdays');
             $availability = array();
             $availabilityCount = 0;
             foreach ($days as $day) {
@@ -216,7 +233,7 @@
                 $saturdaysStart = $availability['saturdays'][0];
                 $saturdaysEnd = $availability['saturdays'][1];
             }
-
+            @@@*/
             if ($errors) {
                 echo '<p>Your form submission contained unexpected input.</p>';
                 die();

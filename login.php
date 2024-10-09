@@ -105,6 +105,7 @@
 
             </form>
             <p></p>
+            <p>Don't have an account yet? <a href="/stepvarepo/register.php">Sign Up Now!</a></p>
             <p>Looking for <a href="https://www.olddominionhumanesociety.org">Old Dominion Humane Society</a>?</p>
         </main>
     </body>
