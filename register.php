@@ -1,11 +1,17 @@
 <?php
+
+    // In this section, I've commented out php code that ensures the user is already logged in.
+    // This is because we want users without accounts to be able to create new accounts.
+
+    /*@@@
     // Author: Lauren Knight
     // Description: Registration page for new volunteers
     session_cache_expire(30);
     session_start();
+    @@@*/
     
     require_once('include/input-validation.php');
-
+    /**@@@
     $loggedIn = false;
     if (isset($_SESSION['change-password'])) {
         header('Location: changePassword.php');
@@ -35,7 +41,9 @@
     //     $_SESSION['_id'] = "guest";
     //     header('Location: personEdit.php?id=new');
     // }
+    @@@*/
 ?>
+
 <!DOCTYPE html>
 <html>
 <head>
