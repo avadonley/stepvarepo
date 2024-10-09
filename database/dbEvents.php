@@ -212,22 +212,23 @@ function create_event($event) {
     $date = $event["date"];
     $startTime = $event["start-time"];
     $endTime = "23:59";
+    $restricted = $event["restricted"];
     $description = $event["description"];
     $location = $event["location"];
-    $services = $event["service"];
+    //$services = $event["service"];
 
-    $animal = $event["animal"];
+    //$animal = $event["animal"];
     $completed = "no";
     $query = "
-        insert into dbEvents (name, abbrevName, date, startTime, endTime, description, locationID, capacity, animalID, completed)
-        values ('$name', '$abbrevName', '$date', '$startTime', '$endTime', '$description', '$location', '0', '$animal', '$completed')
+        insert into dbEvents (name, abbrevName, date, startTime, endTime, restricted, description, locationID, capacity, completed)
+        values ('$name', '$abbrevName', '$date', '$startTime', '$endTime', $restricted, '$description', '$location', '0', , '$completed')
     ";
     $result = mysqli_query($connection, $query);
     if (!$result) {
         return null;
     }
     $id = mysqli_insert_id($connection);
-    add_services_to_event($id, $services);
+    //add_services_to_event($id, $services);
     mysqli_commit($connection);
     mysqli_close($connection);
     return $id;
@@ -253,17 +254,18 @@ function update_event($eventID, $eventDetails) {
     $abbrevName = $eventDetails["abbrev-name"];
     $date = $eventDetails["date"];
     $startTime = $eventDetails["start-time"];
+    $restricted = $eventDetails["restricted"];
     $description = $eventDetails["description"];
     $location = $eventDetails["location"];
-    $services = $eventDetails["service"];
+    //$services = $eventDetails["service"];
     
     $completed = $eventDetails["completed"];
     $query = "
-        update dbEvents set name='$name', abbrevName='$abbrevName', date='$date', startTime='$startTime', description='$description', locationID='$location', completed='$completed'
+        update dbEvents set name='$name', abbrevName='$abbrevName', date='$date', startTime='$startTime', restricted='$restricted', description='$description', locationID='$location', completed='$completed'
         where id='$eventID'
     ";
     $result = mysqli_query($connection, $query);
-    update_services_for_event($eventID, $services);
+    // update_services_for_event($eventID, $services);
     mysqli_commit($connection);
     mysqli_close($connection);
     return $result;

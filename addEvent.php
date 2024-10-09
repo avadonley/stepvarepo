@@ -94,11 +94,11 @@
     </head>
     <body>
         <?php require_once('header.php') ?>
-        <h1>Create Appointment</h1>
+        <h1>Create Event</h1>
         <main class="date">
-            <h2>New Appointment Form</h2>
+            <h2>New Event Form</h2>
             <form id="new-event-form" method="post">
-                <label for="name">* Appointment Name </label>
+                <label for="name">* Event Name </label>
                 <input type="text" id="name" name="name" required placeholder="Enter name"> 
                 <label for="name">* Abbreviated Name</label>
                 <input type="text" id="abbrev-name" name="abbrev-name" maxlength="11" required placeholder="Enter name that will appear on calendar">
@@ -106,8 +106,13 @@
                 <input type="date" id="date" name="date" <?php if ($date) echo 'value="' . $date . '"'; ?> min="<?php echo date('Y-m-d'); ?>" required>
                 <label for="name">* Start Time </label>
                 <input type="text" id="start-time" name="start-time" pattern="([1-9]|10|11|12):[0-5][0-9] ?([aApP][mM])" required placeholder="Enter start time. Ex. 12:00 PM">
+                <label for=""name">Restriction</label>
+                <ul>
+                    <li><input class="checkboxes" type="checkbox" name="restricted" value="restricted_event"> Restricted Event</li>
+                </ul>
                 <label for="name">* Description </label>
                 <input type="text" id="description" name="description" required placeholder="Enter description">
+                <!-- Service function
                 <fieldset>
                     <label for="name">* Service </label>
                     <?php 
@@ -121,6 +126,7 @@
                         echo '</ul>';
                     ?>
                 </fieldset> 
+                --->
                 <label for="name">* Location </label>
                 <select for="name" id="location" name="location" required>
                     <option value="">--</option>
@@ -139,6 +145,7 @@
                     ?>
                 </select><p></p>
   
+                <!--
                 <label for="name">* Animal</label>
                 <select for="name" id="animal" name="animal" required>
                     <?php 
@@ -154,8 +161,10 @@
                         endwhile; 
                         // terminate while loop
                     ?>
-                </select><br/>
+                </select>
+                <br/>
                 <p></p>
+                --->
                 <input type="submit" value="Create Event">
             </form>
                 <?php if ($date): ?>
