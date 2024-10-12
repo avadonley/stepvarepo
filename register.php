@@ -1,54 +1,18 @@
 <?php
-
-    // In this section, I've commented out php code that ensures the user is already logged in.
+    // In this section, I've removed code that ensures the user is already logged in.
     // This is because we want users without accounts to be able to create new accounts.
 
-    /*@@@
     // Author: Lauren Knight
     // Description: Registration page for new volunteers
-    session_cache_expire(30);
-    session_start();
-    @@@*/
-    
+
     require_once('include/input-validation.php');
-    /**@@@
-    $loggedIn = false;
-    if (isset($_SESSION['change-password'])) {
-        header('Location: changePassword.php');
-        die();
-    }
-    if (isset($_SESSION['_id'])) {
-        $loggedIn = true;
-        $accessLevel = $_SESSION['access_level'];
-        $userID = $_SESSION['_id'];
-    }
-
-    // Require admin privileges
-    if ($accessLevel < 2)
-    {
-        header('Location: login.php');
-        echo 'bad access level';
-        die();
-    }
-
-    // if (isset($_SESSION['_id'])) {
-    //     header('Location: index.php');
-    // } else {
-    //     $_SESSION['logged_in'] = 1;
-    //     $_SESSION['access_level'] = 0;
-    //     $_SESSION['venue'] = "";
-    //     $_SESSION['type'] = "";
-    //     $_SESSION['_id'] = "guest";
-    //     header('Location: personEdit.php?id=new');
-    // }
-    @@@*/
 ?>
 
 <!DOCTYPE html>
 <html>
 <head>
     <?php require_once('universal.inc'); ?>
-    <title>ODHS Medicine Tracker | Register <?php if ($loggedIn) echo ' New Volunteer' ?></title>
+    <title>Step VA | Register</title>
 </head>
 <body>
     <?php
@@ -65,20 +29,15 @@
             //     echo "<p>$key: $value</p>";
             // }
 
-            /*@@@$required = array(
-                'first-name', 'last-name', 'birthdate',
-                'address', 'city', 'state', 'zip', 
-                'email', 'phone', 'phone-type', 'contact-when', 'contact-method',
-                'start-date', 'password', 'gender'
-            );@@@*/
-
+            // required fields
             $required = array(
                 'first_name', 'last_name', 'birthdate',
                 'street_address', 'city', 'state', 'zip', 
                 'email', 'phone', 'phone_type', 'econtact_first_name',
                 'econtact_last_name', 'econtact_phone',
                 'econtact_relation', 'tshirt_size',
-                'school_affiliation', 'username', 'password', 'volunteer_or_participant'
+                'school_affiliation', 'username', 'password',
+                'volunteer_or_participant'
             );
 
             $errors = false;
@@ -124,12 +83,6 @@
                 $errors = true;
                 echo 'bad phone type';
             }
-            //@@@$contactWhen = $args['contact-when'];
-            //@@@$contactMethod = $args['contact-method'];
-            if (!valueConstrainedTo($contactMethod, array('phone', 'text', 'email'))) {
-                $errors = true;
-                echo 'bad contact method';
-            }
 
             $econtactFirstName = $args['econtact_first_name'];
             $econtactLastName = $args['econtact_last_name'];
@@ -144,124 +97,29 @@
             $schoolAffiliation = $args['school_affiliation'];
             $volunteerOrParticipant = $args['volunteer_or_participant'];
 
-            /*@@@$startDate = validateDate($args['start-date']);
-            if (!$startDate) {
-                $errors = true;
-                echo 'bad start date';
-            }
-            $gender = $args['gender'];
-            if (!valueConstrainedTo($gender, ['Male', 'Female', 'Other'])) {
-                $errors = true;
-                echo 'bad gender';
-            }
-            @@@*/
-
-            // May want to enforce password requirements at this step
             $username = $args['username'];
+            // May want to enforce password requirements at this step
+            //$username = $args['username'];
             $password = password_hash($args['password'], PASSWORD_BCRYPT);
 
-            /*@@@$days = array('sundays', 'mondays', 'tuesdays', 'wednesdays', 'thursdays', 'fridays', 'saturdays');
-            $availability = array();
-            $availabilityCount = 0;
-            foreach ($days as $day) {
-                if (isset($args['available-' . $day])) {
-                    $startKey = $day . '-start';
-                    $endKey = $day . '-end';
-                    if (!isset($args[$startKey]) || !isset($args[$endKey])) {
-                        $errors = true;
-                    }
-                    $start = $args[$startKey];
-                    $end = $args[$endKey];
-                    // $range24h = validate12hTimeRangeAndConvertTo24h($start, $end);
-                    $range24h = null;
-                    if (validate24hTimeRange($start, $end)) {
-                        $range24h = [$start, $end];
-                    }
-                    if (!$range24h) {
-                        $errors = true;
-                        echo "bad $day availability";
-                    }
-                    $availability[$day] = $range24h;
-                    $availabilityCount++;
-                } else {
-                    $availability[$day] = null;
-                }
-            }
-            if ($availabilityCount == 0) {
-                $errors = true;
-                echo 'bad availability - none chosen';
-            }
-            $sundaysStart = '';
-            $sundaysEnd = '';
-            if ($availability['sundays']) {
-                $sundaysStart = $availability['sundays'][0];
-                $sundaysEnd = $availability['sundays'][1];
-            }
-            $mondaysStart = '';
-            $mondaysEnd = '';
-            if ($availability['mondays']) {
-                $mondaysStart = $availability['mondays'][0];
-                $mondaysEnd = $availability['mondays'][1];
-            }
-            $tuesdaysStart = '';
-            $tuesdaysEnd = '';
-            if ($availability['tuesdays']) {
-                $tuesdaysStart = $availability['tuesdays'][0];
-                $tuesdaysEnd = $availability['tuesdays'][1];
-            }
-            $wednesdaysStart = '';
-            $wednesdaysEnd = '';
-            if ($availability['wednesdays']) {
-                $wednesdaysStart = $availability['wednesdays'][0];
-                $wednesdaysEnd = $availability['wednesdays'][1];
-            }
-            $thursdaysStart = '';
-            $thursdaysEnd = '';
-            if ($availability['thursdays']) {
-                $thursdaysStart = $availability['thursdays'][0];
-                $thursdaysEnd = $availability['thursdays'][1];
-            }
-            $fridaysStart = '';
-            $fridaysEnd = '';
-            if ($availability['fridays']) {
-                $fridaysStart = $availability['fridays'][0];
-                $fridaysEnd = $availability['fridays'][1];
-            }
-            $saturdaysStart = '';
-            $saturdaysEnd = '';
-            if ($availability['saturdays']) {
-                $saturdaysStart = $availability['saturdays'][0];
-                $saturdaysEnd = $availability['saturdays'][1];
-            }
-            @@@*/
             if ($errors) {
                 echo '<p>Your form submission contained unexpected input.</p>';
                 die();
             }
-            // need to incorporate availability here
+            
             $newperson = new Person(
-//first, last venue
-		$first, $last, 'portland', 
-//address, city state, zip code, profile picture
-                $address, $city, $state, $zipcode, "",
-//phone1, phone type, phone 2, phonetype 2, email
-                $phone, $phoneType, null, null, $email, 
-//contact name, contact number, contact relation
-		$econtactName, $econtactPhone, $econtactRelation, 
-//ct=contact when, type=t, status = st, ct=contact method 
-                $contactWhen, 'admin', 'Active', $contactMethod, 
-//availability array, schedule array, hours array
-		'', '', '', 
-//bd=date of birth, sd=start date, notes password
-                $dateOfBirth, $startDate, null, $password,
-                $sundaysStart, $sundaysEnd, $mondaysStart, $mondaysEnd,
-                $tuesdaysStart, $tuesdaysEnd, $wednesdaysStart, $wednesdaysEnd,
-                $thursdaysStart, $thursdaysEnd, $fridaysStart, $fridaysEnd,
-                $saturdaysStart, $saturdaysEnd, 0, $gender
+                $username, // id = username
+                $first,
+                $last,
+                $dateOfBirth,
+                $email,
+                $password,
+                $username
             );
+
             $result = add_person($newperson);
             if (!$result) {
-                echo '<p>That e-mail address is already in use.</p>';
+                echo '<p>That username is already in use.</p>';
             } else {
                 if ($loggedIn) {
                     echo '<script>document.location = "index.php?registerSuccess";</script>';

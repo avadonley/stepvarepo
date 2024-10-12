@@ -29,52 +29,14 @@ function add_person($person) {
     $result = mysqli_query($con,$query);
     //if there's no entry for this id, add it
     if ($result == null || mysqli_num_rows($result) == 0) {
-        mysqli_query($con,'INSERT INTO dbPersons VALUES("' .
+        mysqli_query($con,'INSERT INTO dbPersons (id, first_name, last_name, birthday, email, password, username) VALUES("' .
             $person->get_id() . '","' .
-            $person->get_start_date() . '","' .
-            $person->get_venue() . '","' .
             $person->get_first_name() . '","' .
             $person->get_last_name() . '","' .
-            $person->get_address() . '","' .
-            $person->get_city() . '","' .
-            $person->get_state() . '","' .
-            $person->get_zip() . '","' .
-            $person->get_phone1() . '","' .
-            $person->get_phone1type() . '","' .
-            $person->get_phone2() . '","' .
-            $person->get_phone2type() . '","' .
             $person->get_birthday() . '","' .
             $person->get_email() . '","' .
-            $person->get_contact_name() . '","' .
-            $person->get_contact_num() . '","' .
-            $person->get_relation() . '","' .
-            $person->get_contact_time() . '","' .
-            $person->get_cMethod() . '","' . 
-            implode(',', $person->get_type()) . '","' .
-            $person->get_status() . '","' .
-            implode(',', $person->get_availability()) . '","' .
-            implode(',', $person->get_schedule()) . '","' .
-            implode(',', $person->get_hours()) . '","' .
-            $person->get_notes() . '","' .
             $person->get_password() . '","' .
-            $person->get_sunday_availability_start() . '","' .
-            $person->get_sunday_availability_end() . '","' .
-            $person->get_monday_availability_start() . '","' .
-            $person->get_monday_availability_end() . '","' .
-            $person->get_tuesday_availability_start() . '","' .
-            $person->get_tuesday_availability_end() . '","' .
-            $person->get_wednesday_availability_start() . '","' .
-            $person->get_wednesday_availability_end() . '","' .
-            $person->get_thursday_availability_start() . '","' .
-            $person->get_thursday_availability_end() . '","' .
-            $person->get_friday_availability_start() . '","' .
-            $person->get_friday_availability_end() . '","' .
-            $person->get_saturday_availability_start() . '","' .
-            $person->get_saturday_availability_end() . '","' .
-            $person->get_profile_pic() . '","' .
-            $person->is_password_change_required() . '","' .
-            $person->get_gender() .
-            '");'
+            $person->get_username() . '");'
         );							
         mysqli_close($con);
         return true;
@@ -106,7 +68,7 @@ function remove_person($id) {
  * if not in table, return false
  */
 
-function retrieve_person($id) {
+function retrieve_person($id) { // (username! not id)
     $con=connect();
     $query = "SELECT * FROM dbPersons WHERE id = '" . $id . "'";
     $result = mysqli_query($con,$query);
@@ -120,6 +82,7 @@ function retrieve_person($id) {
 //    mysqli_close($con);
     return $thePerson;
 }
+
 // Name is first concat with last name. Example 'James Jones'
 // return array of Persons.
 function retrieve_persons_by_name ($name) {
@@ -280,6 +243,16 @@ function make_a_person($result_row) {
 			$convictions, $av, $sch, $hrs, $bd, $sd, $hdyh, $notes, $pass)
 	 */
     $thePerson = new Person(
+        $result_row['id'],
+        $result_row['first_name'],
+        $result_row['last_name'],
+        $result_row['birthday'],
+        $result_row['email'],
+        $result_row['password'],
+        $result_row['username']
+    );
+
+    /*@@@$thePerson = new Person(
                     $result_row['first_name'],
                     $result_row['last_name'],
                     $result_row['venue'],
@@ -287,7 +260,7 @@ function make_a_person($result_row) {
                     $result_row['city'],
                     $result_row['state'],
                     $result_row['zip'],
-                    @$result_row['profile_pic'],
+                    $result_row['profile_pic'],
                     $result_row['phone1'],
                     $result_row['phone1type'],
                     $result_row['phone2'],
@@ -323,7 +296,7 @@ function make_a_person($result_row) {
                     $result_row['saturdays_end'],
                     $result_row['force_password_change'],
                     $result_row['gender']
-                );   
+                );@@@*/
     return $thePerson;
 }
 
