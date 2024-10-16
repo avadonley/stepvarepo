@@ -1,4 +1,5 @@
 <?php
+    // Comment for assignment -Madi
     // Template for new VMS pages. Base your new page on this one
 
     // Make session information accessible, allowing us to associate
