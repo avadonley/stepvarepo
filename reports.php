@@ -108,8 +108,6 @@ $(function() {
         <h1>Business and Operational Reports</h1>
         <main class="reportSelection">
             <form class="report_select" method="post">
-        <?php
-	
-        <?PHP include('footer.inc'); ?>
+        <?php include('footer.inc'); ?>
 
 </body>
