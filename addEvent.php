@@ -108,14 +108,14 @@
                 <input type="text" id="start-time" name="start-time" pattern="([1-9]|10|11|12):[0-5][0-9] ?([aApP][mM])" required placeholder="Enter arrival time. Ex. 12:00 PM">
                 <label for="name">* What Time Will You Leave? </label>
                 <input type="text" id="departure-time" name="departure-time" pattern="([1-9]|10|11|12):[0-5][0-9] ?([aApP][mM])" required placeholder="Enter departure time. Ex. 3:00 PM">
-                <label for="name">* Do You Have Any Skills To Share? </label>
-                <input type="text" id="skills" name="skills" required placeholder="Enter skills. Ex. crochet, tap dancer">
-                <label for="name">* Do You Have Any Dietary Restrictions? </label>
-                <input type="text" id="restrictions" name="restrictions" required placeholder="Enter restrictions">
-                <label for="name">* Do You Have Any Disabilities We Should Be Aware Of? </label>
-                <input type="text" id="disabilities" name="disabilities" required placeholder="Enter disabilities">
-                <label for="name">* Are You Bringing Any Materials (e.g. snacks, craft supplies)? </label>
-                <input type="text" id="materials" name="materials" required placeholder="Enter materials. Ex. felt, pipe cleaners">
+                <label for="name"> Do You Have Any Skills To Share? </label>
+                <input type="text" id="skills" name="skills" placeholder="Enter skills. Ex. crochet, tap dancer">
+                <label for="name"> Do You Have Any Dietary Restrictions? </label>
+                <input type="text" id="restrictions" name="restrictions" placeholder="Enter restrictions">
+                <label for="name"> Do You Have Any Disabilities We Should Be Aware Of? </label>
+                <input type="text" id="disabilities" name="disabilities" placeholder="Enter disabilities">
+                <label for="name"> Are You Bringing Any Materials (e.g. snacks, craft supplies)? </label>
+                <input type="text" id="materials" name="materials" placeholder="Enter materials. Ex. felt, pipe cleaners">
                 
                 <fieldset>
                     <label for="name">* Role </label>
