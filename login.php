@@ -32,26 +32,16 @@
             if (!$user) {
                 $badLogin = true;
             } else if (password_verify($password, $user->get_password())) {
-                $changePassword = false;
-                if ($user->is_password_change_required()) {
-                    $changePassword = true;
-                    $_SESSION['logged_in'] = false;
-                } else {
-                    $_SESSION['logged_in'] = true;
-                }
-                $types = $user->get_type();
-                if (in_array('superadmin', $types)) {
-                    $_SESSION['access_level'] = 3;
-                } else if (in_array('admin', $types)) {
-                    $_SESSION['access_level'] = 2;
-                } else {
-                    $_SESSION['access_level'] = 1;
-                }
+                $_SESSION['logged_in'] = true;
+
+                $_SESSION['access_level'] = $user->get_access_level();
                 $_SESSION['f_name'] = $user->get_first_name();
                 $_SESSION['l_name'] = $user->get_last_name();
-                $_SESSION['venue'] = $user->get_venue();
-                $_SESSION['type'] = $user->get_type();
+
+                
+                $_SESSION['type'] = 'admin';
                 $_SESSION['_id'] = $user->get_id();
+                
                 // hard code root privileges
                 if ($user->get_id() == 'vmsroot') {
                     $_SESSION['access_level'] = 3;
@@ -98,13 +88,14 @@
                     }
                 ?>
                 <label for="username">Username</label>
-        		<input type="text" name="username" placeholder="Enter your e-mail address" required>
+        		<input type="text" name="username" placeholder="Enter your username" required>
         		<label for="password">Password</label>
                 <input type="password" name="password" placeholder="Enter your password" required>
                 <input type="submit" name="login" value="Log in">
 
             </form>
             <p></p>
+            <p>Don't have an account yet? <a href="/stepvarepo/register.php">Sign Up Now!</a></p>
             <p>Looking for <a href="https://www.olddominionhumanesociety.org">Old Dominion Humane Society</a>?</p>
         </main>
     </body>
