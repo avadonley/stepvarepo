@@ -60,9 +60,9 @@ table, td, tr, th, form, fieldset, em, button, a {
 
     --shadow-and-border-color: #e8e8e8;
 
-    --main-color: #FF289A;
-    --accent-color: #BFF079;
-    --secondary-accent-color: #f6a4b5;
+    --main-color: #00aeef;
+    --accent-color: #39B54A;
+    --secondary-accent-color: #a3e0f7;
 
     --calendar-event-color: #808080;
     --calendar-event-color-hover: var(--main-color);
@@ -151,6 +151,7 @@ span.logo {
     flex-direction: row;
     align-items: center;
     margin-right: 1rem;
+    margin-left: 1rem;
 }
 
 #menu-toggle {
