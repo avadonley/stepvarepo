@@ -116,18 +116,9 @@
                 <input type="text" id="disabilities" name="disabilities" required placeholder="Enter disabilities">
                 <label for="name">* Are You Bringing Any Materials (e.g. snacks, craft supplies)? </label>
                 <input type="text" id="materials" name="materials" required placeholder="Enter materials. Ex. felt, pipe cleaners">
-                <label for="name">* Date </label>
-                <input type="date" id="date" name="date" <?php if ($date) echo 'value="' . $date . '"'; ?> min="<?php echo date('Y-m-d'); ?>" required>
-                <label for="name">* Start Time </label>
-                <input type="text" id="start-time" name="start-time" pattern="([1-9]|10|11|12):[0-5][0-9] ?([aApP][mM])" required placeholder="Enter start time. Ex. 12:00 PM">
-                <label for="name">Restriction</label>
-                <ul>
-                    <li><input class="checkboxes" type="checkbox" name="restricted" value="restricted_event"> Restricted Event</li>
-                </ul>
-                <label for="name">* Description </label>
-                <input type="text" id="description" name="description" required placeholder="Enter description">
+                
                 <fieldset>
-                    <label for="name">* Service </label>
+                    <label for="name">* Role </label>
                     <?php 
                         // is the user signing up for the event a volunteer or participant?
                             echo '<li><input class="checkboxes" type="checkbox" name="service" value="' . "Volunteer" . '" required/> ' . "Volunteer" . '</li>';
@@ -136,23 +127,7 @@
                 </fieldset>
                 
                 </fieldset> 
-                <label for="name">* Location </label>
-                <select for="name" id="location" name="location" required>
-                    <option value="">--</option>
-                    <?php 
-                        // fetch data from the $all_locations variable
-                        // and individually display as an option
-                        while ($location = mysqli_fetch_array(
-                                $all_locations, MYSQLI_ASSOC)):; 
-                    ?>
-                    <option value="<?php echo $location['id'];?>">
-                        <?php echo $location['name'];?>
-                    </option>
-                    <?php 
-                        endwhile; 
-                        // terminate while loop
-                    ?>
-                </select><p></p>
+                <p></p>
   
                 <!--
                 <label for="name">* Animal</label>
