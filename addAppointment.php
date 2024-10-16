@@ -83,14 +83,14 @@
     </head>
     <body>
         <?php require_once('header.php') ?>
-        <h1>Create Appointment</h1>
+        <h1>Sign-Up for Event</h1>
         <main class="date">
-            <h2>New Appointment Form</h2>
+            <h2>Sign-Up for Event Form</h2>
             <form id="new-event-form" method="post">
-                <label for="name">Appointment Name </label>
+                <label for="name">Event Name </label>
                 <input type="text" id="name" name="name" required placeholder="Enter name"> 
-                <label for="name">Abbreviated Name</label>
-                <input type="text" id="abbrev-name" name="abbrev-name" maxlength="11" required placeholder="Enter name that will appear on calendar">
+                <label for="name">Event Type</label>
+                <input type="text" id="abbrev-name" name="abbrev-name" maxlength="11" required placeholder="Enter the type of event">
                 <label for="name">Date </label>
                 <input type="date" id="date" name="date" <?php if ($date) echo 'value="' . $date . '"'; ?> min="<?php echo date('Y-m-d'); ?>" required>
                 <label for="name">Start Time </label>
