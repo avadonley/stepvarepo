@@ -128,6 +128,12 @@
                 
                 </fieldset> 
                 <p></p>
+                <br/>
+                <p></p>
+                <input type="submit" value="Sign up for Event">
+            </form>
+
+            <a class="button cancel" href="index.php" style="margin-top: -.5rem">Return to Dashboard</a>
   
                 <!--
                 <label for="name">* Animal</label>
@@ -168,6 +174,7 @@
                             }
                         });
                     });
+
                 </script>
         </main>
     </body>
