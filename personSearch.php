@@ -70,7 +70,7 @@
 											<th>Zip Code</th>
                                             <th>Photo Release</th>
                                             <th>Role</th>
-                                            <th>Status</th>
+                                            <th>Archive Status</th>
                                             <th>Profile</th>
                                             <th>Archive</th>
                                         </tr>
