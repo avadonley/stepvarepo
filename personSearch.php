@@ -96,7 +96,7 @@
                                             <td>' . ucfirst($person->get_type()[0]) . '</td>
                                             <td>' . ucfirst($person->get_status()) . '</td>
                                             <td><a href="viewProfile.php?id=' . $person->get_id() . '">Profile</a></td>
-                                            <td><a href="archiveAnimal.php?id=' . $person->get_id() . '">Archive</a></td>
+                                            <td><a href="modifyUserRole.php?id=' . $person->get_id() . '">Archive</a></td>
 
                                         </a></tr>';
                             }
