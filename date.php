@@ -83,6 +83,10 @@
                     <a class="button" href="addEvent.php?date=' . $date . '">
                         Create New Event
                     </a>';
+                echo '
+                    <a class="button" href="editHours.php?date=' . $date . '">
+                        Edit Hours for an event
+                    </a>';
             }
             ?>
 			<a href="calendar.php?month=<?php echo substr($date, 0, 7) ?>" class="button cancel" style="margin-top: -.5rem">Return to Calendar</a>
