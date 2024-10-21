@@ -93,7 +93,7 @@
                                             <td><a href="tel:' . $person->get_phone1() . '">' . formatPhoneNumber($person->get_phone1()) .  '</td>
 											<td>' . $person->get_zip() . '</td>
                                             <td> </td>
-                                            <td>' . ucfirst($person->get_type()[0]) . '</td>
+                                            <td>' . ucfirst($person->get_type()) . '</td>
                                             <td>' . ucfirst($person->get_status()) . '</td>
                                             <td><a href="viewProfile.php?id=' . $person->get_id() . '">Profile</a></td>
                                             <td><a href="modifyUserRole.php?id=' . $person->get_id() . '">Archive</a></td>
