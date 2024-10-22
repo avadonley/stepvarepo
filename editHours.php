@@ -94,9 +94,9 @@
     </head>
     <body>
         <?php require_once('header.php') ?>
-        <h1>Change Hours wihtin an Event</h1>
+        <h1>Change Hours Within an Event</h1>
         <main class="date">
-            <h2>Change Horu for Event</h2>
+            <h2>Change Hours for Event</h2>
             <form id="new-event-form" method="post">
                 <label for="name">* Event Name </label>
                 <input type="text" id="name" name="name" required placeholder="Enter name"> 
@@ -109,7 +109,7 @@
                 <label for="name">* What Time Did You Leave For This Event? </label>
                 <input type="text" id="departure-time" name="departure-time" pattern="([1-9]|10|11|12):[0-5][0-9] ?([aApP][mM])" required placeholder="Enter departure time. Ex. 3:00 PM">
 
-                </fieldset> 
+
                 <p></p>
                 <br/>
                 <p></p>
