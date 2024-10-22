@@ -106,6 +106,8 @@
                 echo '<p>Your form submission contained unexpected input.</p>';
                 die();
             }
+
+            $status = "Active";
             
             $newperson = new Person(
                 $username, // id = username
@@ -114,7 +116,21 @@
                 $dateOfBirth,
                 $email,
                 $password,
-                $username
+                $username,
+                $street_address,
+                $city,
+                $state,
+                $zipcode,
+                $phone,
+                $phoneType,
+                $econtactFirstName,
+                //$econtactLastName,
+                $econtactPhone,
+                $econtactRelation,
+             //   $tshirtSize,
+               // $schoolAffiliation,
+                $volunteerOrParticipant,
+                $status
             );
 
             $result = add_person($newperson);

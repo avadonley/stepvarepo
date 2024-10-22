@@ -37,7 +37,9 @@ class Person {
 	private $tshirt_size;
 	private $school_affiliation;
 	private $password;
-	private $volunteer_or_participant;
+	//private $volunteer_or_participant;
+	private $type;
+	private $status;
 
 	// optional fields
 	// (to be added...)
@@ -46,7 +48,10 @@ class Person {
 	 * This is a temporary mini constructor for testing purposes. It will be expanded later.
 	 */
 	function __construct($id, $first_name, $last_name,
-						$birthday, $email, $password, $username
+						$birthday, $email, $password, $username, $street_address, $city, $state, $zip,
+						$phone, $phone_type, $econtact_first_name, $econtact_phone,
+						$econtact_relation, $type,
+						$status
 						) {
 		$this->id = $id;
 		$this->first_name = $first_name;
@@ -55,6 +60,21 @@ class Person {
 		$this->email = $email;
 		$this->password = $password;
 		$this->username = $username;
+		$this->street_address = $street_address;
+		$this->city = $city;
+		$this->state = $state;
+		$this->zip = $zip;
+		$this->phone = $phone;
+		$this->phone_type = $phone_type;
+		$this->econtact_first_name = $econtact_first_name;
+		//$this->econtact_last_name = $econtact_last_name;
+		$this->econtact_phone = $econtact_phone;
+		$this->econtact_relation = $econtact_relation;
+		//$this->tshirt_size = $tshirt_size;
+		//$this->school_affiliation = $school_affiliation;
+		//$this->volunteer_or_participant = $volunteer_or_participant;
+		$this->type = $type;
+		$this->status = $status;
 
 		// access_level = 1 for users, and = 3 for admin
 		if ($id == 'vmsroot') {
@@ -95,4 +115,32 @@ class Person {
 	function get_username() {
 		return $this->username;
 	}
+
+	//function get_phone() {
+	//	return $this->phone;
+	//}
+	function get_phone1() {
+		return $this->phone;
+	}
+
+	function get_zip() {
+		return $this->zip;
+	}
+
+	//function get_volunteer_or_participant() {
+	//	return $this->volunteer_or_participant;
+	//}
+
+	function get_type() {
+		return $this->type;
+	}
+
+	function get_status() {
+		return $this->status;
+	}
+	
+	function get_street_address() {
+		return $this->street_address;
+	}
+
 }
