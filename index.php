@@ -79,6 +79,8 @@
                     <img src="images/new-event.svg">
                     <span>Add Event</span>
                 </div>
+                
+                <!--
 				<div class="dashboard-item" data-link="addService.php">
                     <img src="images/settings.png">
                     <span>Add Service</span>
@@ -91,6 +93,9 @@
                         <img src="images/person-search.svg">
                         <span>Find Animal</span>
                 </div>
+
+                -->
+
                 <!-- Commenting out because volunteers won't be searching events
                 <div class="dashboard-item" data-link="eventSearch.php">
                     <img src="images/search.svg">
@@ -106,14 +111,18 @@
                         <img src="images/add-person.svg">
                         <span>Register Volunteer</span>
                     </div>
+
+                    <!--
                     <div class="dashboard-item" data-link="viewArchived.php">
                         <img src="images/person-search.svg">
                         <span>Archived Animals</span>
                     </div>
+                
                     <div class="dashboard-item" data-link="report.php">
                         <img src="images/create-report.svg">
                         <span>Create Report</span>
                     </div>
+                -->
                 <?php endif ?>
                 <?php if ($notRoot) : ?>
                     <div class="dashboard-item" data-link="viewProfile.php">
