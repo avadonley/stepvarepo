@@ -70,7 +70,7 @@
                     <span>View Calendar</span>
                 </div>
                 <?php if ($_SESSION['access_level'] >= 2): ?>
-                    <div class="dashboard-item" data-link="viewEventsForSignUp.php">
+                    <div class="dashboard-item" data-link="eventSignUp.php">
                         <img src="images/new-event.svg">
                         <span>Sign-Up for Event</span>
                     </div>
