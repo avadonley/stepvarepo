@@ -121,7 +121,7 @@
         //echo('<span class="nav-divider">|</span>');
 
         echo('<li class="nav-item dropdown">');
-        echo('<a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Appointments</a>');
+        echo('<a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Events</a>');
         echo('<div class="dropdown-menu" aria-labelledby="navbarDropdown">');
         echo('<a class="dropdown-item" href="' . $path . 'calendar.php">Calendar</a>');
         echo('<a class="dropdown-item" href="' . $path . 'inbox.php">Notifications</a>');
@@ -138,7 +138,9 @@
         echo('</div>');
         echo('</li>');
 
+
         //echo('<span class="nav-divider">|</span>');
+        /*
         echo('<li class="nav-item dropdown">');
         echo('<a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Animals</a>');
         echo('<div class="dropdown-menu">');
@@ -149,6 +151,7 @@
 
         echo('</div>');
         echo('</li>');
+        */
 
         //echo('<span class="nav-divider">|</span>');
         echo('<li class="nav-item dropdown">');
