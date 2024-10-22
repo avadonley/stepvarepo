@@ -75,7 +75,7 @@
                         <span>Sign-Up for Event</span>
                     </div>
                 <?php endif ?>
-				<div class="dashboard-item" data-link="addAnimal.php">
+				<div class="dashboard-item" data-link="addEvent.php">
                     <img src="images/new-event.svg">
                     <span>Add Event</span>
                 </div>
