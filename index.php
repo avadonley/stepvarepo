@@ -76,8 +76,8 @@
                     </div>
                 <?php endif ?>
 				<div class="dashboard-item" data-link="addAnimal.php">
-                    <img src="images/settings.png">
-                    <span>Add Animal</span>
+                    <img src="images/new-event.svg">
+                    <span>Add Event</span>
                 </div>
 				<div class="dashboard-item" data-link="addService.php">
                     <img src="images/settings.png">
