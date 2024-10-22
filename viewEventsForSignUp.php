@@ -74,7 +74,7 @@
                                             <td>$sender</td>
                                             <td>$title</td>
                                             <td>$month/$day/$year $time</td>
-                                            <td> <a class='button sign-up' href='addEvent.php'>Sign Up</a> </td>
+                                            <td> <a class='button sign-up' href='eventSignUp.php'>Sign Up</a> </td>
                                         </tr>";
                                 }
                             ?>

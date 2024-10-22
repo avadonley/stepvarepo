@@ -94,56 +94,46 @@
     </head>
     <body>
         <?php require_once('header.php') ?>
-        <h1>Create Event</h1>
+        <h1>Sign-Up for Event</h1>
         <main class="date">
-            <h2>New Event Form</h2>
+            <h2>Sign-Up for Event Form</h2>
             <form id="new-event-form" method="post">
                 <label for="name">* Event Name </label>
                 <input type="text" id="name" name="name" required placeholder="Enter name"> 
-                <label for="name">* Abbreviated Name</label>
+                <label for="name">* Abbreviated Event Name</label>
                 <input type="text" id="abbrev-name" name="abbrev-name" maxlength="11" required placeholder="Enter name that will appear on calendar">
-                <label for="name">* Date </label>
-                <input type="date" id="date" name="date" <?php if ($date) echo 'value="' . $date . '"'; ?> min="<?php echo date('Y-m-d'); ?>" required>
-                <label for="name">* Start Time </label>
-                <input type="text" id="start-time" name="start-time" pattern="([1-9]|10|11|12):[0-5][0-9] ?([aApP][mM])" required placeholder="Enter start time. Ex. 12:00 PM">
-                <label for=""name">Restriction</label>
-                <ul>
-                    <li><input class="checkboxes" type="checkbox" name="restricted" value="restricted_event"> Restricted Event</li>
-                </ul>
-                <label for="name">* Description </label>
-                <input type="text" id="description" name="description" required placeholder="Enter description">
-                <!-- Service function
+                <label for="name">* Your Account Name </label>
+                <input type="text" id="name" name="name" required placeholder="Enter account name"> 
+                <label for="name">* What Time Will You Arrive? </label>
+                <input type="text" id="start-time" name="start-time" pattern="([1-9]|10|11|12):[0-5][0-9] ?([aApP][mM])" required placeholder="Enter arrival time. Ex. 12:00 PM">
+                <label for="name">* What Time Will You Leave? </label>
+                <input type="text" id="departure-time" name="departure-time" pattern="([1-9]|10|11|12):[0-5][0-9] ?([aApP][mM])" required placeholder="Enter departure time. Ex. 3:00 PM">
+                <label for="name"> Do You Have Any Skills To Share? </label>
+                <input type="text" id="skills" name="skills" placeholder="Enter skills. Ex. crochet, tap dancer">
+                <label for="name"> Do You Have Any Dietary Restrictions? </label>
+                <input type="text" id="restrictions" name="restrictions" placeholder="Enter restrictions">
+                <label for="name"> Do You Have Any Disabilities We Should Be Aware Of? </label>
+                <input type="text" id="disabilities" name="disabilities" placeholder="Enter disabilities">
+                <label for="name"> Are You Bringing Any Materials (e.g. snacks, craft supplies)? </label>
+                <input type="text" id="materials" name="materials" placeholder="Enter materials. Ex. felt, pipe cleaners">
+                
                 <fieldset>
-                    <label for="name">* Service </label>
+                    <label for="name">* Role </label>
                     <?php 
-                        // fetch data from the $all_services variable
-                        // and individually display as an option
-                        echo '<ul>';
-                        while ($service = mysqli_fetch_array(
-                                $all_services, MYSQLI_ASSOC)):; 
-                            echo '<li><input class="checkboxes" type="checkbox" name="service[]" value="' . $service['id'] . '" required/> ' . $service['name'] . '</li>';
-                        endwhile;
-                        echo '</ul>';
+                        // is the user signing up for the event a volunteer or participant?
+                            echo '<li><input class="checkboxes" type="checkbox" name="service" value="' . "Volunteer" . '" required/> ' . "Volunteer" . '</li>';
+                            echo '<li><input class="checkboxes" type="checkbox" name="service" value="' . "Volunteer" . '" required/> ' . "Participant" . '</li>';
                     ?>
+                </fieldset>
+                
                 </fieldset> 
-                --->
-                <label for="name">* Location </label>
-                <select for="name" id="location" name="location" required>
-                    <option value="">--</option>
-                    <?php 
-                        // fetch data from the $all_locations variable
-                        // and individually display as an option
-                        while ($location = mysqli_fetch_array(
-                                $all_locations, MYSQLI_ASSOC)):; 
-                    ?>
-                    <option value="<?php echo $location['id'];?>">
-                        <?php echo $location['name'];?>
-                    </option>
-                    <?php 
-                        endwhile; 
-                        // terminate while loop
-                    ?>
-                </select><p></p>
+                <p></p>
+                <br/>
+                <p></p>
+                <input type="submit" value="Sign up for Event">
+            </form>
+
+            <a class="button cancel" href="index.php" style="margin-top: -.5rem">Return to Dashboard</a>
   
                 <!--
                 <label for="name">* Animal</label>
@@ -164,7 +154,6 @@
                 </select>
                 <br/>
                 <p></p>
-                --->
                 <input type="submit" value="Create Event">
             </form>
                 <?php if ($date): ?>
@@ -185,6 +174,7 @@
                             }
                         });
                     });
+
                 </script>
         </main>
     </body>

@@ -249,7 +249,28 @@ function make_a_person($result_row) {
         $result_row['birthday'],
         $result_row['email'],
         $result_row['password'],
-        $result_row['username']
+        $result_row['username'],
+       // $result_row['street_address'],
+        $result_row['address'],
+		$result_row['city'],
+		$result_row['state'],
+		$result_row['zip'],
+		//$result_row['phone'],
+        $result_row['phone1'],
+		//$result_row['phone_type'],
+        $result_row['phone1type'],
+		//$result_row['econtact_first_name'],
+		//$result_row['econtact_last_name'],
+        $result_row['contact_name'],
+		//$result_row['econtact_phone'],
+        $result_row['contact_num'],
+		//$result_row['econtact_relation'],
+        $result_row['relation'],
+		//$result_row['tshirt_size'],
+		//$result_row['school_affiliation'],
+		//$result_row['volunteer_or_participant'],
+        $result_row['type'],
+		$result_row['status']
     );
 
     /*@@@$thePerson = new Person(
