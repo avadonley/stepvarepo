@@ -25,13 +25,13 @@
 <html>
     <head>
         <?php require_once('universal.inc') ?>
-        <title>ODHS Medicine Tracker | User Search</title>
+        <title>STEPVA | Volunteer/Participant Search</title>
     </head>
     <body>
         <?php require_once('header.php') ?>
-        <h1>User Search</h1>
+        <h1>Volunteer/Participant Search</h1>
         <form id="person-search" class="general" method="get">
-            <h2>Find User</h2>
+            <h2>Find Volunteer/Participant</h2>
             <?php 
                 if (isset($_GET['name'])) {
                     require_once('include/input-validation.php');
@@ -49,7 +49,7 @@
                     $status = $args['status'];
                     if (!($name || $id || $phone || $zip || $role || $status)) {
                         echo '<div class="error-toast">At least one search criterion is required.</div>';
-                    } else if (!valueConstrainedTo($role, ['admin', 'superadmin', 'volunteer', ''])) {
+                    } else if (!valueConstrainedTo($role, ['admin', 'participant', 'superadmin', 'volunteer', ''])) {
                         echo '<div class="error-toast">The system did not understand your request.</div>';
                     } else if (!valueConstrainedTo($status, ['Active', 'Inactive', ''])) {
                         echo '<div class="error-toast">The system did not understand your request.</div>';
@@ -68,10 +68,11 @@
                                             <th>E-mail</th>
                                             <th>Phone Number</th>
 											<th>Zip Code</th>
+                                            <th>Photo Release</th>
                                             <th>Role</th>
-                                            <th>Status</th>
+                                            <th>Archive Status</th>
                                             <th>Profile</th>
-                                            <th>Delete</th>
+                                            <th>Archive</th>
                                         </tr>
                                     </thead>
                                     <tbody class="standout">';
@@ -91,10 +92,11 @@
                                             <td><a href="mailto:' . $person->get_id() . '">' . $person->get_id() . '</a></td>
                                             <td><a href="tel:' . $person->get_phone1() . '">' . formatPhoneNumber($person->get_phone1()) .  '</td>
 											<td>' . $person->get_zip() . '</td>
+                                            <td> </td>
                                             <td>' . ucfirst($person->get_type()[0]) . '</td>
                                             <td>' . ucfirst($person->get_status()) . '</td>
                                             <td><a href="viewProfile.php?id=' . $person->get_id() . '">Profile</a></td>
-                                            <td><a href="deletePerson.php?id=' . $person->get_id() . '">Delete</a></td>
+                                            <td><a href="archiveAnimal.php?id=' . $person->get_id() . '">Archive</a></td>
 
                                         </a></tr>';
                             }
@@ -113,7 +115,7 @@
                     echo '<h3>Search Again</h3>';
                 }
             ?>
-            <p>Use the form below to find a volunteer or staff member account. At least one search criterion is required.</p>
+            <p>Use the form below to find a volunteer or participant. At least one search criterion is required.</p>
             <label for="name">Name</label>
             <input type="text" id="name" name="name" value="<?php if (isset($name)) echo htmlspecialchars($_GET['name']) ?>" placeholder="Enter the user's first and/or last name">
             <label for="id">E-mail</label>
@@ -129,16 +131,23 @@
            <select id="role" name="role">
                 <option value="">Any</option>
                 <option value="volunteer" <?php if (isset($role) && $role == 'volunteer') echo 'selected' ?>>Volunteer</option>
-                <option value="admin" <?php if (isset($role) && $role == 'admin') echo 'selected' ?>>Admin</option>
-                <option value="superadmin" <?php if (isset($role) && $role == 'superadmin') echo 'selected' ?>>Super Admin</option>
+                <option value="participant" <?php if (isset($role) && $role == 'participant') echo 'participant' ?>>Participant</option>
             </select>
   
-          <label for="status">Status</label>
+          <label for="status">Archive Status</label>
             <select id="status" name="status">
                 <option value="">Any</option>
                 <option value="Active" <?php if (isset($status) && $status == 'Active') echo 'selected' ?>>Active</option>
-                <option value="Inactive" <?php if (isset($status) && $status == 'Inactive') echo 'selected' ?>>Inactive</option>
+                <option value="Inactive" <?php if (isset($status) && $status == 'Inactive') echo 'selected' ?>>Archived</option>
             </select>
+
+            <label for="photorelease">Photo Release Status</label>
+                <select id="photorelease" name="photorelease">
+                    <option value="">Any</option>
+                    <option value="No restrictions" <?php if (isset($photorelease) && $photorelease == 'None') echo 'selected' ?>>No restrictions</option>
+                    <option value="With restrictions" <?php if (isset($photorelease) && $photorelease == 'Restricted') echo 'selected' ?>>With restrictions</option>
+                </select>
+
             <div id="criteria-error" class="error hidden">You must provide at least one search criterion.</div>
             <input type="submit" value="Search">
             <a class="button cancel" href="index.php">Return to Dashboard</a>
