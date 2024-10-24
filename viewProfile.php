@@ -99,88 +99,52 @@
                 <label>Username</label>
                 <p><?php echo $user->get_id() ?></p>
 
-                <label>First Name</label>
-                <p><?php echo $user->get_first_name() ?></p>
-                
-                <label>Last Name</label>
-                <p><?php echo $user->get_last_name() ?></p>
+                <label>Name</label>
+                <p><?php echo $user->get_first_name() ?> <?php echo $user->get_last_name() ?></p>
 
-                <label>Gender</label>
-                <p><?php echo $user->get_gender(); ?></p>
                 <label>Date of Birth</label>
                 <p><?php echo date('d/m/Y', strtotime($user->get_birthday())) ?></p>
+                
                 <label>Address</label>
-                <p><?php echo $user->get_address() . ', ' . $user->get_city() . ', ' . $user->get_state() . ' ' . $user->get_zip() ?></p>
+                <p><?php echo $user->get_street_address() . ', ' . $user->get_city() . ', ' . $user->get_state() . ' ' . $user->get_zip_code() ?></p>
+
                 <label>Role</label>
-                <p><?php echo ucfirst($user->get_type()[0]) ?></p>
-                <label>Status</label>
-                <p><?php 
-                    $status = ucfirst($user->get_status());
-                    $reason = $user->get_notes();
-                    if ($status == "Inactive" && $reason) {
-                        echo "Inactive (" . $reason . ")";
-                    } else {
-                        echo $status;
-                    }
-                ?></p>
-                <?php if ($id != $userID && $accessLevel >= 2): ?>
-                    <?php if ($accessLevel >= 3): ?>
-                        <a href="modifyUserRole.php?id=<?php echo $id ?>" class="button">Change Role/Status</a>
-                    <?php endif ?>
-                <?php endif ?>
+                <p><?php echo ucfirst($user->get_type()) ?></p>
+                
             </fieldset>
+
             <fieldset>
                 <legend>Contact Information</legend>
                 <label>E-mail</label>
                 <p><a href="mailto:<?php echo $user->get_email() ?>"><?php echo $user->get_email() ?></a></p>
                 <label>Phone Number</label>
                 <p><a href="tel:<?php echo $user->get_phone1() ?>"><?php echo formatPhoneNumber($user->get_phone1()) ?></a> (<?php echo ucfirst($user->get_phone1type()) ?>)</p>
-                <label>Preferred Contact Method</label>
-                <p><?php echo ucfirst($user->get_cMethod()) ?></p>
-                <label>Best Time to Contact</label>
-                <p><?php echo ucfirst($user->get_contact_time()) ?></p>
             </fieldset>
+
             <fieldset>
                 <legend>Emergency Contact</legend>
                 <label>Name</label>
-                <p><?php echo $user->get_contact_name() ?></p>
+                <p><?php echo $user->get_emergency_contact_first_name() . ' ' . $user->get_emergency_contact_last_name() ?></p>
                 <label>Relation</label>
-                <p><?php echo $user->get_relation() ?></p>
+                <p><?php echo $user->get_emergency_contact_relation() ?></p>
                 <label>Phone Number</label>
-                <p><a href="tel:<?php echo $user->get_contact_num() ?>"><?php echo formatPhoneNumber($user->get_contact_num()) ?></a></p>
+                <p><a href="tel:<?php echo $user->get_emergency_contact_phone() ?>"><?php echo formatPhoneNumber($user->get_emergency_contact_phone()) ?></a> (<?php echo ucfirst($user->get_emergency_contact_phone_type()) ?>)</p>
             </fieldset>
+
             <fieldset>
                 <legend>Volunteer Information</legend>
-                <label>Availability</label>
-                <?php if ($user->get_sunday_availability_start()): ?>
-                    <label>Sundays</label>
-                    <p><?php echo time24hTo12h($user->get_sunday_availability_start()) . ' - ' . time24hTo12h($user->get_sunday_availability_end()) ?></p>
-                <?php endif ?>
-                <?php if ($user->get_monday_availability_start()): ?>
-                    <label>Mondays</label>
-                    <p><?php echo time24hTo12h($user->get_monday_availability_start()) . ' - ' . time24hTo12h($user->get_monday_availability_end()) ?></p>
-                <?php endif ?>
-                <?php if ($user->get_tuesday_availability_start()): ?>
-                    <label>Tuedays</label>
-                    <p><?php echo time24hTo12h($user->get_tuesday_availability_start()) . ' - ' . time24hTo12h($user->get_tuesday_availability_end()) ?></p>
-                <?php endif ?>
-                <?php if ($user->get_wednesday_availability_start()): ?>
-                    <label>Wednesdays</label>
-                    <p><?php echo time24hTo12h($user->get_wednesday_availability_start()) . ' - ' . time24hTo12h($user->get_wednesday_availability_end()) ?></p>
-                <?php endif ?>
-                <?php if ($user->get_thursday_availability_start()): ?>
-                    <label>Thursdays</label>
-                    <p><?php echo time24hTo12h($user->get_thursday_availability_start()) . ' - ' . time24hTo12h($user->get_thursday_availability_end()) ?></p>
-                <?php endif ?>
-                <?php if ($user->get_friday_availability_start()): ?>
-                    <label>Fridays</label>
-                    <p><?php echo time24hTo12h($user->get_friday_availability_start()) . ' - ' . time24hTo12h($user->get_friday_availability_end()) ?></p>
-                <?php endif ?>
-                <?php if ($user->get_saturday_availability_start()): ?>
-                    <label>Saturdays</label>
-                    <p><?php echo time24hTo12h($user->get_saturday_availability_start()) . ' - ' . time24hTo12h($user->get_saturday_availability_end()) ?></p>
-                <?php endif ?>
+                <label>Empty for now...</label>
+                <p>Empty for now...</p>
             </fieldset>
+
+            <fieldset>
+                <legend>Other Information</legend>
+                <label>School Affiliation</label>
+                <p><?php echo $user->get_school_affiliation() ?></p>
+                <label>Tshirt Size</label>
+                <p><?php echo ucfirst($user->get_tshirt_size()) ?></p>
+            </fieldset>
+
             <a class="button" href="editProfile.php<?php if ($id != $userID) echo '?id=' . $id ?>">Edit Profile</a>
             <?php if ($id != $userID): ?>
                 <?php if (($accessLevel == 2 && $user->get_access_level() == 1) || $accessLevel >= 3): ?>
