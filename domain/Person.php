@@ -16,65 +16,69 @@
 
 // ONLY REQUIRED FIELDS HAVE BEEN ADDED SO FAR.
 class Person {
+
 	private $access_level; // normal user = 1, admin = 2, superadmin = 3
-	// required fields
-	private $id;
-	private $username;
+	
+	// REQUIRED FIELDS
+	private $id; // (username)
+	private $password;
+	private $start_date; // (dete of account creation)
 	private $first_name;
 	private $last_name;
 	private $birthday;
 	private $street_address;
 	private $city;
 	private $state;
-	private $zip;
+	private $zip_code;
+	private $phone1;
+	private $phone1type;
 	private $email;
-	private $phone;
-	private $phone_type;
-	private $econtact_first_name;
-	private $econtact_last_name;
-	private $econtact_phone;
+	private $emergency_contact_first_name;
+	private $emergency_contact_last_name;
+	private $emergency_contact_phone;
+	private $emergency_contact_phone_type;
 	private $econtact_relation;
 	private $tshirt_size;
 	private $school_affiliation;
-	private $password;
-	//private $volunteer_or_participant;
-	private $type;
+	private $type; // admin or volunteer or participant...
 	private $status;
+	private $archived;
 
-	// optional fields
+	// OPTIONAL FIELDS
 	// (to be added...)
 
 	/*
 	 * This is a temporary mini constructor for testing purposes. It will be expanded later.
 	 */
-	function __construct($id, $first_name, $last_name,
-						$birthday, $email, $password, $username, $street_address, $city, $state, $zip,
-						$phone, $phone_type, $econtact_first_name, $econtact_phone,
-						$econtact_relation, $type,
-						$status
+	function __construct(
+						$id, $password, $start_date, $first_name, $last_name, $birthday, $street_address, $city,
+						$state, $zip_code, $phone1, $phone1type, $email, $emergency_contact_first_name,
+						$emergency_contact_last_name, $emergency_contact_phone, $emergency_contact_phone_type,
+						$emergency_contact_relation, $tshirt_size, $school_affiliation, $type, $status, $archived
 						) {
-		$this->id = $id;
+		$this->id = $id; // (username)
+		$this->password = $password;
+		$this->start_date = $start_date; // (dete of account creation)
 		$this->first_name = $first_name;
 		$this->last_name = $last_name;
 		$this->birthday = $birthday;
-		$this->email = $email;
-		$this->password = $password;
-		$this->username = $username;
 		$this->street_address = $street_address;
 		$this->city = $city;
 		$this->state = $state;
-		$this->zip = $zip;
-		$this->phone = $phone;
-		$this->phone_type = $phone_type;
-		$this->econtact_first_name = $econtact_first_name;
-		//$this->econtact_last_name = $econtact_last_name;
-		$this->econtact_phone = $econtact_phone;
-		$this->econtact_relation = $econtact_relation;
-		//$this->tshirt_size = $tshirt_size;
-		//$this->school_affiliation = $school_affiliation;
-		//$this->volunteer_or_participant = $volunteer_or_participant;
-		$this->type = $type;
+		$this->zip_code = $zip_code;
+		$this->phone1 = $phone1;
+		$this->phone1type = $phone1type;
+		$this->email = $email;
+		$this->emergency_contact_first_name = $emergency_contact_first_name;
+		$this->emergency_contact_last_name = $emergency_contact_last_name;
+		$this->emergency_contact_phone = $emergency_contact_phone;
+		$this->emergency_contact_phone_type = $emergency_contact_phone_type;
+		$this->emergency_contact_relation = $emergency_contact_relation;
+		$this->tshirt_size = $tshirt_size;
+		$this->school_affiliation = $school_affiliation;
+		$this->type = $type; // volunteer or participant...
 		$this->status = $status;
+		$this->archived = $archived;
 
 		// access_level = 1 for users, and = 3 for admin
 		if ($id == 'vmsroot') {
@@ -84,12 +88,18 @@ class Person {
 		}
 	}
 
-	function get_access_level() {
-		return $this->access_level;
-	}
+
 
 	function get_id() {
 		return $this->id;
+	}
+
+	function get_password() {
+		return $this->password;
+	}
+
+	function get_start_date() {
+		return $this->start_date;
 	}
 
 	function get_first_name() {
@@ -104,32 +114,61 @@ class Person {
 		return $this->birthday;
 	}
 
+	function get_street_address() {
+		return $this->street_address;
+	}
+
+	function get_city() {
+		return $this->city;
+	}
+
+	function get_state() {
+		return $this->state;
+	}
+
+	function get_zip_code() {
+		return $this->zip_code;
+	}
+
+	function get_phone1() {
+		return $this->phone1;
+	}
+
+	function get_phone1type() {
+		return $this->phone1type;
+	}
+
 	function get_email() {
 		return $this->email;
 	}
 
-	function get_password() {
-		return $this->password;
+	function get_emergency_contact_first_name() {
+		return $this->emergency_contact_first_name;
 	}
 
-	function get_username() {
-		return $this->username;
+	function get_emergency_contact_last_name() {
+		return $this->emergency_contact_last_name;
 	}
 
-	//function get_phone() {
-	//	return $this->phone;
-	//}
-	function get_phone1() {
-		return $this->phone;
+	function get_emergency_contact_phone() {
+		return $this->emergency_contact_phone;
 	}
 
-	function get_zip() {
-		return $this->zip;
+	function get_emergency_contact_phone_type() {
+		return $this->emergency_contact_phone_type;
 	}
 
-	//function get_volunteer_or_participant() {
-	//	return $this->volunteer_or_participant;
-	//}
+	function get_emergency_contact_relation() {
+		return $this->emergency_contact_relation;
+	}
+
+	function get_tshirt_size() {
+		return $this->tshirt_size;
+	}
+
+	function get_school_affiliation() {
+		return $this->school_affiliation;
+	}
 
 	function get_type() {
 		return $this->type;
@@ -138,9 +177,13 @@ class Person {
 	function get_status() {
 		return $this->status;
 	}
-	
-	function get_street_address() {
-		return $this->street_address;
+
+	function get_archived() {
+		return $this->archived;
+	}
+
+	function get_access_level() {
+		return $this->access_level;
 	}
 
 }
