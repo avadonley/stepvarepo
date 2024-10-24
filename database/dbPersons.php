@@ -29,15 +29,52 @@ function add_person($person) {
     $result = mysqli_query($con,$query);
     //if there's no entry for this id, add it
     if ($result == null || mysqli_num_rows($result) == 0) {
-        mysqli_query($con,'INSERT INTO dbPersons (id, first_name, last_name, birthday, email, password, username) VALUES("' .
+        /*mysqli_query($con,'INSERT INTO dbPersons (id, first_name, last_name, birthday, email, password) VALUES("' .
             $person->get_id() . '","' .
             $person->get_first_name() . '","' .
             $person->get_last_name() . '","' .
             $person->get_birthday() . '","' .
             $person->get_email() . '","' .
+            $person->get_password() . '");'
+        );*/
+        mysqli_query($con, 'INSERT INTO dbPersons VALUES ("' .
+            $person->get_id() . '","' .
+            $person->get_start_date() . '","' .
+            "n/a" . '","' . /* ("venue", we don't use this) */
+            $person->get_first_name() . '","' .
+            $person->get_last_name() . '","' .
+            $person->get_street_address() . '","' .
+            $person->get_city() . '","' .
+            $person->get_state() . '","' .
+            $person->get_zip_code() . '","' .
+            $person->get_phone1() . '","' .
+            $person->get_phone1type() . '","' .
+            $person->get_emergency_contact_phone() . '","' .
+            $person->get_emergency_contact_phone_type() . '","' .
+            $person->get_birthday() . '","' .
+            $person->get_email() . '","' .
+            $person->get_emergency_contact_first_name() . '","' .
+            'n/a' . '","' . /* ("contact_num", we don't use this) */
+            $person->get_emergency_contact_relation() . '","' .
+            'n/a' . '","' . /* ("contact_method", we don't use this) */
+            $person->get_type() . '","' .
+            $person->get_status() . '","' .
+            'n/a' . '","' . /* ("notes", we don't use this) */
             $person->get_password() . '","' .
-            $person->get_username() . '");'
-        );							
+            'n/a' . '","' . /* ("profile_pic", we don't use this) */
+            'gender' . '","' .
+            $person->get_tshirt_size() . '","' .
+            'how_you_heard_of_stepva' . '","' .
+            'sensory_sensitivities' . '","' .
+            'disability_accomodation_needs' . '","' .
+            $person->get_school_affiliation() . '","' .
+            'race' . '","' .
+            'preferred_feedback_method' . '","' .
+            'hobbies' . '","' .
+            'professional_experience' . '","' .
+            $person->get_archived() . '","' .
+            $person->get_emergency_contact_last_name() . '");'
+        );
         mysqli_close($con);
         return true;
     }
@@ -244,33 +281,29 @@ function make_a_person($result_row) {
 	 */
     $thePerson = new Person(
         $result_row['id'],
+        $result_row['password'],
+        $result_row['start_date'],
         $result_row['first_name'],
         $result_row['last_name'],
         $result_row['birthday'],
-        $result_row['email'],
-        $result_row['password'],
-        $result_row['username'],
-       // $result_row['street_address'],
-        $result_row['address'],
-		$result_row['city'],
-		$result_row['state'],
-		$result_row['zip'],
-		//$result_row['phone'],
+        $result_row['street_address'],
+        $result_row['city'],
+        $result_row['state'],
+        $result_row['zip_code'],
         $result_row['phone1'],
-		//$result_row['phone_type'],
         $result_row['phone1type'],
-		//$result_row['econtact_first_name'],
-		//$result_row['econtact_last_name'],
-        $result_row['contact_name'],
-		//$result_row['econtact_phone'],
-        $result_row['contact_num'],
-		//$result_row['econtact_relation'],
-        $result_row['relation'],
-		//$result_row['tshirt_size'],
-		//$result_row['school_affiliation'],
-		//$result_row['volunteer_or_participant'],
+        $result_row['email'],
+        $result_row['emergency_contact_first_name'],
+        $result_row['emergency_contact_last_name'],
+        $result_row['emergency_contact_phone'],
+        $result_row['emergency_contact_phone_type'],
+        $result_row['emergency_contact_relation'],
+        $result_row['tshirt_size'],
+        $result_row['school_affiliation'],
         $result_row['type'],
-		$result_row['status']
+        $result_row['status'],
+        $result_row['archived'],
+        
     );
 
     /*@@@$thePerson = new Person(

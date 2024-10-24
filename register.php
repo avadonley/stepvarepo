@@ -33,9 +33,9 @@
             $required = array(
                 'first_name', 'last_name', 'birthdate',
                 'street_address', 'city', 'state', 'zip', 
-                'email', 'phone', 'phone_type', 'econtact_first_name',
-                'econtact_last_name', 'econtact_phone',
-                'econtact_relation', 'tshirt_size',
+                'email', 'phone', 'phone_type', 'emergency_contact_first_name',
+                'emergency_contact_last_name',
+                'emergency_contact_relation', 'emergency_contact_phone', 'tshirt_size',
                 'school_affiliation', 'username', 'password',
                 'volunteer_or_participant'
             );
@@ -44,10 +44,10 @@
             if (!wereRequiredFieldsSubmitted($args, $required)) {
                 $errors = true;
             }
-            $first = $args['first_name'];
-            $last = $args['last_name'];
-            $dateOfBirth = validateDate($args['birthdate']);
-            if (!$dateOfBirth) {
+            $first_name = $args['first_name'];
+            $last_name = $args['last_name'];
+            $birthday = validateDate($args['birthdate']);
+            if (!$birthday) {
                 $errors = true;
                 echo 'bad dob';
             }
@@ -62,8 +62,8 @@
                     'UT', 'VA', 'VT', 'WA', 'WI', 'WV', 'WY'))) {
                 $errors = true;
             }
-            $zipcode = $args['zip'];
-            if (!validateZipcode($zipcode)) {
+            $zip_code = $args['zip'];
+            if (!validateZipcode($zip_code)) {
                 $errors = true;
                 echo 'bad zip';
             }
@@ -73,31 +73,44 @@
                 $errors = true;
                 echo 'bad email';
             }
-            $phone = validateAndFilterPhoneNumber($args['phone']);
-            if (!$phone) {
+            $phone1 = validateAndFilterPhoneNumber($args['phone']);
+            if (!$phone1) {
                 $errors = true;
                 echo 'bad phone';
             }
-            $phoneType = $args['phone_type'];
-            if (!valueConstrainedTo($phoneType, array('cellphone', 'home', 'work'))) {
+            $phone1type = $args['phone_type'];
+            if (!valueConstrainedTo($phone1type, array('cellphone', 'home', 'work'))) {
                 $errors = true;
                 echo 'bad phone type';
             }
 
-            $econtactFirstName = $args['econtact_first_name'];
-            $econtactLastName = $args['econtact_last_name'];
-            $econtactPhone = validateAndFilterPhoneNumber($args['econtact_phone']);
-            if (!$econtactPhone) {
+            $emergency_contact_first_name = $args['emergency_contact_first_name'];
+            $emergency_contact_last_name = $args['emergency_contact_last_name'];
+            $emergency_contact_relation = $args['emergency_contact_relation'];
+            $emergency_contact_phone = validateAndFilterPhoneNumber($args['emergency_contact_phone']);
+            if (!$emergency_contact_phone) {
                 $errors = true;
                 echo 'bad e-contact phone';
             }
-            $econtactRelation = $args['econtact_relation'];
+            $emergency_contact_phone_type = $args['emergency_contact_phone_type'];
+            if (!valueConstrainedTo($emergency_contact_phone_type, array('cellphone', 'home', 'work'))) {
+                $errors = true;
+                echo 'bad phone type';
+            }
 
-            $tshirtSize = $args['tshirt_size'];
-            $schoolAffiliation = $args['school_affiliation'];
-            $volunteerOrParticipant = $args['volunteer_or_participant'];
+            $tshirt_size = $args['tshirt_size'];
+            $school_affiliation = $args['school_affiliation'];
 
-            $username = $args['username'];
+            $volunteer_or_participant = $args['volunteer_or_participant'];
+            if ($volunteer_or_participant == 'v') {
+                $type = 'volunteer';
+            } else {
+                $type = 'participant';
+            }
+
+            $archived = 0;
+
+            $id = $args['username'];
             // May want to enforce password requirements at this step
             //$username = $args['username'];
             $password = password_hash($args['password'], PASSWORD_BCRYPT);
@@ -110,38 +123,40 @@
             $status = "Active";
             
             $newperson = new Person(
-                $username, // id = username
-                $first,
-                $last,
-                $dateOfBirth,
-                $email,
+                $id, // (id = username)
                 $password,
-                $username,
+                '01-01-2024', // (placeholder $start_date)
+                $first_name,
+                $last_name,
+                $birthday,
                 $street_address,
                 $city,
                 $state,
-                $zipcode,
-                $phone,
-                $phoneType,
-                $econtactFirstName,
-                //$econtactLastName,
-                $econtactPhone,
-                $econtactRelation,
-             //   $tshirtSize,
-               // $schoolAffiliation,
-                $volunteerOrParticipant,
-                $status
+                $zip_code,
+                $phone1,
+                $phone1type,
+                $email,
+                $emergency_contact_first_name,
+                $emergency_contact_last_name,
+                $emergency_contact_phone,
+                $emergency_contact_phone_type,
+                $emergency_contact_relation,
+                $tshirt_size,
+                $school_affiliation,
+                $type, // admin or volunteer or participant...
+                $status,
+                $archived
             );
 
             $result = add_person($newperson);
             if (!$result) {
                 echo '<p>That username is already in use.</p>';
             } else {
-                if ($loggedIn) {
+                /*if ($loggedIn) {
                     echo '<script>document.location = "index.php?registerSuccess";</script>';
-                } else {
+                } else {*/
                     echo '<script>document.location = "login.php?registerSuccess";</script>';
-                }
+                /*}*/
             }
         } else {
             require_once('registrationForm.php'); 
