@@ -125,7 +125,7 @@
             $newperson = new Person(
                 $id, // (id = username)
                 $password,
-                '01-01-2024', // $start_date, // (dete of account creation)
+                '01-01-2024', // (placeholder $start_date)
                 $first_name,
                 $last_name,
                 $birthday,
@@ -152,11 +152,11 @@
             if (!$result) {
                 echo '<p>That username is already in use.</p>';
             } else {
-                if ($loggedIn) {
+                /*if ($loggedIn) {
                     echo '<script>document.location = "index.php?registerSuccess";</script>';
-                } else {
+                } else {*/
                     echo '<script>document.location = "login.php?registerSuccess";</script>';
-                }
+                /*}*/
             }
         } else {
             require_once('registrationForm.php'); 

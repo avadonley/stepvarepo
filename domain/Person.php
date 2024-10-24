@@ -37,7 +37,7 @@ class Person {
 	private $emergency_contact_last_name;
 	private $emergency_contact_phone;
 	private $emergency_contact_phone_type;
-	private $econtact_relation;
+	private $emergency_contact_relation;
 	private $tshirt_size;
 	private $school_affiliation;
 	private $type; // admin or volunteer or participant...
