@@ -94,30 +94,17 @@
                 <h2>Viewing <?php echo $user->get_first_name() . ' ' . $user->get_last_name() ?></h2>
             <?php endif ?>
             <fieldset>
+
                 <legend>General Information</legend>
                 <label>Username</label>
                 <p><?php echo $user->get_id() ?></p>
-                <label>Profile Picture</label>
-                <img class="profile-pic" src="<?php
-                    $profile_pic = $user -> get_profile_pic();
-                    if ($profile_pic) {
-                        echo $profile_pic;
-                    } else {
-                        echo 'images/default-profile-picture.svg';
-                    }
-                  ?>"width="140" height="140">
-                <form class="media-form hidden" method="post" id="edit-profile-picture-form">
-                    <label>Edit Photo</label>
-                    <label for="url">URL</label>
-                    <input type="text" id="url" name="url" placeholder="Paste link to media" required>
-                    <p class="error hidden" id="url-error">Please enter a valid URL.</p>
-                    <input type="hidden" name="id" value="<?php echo $id ?>">
-                    <input type="submit" name="edit-profile-picture-submit" value="Attach">
-                </form>
-                <a id="edit-profile-picture" class="link-like">Edit Photo</a>
-                <?php
-                  echo '<a href="viewProfile.php?id='.$id.'&removePic=true" style="color:inherit">Remove Photo</a>'
-                ?>
+
+                <label>First Name</label>
+                <p><?php echo $user->get_first_name() ?></p>
+                
+                <label>Last Name</label>
+                <p><?php echo $user->get_last_name() ?></p>
+
                 <label>Gender</label>
                 <p><?php echo $user->get_gender(); ?></p>
                 <label>Date of Birth</label>
