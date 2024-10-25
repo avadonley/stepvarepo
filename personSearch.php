@@ -91,7 +91,7 @@
                                             <td>' . $person->get_last_name() . '</td>
                                             <td><a href="mailto:' . $person->get_id() . '">' . $person->get_id() . '</a></td>
                                             <td><a href="tel:' . $person->get_phone1() . '">' . formatPhoneNumber($person->get_phone1()) .  '</td>
-											<td>' . $person->get_zip() . '</td>
+											<td>' . $person->get_zip_code() . '</td>
                                             <td> </td>
                                             <td>' . ucfirst($person->get_type()) . '</td>
                                             <td>' . ucfirst($person->get_status()) . '</td>
