@@ -68,14 +68,14 @@ function add_person($person) {
             'sensory_sensitivities' . '","' .
             'disability_accomodation_needs' . '","' .
             $person->get_school_affiliation() . '","' .
-            $person->get_photo_release() . '","' .
-            $person->get_photo_release_notes() . '","' .
             'race' . '","' .
             'preferred_feedback_method' . '","' .
             'hobbies' . '","' .
             'professional_experience' . '","' .
             $person->get_archived() . '","' .
-            $person->get_emergency_contact_last_name() . '");'
+            $person->get_emergency_contact_last_name() . '","' .
+            $person->get_photo_release() . '","' .
+            $person->get_photo_release_notes() . '");'
         );
         mysqli_close($con);
         return true;
