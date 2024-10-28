@@ -72,6 +72,7 @@
                 <div class="dashboard-item" data-link="calendar.php">
                     <img src="images/view-calendar.svg">
                     <span>View Calendar</span>
+
                 </div>  
                 <?php if ($_SESSION['access_level'] >= 2): ?>
                     <div class="dashboard-item" data-link="eventSignUp.php">
@@ -118,6 +119,10 @@
                         <img src="images/add-person.svg">
                         <span>Register Volunteer</span>
                     </div>
+                    <div class="dashboard-item" data-link="addEvent.php">
+                        <img src="images/new-event.svg">
+                        <span>Add Event</span>
+                    </div>
 
                     <!--
                     <div class="dashboard-item" data-link="viewArchived.php">
@@ -146,6 +151,10 @@
                         <img src="images/volunteer-history.svg">
                         <span>View My Hours</span>
                     </div>
+                    <div class="dashboard-item" data-link="eventSignUp.php">
+                    <img src="images/new-event.svg">
+                    <span>Sign-Up for Event</span>
+                </div>
                 <?php endif ?>
                 <div class="dashboard-item" data-link="changePassword.php">
                     <img src="images/change-password.svg">
