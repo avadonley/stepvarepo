@@ -59,7 +59,10 @@
                         echo "Event Name: " . htmlspecialchars($eventName) . "<br>";
                         echo "Start Time: " . htmlspecialchars($event['start_time']) . "<br>";
                         echo "End Time: " . htmlspecialchars($event['end_time']) . "<br>";
-                        
+                        echo '
+                        <a class="button" href="editTimes.php?id=' . $event['eventID'] . '?user=' . $username . '?old_start_time=' . $event['start_time'] . '">
+                            Edit Event
+                        </a>';
                         echo "</li>";
                     }
                     
