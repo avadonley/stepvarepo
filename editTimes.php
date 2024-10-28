@@ -58,17 +58,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     // Check if both start time and end time are not empty
     if (!empty($startTime) && !empty($endTime)) {
         // Convert the times to a standard format if needed
-    // Convert the times to a standard format with date
-    $startDateTime = date("Y-m-d H:i:s", strtotime($eventDate . ' ' . $startTime));
-    $endDateTime = date("Y-m-d H:i:s", strtotime($eventDate . ' ' . $endTime));
-
-    $formattedStartDateTime = $startDateTime->format('Y-m-d H:i:s');
-    $formattedEndDateTime = $endDateTime->format('Y-m-d H:i:s');
-
-    echo $formattedStartDateTime;
-    echo "<br>";
-    echo $formattedEndDateTime;
-    echo "<br>";
+        $startDateTime = date("H:i:s", strtotime($startTime));
+        $endDateTime = date("H:i:s", strtotime($endTime));
 
         // Connect to the database
         $connection = connect(); // Assumes you have a connect() function for database connection
@@ -82,7 +73,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         // Replace these with actual values for personID and eventID
         $eventID = $id; // e.g., from session or other source
         $personID = $user; // e.g., passed to this page or session
-        //$oldStartTime = $old_start_time;
+        $oldStartTime = $old_start_time;
 
         // Bind parameters to the SQL query
         mysqli_stmt_bind_param($stmt, "ssss", $startDateTime, $endDateTime, $personID, $eventID);
@@ -97,7 +88,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         // Close statement and connection
         mysqli_stmt_close($stmt);
         mysqli_close($connection);
-
     } else {
         echo "Please fill in both start and end times.";
     }
@@ -108,7 +98,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 <html>
     <head>
         <?php require_once('universal.inc') ?>
-        <title>Step VA | View Date</title>
+        <title>ODHS Medicine Tracker | View Date</title>
     </head>
     <body>
         <?php require_once('header.php') ?>
@@ -121,11 +111,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 <input type="text" id="abbrev-name" name="abbrev-name" maxlength="11" required placeholder="Enter name that will appear on calendar">
 -->
                 <label for="name">* New Start Time </label>
-                <!--- add pattern -->
-                <input type="text" id="start-time" name="start-time" required placeholder="Enter new start time">
+                <input type="text" id="start-time" name="start-time" pattern="([1-9]|10|11|12):[0-5][0-9] ?([aApP][mM])" required placeholder="Enter new start time. Ex. 12:00 PM">
                 <label for="name">* New End Time </label>
-                 <!--- add pattern -->
-                <input type="text" id="end-time" name="end-time" required placeholder="Enter new end time">
+                <input type="text" id="end-time" name="end-time" pattern="([1-9]|10|11|12):[0-5][0-9] ?([aApP][mM])" required placeholder="Enter new end time. Ex. 12:00 PM">
                 
                 <!--
                 <label for="name">* What Time Did You Arrive For This Event? </label>
