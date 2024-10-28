@@ -126,7 +126,9 @@
         echo('<div class="dropdown-menu" aria-labelledby="navbarDropdown">');
         echo('<a class="dropdown-item" href="' . $path . 'calendar.php">Calendar</a>');
         echo('<a class="dropdown-item" href="' . $path . 'inbox.php">Notifications</a>');
-        echo('<a class="dropdown-item" href="' . $path . 'addEvent.php">Add</a>');
+        if ($_SESSION['access_level'] >= 2) {
+            echo('<a class="dropdown-item" href="' . $path . 'addevent.php">Add</a>');
+        }
         echo('</div>');
         echo('</li>');
 
