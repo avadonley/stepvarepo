@@ -40,6 +40,8 @@ class Person {
 	private $emergency_contact_relation;
 	private $tshirt_size;
 	private $school_affiliation;
+	private $photo_release;
+	private $photo_release_notes;
 	private $type; // admin or volunteer or participant...
 	private $status;
 	private $archived;
@@ -54,7 +56,7 @@ class Person {
 						$id, $password, $start_date, $first_name, $last_name, $birthday, $street_address, $city,
 						$state, $zip_code, $phone1, $phone1type, $email, $emergency_contact_first_name,
 						$emergency_contact_last_name, $emergency_contact_phone, $emergency_contact_phone_type,
-						$emergency_contact_relation, $tshirt_size, $school_affiliation, $type, $status, $archived
+						$emergency_contact_relation, $tshirt_size, $school_affiliation, $photo_release, $photo_release_notes, $type, $status, $archived
 						) {
 		$this->id = $id; // (username)
 		$this->password = $password;
@@ -76,6 +78,8 @@ class Person {
 		$this->emergency_contact_relation = $emergency_contact_relation;
 		$this->tshirt_size = $tshirt_size;
 		$this->school_affiliation = $school_affiliation;
+		$this->photo_release = $photo_release;
+		$this->photo_release_notes = $photo_release_notes;
 		$this->type = $type; // volunteer or participant...
 		$this->status = $status;
 		$this->archived = $archived;
@@ -168,6 +172,14 @@ class Person {
 
 	function get_school_affiliation() {
 		return $this->school_affiliation;
+	}
+
+	function get_photo_release() {
+		return $this->photo_release;
+	}
+
+	function get_photo_release_notes() {
+		return $this->photo_release_notes;
 	}
 
 	function get_type() {

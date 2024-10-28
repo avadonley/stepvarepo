@@ -37,7 +37,7 @@
                 'emergency_contact_last_name',
                 'emergency_contact_relation', 'emergency_contact_phone', 'tshirt_size',
                 'school_affiliation', 'username', 'password',
-                'volunteer_or_participant'
+                'volunteer_or_participant', 'photo_release', 'photo_release_notes'
             );
 
             $errors = false;
@@ -100,6 +100,12 @@
 
             $tshirt_size = $args['tshirt_size'];
             $school_affiliation = $args['school_affiliation'];
+            $photo_release = $args['photo_release'];
+            if (!valueConstrainedTo($photo_release, array('Restricted', 'Not Restricted'))) {
+                $errors = true;
+                echo 'bad photo release type';
+            }
+            $photo_release_notes = $args['photo_release_notes'];
 
             $volunteer_or_participant = $args['volunteer_or_participant'];
             if ($volunteer_or_participant == 'v') {
@@ -143,9 +149,11 @@
                 $emergency_contact_relation,
                 $tshirt_size,
                 $school_affiliation,
+                $photo_release,
+                $photo_release_notes,
                 $type, // admin or volunteer or participant...
                 $status,
-                $archived
+                $archived,
             );
 
             $result = add_person($newperson);

@@ -144,6 +144,14 @@
             <label for="school_affiliation"><em>* </em>School Affiliation (or N/A)</label>
             <input type="text" id="school_affiliation" name="school_affiliation" required placeholder="Are you affiliated with any school?">
 
+            <label><em>* </em>Photo Release Restrictions: Can your photo be taken and used on our website and social media?</label>
+            <div class="radio-group">
+                <input type="radio" id="Restricted" name="photo_release" value="Restricted" required><label for="photo_release">Restricted</label>
+                <input type="radio" id="Not Restricted" name="photo_release" value="Not Restricted" required><label for="photo_release">Not Restricted</label>
+            </div>
+
+            <label><em>* </em>Photo Release Restriction Notes (or N/A)</label>
+            <input type="text" id="photo_release_notes" name="photo_release_notes" required placeholder="Do you have any specific notes photo release">
         </fieldset>
 
         <fieldset>

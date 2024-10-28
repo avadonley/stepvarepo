@@ -68,6 +68,8 @@ function add_person($person) {
             'sensory_sensitivities' . '","' .
             'disability_accomodation_needs' . '","' .
             $person->get_school_affiliation() . '","' .
+            $person->get_photo_release() . '","' .
+            $person->get_photo_release_notes() . '","' .
             'race' . '","' .
             'preferred_feedback_method' . '","' .
             'hobbies' . '","' .
@@ -300,6 +302,8 @@ function make_a_person($result_row) {
         $result_row['emergency_contact_relation'],
         $result_row['tshirt_size'],
         $result_row['school_affiliation'],
+        $result_row['photo_release'],
+        $result_row['photo_release_notes'],
         $result_row['type'],
         $result_row['status'],
         $result_row['archived'],
