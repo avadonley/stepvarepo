@@ -38,6 +38,7 @@
                     require_once('database/dbPersons.php');
                     $args = sanitize($_GET);
                     $required = ['name', 'id', 'phone', 'zip', 'role', 'status', 'photo_release'];
+                    //var_dump($args);
                     if (!wereRequiredFieldsSubmitted($args, $required, true)) {
                         echo 'Missing expected form elements';
                     }

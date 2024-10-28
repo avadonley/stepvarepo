@@ -595,9 +595,9 @@ function get_logged_hours($from, $to, $name_from, $name_to, $venue) {
         return $thePersons;
     }
 
-    function find_users($name, $id, $phone, $zip, $type, $status) {
+    function find_users($name, $id, $phone, $zip, $type, $status, $photo_release) {
         $where = 'where ';
-        if (!($name || $id || $phone || $zip || $type || $status)) {
+        if (!($name || $id || $phone || $zip || $type || $status || $photo_release)) {
             return [];
         }
         $first = true;
@@ -645,6 +645,13 @@ function get_logged_hours($from, $to, $name_from, $name_to, $venue) {
                 $where .= ' and ';
             }
             $where .= "status='$status'";
+            $first = false;
+        }
+        if ($photo_release) {
+            if (!$first) {
+                $where .= ' and ';
+            }
+            $where .= "photo_release='$photo_release'";
             $first = false;
         }
         $query = "select * from dbPersons $where order by last_name, first_name";
