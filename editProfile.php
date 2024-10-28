@@ -38,24 +38,24 @@
         // }
 
         $required = array(
-            'first-name', 'last-name', 'birthdate',
-            'address', 'city', 'state', 'zip', 
-            'email', 'phone', 'phone-type', 'contact-when', 'contact-method',
+            'first_name', 'last_name', 'birthdate',
+            'street_address', 'city', 'state', 'zip_code', 
+            'email', 'phone1', 'phone1type',
         );
         $errors = false;
         if (!wereRequiredFieldsSubmitted($args, $required)) {
             $errors = true;
         }
 
-        $first = $args['first-name'];
-        $last = $args['last-name'];
+        $first = $args['first_name'];
+        $last = $args['last_name'];
         $dateOfBirth = validateDate($args['birthdate']);
         if (!$dateOfBirth) {
             $errors = true;
             // echo 'bad dob';
         }
 
-        $address = $args['address'];
+        $address = $args['street_address'];
         $city = $args['city'];
         $state = $args['state'];
         if (!valueConstrainedTo($state, array('AK', 'AL', 'AR', 'AZ', 'CA', 'CO', 'CT', 'DC', 'DE', 'FL', 'GA',
@@ -65,7 +65,7 @@
                 'UT', 'VA', 'VT', 'WA', 'WI', 'WV', 'WY'))) {
             $errors = true;
         }
-        $zipcode = $args['zip'];
+        $zipcode = $args['zip_code'];
         if (!validateZipcode($zipcode)) {
             $errors = true;
             // echo 'bad zip';
@@ -76,21 +76,15 @@
             $errors = true;
             // echo 'bad email';
         }
-        $phone = validateAndFilterPhoneNumber($args['phone']);
+        $phone = validateAndFilterPhoneNumber($args['phone1']);
         if (!$phone) {
             $errors = true;
             // echo 'bad phone';
         }
-        $phoneType = $args['phone-type'];
+        $phoneType = $args['phone1type'];
         if (!valueConstrainedTo($phoneType, array('cellphone', 'home', 'work'))) {
             $errors = true;
             // echo 'bad phone type';
-        }
-        $contactWhen = $args['contact-when'];
-        $contactMethod = $args['contact-method'];
-        if (!valueConstrainedTo($contactMethod, array('phone', 'text', 'email'))) {
-            $errors = true;
-            // echo 'bad contact method';
         }
 
         $econtactName = $args['econtact-name'];
@@ -190,7 +184,7 @@
         
         $result = update_person_profile($id,
             $first, $last, $dateOfBirth, $address, $city, $state, $zipcode,
-            $email, $phone, $phoneType, $contactWhen, $contactMethod, 
+            $email, $phone, $phoneType,
             $econtactName, $econtactPhone, $econtactRelation,
             $sundaysStart, $sundaysEnd, $mondaysStart, $mondaysEnd,
             $tuesdaysStart, $tuesdaysEnd, $wednesdaysStart, $wednesdaysEnd,
@@ -212,7 +206,7 @@
 <html>
 <head>
     <?php require_once('universal.inc'); ?>
-    <title>ODHS Medicine Tracker | Manage Profile</title>
+    <title>StepVa | Manage Profile</title>
 </head>
 <body>
     <?php
