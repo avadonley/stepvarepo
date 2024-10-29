@@ -73,7 +73,9 @@ function add_person($person) {
             'hobbies' . '","' .
             'professional_experience' . '","' .
             $person->get_archived() . '","' .
-            $person->get_emergency_contact_last_name() . '");'
+            $person->get_emergency_contact_last_name() . '","' .
+            $person->get_photo_release() . '","' .
+            $person->get_photo_release_notes() . '");'
         );
         mysqli_close($con);
         return true;
@@ -300,6 +302,8 @@ function make_a_person($result_row) {
         $result_row['emergency_contact_relation'],
         $result_row['tshirt_size'],
         $result_row['school_affiliation'],
+        $result_row['photo_release'],
+        $result_row['photo_release_notes'],
         $result_row['type'],
         $result_row['status'],
         $result_row['archived'],
@@ -591,9 +595,9 @@ function get_logged_hours($from, $to, $name_from, $name_to, $venue) {
         return $thePersons;
     }
 
-    function find_users($name, $id, $phone, $zip, $type, $status) {
+    function find_users($name, $id, $phone, $zip, $type, $status, $photo_release) {
         $where = 'where ';
-        if (!($name || $id || $phone || $zip || $type || $status)) {
+        if (!($name || $id || $phone || $zip || $type || $status || $photo_release)) {
             return [];
         }
         $first = true;
@@ -641,6 +645,13 @@ function get_logged_hours($from, $to, $name_from, $name_to, $venue) {
                 $where .= ' and ';
             }
             $where .= "status='$status'";
+            $first = false;
+        }
+        if ($photo_release) {
+            if (!$first) {
+                $where .= ' and ';
+            }
+            $where .= "photo_release='$photo_release'";
             $first = false;
         }
         $query = "select * from dbPersons $where order by last_name, first_name";
