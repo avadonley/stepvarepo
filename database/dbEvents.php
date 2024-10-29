@@ -207,6 +207,7 @@ function fetch_event_by_id($id) {
 
 function create_event($event) {
     $connection = connect();
+    var_dump($event);
     $name = $event["name"];
     //$abbrevName = $event["abbrev-name"];
     $date = $event["date"];
@@ -228,6 +229,7 @@ function create_event($event) {
         insert into dbEvents (name, date, startTime, endTime, restricted_signup, description, capacity, completed)
         values ('$name', '$date', '$startTime', '$endTime', $restricted, '$description', '0', '$completed')
     ";
+    echo $query;
     $result = mysqli_query($connection, $query);
     if (!$result) {
         return null;
