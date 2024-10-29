@@ -17,7 +17,7 @@
         $userID = $_SESSION['_id'];
     } 
     // Require admin privileges
-    if ($accessLevel < 2) {
+    if ($accessLevel < 1) {
         header('Location: login.php');
         echo 'bad access level';
         die();
@@ -124,10 +124,6 @@
     // Get all the animals from animal table
     $sql = "SELECT * FROM `dbeventpersons`";
     $all_animals = mysqli_query($con,$sql);
-    //$sql = "SELECT * FROM `dbLocations`";
-    //$all_locations = mysqli_query($con,$sql);
-    //$sql = "SELECT * FROM `dbServices`";
-    //$all_services = mysqli_query($con,$sql);
 
 ?>
 <!DOCTYPE html>

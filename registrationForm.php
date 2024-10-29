@@ -102,17 +102,24 @@
         <fieldset>
             <legend>Emergency Contact</legend>
             <p>Please provide us with someone to contact on your behalf in case of an emergency.</p>
-            <label for="econtact_first_name" required><em>* </em>Contact First Name</label>
-            <input type="text" id="econtact_first_name" name="econtact_first_name" required placeholder="Enter emergency contact first name">
+            <label for="emergency_contact_first_name" required><em>* </em>Contact First Name</label>
+            <input type="text" id="emergency_contact_first_name" name="emergency_contact_first_name" required placeholder="Enter emergency contact first name">
 
-            <label for="econtact_last_name" required><em>* </em>Contact Last Name</label>
-            <input type="text" id="econtact_last_name" name="econtact_last_name" required placeholder="Enter emergency contact last name">
+            <label for="emergency_contact_last_name" required><em>* </em>Contact Last Name</label>
+            <input type="text" id="emergency_contact_last_name" name="emergency_contact_last_name" required placeholder="Enter emergency contact last name">
 
-            <label for="econtact_phone"><em>* </em>Contact Phone Number</label>
-            <input type="tel" id="econtact_phone" name="econtact_phone" pattern="\([0-9]{3}\) [0-9]{3}-[0-9]{4}" required placeholder="Enter emergency contact phone number. Ex. (555) 555-5555">
+            <label for="emergency_contact_relation"><em>* </em>Contact Relation to You</label>
+            <input type="text" id="emergency_contact_relation" name="emergency_contact_relation" required placeholder="Ex. Spouse, Mother, Father, Sister, Brother, Friend">
 
-            <label for="econtact_relation"><em>* </em>Contact Relation to You</label>
-            <input type="text" id="econtact_relation" name="econtact_relation" required placeholder="Ex. Spouse, Mother, Father, Sister, Brother, Friend">
+            <label for="emergency_contact_phone"><em>* </em>Contact Phone Number</label>
+            <input type="tel" id="emergency_contact_phone" name="emergency_contact_phone" pattern="\([0-9]{3}\) [0-9]{3}-[0-9]{4}" required placeholder="Enter emergency contact phone number. Ex. (555) 555-5555">
+
+            <label><em>* </em>Contact Phone Type</label>
+            <div class="radio-group">
+                <input type="radio" id="phone-type-cellphone" name="emergency_contact_phone_type" value="cellphone" required><label for="phone-type-cellphone">Cell</label>
+                <input type="radio" id="phone-type-home" name="emergency_contact_phone_type" value="home" required><label for="phone-type-home">Home</label>
+                <input type="radio" id="phone-type-work" name="emergency_contact_phone_type" value="work" required><label for="phone-type-work">Work</label>
+            </div>
         </fieldset>
 
         <fieldset>
@@ -137,6 +144,14 @@
             <label for="school_affiliation"><em>* </em>School Affiliation (or N/A)</label>
             <input type="text" id="school_affiliation" name="school_affiliation" required placeholder="Are you affiliated with any school?">
 
+            <label for="photo_release"><em>* </em>Photo Release Restrictions: Can your photo be taken and used on our website and social media?</label>
+            <div class="radio-group">
+                <input type="radio" id="Restricted" name="photo_release" value="Restricted" required><label for="photo_release">Restricted</label>
+                <input type="radio" id="Not Restricted" name="photo_release" value="Not Restricted" required><label for="photo_release">Not Restricted</label>
+            </div>
+
+            <label for="photo_release_notes"><em>* </em>Photo Release Restriction Notes (or N/A)</label>
+            <input type="text" id="photo_release_notes" name="photo_release_notes" required placeholder="Do you have any specific notes photo release">
         </fieldset>
 
         <fieldset>
