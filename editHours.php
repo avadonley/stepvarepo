@@ -35,7 +35,7 @@
             die();
         } else {
            // $eventname = $args['name'];
-            $username = validateEmail($args['username']);
+            $username = $args['username'];
            // echo $eventname;
             if (!$username) {
                 echo 'bad username';
