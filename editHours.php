@@ -17,7 +17,7 @@
         $userID = $_SESSION['_id'];
     } 
     // Require admin privileges
-    if ($accessLevel < 2) {
+    if ($accessLevel < 1) {
         header('Location: login.php');
         echo 'bad access level';
         die();
