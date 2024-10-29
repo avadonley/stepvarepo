@@ -207,22 +207,29 @@ function fetch_event_by_id($id) {
 
 function create_event($event) {
     $connection = connect();
+    var_dump($event);
     $name = $event["name"];
-    $abbrevName = $event["abbrev-name"];
+    //$abbrevName = $event["abbrev-name"];
     $date = $event["date"];
     $startTime = $event["start-time"];
     $endTime = "23:59";
     $restricted = $event["restricted"];
+    if ($restricted == "on") {
+        $restricted = 1;
+    } else {
+        $restricted = 0;
+    }
     $description = $event["description"];
-    $location = $event["location"];
+    //$location = $event["location"];
     //$services = $event["service"];
 
     //$animal = $event["animal"];
     $completed = "no";
     $query = "
-        insert into dbEvents (name, abbrevName, date, startTime, endTime, restricted, description, locationID, capacity, completed)
-        values ('$name', '$abbrevName', '$date', '$startTime', '$endTime', $restricted, '$description', '$location', '0', , '$completed')
+        insert into dbEvents (name, date, startTime, endTime, restricted_signup, description, capacity, completed)
+        values ('$name', '$date', '$startTime', '$endTime', $restricted, '$description', '0', '$completed')
     ";
+    echo $query;
     $result = mysqli_query($connection, $query);
     if (!$result) {
         return null;
