@@ -78,12 +78,12 @@
     include_once('database/dbinfo.php'); 
     $con=connect();  
     // Get all the animals from animal table
-    $sql = "SELECT * FROM `dbAnimals`";
+    /*$sql = "SELECT * FROM `dbAnimals`";
     $all_animals = mysqli_query($con,$sql);
     $sql = "SELECT * FROM `dbLocations`";
     $all_locations = mysqli_query($con,$sql);
     $sql = "SELECT * FROM `dbServices`";
-    $all_services = mysqli_query($con,$sql);
+    $all_services = mysqli_query($con,$sql);*/
 
 ?>
 <!DOCTYPE html>
