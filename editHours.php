@@ -25,41 +25,85 @@
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         require_once('include/input-validation.php');
         require_once('database/dbEvents.php');
+        require_once('database/dbPersons.php');
         $args = sanitize($_POST, null);
         $required = array(
-            "name", "abbrev-name", "date", "start-time", "description", "location", "service", "animal"
+            "username"//, "name"
         );
         if (!wereRequiredFieldsSubmitted($args, $required)) {
             echo 'bad form data';
             die();
         } else {
-            $validated = validate12hTimeRangeAndConvertTo24h($args["start-time"], "11:59 PM");
-            if (!$validated) {
-                echo 'bad time range';
+           // $eventname = $args['name'];
+            $username = $args['username'];
+           // echo $eventname;
+            if (!$username) {
+                echo 'bad username';
                 die();
             }
-            $startTime = $args['start-time'] = $validated[0];
-            $date = $args['date'] = validateDate($args["date"]);
-            //$capacity = intval($args["capacity"]);
-            $abbrevLength = strlen($args['abbrev-name']);
-            if (!$startTime || !$date || $abbrevLength > 11){
-                echo 'bad args';
-                die();
+            else {
+                echo $username;
+                $events = get_events_attended_by_2($username);
+                // Check if the array is not empty
+                if (!empty($events)) {
+                    echo "<h3>Events attended by $username:</h3>";
+                    echo "<ul>";
+
+                    // Loop through each event and display it
+                    foreach ($events as $event) {
+                        echo "<li>";
+                        
+                        // Assuming $event is an associative array with keys like 'event_name' and 'date'
+                        echo "Event ID: " . htmlspecialchars($event['eventID']) . "<br>";
+                        $eventName = get_event_from_id($event['eventID']);
+                        echo "Event Name: " . htmlspecialchars($eventName) . "<br>";
+                        echo "Start Time: " . htmlspecialchars($event['start_time']) . "<br>";
+                        echo "End Time: " . htmlspecialchars($event['end_time']) . "<br>";
+                        echo '
+                        <a class="button" href="editTimes.php?id=' . $event['eventID'] . '?user=' . $username . '?old_start_time=' . $event['start_time'] . '">
+                            Edit Event
+                        </a>';
+                        echo "</li>";
+                    }
+                    
+                    echo "</ul>";
+                    //$tot_hours = get_tot_vol_hours("total_vol_hours", 'Active',NULL,NULL,NULL,NULL);
+                    //echo $tot_hours;
+
+
+                } else {
+                    echo "<p>No events attended by $username to edit hours for.</p>";
+                    die();
+                }
             }
-            $id = create_event($args);
-            if(!$id){
-                echo "Oopsy!";
-                die();
-            }
-            require_once('include/output.php');
-            
-            $name = htmlspecialchars_decode($args['name']);
-            $startTime = time24hto12h($startTime);
-            $date = date('l, F j, Y', strtotime($date));
-            require_once('database/dbMessages.php');
-            system_message_all_users_except($userID, "Your hours have been changed", "\r\n\r\nThe [$name](event: $id) event time at $startTime on $date was changed for your hours!\r\nSign up today!");
-            header("Location: event.php?id=$id&createSuccess");
             die();
+            // $validated = validate12hTimeRangeAndConvertTo24h($args["start-time"], "11:59 PM");
+            // if (!$validated) {
+            //     echo 'bad time range';
+            //     die();
+            // }
+            // $startTime = $args['start-time'] = $validated[0];
+            // $date = $args['date'] = validateDate($args["date"]);
+            // //$capacity = intval($args["capacity"]);
+            // $abbrevLength = strlen($args['abbrev-name']);
+            // if (!$startTime || !$date || $abbrevLength > 11){
+            //     echo 'bad args';
+            //     die();
+            // }
+            // $id = create_event($args);
+            // if(!$id){
+            //     echo "Oopsy!";
+            //     die();
+            // }
+            // require_once('include/output.php');
+            
+            // $name = htmlspecialchars_decode($args['name']);
+            // $startTime = time24hto12h($startTime);
+            // $date = date('l, F j, Y', strtotime($date));
+            // require_once('database/dbMessages.php');
+            // system_message_all_users_except($userID, "Your hours have been changed", "\r\n\r\nThe [$name](event: $id) event time at $startTime on $date was changed for your hours!\r\nSign up today!");
+            // header("Location: event.php?id=$id&createSuccess");
+            // die();
         }
     }
     $date = null;
@@ -78,12 +122,8 @@
     include_once('database/dbinfo.php'); 
     $con=connect();  
     // Get all the animals from animal table
-   // $sql = "SELECT * FROM `dbAnimals`";
-    //$all_animals = mysqli_query($con,$sql);
-    //$sql = "SELECT * FROM `dbLocations`";
-    //$all_locations = mysqli_query($con,$sql);
-    //$sql = "SELECT * FROM `dbServices`";
-    //$all_services = mysqli_query($con,$sql);
+    $sql = "SELECT * FROM `dbeventpersons`";
+    $all_animals = mysqli_query($con,$sql);
 
 ?>
 <!DOCTYPE html>
@@ -98,17 +138,19 @@
         <main class="date">
             <h2>Change Hours for Event</h2>
             <form id="new-event-form" method="post">
-                <label for="name">* Event Name </label>
+              <!--  <label for="name">* Event Name </label>
                 <input type="text" id="name" name="name" required placeholder="Enter name"> 
-                <label for="name">* Abbreviated Event Name</label>
+                <!-- <label for="name">* Abbreviated Event Name</label> 
                 <input type="text" id="abbrev-name" name="abbrev-name" maxlength="11" required placeholder="Enter name that will appear on calendar">
+-->
                 <label for="name">* Your Account Name </label>
-                <input type="text" id="name" name="name" required placeholder="Enter account name"> 
+                <input type="text" id="username" name="username" required placeholder="Enter account name"> 
+                <!--
                 <label for="name">* What Time Did You Arrive For This Event? </label>
                 <input type="text" id="start-time" name="start-time" pattern="([1-9]|10|11|12):[0-5][0-9] ?([aApP][mM])" required placeholder="Enter arrival time. Ex. 12:00 PM">
                 <label for="name">* What Time Did You Leave For This Event? </label>
                 <input type="text" id="departure-time" name="departure-time" pattern="([1-9]|10|11|12):[0-5][0-9] ?([aApP][mM])" required placeholder="Enter departure time. Ex. 3:00 PM">
-
+-->
 
                 <p></p>
                 <br/>

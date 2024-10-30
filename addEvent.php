@@ -27,7 +27,7 @@
         require_once('database/dbEvents.php');
         $args = sanitize($_POST, null);
         $required = array(
-            "name", "abbrev-name", "date", "start-time", "description", "location", "service", "animal"
+            "name", "date", "start-time", "description",
         );
         if (!wereRequiredFieldsSubmitted($args, $required)) {
             echo 'bad form data';
@@ -41,8 +41,9 @@
             $startTime = $args['start-time'] = $validated[0];
             $date = $args['date'] = validateDate($args["date"]);
             //$capacity = intval($args["capacity"]);
-            $abbrevLength = strlen($args['abbrev-name']);
-            if (!$startTime || !$date || $abbrevLength > 11){
+            //$abbrevLength = strlen($args['abbrev-name']);
+            //if (!$startTime || !$date || $abbrevLength > 11){
+            if (!$startTime || !$date > 11){
                 echo 'bad args';
                 die();
             }
@@ -56,10 +57,12 @@
             $name = htmlspecialchars_decode($args['name']);
             $startTime = time24hto12h($startTime);
             $date = date('l, F j, Y', strtotime($date));
-            require_once('database/dbMessages.php');
+
+            /*require_once('database/dbMessages.php');
             system_message_all_users_except($userID, "A new event was created!", "Exciting news!\r\n\r\nThe [$name](event: $id) event at $startTime on $date was added!\r\nSign up today!");
             header("Location: event.php?id=$id&createSuccess");
-            die();
+            */
+            //die();
         }
     }
     $date = null;
@@ -78,12 +81,14 @@
     include_once('database/dbinfo.php'); 
     $con=connect();  
     // Get all the animals from animal table
+
     /*$sql = "SELECT * FROM `dbAnimals`";
     $all_animals = mysqli_query($con,$sql);
     $sql = "SELECT * FROM `dbLocations`";
     $all_locations = mysqli_query($con,$sql);
     $sql = "SELECT * FROM `dbServices`";
     $all_services = mysqli_query($con,$sql);*/
+
 
 ?>
 <!DOCTYPE html>
@@ -100,15 +105,17 @@
             <form id="new-event-form" method="post">
                 <label for="name">* Event Name </label>
                 <input type="text" id="name" name="name" required placeholder="Enter name"> 
+                <!--
                 <label for="name">* Abbreviated Name</label>
                 <input type="text" id="abbrev-name" name="abbrev-name" maxlength="11" required placeholder="Enter name that will appear on calendar">
+                --->
                 <label for="name">* Date </label>
                 <input type="date" id="date" name="date" <?php if ($date) echo 'value="' . $date . '"'; ?> min="<?php echo date('Y-m-d'); ?>" required>
                 <label for="name">* Start Time </label>
                 <input type="text" id="start-time" name="start-time" pattern="([1-9]|10|11|12):[0-5][0-9] ?([aApP][mM])" required placeholder="Enter start time. Ex. 12:00 PM">
                 <label for=""name">Restriction</label>
                 <ul>
-                    <li><input class="checkboxes" type="checkbox" name="restricted" value="restricted_event"> Restricted Event</li>
+                    <li><input class="checkboxes" type="checkbox" id="restricted" name="restricted"> Restricted Event</li>
                 </ul>
                 <label for="name">* Description </label>
                 <input type="text" id="description" name="description" required placeholder="Enter description">
@@ -116,6 +123,7 @@
                 <fieldset>
                     <label for="name">* Service </label>
                     <?php 
+                        /*
                         // fetch data from the $all_services variable
                         // and individually display as an option
                         echo '<ul>';
@@ -124,41 +132,52 @@
                             echo '<li><input class="checkboxes" type="checkbox" name="service[]" value="' . $service['id'] . '" required/> ' . $service['name'] . '</li>';
                         endwhile;
                         echo '</ul>';
+                        */
                     ?>
                 </fieldset> 
                 --->
+
+                <!-- Location
                 <label for="name">* Location </label>
                 <select for="name" id="location" name="location" required>
                     <option value="">--</option>
                     <?php 
+                        /*
                         // fetch data from the $all_locations variable
                         // and individually display as an option
                         while ($location = mysqli_fetch_array(
                                 $all_locations, MYSQLI_ASSOC)):; 
+                        */
                     ?>
-                    <option value="<?php echo $location['id'];?>">
-                        <?php echo $location['name'];?>
+                    <option value="
+                        <?php //echo $location['id'];?>">
+                        <?php //echo $location['name'];?>
                     </option>
                     <?php 
-                        endwhile; 
+                        //endwhile; 
                         // terminate while loop
                     ?>
                 </select><p></p>
+                --->
   
                 <!--
                 <label for="name">* Animal</label>
                 <select for="name" id="animal" name="animal" required>
                     <?php 
+                        /*
                         // fetch data from the $all_animals variable
                         // and individually display as an option
                         while ($animal = mysqli_fetch_array(
                                 $all_animals, MYSQLI_ASSOC)):; 
+                        */
                     ?>
-                    <option value="<?php echo $animal['id'];?>">
-                        <?php echo $animal['name'];?>
+                    <option value="
+                        <?php //echo $animal['id'];?>
+                        ">
+                        <?php //echo $animal['name'];?>
                     </option>
                     <?php 
-                        endwhile; 
+                        // endwhile; 
                         // terminate while loop
                     ?>
                 </select>
