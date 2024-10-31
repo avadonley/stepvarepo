@@ -218,7 +218,7 @@
     <?php
         require_once('header.php');
         $isAdmin = $_SESSION['access_level'] >= 2;
-        require_once('profileEditForm.inc');
+        require_once('profileEditForm.php');
     ?>
 </body>
 </html>
