@@ -73,7 +73,9 @@ function add_person($person) {
             'hobbies' . '","' .
             'professional_experience' . '","' .
             $person->get_archived() . '","' .
-            $person->get_emergency_contact_last_name() . '");'
+            $person->get_emergency_contact_last_name() . '","' .
+            $person->get_photo_release() . '","' .
+            $person->get_photo_release_notes() . '");'
         );
         mysqli_close($con);
         return true;
@@ -140,7 +142,7 @@ function retrieve_persons_by_name ($name) {
 
 function change_password($id, $newPass) {
     $con=connect();
-    $query = 'UPDATE dbPersons SET password = "' . $newPass . '", force_password_change="0" WHERE id = "' . $id . '"';
+    $query = 'UPDATE dbPersons SET password = "' . $newPass . '" WHERE id = "' . $id . '"';
     $result = mysqli_query($con,$query);
     mysqli_close($con);
     return $result;
@@ -165,6 +167,16 @@ function update_hours($id, $new_hours) {
 function update_birthday($id, $new_birthday) {
 	$con=connect();
 	$query = 'UPDATE dbPersons SET birthday = "' . $new_birthday . '" WHERE id = "' . $id . '"';
+	$result = mysqli_query($con,$query);
+	mysqli_close($con);
+	return $result;
+}
+
+/* update volunteer hours */ /* $original_start_time, $original_end_time,  */
+function update_volunteer_hours($eventname, $username, $new_start_time, $new_end_time) {
+    $con=connect();
+    $eventid = "SELECT id FROM dbevents WHERE name = " . $eventname . '"';
+	$query = 'UPDATE dbpersonhours SET start_time = "' . $new_start_time . '", end_time = "' . $new_end_time . ' WHERE eventID = "' . $eventid . '" AND personID = "' . $username . '"';
 	$result = mysqli_query($con,$query);
 	mysqli_close($con);
 	return $result;
@@ -300,6 +312,8 @@ function make_a_person($result_row) {
         $result_row['emergency_contact_relation'],
         $result_row['tshirt_size'],
         $result_row['school_affiliation'],
+        $result_row['photo_release'],
+        $result_row['photo_release_notes'],
         $result_row['type'],
         $result_row['status'],
         $result_row['archived'],
@@ -591,9 +605,9 @@ function get_logged_hours($from, $to, $name_from, $name_to, $venue) {
         return $thePersons;
     }
 
-    function find_users($name, $id, $phone, $zip, $type, $status) {
+    function find_users($name, $id, $phone, $zip, $type, $status, $photo_release) {
         $where = 'where ';
-        if (!($name || $id || $phone || $zip || $type || $status)) {
+        if (!($name || $id || $phone || $zip || $type || $status || $photo_release)) {
             return [];
         }
         $first = true;
@@ -641,6 +655,13 @@ function get_logged_hours($from, $to, $name_from, $name_to, $venue) {
                 $where .= ' and ';
             }
             $where .= "status='$status'";
+            $first = false;
+        }
+        if ($photo_release) {
+            if (!$first) {
+                $where .= ' and ';
+            }
+            $where .= "photo_release='$photo_release'";
             $first = false;
         }
         $query = "select * from dbPersons $where order by last_name, first_name";
@@ -735,7 +756,7 @@ function find_user_names($name) {
 
     function get_events_attended_by($personID) {
         $today = date("Y-m-d");
-        $query = "select * from dbEventVolunteers, dbEvents
+        $query = "select * from dbEventPersons, dbEvents
                   where userID='$personID' and eventID=id
                   and date<='$today'
                   order by date asc";
@@ -755,6 +776,63 @@ function find_user_names($name) {
             return [];
         }
     }
+
+    function get_event_from_id($eventID) {
+        // Connect to the database
+        $connection = connect();
+    
+        // Escape the eventID to prevent SQL injection
+        $eventID = mysqli_real_escape_string($connection, $eventID);
+    
+        // Prepare the SQL query with the eventID directly
+        $query = "SELECT name FROM dbevents WHERE id = '$eventID'";
+    
+        // Execute the query
+        $result = mysqli_query($connection, $query);
+    
+        // Check if there are results
+        if ($result) {
+            $row = mysqli_fetch_assoc($result);
+            mysqli_close($connection);
+    
+            return $row['name'];  // Return only the name as a string
+        } else {
+            mysqli_close($connection);
+            return null;  // Return null if there is no result
+        }
+    }
+    
+    
+    function get_events_attended_by_2($personID) {
+        // Prepare the SQL query to select rows where personID matches
+        $query = "SELECT personID, eventID, start_time, end_time FROM dbpersonhours WHERE personID = ?";
+        
+        // Connect to the database
+        $connection = connect();
+        
+        // Prepare the statement to prevent SQL injection
+        $stmt = mysqli_prepare($connection, $query);
+        mysqli_stmt_bind_param($stmt, "s", $personID);
+        
+        // Execute the query
+        mysqli_stmt_execute($stmt);
+        
+        // Get the result
+        $result = mysqli_stmt_get_result($stmt);
+        
+        // Check if there are results
+        if ($result) {
+            $rows = mysqli_fetch_all($result, MYSQLI_ASSOC);
+            mysqli_close($connection);
+    
+            return $rows;  // Return the rows as they are from the database
+        } else {
+            mysqli_close($connection);
+            return [];
+        }
+    }
+    
+    
 
     function get_events_attended_by_and_date($personID,$fromDate,$toDate) {
         $today = date("Y-m-d");

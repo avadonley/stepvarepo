@@ -72,22 +72,13 @@
                 <div class="dashboard-item" data-link="calendar.php">
                     <img src="images/view-calendar.svg">
                     <span>View Calendar</span>
-                </div>  
-                <?php if ($_SESSION['access_level'] >= 2): ?>
-                    <div class="dashboard-item" data-link="eventSignUp.php">
-                        <img src="images/new-event.svg">
-                        <span>Sign-Up for Event</span>
-                    </div>
-                <?php endif ?>
-				
-                
-                
-				<div class="dashboard-item" data-link="editHours.php">
-                    <img src="images/manage-account.png">
-                    <span>Change Volunteer Hours</span>
                 </div>
-
+                
                 <!--
+				<div class="dashboard-item" data-link="addService.php">
+                    <img src="images/settings.png">
+                    <span>Add Service</span>
+                </div>
 				<div class="dashboard-item" data-link="addLocation.php">
                     <img src="images/settings.png">
                     <span>Add Location</span>

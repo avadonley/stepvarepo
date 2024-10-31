@@ -33,7 +33,7 @@
         require_once('database/dbPersons.php');
         $post = sanitize($_POST);
         $new_role = $post['s_role'];
-        if (!valueConstrainedTo($new_role, ['admin', 'superadmin'])) {
+        if (!valueConstrainedTo($new_role, ['volunteer', 'participant'])) {
             die();
         }
         if (empty($new_role)){
@@ -85,7 +85,7 @@
 <html>
     <head>
         <?php require_once('universal.inc') ?>
-        <title>ODHS Medicine Tracker | Modify User Access</title>
+        <title>StepVA | Archive User</title>
         <style>
             .modUser{
                 display: flex;
@@ -112,10 +112,10 @@
     </head>
     <body>
         <?php require_once('header.php') ?>
-        <h1>Modify User Access</h1>
+        <h1>Modify Archive Status and Role</h1>
         <main class="user-role">
             <?php if ($accessLevel == 3): ?>
-                <h2>Modify <?php echo $thePerson->get_first_name() . " " . $thePerson->get_last_name(); ?>'s Role and Status</h2>
+                <h2>Modify <?php echo $thePerson->get_first_name() . " " . $thePerson->get_last_name(); ?>'s Archive Status and Role</h2>
             <?php else: ?>
                 <h2>Modify <?php echo $thePerson->get_first_name() . " " . $thePerson->get_last_name(); ?>'s Status</h2>
             <?php endif ?>
@@ -127,7 +127,7 @@
                         // Provides drop down of the role types to select and change the role
 			//other than the person's current role type is displayed
             if ($accessLevel == 3) {
-				$roles = array('admin' => 'Admin', 'superadmin' => 'SuperAdmin');
+				$roles = array('volunteer' => 'Volunteer', 'participant' => 'Participant');
                 echo '<label for="role">Change Role</label><select id="role" class="form-select-sm" name="s_role">' ;
                 // echo '<option value="" SELECTED></option>' ;
                 $currentRole = $thePerson->get_type()[0];
@@ -158,17 +158,17 @@
 		</div>
 		
 		<?php
-		    $reasons = array('Administrative', 'Volunteer Requested Status Change', 'Volunteer with 1 or more No Shows');
-                    echo '<label>Reason for Status Change</label><select class="form-select-sm" name="s_reason">';
-                    echo '<option value="" SELECTED></option>';
-                    foreach ($reasons as $reason)
-                        echo '<option value="'.$reason.'">'.$reason.'</option>';
-                    echo '</select>';
+		    //$reasons = array('Administrative', 'Volunteer Requested Status Change', 'Volunteer with 1 or more No Shows');
+              //      echo '<label>Reason for Status Change</label><select class="form-select-sm" name="s_reason">';
+              //      echo '<option value="" SELECTED></option>';
+              //      foreach ($reasons as $reason)
+              //          echo '<option value="'.$reason.'">'.$reason.'</option>';
+              //      echo '</select>';
                 
 		?>
 
                 <input type="hidden" name="id" value="<?php echo $id; ?>">
-                <input type="submit" name="user_access_modified" value="Update Access">
+                <input type="submit" name="user_access_modified" value="Update">
                 <a class="button cancel" href="viewProfile.php?id=<?php echo htmlspecialchars($_GET['id']) ?>">Cancel</a>
 		</form>
         </main>
