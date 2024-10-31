@@ -25,7 +25,7 @@
 <html>
     <head>
         <?php require('universal.inc'); ?>
-        <title>ODHS Medicine Tracker | Dashboard</title>
+        <title>Step VA Volunteer System | Dashboard</title>
     </head>
     <body>
         <?php require('header.php'); ?>
@@ -72,16 +72,13 @@
                 <div class="dashboard-item" data-link="calendar.php">
                     <img src="images/view-calendar.svg">
                     <span>View Calendar</span>
-
-                </div>			
-                
-                
-				<div class="dashboard-item" data-link="editHours.php">
-                    <img src="images/manage-account.png">
-                    <span>Change Volunteer Hours</span>
                 </div>
-
+                
                 <!--
+				<div class="dashboard-item" data-link="addService.php">
+                    <img src="images/settings.png">
+                    <span>Add Service</span>
+                </div>
 				<div class="dashboard-item" data-link="addLocation.php">
                     <img src="images/settings.png">
                     <span>Add Location</span>
@@ -111,10 +108,6 @@
                     <div class="dashboard-item" data-link="register.php">
                         <img src="images/add-person.svg">
                         <span>Register Volunteer</span>
-                    </div>
-                    <div class="dashboard-item" data-link="addEvent.php">
-                        <img src="images/new-event.svg">
-                        <span>Add Event</span>
                     </div>
 
                     <!--
