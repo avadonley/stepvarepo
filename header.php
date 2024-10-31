@@ -135,6 +135,7 @@
         echo('</li>');
 
         //echo('<span class="nav-divider">|</span>');
+        if ($_SESSION['access_level'] >= 2) {
         echo('<li class="nav-item dropdown">');
         echo('<a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Volunteers</a>');
         echo('<div class="dropdown-menu">');
@@ -142,6 +143,7 @@
             <a class="dropdown-item" href="register.php">Add</a>');
         echo('</div>');
         echo('</li>');
+        }
 
 
         //echo('<span class="nav-divider">|</span>');
@@ -158,12 +160,29 @@
         echo('</li>');
         */
 
+         //echo('<span class="nav-divider">|</span>');
+         if ($_SESSION['access_level'] <= 2) {
+         echo('<li class="nav-item dropdown">');
+         echo('<a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">My Profile</a>');
+         echo('<div class="dropdown-menu">');
+         echo('<a class="dropdown-item" href="' . $path . 'viewProfile.php">View</a>');
+         echo('<a class="dropdown-item" href="' . $path . 'editProfile.php">Edit</a>');
+         }
+ 
+         echo('</div>');
+         echo('</li>'); 
+
         //echo('<span class="nav-divider">|</span>');
         echo('<li class="nav-item dropdown">');
         echo('<a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Others</a>');
         echo('<div class="dropdown-menu">');
-        echo('<a class="dropdown-item" href="' . $path . 'addService.php">Add Service</a>');
-        echo('<a class="dropdown-item" href="' . $path . 'addLocation.php">Add Location</a>');
+        //if ($_SESSION['access_level'] >= 2) {
+        //echo('<a class="dropdown-item" href="' . $path . 'addService.php">Add Service</a>');
+        //echo('<a class="dropdown-item" href="' . $path . 'addLocation.php">Add Location</a>');
+        //}
+        if ($_SESSION['access_level'] <= 1) {
+            echo('<a class="dropdown-item" href="' . $path . 'volunteerReport.php">View Hours</a>');
+        }
         echo('<a class="dropdown-item" href="' . $path . 'changePassword.php">Change Password</a>');
 
         echo('</div>');
