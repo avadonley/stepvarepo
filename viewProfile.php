@@ -53,8 +53,9 @@
 <html>
     <head>
         <?php require_once('universal.inc') ?>
-        <!-- <link rel="stylesheet" href="css/editprofile.css" type="text/css" /> -->
+        <link rel="stylesheet" href="css/editprofile.css" type="text/css" />
         <title>ODHS Medicine Tracker | View User</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     </head>
     <body>
         <?php 
@@ -89,61 +90,101 @@
                 <div class="happy-toast">User's role and/or status updated successfully!</div>
             <?php endif ?>
             <?php if ($viewingOwnProfile): ?>
-                <h2>Your Profile</h2>
+                <h2>Your Profile 
+                    <a href="editProfile.php" title="Edit Profile" class="edit-icon">
+                        <i class="fas fa-pencil-alt"></i>
+                    </a>
+                </h2>
             <?php else: ?>
                 <h2>Viewing <?php echo $user->get_first_name() . ' ' . $user->get_last_name() ?></h2>
             <?php endif ?>
-            <fieldset>
 
+            <fieldset class="section-box">
                 <legend>General Information</legend>
-                <label>Username</label>
-                <p><?php echo $user->get_id() ?></p>
-
-                <label>Name</label>
-                <p><?php echo $user->get_first_name() ?> <?php echo $user->get_last_name() ?></p>
-
-                <label>Date of Birth</label>
-                <p><?php echo date('d/m/Y', strtotime($user->get_birthday())) ?></p>
                 
-                <label>Address</label>
-                <p><?php echo $user->get_street_address() . ', ' . $user->get_city() . ', ' . $user->get_state() . ' ' . $user->get_zip_code() ?></p>
+                <div class="field-pair">
+                    <label>Username</label>
+                    <p><?php echo $user->get_id() ?></p>
+                </div>
 
-                <label>Role</label>
-                <p><?php echo ucfirst($user->get_type()) ?></p>
-                
+                <div class="field-pair">
+                    <label>Name</label>
+                    <p><?php echo $user->get_first_name() ?> <?php echo $user->get_last_name() ?></p>
+                </div>
+
+                <div class="field-pair">
+                    <label>Date of Birth</label>
+                    <p><?php echo date('d/m/Y', strtotime($user->get_birthday())) ?></p>
+                </div>
+
+                <div class="field-pair">
+                    <label>Address</label>
+                    <p><?php echo $user->get_street_address() . ', ' . $user->get_city() . ', ' . $user->get_state() . ' ' . $user->get_zip_code() ?></p>
+                </div>
+
+                <div class="field-pair">
+                    <label>Role</label>
+                    <p><?php echo ucfirst($user->get_type()) ?></p>
+                </div>
             </fieldset>
 
-            <fieldset>
+            <fieldset class="section-box">
                 <legend>Contact Information</legend>
-                <label>E-mail</label>
-                <p><a href="mailto:<?php echo $user->get_email() ?>"><?php echo $user->get_email() ?></a></p>
-                <label>Phone Number</label>
-                <p><a href="tel:<?php echo $user->get_phone1() ?>"><?php echo formatPhoneNumber($user->get_phone1()) ?></a> (<?php echo ucfirst($user->get_phone1type()) ?>)</p>
+
+                <div class="field-pair">
+                    <label>E-mail</label>
+                    <p><a href="mailto:<?php echo $user->get_email() ?>"><?php echo $user->get_email() ?></a></p>
+                </div>
+
+                <div class="field-pair">
+                    <label>Phone Number</label>
+                    <p><a href="tel:<?php echo $user->get_phone1() ?>"><?php echo formatPhoneNumber($user->get_phone1()) ?></a> (<?php echo ucfirst($user->get_phone1type()) ?>)</p>
+                </div>
             </fieldset>
 
-            <fieldset>
+            <fieldset class="section-box">
                 <legend>Emergency Contact</legend>
-                <label>Name</label>
-                <p><?php echo $user->get_emergency_contact_first_name() . ' ' . $user->get_emergency_contact_last_name() ?></p>
-                <label>Relation</label>
-                <p><?php echo $user->get_emergency_contact_relation() ?></p>
-                <label>Phone Number</label>
-                <p><a href="tel:<?php echo $user->get_emergency_contact_phone() ?>"><?php echo formatPhoneNumber($user->get_emergency_contact_phone()) ?></a> (<?php echo ucfirst($user->get_emergency_contact_phone_type()) ?>)</p>
+
+                <div class="field-pair">
+                    <label>Name</label>
+                    <p><?php echo $user->get_emergency_contact_first_name() . ' ' . $user->get_emergency_contact_last_name() ?></p>
+                </div>
+
+                <div class="field-pair">
+                    <label>Relation</label>
+                    <p><?php echo $user->get_emergency_contact_relation() ?></p>
+                </div>
+
+                <div class="field-pair">
+                    <label>Phone Number</label>
+                    <p><a href="tel:<?php echo $user->get_emergency_contact_phone() ?>"><?php echo formatPhoneNumber($user->get_emergency_contact_phone()) ?></a> (<?php echo ucfirst($user->get_emergency_contact_phone_type()) ?>)</p>
+                </div>
             </fieldset>
 
-            <fieldset>
+            <fieldset class="section-box">
                 <legend>Volunteer Information</legend>
-                <label>Empty for now...</label>
-                <p>Empty for now...</p>
+
+                <div class="field-pair">
+                    <label>Empty for now...</label>
+                    <p>Empty for now...</p>
+                </div>
             </fieldset>
 
-            <fieldset>
+            <fieldset class="section-box">
                 <legend>Other Information</legend>
-                <label>School Affiliation</label>
-                <p><?php echo $user->get_school_affiliation() ?></p>
-                <label>Tshirt Size</label>
-                <p><?php echo ucfirst($user->get_tshirt_size()) ?></p>
+
+                <div class="field-pair">
+                    <label>School Affiliation</label>
+                    <p><?php echo $user->get_school_affiliation() ?></p>
+                </div>
+
+                <div class="field-pair">
+                    <label>Tshirt Size</label>
+                    <p><?php echo ucfirst($user->get_tshirt_size()) ?></p>
+                </div>
             </fieldset>
+
+
 
             <a class="button" href="editProfile.php<?php if ($id != $userID) echo '?id=' . $id ?>">Edit Profile</a>
             <?php if ($id != $userID): ?>

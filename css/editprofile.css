@@ -60,7 +60,7 @@ table, td, tr, th, form, fieldset, em, button, a {
 
     --shadow-and-border-color: #e8e8e8;
 
-    --main-color: #2f4159;
+    --main-color: #00aeef;
     --accent-color: #f5c16e;
     --secondary-accent-color: #f6a4b5;
 
@@ -307,8 +307,20 @@ h1 {
 }
 
 h2 {
-    font-size: 1.5rem;
-    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 5px; /* Space between text and icon */
+}
+
+.edit-icon {
+    font-size: 0.8em; /* Resize the icon to fit next to the text */
+    color: #555;
+    margin-left: 5px;
+    text-decoration: none;
+}
+
+.edit-icon:hover {
+    color: #007bff; /* Change color on hover */
 }
 
 h3 {
@@ -814,4 +826,43 @@ table.general th, table.general td {
     main.general, form.general {
         margin: 0rem 8rem 4rem 8rem;
     }
+}
+
+.section-box {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 15px;
+    margin-bottom: 20px;
+    background-color: #fafafa;
+}
+
+.section-box legend {
+    font-weight: bold;
+    color: #333;
+    padding: 0 10px;
+}
+
+.section-box label {
+    font-weight: bold;
+    display: block;
+    margin-top: 10px;
+}
+
+.section-box p {
+    margin: 5px 0 10px;
+}
+
+/* Field pair styling to keep label and paragraph close */
+.field-pair {
+    margin-bottom: 15px; /* space between each field pair */
+}
+
+.field-pair label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 2px; /* close gap between label and paragraph */
+}
+
+.field-pair p {
+    margin: 0;
 }
