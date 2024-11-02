@@ -80,7 +80,7 @@
     <?php
         require_once('universal.inc');
     ?>
-    <title>ODHS Medicine Tracker | View Location: <?php echo $location['name'] ?></title>
+    <title>Step VA | View Location: <?php echo $location['name'] ?></title>
     <link rel="stylesheet" href="css/event.css" type="text/css" />
     <?php if ($access_level >= 2) : ?>
         <script src="js/event.js"></script>

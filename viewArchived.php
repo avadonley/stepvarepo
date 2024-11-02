@@ -38,7 +38,7 @@ function displaySearchRow($animal){
 <html>
     <head>
         <?php require_once('universal.inc') ?>
-        <title>ODHS Medicine Tracker | Archived Animals</title>
+        <title>Step VA | Archived Animals</title>
     </head>
     <body>
         <?php require_once('header.php') ?>

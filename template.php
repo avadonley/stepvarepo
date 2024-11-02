@@ -20,7 +20,7 @@
 <html>
     <head>
         <?php require_once('universal.inc') ?>
-        <title>ODHS Medicine Tracker | Template Page</title>
+        <title>Step VA | Template Page</title>
     </head>
     <body>
         <?php require_once('header.php') ?>

@@ -212,7 +212,7 @@
 <html>
 <head>
     <?php require_once('universal.inc'); ?>
-    <title>ODHS Medicine Tracker | Manage Profile</title>
+    <title>Step VA | Manage Profile</title>
 </head>
 <body>
     <?php

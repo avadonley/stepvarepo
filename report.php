@@ -31,7 +31,7 @@
 <html>
     <head>
         <?php require_once('universal.inc') ?>
-        <title>ODHS Medicine Tracker | Reports</title>
+        <title>Step VA | Reports</title>
         <style>
             .report_select{
                 display: flex;
