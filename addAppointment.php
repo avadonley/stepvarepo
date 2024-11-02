@@ -79,7 +79,7 @@
 <html>
     <head>
         <?php require_once('universal.inc') ?>
-        <title>ODHS Medicine Tracker | Create Appointment</title>
+        <title>Step VA | Create Appointment</title>
     </head>
     <body>
         <?php require_once('header.php') ?>

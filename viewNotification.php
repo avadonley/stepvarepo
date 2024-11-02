@@ -41,7 +41,7 @@
 <html>
     <head>
         <?php require_once('universal.inc') ?>
-        <title>ODHS Medicine Tracker | View Notification</title>
+        <title>Step VA | View Notification</title>
         <link rel="stylesheet" href="css/messages.css"></link>
         <script src="js/messages.js"></script>
     </head>

@@ -55,7 +55,7 @@
 <html>
     <head>
         <?php require_once('universal.inc') ?>
-        <title>ODHS Medicine Tracker | Event Search</title>
+        <title>Step VA | Event Search</title>
     </head>
     <body>
         <?php require_once('header.php') ?>

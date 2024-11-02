@@ -89,7 +89,7 @@ $ages = [
 <html>
     <head>
         <?php require_once('universal.inc') ?>
-        <title>ODHS Animals | Edit Animal</title>
+        <title>Step VA | Edit Animal</title>
     </head>
     <body>
         <?php require_once('header.php') ?>

@@ -49,7 +49,7 @@
 <html>
     <head>
         <?php require_once('universal.inc') ?>
-        <title>ODHS Medicine Tracker | Report Result</title>
+        <title>Step VA | Report Result</title>
         <style>
             table {
                 margin-top: 1rem;

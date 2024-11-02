@@ -71,7 +71,7 @@
 <html>
     <head>
         <?php require_once('universal.inc') ?>
-        <title>ODHS Medicine Tracker | Change Password</title>
+        <title>Step VA | Change Password</title>
     </head>
     <body>
         <?php require_once('header.php') ?>

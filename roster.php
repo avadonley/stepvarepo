@@ -58,7 +58,7 @@
     <head>
         <?php require_once('universal.inc') ?>
         <link rel="stylesheet" href="css/roster.css" type="text/css" />
-        <title>ODHS Medicine Tracker | View Event Roster</title>
+        <title>Step VA | View Event Roster</title>
     </head>
     <body>
         <?php require_once('header.php') ?>

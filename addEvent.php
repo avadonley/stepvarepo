@@ -95,7 +95,7 @@
 <html>
     <head>
         <?php require_once('universal.inc') ?>
-        <title>ODHS Medicine Tracker | Create Event</title>
+        <title>Step VA | Create Event</title>
     </head>
     <body>
         <?php require_once('header.php') ?>

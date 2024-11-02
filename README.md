@@ -8,13 +8,13 @@ Editor - Rain Wynes
 This project is the result of a semesters' worth of collaboration among UMW students. The goal of the project was to create a web application that the Old Dominion Humane Society organization could utilize to make it easier to manage animals and the medicines/medical treatments/vaccines that these animals recieve at the ODHS. At-a-glance features include a web-based calendar of events, event sign up, volunteer registration & login system, reporting system, basic notification system, animal registration/archiving/report generation, and location and service creation.
 
 ## Authors
-The ODHS Medicine Tracker is based on an old open source project named "Homebase". [Homebase](https://a.link.will.go.here/) was originally developed for the Ronald McDonald Houses in Maine and Rhode Island by Oliver Radwan, Maxwell Palmer, Nolan McNair, Taylor Talmage, and Allen Tucker.
+The Step VA is based on an old open source project named "Homebase". [Homebase](https://a.link.will.go.here/) was originally developed for the Ronald McDonald Houses in Maine and Rhode Island by Oliver Radwan, Maxwell Palmer, Nolan McNair, Taylor Talmage, and Allen Tucker.
 
 Modifications to the original Homebase code were made by the Fall 2022 semester's group of students. That team consisted of Jeremy Buechler, Rebecca Daniel, Luke Gentry, Christopher Herriott, Ryan Persinger, and Jennifer Wells.
 
 A major overhaul to the existing system took place during the Spring 2023 semester, throwing out and restructuring many of the existing database tables. Very little original Homebase code remains. This team consisted of Lauren Knight, Zack Burnley, Matt Nguyen, Rishi Shankar, Alip Yalikun, and Tamra Arant. Every page and feature of the app was changed by this team.
 
-The Gwyneth's Gifts VMS code was modified in the Fall of 2023, revamping the code into the present ODHS Medicine Tracker code. Many of the existing database tables were reused, and many other tables were added. Some portions of the software's functionality were reused from the Gwyneth's Gifts VMS code. Other functions were created to fill the needs of the ODHS Medicine Tracker. The team that made these modifications and changes consisted of Garrett Moore, Artis Hart, Riley Tugeau, Julia Barnes, Ryan Warren, and Collin Rugless.
+The Gwyneth's Gifts VMS code was modified in the Fall of 2023, revamping the code into the present Step VA code. Many of the existing database tables were reused, and many other tables were added. Some portions of the software's functionality were reused from the Gwyneth's Gifts VMS code. Other functions were created to fill the needs of the Step VA. The team that made these modifications and changes consisted of Garrett Moore, Artis Hart, Riley Tugeau, Julia Barnes, Ryan Warren, and Collin Rugless.
 
 Ava Donley is a new contributor for this code.
 
@@ -82,7 +82,7 @@ Below is an in-depth list of features that were implemented within the system
   * Delete Location
 
 ## Design Documentation
-Several types of diagrams describing the design of the ODHS Medicine Tracker, including sequence diagrams and use case diagrams, are available. Please contact Dr. Polack for access.
+Several types of diagrams describing the design of the Step VA, including sequence diagrams and use case diagrams, are available. Please contact Dr. Polack for access.
 
 ## "localhost" Installation
 Below are the steps required to run the project on your local machine for development and/or testing purposes.
@@ -91,7 +91,7 @@ Below are the steps required to run the project on your local machine for develo
   * For Mac, the htdocs path is `/Applications/XAMPP/xamppfiles/htdocs`
   * For Ubuntu, the htdocs path is `/opt/lampp/htdocs/`
   * For Windows, the htdocs path is `C:\xampp\htdocs`
-3. Clone the ODHS Medicine Tracker repo by running the following command: 'https://github.com/crugless54/ODHS-Animal.git'
+3. Clone the Step VA repo by running the following command: 'https://github.com/crugless54/ODHS-Animal.git'
 4. Start the XAMPP MySQL server and Apache server
 5. Open the PHPMyAdmin console by navigating to [http://localhost/phpmyadmin/](http://localhost/phpmyadmin/)
 6. Create a new database named `homebasedb`. With the database created, navigate to it by clicking on it in the lefthand pane
@@ -122,7 +122,7 @@ Dr. Polack chose SiteGround as the platform on which to host the project. Below 
 Access to the SiteGround Dashboard requires a SiteGround account with access. Access is managed by Dr. Polack.
 
 ### Localhost to Siteground
-Follow these steps to transfter your localhost version of the ODHS Medicine Tracker code to Siteground. For a video tutorial on how to complete these steps, contact Dr. Polack.
+Follow these steps to transfter your localhost version of the Step VA code to Siteground. For a video tutorial on how to complete these steps, contact Dr. Polack.
 1. Create an FTP Account on Siteground, giving you the necessary FTP credentials. (Hostname, Username, Password, Port)
 2. Use FTP File Transfer Software (Filezilla, etc.) to transfer the files from your localhost folders to your siteground folders using the FTP credentials from step 1.
 3. Create the following database-related credentials on Siteground under the MySQL tab:
@@ -138,7 +138,7 @@ Follow these steps to transfter your localhost version of the ODHS Medicine Trac
 There may occasionally be a hiccup if the caching system provided by SiteGround decides to cache one of the application's pages in an erroneous way. The cache can be cleared via the Dashboard by navigating to Speed -> Caching on the lefthand side of the control panel, choosing the DYNAMIC CACHE option in the center of the screen, and then clicking the Flush Cache option with a small broom icon under Actions.
 
 ## External Libraries and APIs
-The only outside library utilized by the ODHS Medicine Tracker is the jQuery library. The version of jQuery used by the system is stored locally within the repo, within the lib folder. jQuery was used to implement form validation and the hiding/showing of certain page elements.
+The only outside library utilized by the Step VA is the jQuery library. The version of jQuery used by the system is stored locally within the repo, within the lib folder. jQuery was used to implement form validation and the hiding/showing of certain page elements.
 
 ## Potential Improvements
 Below is a list of improvements that could be made to the system in subsequent semesters.
