@@ -83,16 +83,19 @@
     <form class="signup-form" method="post">
         <br>
 	<p>An asterisk (<em>*</em>) indicates a required field.</p>
-        <fieldset>
-            
+    
+        <fieldset class="section-box">
+            <legend>Login Credentials</legend>
             <label>Username</label>
             <p><?php echo $person->get_id() ?></p>
 
-            <label><a href='changePassword.php'>Change Password</a></label>
+            <!--<label>Password</label>-->
+                <p><a href='changePassword.php'>Change Password</a></p>
         </fieldset>
-        <fieldset>
 
+        <fieldset class="section-box">
             <legend>Personal Information</legend>
+
             <p>The following information helps us identify you within our system.</p>
             <label for="first-name"><em>* </em>First Name</label>
             <input type="text" id="first-name" name="first-name" value="<?php echo hsc($person->get_first_name()); ?>" required placeholder="Enter your first name">
@@ -151,8 +154,10 @@
             <label for="zip"><em>* </em>Zip Code</label>
             <input type="text" id="zip" name="zip" value="<?php echo hsc($person->get_zip_code()); ?>" pattern="[0-9]{5}" title="5-digit zip code" required placeholder="Enter your 5-digit zip code">
         </fieldset>
-        <fieldset>
+
+        <fieldset class="section-box">
             <legend>Contact Information</legend>
+
             <p>The following information helps us determine the best way to contact you regarding event coordination.</p>
             <label for="email"><em>* </em>E-mail</label>
             <p>Updating your e-mail address does not change your login username.</p>
@@ -170,8 +175,10 @@
             </div>
 
         </fieldset>
-        <fieldset>
+
+        <fieldset class="section-box">
             <legend>Emergency Contact</legend>
+
             <p>Please provide us with someone to contact on your behalf in case of an emergency.</p>
             <label for="econtact-name" required><em>* </em>First Name</label>
             <input type="text" id="econtact-name" name="econtact-name" value="<?php echo hsc($person->get_emergency_contact_first_name()); ?>" required placeholder="Enter emergency contact name">
@@ -186,15 +193,18 @@
             <input type="text" id="econtact-relation" name="econtact-relation" value="<?php echo hsc($person->get_emergency_contact_relation()); ?>" required placeholder="Ex. Spouse, Mother, Father, Sister, Brother, Friend">
         </fieldset>
 
-        <fieldset>
+        <fieldset class="section-box">
             <legend>Volunteer Information</legend>
+
             <label>Empty for now...</label>
             <p>Empty for now...</p>
         </fieldset>
 
         <fieldset>
-        <fieldset>
+
+        <fieldset class="section-box">
             <legend>Other Information</legend>
+
             <label for="school-affiliation"><em>* </em>School Affiliation</label>
             <input type="text" id="school-affiliation" name="school-affiliation" value="<?php echo hsc($person->get_school_affiliation()); ?>" required placeholder="Enter your affiliated school.">
 

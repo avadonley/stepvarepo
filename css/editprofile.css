@@ -366,6 +366,9 @@ h3 {
     padding: 1rem;
     border-radius: 0.5rem;
     margin-bottom: 1rem;
+    /*thomas*/
+    text-align: center;
+    /**/
 }
 
 .info-toast {

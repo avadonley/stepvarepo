@@ -4,8 +4,10 @@
         <h2>Registration Form</h2>
         <p>Please fill out each section of the following form if you would like to volunteer for the organization.</p>
         <p>An asterisk (<em>*</em>) indicates a required field.</p>
-        <fieldset>
+        
+        <fieldset class="section-box">
             <legend>Personal Information</legend>
+
             <p>The following information will help us identify you within our system.</p>
             <label for="first_name"><em>* </em>First Name</label>
             <input type="text" id="first_name" name="first_name" required placeholder="Enter your first name">
@@ -82,8 +84,9 @@
             <input type="text" id="zip" name="zip" pattern="[0-9]{5}" title="5-digit zip code" required placeholder="Enter your 5-digit zip code">
         </fieldset>
 
-        <fieldset>
+        <fieldset class="section-box">
             <legend>Contact Information</legend>
+
             <p>The following information will help us determine the best way to contact you regarding event coordination.</p>
             <label for="email"><em>* </em>E-mail</label>
             <input type="email" id="email" name="email" required placeholder="Enter your e-mail address">
@@ -99,8 +102,10 @@
             </div>
 
         </fieldset>
-        <fieldset>
+
+        <fieldset class="section-box">
             <legend>Emergency Contact</legend>
+
             <p>Please provide us with someone to contact on your behalf in case of an emergency.</p>
             <label for="emergency_contact_first_name" required><em>* </em>Contact First Name</label>
             <input type="text" id="emergency_contact_first_name" name="emergency_contact_first_name" required placeholder="Enter emergency contact first name">
@@ -122,8 +127,9 @@
             </div>
         </fieldset>
 
-        <fieldset>
+        <fieldset class="section-box">
             <legend>Other Required Information</legend>
+
             <p>Here are a few other pieces on information we need from you.</p>
 
             <label><em>* </em>Are you a volunteer or a participant?</label>
@@ -154,8 +160,9 @@
             <input type="text" id="photo_release_notes" name="photo_release_notes" required placeholder="Do you have any specific notes photo release">
         </fieldset>
 
-        <fieldset>
+        <fieldset class="section-box">
             <legend>Login Credentials</legend>
+            
             <p>You will use the following information to log in to the system.</p>
 
             <label for="username"><em>* </em>Username</label>

@@ -367,6 +367,9 @@ h3:not(:first-of-type) {
     padding: 1rem;
     border-radius: 0.5rem;
     margin-bottom: 1rem;
+    /*thomas*/
+    text-align: center;
+    /**/
 }
 
 .info-toast {
@@ -611,6 +614,16 @@ form.signup-form {
     gap: 1rem;
     flex-direction: column;
 }
+
+/* thomas added this */
+form.signup-form .section-box {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 15px;
+    margin-bottom: 20px;
+    background-color: #fafafa;
+}
+/**/
 
 form.signup-form > fieldset {
     padding: 1.5rem;
