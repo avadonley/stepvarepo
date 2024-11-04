@@ -69,6 +69,7 @@
         $permission_array['viewnotification.php'] = 1;
         $permission_array['volunteerreport.php'] = 1;
         //pages only managers can view
+        $permission_array['viewAllEvents.php'] = 2;
         $permission_array['personsearch.php'] = 2;
         $permission_array['personedit.php'] = 0; // changed to 0 so that applicants can apply
         $permission_array['viewschedule.php'] = 2;
@@ -130,6 +131,7 @@
         echo('<a class="dropdown-item" href="' . $path . 'inbox.php">Notifications</a>');
         if ($_SESSION['access_level'] >= 2) {
             echo('<a class="dropdown-item" href="' . $path . 'addevent.php">Add</a>');
+            echo('<a class="dropdown-item" href="' . $path . 'viewAllEvents.php">View</a>');
         }
         echo('</div>');
         echo('</li>');

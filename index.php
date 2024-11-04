@@ -105,6 +105,10 @@
                         <img src="images/person-search.svg">
                         <span>Find Volunteer</span>
                     </div>
+                    <div class="dashboard-item" data-link="viewAllEvents.php">
+                        <img src="images/new-event.svg">
+                        <span>View Events</span>
+                    </div>
                     <div class="dashboard-item" data-link="register.php">
                         <img src="images/add-person.svg">
                         <span>Register Volunteer</span>
