@@ -38,25 +38,31 @@
         // }
 
         $required = array(
-            'first-name', 'last-name', 'birthdate',
-            'address', 'city', 'state', 'zip', 
-            'email', 'phone', 'phone-type', 'contact-when', 'contact-method',
+            'first_name', 'last_name', 'birthday', 'street_address', 'city', 'state',
+            'zip_code', 'email', 'phone1', 'phone1type', 'emergency_contact_first_name',
+            'emergency_contact_last_name', 'emergency_contact_phone',
+            'emergency_contact_phone_type', 'emergency_contact_relation',
+            'school_affiliation', 'tshirt_size'
         );
         $errors = false;
         if (!wereRequiredFieldsSubmitted($args, $required)) {
             $errors = true;
         }
 
-        $first = $args['first-name'];
-        $last = $args['last-name'];
-        $dateOfBirth = validateDate($args['birthdate']);
-        if (!$dateOfBirth) {
+        $first_name = $args['first_name'];
+        
+        $last_name = $args['last_name'];
+        
+        $birthday = validateDate($args['birthday']);
+        if (!$birthday) {
             $errors = true;
             // echo 'bad dob';
         }
+        
+        $street_address = $args['street_address'];
 
-        $address = $args['address'];
         $city = $args['city'];
+
         $state = $args['state'];
         if (!valueConstrainedTo($state, array('AK', 'AL', 'AR', 'AZ', 'CA', 'CO', 'CT', 'DC', 'DE', 'FL', 'GA',
                 'HI', 'IA', 'ID', 'IL', 'IN', 'KS', 'KY', 'LA', 'MA', 'MD', 'ME',
@@ -65,8 +71,9 @@
                 'UT', 'VA', 'VT', 'WA', 'WI', 'WV', 'WY'))) {
             $errors = true;
         }
-        $zipcode = $args['zip'];
-        if (!validateZipcode($zipcode)) {
+
+        $zip_code = $args['zip_code'];
+        if (!validateZipcode($zip_code)) {
             $errors = true;
             // echo 'bad zip';
         }
@@ -76,126 +83,70 @@
             $errors = true;
             // echo 'bad email';
         }
-        $phone = validateAndFilterPhoneNumber($args['phone']);
-        if (!$phone) {
+
+        $phone1 = validateAndFilterPhoneNumber($args['phone1']);
+        if (!$phone1) {
             $errors = true;
             // echo 'bad phone';
         }
-        $phoneType = $args['phone-type'];
-        if (!valueConstrainedTo($phoneType, array('cellphone', 'home', 'work'))) {
+
+        $phone1type = $args['phone1type'];
+        if (!valueConstrainedTo($phone1type, array('cellphone', 'home', 'work'))) {
             $errors = true;
             // echo 'bad phone type';
         }
+        
+        /*@
         $contactWhen = $args['contact-when'];
         $contactMethod = $args['contact-method'];
         if (!valueConstrainedTo($contactMethod, array('phone', 'text', 'email'))) {
             $errors = true;
             // echo 'bad contact method';
         }
+        @*/
 
-        $econtactName = $args['econtact-name'];
-        $econtactPhone = validateAndFilterPhoneNumber($args['econtact-phone']);
-        if (!$econtactPhone) {
+        $emergency_contact_first_name = $args['emergency_contact_first_name'];
+        
+        $emergency_contact_last_name = $args['emergency_contact_last_name'];
+        
+        $emergency_contact_phone = validateAndFilterPhoneNumber($args['emergency_contact_phone']);
+        if (!$emergency_contact_phone) {
             $errors = true;
             // echo 'bad e-contact phone';
         }
-        $econtactRelation = $args['econtact-relation'];
 
+        $emergency_contact_phone_type = $args['emergency_contact_phone_type'];
+        if (!valueConstrainedTo($emergency_contact_phone_type, array('cellphone', 'home', 'work'))) {
+            $errors = true;
+            // echo 'bad phone type';
+        }
+
+        $emergency_contact_relation = $args['emergency_contact_relation'];
+
+        /*@
         $gender = $args['gender'];
         if (!valueConstrainedTo($gender, ['Male', 'Female', 'Other'])) {
             $errors = true;
             echo 'bad gender';
         }
+        @*/
 
+        $type = $args['type'];
 
-        $days = array('sundays', 'mondays', 'tuesdays', 'wednesdays', 'thursdays', 'fridays', 'saturdays');
-        $availability = array();
-        $availabilityCount = 0;
-        foreach ($days as $day) {
-            if (isset($args['available-' . $day])) {
-                $startKey = $day . '-start';
-                $endKey = $day . '-end';
-                if (!isset($args[$startKey]) || !isset($args[$endKey])) {
-                    $errors = true;
-                }
-                $start = $args[$startKey];
-                $end = $args[$endKey];
-                // $range24h = validate12hTimeRangeAndConvertTo24h($start, $end);
-                if (!validate24hTimeRange($start, $end)) {
-                    $range24h = null;
-                } else {
-                    $range24h = [ $start, $end ];
-                }
-                if (!$range24h) {
-                    $errors = true;
-                    // echo "bad $day availability";
-                }
-                $availability[$day] = $range24h;
-                $availabilityCount++;
-            } else {
-                $availability[$day] = null;
-            }
-        }
-        if ($availabilityCount == 0) {
-            $errors = true;
-            // echo 'bad availability - none chosen';
-        }
+        $school_affiliation = $args['school_affiliation'];
 
-        $sundaysStart = '';
-        $sundaysEnd = '';
-        if ($availability['sundays']) {
-            $sundaysStart = $availability['sundays'][0];
-            $sundaysEnd = $availability['sundays'][1];
-        }
-        $mondaysStart = '';
-        $mondaysEnd = '';
-        if ($availability['mondays']) {
-            $mondaysStart = $availability['mondays'][0];
-            $mondaysEnd = $availability['mondays'][1];
-        }
-        $tuesdaysStart = '';
-        $tuesdaysEnd = '';
-        if ($availability['tuesdays']) {
-            $tuesdaysStart = $availability['tuesdays'][0];
-            $tuesdaysEnd = $availability['tuesdays'][1];
-        }
-        $wednesdaysStart = '';
-        $wednesdaysEnd = '';
-        if ($availability['wednesdays']) {
-            $wednesdaysStart = $availability['wednesdays'][0];
-            $wednesdaysEnd = $availability['wednesdays'][1];
-        }
-        $thursdaysStart = '';
-        $thursdaysEnd = '';
-        if ($availability['thursdays']) {
-            $thursdaysStart = $availability['thursdays'][0];
-            $thursdaysEnd = $availability['thursdays'][1];
-        }
-        $fridaysStart = '';
-        $fridaysEnd = '';
-        if ($availability['fridays']) {
-            $fridaysStart = $availability['fridays'][0];
-            $fridaysEnd = $availability['fridays'][1];
-        }
-        $saturdaysStart = '';
-        $saturdaysEnd = '';
-        if ($availability['saturdays']) {
-            $saturdaysStart = $availability['saturdays'][0];
-            $saturdaysEnd = $availability['saturdays'][1];
-        }
+        $tshirt_size = $args['tshirt_size'];
 
         if ($errors) {
             $updateSuccess = false;
         }
         
-        $result = update_person_profile($id,
-            $first, $last, $dateOfBirth, $address, $city, $state, $zipcode,
-            $email, $phone, $phoneType, $contactWhen, $contactMethod, 
-            $econtactName, $econtactPhone, $econtactRelation,
-            $sundaysStart, $sundaysEnd, $mondaysStart, $mondaysEnd,
-            $tuesdaysStart, $tuesdaysEnd, $wednesdaysStart, $wednesdaysEnd,
-            $thursdaysStart, $thursdaysEnd, $fridaysStart, $fridaysEnd,
-            $saturdaysStart, $saturdaysEnd, $gender
+        $result = update_person_required(
+            $id, $first_name, $last_name, $birthday, $street_address, $city, $state,
+            $zip_code, $email, $phone1, $phone1type, $emergency_contact_first_name,
+            $emergency_contact_last_name, $emergency_contact_phone,
+            $emergency_contact_phone_type, $emergency_contact_relation, $type,
+            $school_affiliation, $tshirt_size
         );
         if ($result) {
             if ($editingSelf) {

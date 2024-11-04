@@ -100,7 +100,7 @@
             <?php endif ?>
 
             <fieldset class="section-box">
-                <legend>General Information</legend>
+                <legend>Personal Information</legend>
                 
                 <div class="field-pair">
                     <label>Username</label>
@@ -122,10 +122,6 @@
                     <p><?php echo $user->get_street_address() . ', ' . $user->get_city() . ', ' . $user->get_state() . ' ' . $user->get_zip_code() ?></p>
                 </div>
 
-                <div class="field-pair">
-                    <label>Role</label>
-                    <p><?php echo ucfirst($user->get_type()) ?></p>
-                </div>
             </fieldset>
 
             <fieldset class="section-box">
@@ -165,14 +161,10 @@
                 <legend>Volunteer Information</legend>
 
                 <div class="field-pair">
-                    <label>Empty for now...</label>
-                    <p>Empty for now...</p>
+                    <label>Role</label>
+                    <p><?php echo ucfirst($user->get_type()) ?></p>
                 </div>
-            </fieldset>
-
-            <fieldset class="section-box">
-                <legend>Other Information</legend>
-
+                
                 <div class="field-pair">
                     <label>School Affiliation</label>
                     <p><?php echo $user->get_school_affiliation() ?></p>

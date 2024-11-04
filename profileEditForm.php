@@ -97,14 +97,14 @@
             <legend>Personal Information</legend>
 
             <p>The following information helps us identify you within our system.</p>
-            <label for="first-name"><em>* </em>First Name</label>
-            <input type="text" id="first-name" name="first-name" value="<?php echo hsc($person->get_first_name()); ?>" required placeholder="Enter your first name">
+            <label for="first_name"><em>* </em>First Name</label>
+            <input type="text" id="first_name" name="first_name" value="<?php echo hsc($person->get_first_name()); ?>" required placeholder="Enter your first name">
 
-            <label for="last-name"><em>* </em>Last Name</label>
-            <input type="text" id="last-name" name="last-name" value="<?php echo hsc($person->get_last_name()); ?>" required placeholder="Enter your last name">
+            <label for="last_name"><em>* </em>Last Name</label>
+            <input type="text" id="last_name" name="last_name" value="<?php echo hsc($person->get_last_name()); ?>" required placeholder="Enter your last name">
 
-            <label for="birthdate"><em>* </em>Date of Birth</label>
-            <input type="date" id="birthdate" name="birthdate" value="<?php echo hsc($person->get_birthday()); ?>" required placeholder="Choose your birthday" max="<?php echo date('Y-m-d'); ?>">
+            <label for="birthday"><em>* </em>Date of Birth</label>
+            <input type="date" id="birthday" name="birthday" value="<?php echo hsc($person->get_birthday()); ?>" required placeholder="Choose your birthday" max="<?php echo date('Y-m-d'); ?>">
 
             <!--<label for="gender"><em>* </em>Gender</label>
             <select id="gender" name="gender" required>
@@ -124,8 +124,8 @@
             </select>
 
 
-            <label for="address"><em>* </em>Street Address</label>
-            <input type="text" id="address" name="address" value="<?php echo hsc($person->get_street_address()); ?>" required placeholder="Enter your street address">
+            <label for="street_address"><em>* </em>Street Address</label>
+            <input type="text" id="street_address" name="street_address" value="<?php echo hsc($person->get_street_address()); ?>" required placeholder="Enter your street address">
 
             <label for="city"><em>* </em>City</label>
             <input type="text" id="city" name="city" value="<?php echo hsc($person->get_city()); ?>" required placeholder="Enter your city">
@@ -151,8 +151,8 @@
                 ?>
             </select>
 
-            <label for="zip"><em>* </em>Zip Code</label>
-            <input type="text" id="zip" name="zip" value="<?php echo hsc($person->get_zip_code()); ?>" pattern="[0-9]{5}" title="5-digit zip code" required placeholder="Enter your 5-digit zip code">
+            <label for="zip_code"><em>* </em>Zip Code</label>
+            <input type="text" id="zip_code" name="zip_code" value="<?php echo hsc($person->get_zip_code()); ?>" pattern="[0-9]{5}" title="5-digit zip code" required placeholder="Enter your 5-digit zip code">
         </fieldset>
 
         <fieldset class="section-box">
@@ -160,18 +160,17 @@
 
             <p>The following information helps us determine the best way to contact you regarding event coordination.</p>
             <label for="email"><em>* </em>E-mail</label>
-            <p>Updating your e-mail address does not change your login username.</p>
             <input type="email" id="email" name="email" value="<?php echo hsc($person->get_email()); ?>" required placeholder="Enter your e-mail address">
 
-            <label for="phone"><em>* </em>Phone Number</label>
-            <input type="tel" id="phone" name="phone" value="<?php echo formatPhoneNumber($person->get_phone1()); ?>" pattern="\([0-9]{3}\) [0-9]{3}-[0-9]{4}" required placeholder="Ex. (555) 555-5555">
+            <label for="phone1"><em>* </em>Phone Number</label>
+            <input type="tel" id="phone1" name="phone1" value="<?php echo formatPhoneNumber($person->get_phone1()); ?>" pattern="\([0-9]{3}\) [0-9]{3}-[0-9]{4}" required placeholder="Ex. (555) 555-5555">
 
             <label><em>* </em>Phone Type</label>
             <div class="radio-group">
                 <?php $type = $person->get_phone1type(); ?>
-                <input type="radio" id="phone-type-cellphone" name="phone-type" value="cellphone" <?php if ($type == 'cellphone') echo 'checked'; ?> required><label for="phone-type-cellphone">Cell</label>
-                <input type="radio" id="phone-type-home" name="phone-type" value="home" <?php if ($type == 'home') echo 'checked'; ?> required><label for="phone-type-home">Home</label>
-                <input type="radio" id="phone-type-work" name="phone-type" value="work" <?php if ($type == 'work') echo 'checked'; ?> required><label for="phone-type-work">Work</label>
+                <input type="radio" id="phone-type-cellphone" name="phone1type" value="cellphone" <?php if ($type == 'cellphone') echo 'checked'; ?> required><label for="phone-type-cellphone">Cell</label>
+                <input type="radio" id="phone-type-home" name="phone1type" value="home" <?php if ($type == 'home') echo 'checked'; ?> required><label for="phone-type-home">Home</label>
+                <input type="radio" id="phone-type-work" name="phone1type" value="work" <?php if ($type == 'work') echo 'checked'; ?> required><label for="phone-type-work">Work</label>
             </div>
 
         </fieldset>
@@ -180,42 +179,50 @@
             <legend>Emergency Contact</legend>
 
             <p>Please provide us with someone to contact on your behalf in case of an emergency.</p>
-            <label for="econtact-name" required><em>* </em>First Name</label>
-            <input type="text" id="econtact-name" name="econtact-name" value="<?php echo hsc($person->get_emergency_contact_first_name()); ?>" required placeholder="Enter emergency contact name">
+            <label for="emergency_contact_first_name" required><em>* </em>First Name</label>
+            <input type="text" id="emergency_contact_first_name" name="emergency_contact_first_name" value="<?php echo hsc($person->get_emergency_contact_first_name()); ?>" required placeholder="Enter emergency contact name">
 
-            <label for="econtact-name" required><em>* </em>Last Name</label>
-            <input type="text" id="econtact-name" name="econtact-name" value="<?php echo hsc($person->get_emergency_contact_last_name()); ?>" required placeholder="Enter emergency contact name">
+            <label for="emergency_contact_last_name" required><em>* </em>Last Name</label>
+            <input type="text" id="emergency_contact_last_name" name="emergency_contact_last_name" value="<?php echo hsc($person->get_emergency_contact_last_name()); ?>" required placeholder="Enter emergency contact name">
 
-            <label for="econtact-phone"><em>* </em>Phone Number</label>
-            <input type="tel" id="econtact-phone" name="econtact-phone" value="<?php echo formatPhoneNumber($person->get_emergency_contact_phone()); ?>" pattern="\([0-9]{3}\) [0-9]{3}-[0-9]{4}" required placeholder="Enter emergency contact phone number. Ex. (555) 555-5555">
+            <label for="emergency_contact_relation"><em>* </em>Contact Relation to You</label>
+            <input type="text" id="emergency_contact_relation" name="emergency_contact_relation" value="<?php echo hsc($person->get_emergency_contact_relation()); ?>" required placeholder="Ex. Spouse, Mother, Father, Sister, Brother, Friend">
 
-            <label for="econtact-name"><em>* </em>Contact Relation to You</label>
-            <input type="text" id="econtact-relation" name="econtact-relation" value="<?php echo hsc($person->get_emergency_contact_relation()); ?>" required placeholder="Ex. Spouse, Mother, Father, Sister, Brother, Friend">
+            <label for="emergency_contact_phone"><em>* </em>Phone Number</label>
+            <input type="tel" id="emergency_contact_phone" name="emergency_contact_phone" value="<?php echo formatPhoneNumber($person->get_emergency_contact_phone()); ?>" pattern="\([0-9]{3}\) [0-9]{3}-[0-9]{4}" required placeholder="Ex. (555) 555-5555">
+
+            <label><em>* </em>Phone Type</label>
+            <div class="radio-group">
+                <?php $type = $person->get_emergency_contact_phone_type(); ?>
+                <input type="radio" id="phone-type-cellphone" name="emergency_contact_phone_type" value="cellphone" <?php if ($type == 'cellphone') echo 'checked'; ?> required><label for="phone-type-cellphone">Cell</label>
+                <input type="radio" id="phone-type-home" name="emergency_contact_phone_type" value="home" <?php if ($type == 'home') echo 'checked'; ?> required><label for="phone-type-home">Home</label>
+                <input type="radio" id="phone-type-work" name="emergency_contact_phone_type" value="work" <?php if ($type == 'work') echo 'checked'; ?> required><label for="phone-type-work">Work</label>
+            </div>
+        
         </fieldset>
 
         <fieldset class="section-box">
             <legend>Volunteer Information</legend>
 
-            <label>Empty for now...</label>
-            <p>Empty for now...</p>
-        </fieldset>
+            <label>Account Type</label>
+            
+            <?php $account_type = $person->get_type()?>
+            <div class="radio-group">
+                <input type="radio" id="volunteer" name="type" value="volunteer" <?php if ($account_type == 'volunteer') echo 'checked'; ?> required><label for="type">Volunteer</label>
+                <input type="radio" id="participant" name="type" value="participant" <?php if ($account_type == 'participant') echo 'checked'; ?> required><label for="type">Participant</label>
+            </div>
 
-        <fieldset>
-
-        <fieldset class="section-box">
-            <legend>Other Information</legend>
-
-            <label for="school-affiliation"><em>* </em>School Affiliation</label>
-            <input type="text" id="school-affiliation" name="school-affiliation" value="<?php echo hsc($person->get_school_affiliation()); ?>" required placeholder="Enter your affiliated school.">
+            <label for="school_affiliation"><em>* </em>School Affiliation</label>
+            <input type="text" id="school_affiliation" name="school_affiliation" value="<?php echo hsc($person->get_school_affiliation()); ?>" required placeholder="Enter your affiliated school.">
 
             <label><em>* </em>Tshirt Size</label>
             <div class="radio-group">
                 <?php $size = $person->get_tshirt_size(); ?>
-                <input type="radio" id="tshirt-size-xs" name="tshirt-size" value="xs" <?php if ($size == 'xs') echo 'checked'; ?> required><label for="tshirt-size-xs">XS</label>
-                <input type="radio" id="tshirt-size-s" name="tshirt-size" value="s" <?php if ($size == 's') echo 'checked'; ?> required><label for="tshirt-size-s">S</label>
-                <input type="radio" id="tshirt-size-m" name="tshirt-size" value="m" <?php if ($size == 'm') echo 'checked'; ?> required><label for="tshirt-size-m">M</label>
-                <input type="radio" id="tshirt-size-l" name="tshirt-size" value="l" <?php if ($size == 'l') echo 'checked'; ?> required><label for="tshirt-size-l">L</label>
-                <input type="radio" id="tshirt-size-xl" name="tshirt-size" value="xl" <?php if ($size == 'xl') echo 'checked'; ?> required><label for="tshirt-size-xl">XL</label>
+                <input type="radio" id="tshirt-size-xs" name="tshirt_size" value="xs" <?php if ($size == 'xs') echo 'checked'; ?> required><label for="tshirt-size-xs">XS</label>
+                <input type="radio" id="tshirt-size-s" name="tshirt_size" value="s" <?php if ($size == 's') echo 'checked'; ?> required><label for="tshirt-size-s">S</label>
+                <input type="radio" id="tshirt-size-m" name="tshirt_size" value="m" <?php if ($size == 'm') echo 'checked'; ?> required><label for="tshirt-size-m">M</label>
+                <input type="radio" id="tshirt-size-l" name="tshirt_size" value="l" <?php if ($size == 'l') echo 'checked'; ?> required><label for="tshirt-size-l">L</label>
+                <input type="radio" id="tshirt-size-xl" name="tshirt_size" value="xl" <?php if ($size == 'xl') echo 'checked'; ?> required><label for="tshirt-size-xl">XL</label>
             </div>
         </fieldset>
         <p></p>
