@@ -531,26 +531,64 @@ function get_logged_hours($from, $to, $name_from, $name_to, $venue) {
    	return $thePersons;
 }
 
-    function update_person_profile(
-        $id,
-        $first, $last, $dateOfBirth, $address, $city, $state, $zipcode,
-        $email, $phone, $phoneType, $contactWhen, $contactMethod, 
-        $econtactName, $econtactPhone, $econtactRelation,
-        $skills, $hasComputer, $hasCamera, $hasTransportation, $shirtSize,
-        $sundaysStart, $sundaysEnd, $mondaysStart, $mondaysEnd,
-        $tuesdaysStart, $tuesdaysEnd, $wednesdaysStart, $wednesdaysEnd,
-        $thursdaysStart, $thursdaysEnd, $fridaysStart, $fridaysEnd,
-        $saturdaysStart, $saturdaysEnd, $gender
+/*
+            $person->get_id() . '","' .
+            $person->get_start_date() . '","' .
+            "n/a" . '","' . /* ("venue", we don't use this) 
+            $person->get_first_name() . '","' .
+            $person->get_last_name() . '","' .
+            $person->get_street_address() . '","' .
+            $person->get_city() . '","' .
+            $person->get_state() . '","' .
+            $person->get_zip_code() . '","' .
+            $person->get_phone1() . '","' .
+            $person->get_phone1type() . '","' .
+            $person->get_emergency_contact_phone() . '","' .
+            $person->get_emergency_contact_phone_type() . '","' .
+            $person->get_birthday() . '","' .
+            $person->get_email() . '","' .
+            $person->get_emergency_contact_first_name() . '","' .
+            'n/a' . '","' . /* ("contact_num", we don't use this) 
+            $person->get_emergency_contact_relation() . '","' .
+            'n/a' . '","' . /* ("contact_method", we don't use this) 
+            $person->get_type() . '","' .
+            $person->get_status() . '","' .
+            'n/a' . '","' . /* ("notes", we don't use this) 
+            $person->get_password() . '","' .
+            'n/a' . '","' . /* ("profile_pic", we don't use this) 
+            'gender' . '","' .
+            $person->get_tshirt_size() . '","' .
+            'how_you_heard_of_stepva' . '","' .
+            'sensory_sensitivities' . '","' .
+            'disability_accomodation_needs' . '","' .
+            $person->get_school_affiliation() . '","' .
+            'race' . '","' .
+            'preferred_feedback_method' . '","' .
+            'hobbies' . '","' .
+            'professional_experience' . '","' .
+            $person->get_archived() . '","' .
+            $person->get_emergency_contact_last_name() . '","' .
+            $person->get_photo_release() . '","' .
+            $person->get_photo_release_notes() . '");'
+*/
+    // updates the required fields of a person's account
+    function update_person_required(
+        $id, $first_name, $last_name, $birthday, $street_address, $city, $state,
+        $zip_code, $email, $phone1, $phone1type, $emergency_contact_first_name,
+        $emergency_contact_last_name, $emergency_contact_phone,
+        $emergency_contact_phone_type, $emergency_contact_relation, $type,
+        $school_affiliation, $tshirt_size
     ) {
         $query = "update dbPersons set 
-            first_name='$first', last_name='$last', birthday='$dateOfBirth', address='$address', city='$city', zip='$zipcode',
-            email='$email', phone1='$phone', phone1type='$phoneType', contact_time='$contactWhen', cMethod='$contactMethod',
-            contact_name='$econtactName', contact_num='$econtactPhone', relation='$econtactRelation',
-            specialties='$skills', computer='$hasComputer', camera='$hasCamera', transportation='$hasTransportation', shirt_size='$shirtSize',
-            sundays_start='$sundaysStart', sundays_end='$sundaysEnd', mondays_start='$mondaysStart', mondays_end='$mondaysEnd',
-            tuesdays_start='$tuesdaysStart', tuesdays_end='$tuesdaysEnd', wednesdays_start='$wednesdaysStart', wednesdays_end='$wednesdaysEnd',
-            thursdays_start='$thursdaysStart', thursdays_end='$thursdaysEnd', fridays_start='$fridaysStart', fridays_end='$fridaysEnd',
-            saturdays_start='$saturdaysStart', saturdays_end='$saturdaysEnd', gender='$gender'
+            first_name='$first_name', last_name='$last_name', birthday='$birthday',
+            street_address='$street_address', city='$city', state='$state',
+            zip_code='$zip_code', email='$email', phone1='$phone1', phone1type='$phone1type', 
+            emergency_contact_first_name='$emergency_contact_first_name', 
+            emergency_contact_last_name='$emergency_contact_last_name', 
+            emergency_contact_phone='$emergency_contact_phone', 
+            emergency_contact_phone_type='$emergency_contact_phone_type', 
+            emergency_contact_relation='$emergency_contact_relation', type='$type',
+            school_affiliation='$school_affiliation', tshirt_size='$tshirt_size' 
             where id='$id'";
         $connection = connect();
         $result = mysqli_query($connection, $query);
