@@ -108,7 +108,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 <html>
     <head>
         <?php require_once('universal.inc') ?>
-        <title>ODHS Medicine Tracker | View Date</title>
+        <title>Step VA | View Date</title>
     </head>
     <body>
         <?php require_once('header.php') ?>
