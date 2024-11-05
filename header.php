@@ -49,6 +49,7 @@
          * permission level, they will be sent back to the home page.
          */
         //pages guests are allowed to view
+        // LOWERCASE
         $permission_array['index.php'] = 0;
         $permission_array['about.php'] = 0;
         $permission_array['apply.php'] = 0;
@@ -69,7 +70,7 @@
         $permission_array['viewnotification.php'] = 1;
         $permission_array['volunteerreport.php'] = 1;
         //pages only managers can view
-        $permission_array['viewAllEvents.php'] = 2;
+        $permission_array['viewallevents.php'] = 2;
         $permission_array['personsearch.php'] = 2;
         $permission_array['personedit.php'] = 0; // changed to 0 so that applicants can apply
         $permission_array['viewschedule.php'] = 2;
@@ -97,6 +98,9 @@
         $permission_array['edithours.php'] = 2;
         $permission_array['eventsignup.php'] = 1;
         $permission_array['edittimes.php'] = 1;
+        // LOWERCASE
+
+
 
         //Check if they're at a valid page for their access level.
         $current_page = strtolower(substr($_SERVER['PHP_SELF'], strrpos($_SERVER['PHP_SELF'], '/') + 1));
