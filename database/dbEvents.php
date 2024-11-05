@@ -212,8 +212,7 @@ function create_event($event) {
     $date = $event["date"];
     $startTime = $event["start-time"];
     $endTime = "23:59";
-    $restricted = $event["restricted"];
-    if ($restricted == "on") {
+    if (isset($event["restricted"])) {
         $restricted = 1;
     } else {
         $restricted = 0;
