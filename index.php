@@ -113,6 +113,10 @@
                         <img src="images/add-person.svg">
                         <span>Register Volunteer</span>
                     </div>
+                    <div class="dashboard-item" data-link="editHours.php">
+                        <img src="images/add-person.svg">
+                        <span>See & Change Event Hours</span>
+                    </div>
 
                     <!--
                     <div class="dashboard-item" data-link="viewArchived.php">
@@ -154,6 +158,11 @@
                     <img src="images/logout.svg">
                     <span>Log out</span>
                 </div>
+                <!-- autoredirects home as volunteer currently -->
+                <!-- <div class="dashboard-item" data-link="editHours.php">
+                        <img src="images/add-person.svg">
+                        <span>See & Change Event Hours</span>
+                </div> -->
             </div>
         </main>
     </body>

@@ -15,7 +15,7 @@
         // 0 = not logged in, 1 = standard user, 2 = manager (Admin), 3 super admin (TBI)
         $accessLevel = $_SESSION['access_level'];
         $userID = $_SESSION['_id'];
-    } 
+    }
     // Require admin privileges
     if ($accessLevel < 1) {
         header('Location: login.php');
@@ -121,7 +121,7 @@
     // Connect to database
     include_once('database/dbinfo.php'); 
     $con=connect();  
-    // Get all the animals from animal table
+    // Get all the event persons junction table rows
     $sql = "SELECT * FROM `dbeventpersons`";
     $all_animals = mysqli_query($con,$sql);
 
