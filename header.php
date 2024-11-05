@@ -94,7 +94,7 @@
         $permission_array['animal.php'] = 2;
         $permission_array['editanimal.php'] = 2;
 
-        $permission_array['edithours.php'] = 2;
+        $permission_array['edithours.php'] = 1;
         $permission_array['eventsignup.php'] = 1;
         $permission_array['edittimes.php'] = 1;
 

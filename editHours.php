@@ -23,19 +23,38 @@
         die();
     }
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        a:
         require_once('include/input-validation.php');
         require_once('database/dbEvents.php');
         require_once('database/dbPersons.php');
+        if (array_key_exists('username', $GLOBALS) ) {
+        if ($username != $userID) {
         $args = sanitize($_POST, null);
         $required = array(
             "username"//, "name"
         );
-        if (!wereRequiredFieldsSubmitted($args, $required)) {
+    }
+    }
+    if (array_key_exists('v', $GLOBALS) ) {
+        if ($username != $userID) {
+            if (!wereRequiredFieldsSubmitted($args, $required))  {
             echo 'bad form data';
             die();
-        } else {
+            }
+        }
+    }
+         else {
            // $eventname = $args['name'];
+            // if access level is admin, do args. else if access level is volunteer/user, go with current user info
+            
+            if ($accessLevel >= 2) {
+                if (array_key_exists('args', $GLOBALS) ) {
             $username = $args['username'];
+                }
+            }
+            else {
+                $username = $userID;
+            }
            // echo $eventname;
             if (!$username) {
                 echo 'bad username';
@@ -132,34 +151,37 @@
         <?php require_once('universal.inc') ?>
         <title>Step VA | Create Event</title>
     </head>
-    <body>
-        <?php require_once('header.php') ?>
-        <h1>Change Hours Within an Event</h1>
-        <main class="date">
-            <h2>Change Hours for Event</h2>
-            <form id="new-event-form" method="post">
-              <!--  <label for="name">* Event Name </label>
-                <input type="text" id="name" name="name" required placeholder="Enter name"> 
-                <!-- <label for="name">* Abbreviated Event Name</label> 
-                <input type="text" id="abbrev-name" name="abbrev-name" maxlength="11" required placeholder="Enter name that will appear on calendar">
--->
-                <label for="name">* Your Account Name </label>
-                <input type="text" id="username" name="username" required placeholder="Enter account name"> 
-                <!--
-                <label for="name">* What Time Did You Arrive For This Event? </label>
-                <input type="text" id="start-time" name="start-time" pattern="([1-9]|10|11|12):[0-5][0-9] ?([aApP][mM])" required placeholder="Enter arrival time. Ex. 12:00 PM">
-                <label for="name">* What Time Did You Leave For This Event? </label>
-                <input type="text" id="departure-time" name="departure-time" pattern="([1-9]|10|11|12):[0-5][0-9] ?([aApP][mM])" required placeholder="Enter departure time. Ex. 3:00 PM">
--->
+    <?php
+    echo '<body>'
+    ?>
+    <?php require_once('header.php');
+        if ($accessLevel >= 2) {
+        echo '<h1>Change Hours Within an Event</h1>';
+        echo '<main class="date">';
+        echo '    <h2>Change Hours for Event</h2>';
+        echo    '<form id="new-event-form" method="post">';
+         echo     '<!--  <label for="name">* Event Name </label>';
+         echo        '<input type="text" id="name" name="name" required placeholder="Enter name">';
+         echo        '<!-- <label for="name">* Abbreviated Event Name</label>';
+         echo        '<input type="text" id="abbrev-name" name="abbrev-name" maxlength="11" required placeholder="Enter name that will appear on calendar">-->';
+        echo        '<label for="name">* Your Account Name </label>';
+        echo        '         <input type="text" id="username" name="username" required placeholder="Enter account name"> ';
+        
 
-                <p></p>
-                <br/>
-                <p></p>
-                <input type="submit" value="Change Volunteer Hours">
-            </form>
 
-            <a class="button cancel" href="index.php" style="margin-top: -.5rem">Return to Dashboard</a>
-  
+          echo     '<p></p>';
+              echo  '<br/>';
+               echo '<p></p>';
+             echo   '<input type="submit" value="Change Volunteer Hours">';
+         echo   '</form>';
+
+          echo  '<a class="button cancel" href="index.php" style="margin-top: -.5rem">Return to Dashboard</a>';
+        }
+        else {
+            $username = $userID;
+            goto a;
+        }
+  ?>
                 <!--
                 <label for="name">* Animal</label>
                 <select for="name" id="animal" name="animal" required>
