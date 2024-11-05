@@ -69,7 +69,7 @@
             $eid = $args['id'];
             $description = $args['description'];
             if (!valueConstrainedTo($format, ['link', 'video', 'picture'])) {
-                echo "bad format";
+                echo "dude, bad format";
                 die();
             }
             attach_post_event_media($eid, $url, $format, $description);
@@ -85,7 +85,7 @@
                 'url', 'description', 'format', 'id'
             ];
             if (!wereRequiredFieldsSubmitted($args, $required)) {
-                echo "args missing";
+                echo "dude, args missing";
                 die();
             }
             $type = 'post';
@@ -104,7 +104,7 @@
             $eid = $args['id'];
             $description = $args['description'];
             if (!valueConstrainedTo($format, ['link', 'video', 'picture'])) {
-                echo "bad format";
+                echo "dude, bad format";
                 die();
             }
             attach_event_training_media($eid, $url, $format, $description);
