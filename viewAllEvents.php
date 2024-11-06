@@ -26,6 +26,7 @@
     </head>
     <body>
         <?php require_once('header.php') ?>
+        <?php require('database/dbEvents.php');?>
         <h1>Events</h1>
         <main class="general">
             <?php 
@@ -80,6 +81,24 @@
                         </tbody>
                     </table>
                 </div> -->
+                <?php elseif(!empty(fetch_all_events())): ?>
+                <?php
+                        $events = fetch_all_events();
+                        ?>
+                        <table>
+                            <tr>
+                                <th>Name</th>
+                                <th>Date</th>
+                                <th>Description</th>
+                            </tr>
+                        <?php
+                            $line = "<tr> \n <td> %s </td> \n <td> %s </td> <td> %s </td> </tr>";
+                            foreach($events as $event){
+                                echo sprintf($line, $event["name"], $event["date"], $event["description"]);
+                        }
+
+                    ?>
+                        </table>
                 <?php else: ?>
                 <p class="no-events standout">There are currently no events available to view.<a class="button add" href="addEvent.php">Create a New Event</a> </p>
             <?php endif ?>

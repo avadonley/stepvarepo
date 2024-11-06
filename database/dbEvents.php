@@ -356,6 +356,20 @@ function fetch_events_in_date_range_as_array($start_date, $end_date) {
     return $events;
 }
 
+function fetch_all_events() {
+    $connection = connect();
+    $query = "select * from dbEvents
+              order by date, startTime asc";
+    $result = mysqli_query($connection, $query);
+    if (!$result) {
+        mysqli_close($connection);
+        return null;
+    }
+    $events = mysqli_fetch_all($result, MYSQLI_ASSOC);
+    mysqli_close($connection);
+    return $events;
+}
+
 function get_animal($id) {
     $connection = connect();
     $query = "select * from dbAnimals
