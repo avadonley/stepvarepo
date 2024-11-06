@@ -47,10 +47,14 @@
                 echo 'bad args';
                 die();
             }
+            var_dump($args);
             $id = create_event($args);
             if(!$id){
                 echo "Oopsy!";
                 die();
+            } else {
+                header('Location: eventSuccess.php');
+                exit();
             }
             require_once('include/output.php');
             
@@ -81,14 +85,12 @@
     include_once('database/dbinfo.php'); 
     $con=connect();  
     // Get all the animals from animal table
-
-    /*$sql = "SELECT * FROM `dbAnimals`";
-    $all_animals = mysqli_query($con,$sql);
-    $sql = "SELECT * FROM `dbLocations`";
-    $all_locations = mysqli_query($con,$sql);
-    $sql = "SELECT * FROM `dbServices`";
-    $all_services = mysqli_query($con,$sql);*/
-
+    //$sql = "SELECT * FROM `dbAnimals`";
+    //$all_animals = mysqli_query($con,$sql);
+    //$sql = "SELECT * FROM `dbLocations`";
+    //$all_locations = mysqli_query($con,$sql);
+    //$sql = "SELECT * FROM `dbServices`";
+    //$all_services = mysqli_query($con,$sql);
 
 ?>
 <!DOCTYPE html>
@@ -113,9 +115,10 @@
                 <input type="date" id="date" name="date" <?php if ($date) echo 'value="' . $date . '"'; ?> min="<?php echo date('Y-m-d'); ?>" required>
                 <label for="name">* Start Time </label>
                 <input type="text" id="start-time" name="start-time" pattern="([1-9]|10|11|12):[0-5][0-9] ?([aApP][mM])" required placeholder="Enter start time. Ex. 12:00 PM">
-                <label for=""name">Restriction</label>
+                <label for=""name">Restrictions</label>
                 <ul>
-                    <li><input class="checkboxes" type="checkbox" id="restricted" name="restricted"> Restricted Event</li>
+                    <li><input type="radio" id="unrestricted" name="unrestricted"> Unrestricted Event</li>
+                    <li><input type="radio" id="restricted" name="restricted"> Restricted Event</li>
                 </ul>
                 <label for="name">* Description </label>
                 <input type="text" id="description" name="description" required placeholder="Enter description">
