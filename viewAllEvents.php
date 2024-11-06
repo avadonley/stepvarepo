@@ -28,7 +28,7 @@
     </head>
     <body>
         <?php require_once('header.php') ?>
-        <?php require('database/dbEvents.php');?>
+        <?php require_once('database/dbEvents.php');?>
         <h1>Events</h1>
         <main class="general">
             <?php 
