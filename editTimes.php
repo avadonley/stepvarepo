@@ -27,20 +27,50 @@
     require_once('include/input-validation.php');
     $get = sanitize($_GET);
     $eventIDGiven = $get['id'];
+    
+    // Split the string by "?"
+    //$parts = explode('?', $eventIDGiven);
+
+    // Assign each part to a variable
+    //$id = $parts[0];
+    //parse_str($parts[1], $userArray);  // Extracts "user" key-value pair
+    //$user = $userArray['user'];
+    //parse_str($parts[2], $timeArray);  // Extracts "start_time" key-value pair
+    //$old_start_time = $timeArray['old_start_time'];
+
+    // Output the variables
+    //echo "ID: $id\n";
+    //echo "User: $user\n";
+    //echo "Start Time: $old_start_time\n";
+
     // Split the string by "?"
     $parts = explode('?', $eventIDGiven);
 
     // Assign each part to a variable
     $id = $parts[0];
-    parse_str($parts[1], $userArray);  // Extracts "user" key-value pair
-    $user = $userArray['user'];
-    parse_str($parts[2], $timeArray);  // Extracts "start_time" key-value pair
-    $old_start_time = $timeArray['old_start_time'];
+
+    // Check if $parts[1] exists before trying to parse it
+    if (isset($parts[1])) {
+        parse_str($parts[1], $userArray);
+        $user = isset($userArray['user']) ? $userArray['user'] : 'Unknown User';
+    } else {
+        $user = 'Unknown User';
+    }
+
+    // Check if $parts[2] exists before trying to parse it
+    if (isset($parts[2])) {
+        parse_str($parts[2], $timeArray);
+        $old_start_time = isset($timeArray['old_start_time']) ? $timeArray['old_start_time'] : 'No Start Time';
+    } else {
+        $old_start_time = 'No Start Time';
+    }
 
     // Output the variables
     echo "ID: $id\n";
     echo "User: $user\n";
     echo "Start Time: $old_start_time\n";
+
+
     // $datePattern = '/[0-9]{4}-[0-9]{2}-[0-9]{2}/';
     $timeStamp = strtotime($old_start_time);
     // if (!preg_match($datePattern, $date) || !$timeStamp) {

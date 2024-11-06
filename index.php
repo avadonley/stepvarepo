@@ -145,7 +145,7 @@
                         <img src="images/volunteer-history.svg">
                         <span>View My Hours</span>
                     </div>
-                    <div class="dashboard-item" data-link="inbox.php">
+                    <div class="dashboard-item" data-link="viewAllEvents.php">
                     <img src="images/new-event.svg">
                     <span>Sign-Up for Event</span>
                 </div>

@@ -31,17 +31,17 @@ function add_event($event) {
     if (!$event instanceof Event)
         die("Error: add_event type mismatch");
     $con=connect();
-    $query = "SELECT * FROM dbEvents WHERE id = '" . $event->get_id() . "'";
+    $query = "SELECT * FROM dbEvents WHERE id = '" . $event->getID() . "'";
     $result = mysqli_query($con,$query);
     //if there's no entry for this id, add it
     if ($result == null || mysqli_num_rows($result) == 0) {
         mysqli_query($con,'INSERT INTO dbEvents VALUES("' .
-                $event->get_id() . '","' .
-                $event->get_event_date() . '","' .
-                $event->get_venue() . '","' .
-                $event->get_event_name() . '","' . 
-                $event->get_description() . '","' .
-                $event->get_event_id() .            
+                $event->getID() . '","' .
+                $event->getDate() . '","' .
+                #$event->get_venue() . '","' .
+                $event->getName() . '","' . 
+                $event->getDescription() . '","' .
+                #$event->getID() .            
                 '");');							
         mysqli_close($con);
         return true;
@@ -116,21 +116,38 @@ function make_an_event($result_row) {
 	 ($en, $v, $sd, $description, $ev))
 	 */
     $theEvent = new Event(
-                    $result_row['event_name'],
-                    $result_row['venue'],                   
-                    $result_row['event_date'],
-                    $result_row['description'],
-                    $result_row['event_id'],
-                    $result_row['location'],
-                    $result_row['service'],
-                    $result_row['animal']); 
+                    $result_row['id'],
+                    $result_row['name'],                   
+                    date: $result_row['date'],
+                    startTime: $result_row['startTime'],
+                    endTime: $result_row['endTime'],
+                    description: $result_row['description'],
+                    capacity: $result_row['capacity'],
+                    completed: $result_row['completed'],
+                    event_type: $result_row['event_type'],
+                    restricted_signup: $result_row['restricted_signup']
+                ); 
     return $theEvent;
 }
+
+function get_all_events() {
+    $con=connect();
+    $query = "SELECT * FROM dbEvents" . 
+            " ORDER BY completed";
+    $result = mysqli_query($con,$query);
+    $theEvents = array();
+    while ($result_row = mysqli_fetch_assoc($result)) {
+        $theEvent = make_an_event($result_row);
+        $theEvents[] = $theEvent;
+    }
+    mysqli_close($con);
+    return $theEvents;
+ }
 
 // retrieve only those events that match the criteria given in the arguments
 function getonlythose_dbEvents($name, $day, $venue) {
    $con=connect();
-   $query = "SELECT * FROM dbEvents WHERE event_name LIKE '%" . $event_name . "%'" .
+   $query = "SELECT * FROM dbEvents WHERE event_name LIKE '%" . $name . "%'" .
            " AND event_name LIKE '%" . $name . "%'" .
            " AND venue = '" . $venue . "'" . 
            " ORDER BY event_name";
@@ -207,12 +224,18 @@ function fetch_event_by_id($id) {
 
 function create_event($event) {
     $connection = connect();
+    $id = $event["id"];
     $name = $event["name"];
     //$abbrevName = $event["abbrev-name"];
     $date = $event["date"];
-    $startTime = $event["start-time"];
+    $startTime = $event["startTime"];
     $endTime = "23:59";
-    if (isset($event["restricted"])) {
+    $description = $event["description"];
+    $capacity = $event["capacity"];
+    $completed = $event["completed"];
+    $event_type = $event["event_type"];
+    $restricted_signup = $event["restricted_signup"];
+    if ($restricted_signup == "on") {
         $restricted = 1;
     } else {
         $restricted = 0;
@@ -254,18 +277,28 @@ function add_services_to_event($eventID, $serviceIDs) {
 
 function update_event($eventID, $eventDetails) {
     $connection = connect();
+    $id = $eventDetails["id"];
     $name = $eventDetails["name"];
-    $abbrevName = $eventDetails["abbrev-name"];
+    #$abbrevName = $eventDetails["abbrev-name"];
     $date = $eventDetails["date"];
-    $startTime = $eventDetails["start-time"];
-    $restricted = $eventDetails["restricted"];
+    $startTime = $eventDetails["startTime"];
+    #$restricted = $eventDetails["restricted"];
+    $endTime = $eventDetails["endTime"];
     $description = $eventDetails["description"];
-    $location = $eventDetails["location"];
+    $capacity = $eventDetails["capacity"];
+    $completed = $eventDetails["completed"];
+    $event_type = $eventDetails["event_type"];
+    $restricted_signup = $eventDetails["restricted_signup"];
+    #$location = $eventDetails["location"];
     //$services = $eventDetails["service"];
     
     $completed = $eventDetails["completed"];
+    #$query = "
+       # update dbEvents set name='$name', abbrevName='$abbrevName', date='$date', startTime='$startTime', restricted='$restricted', description='$description', locationID='$location', completed='$completed'
+       # where id='$eventID'
+    #";
     $query = "
-        update dbEvents set name='$name', abbrevName='$abbrevName', date='$date', startTime='$startTime', restricted='$restricted', description='$description', locationID='$location', completed='$completed'
+        update dbEvents set id='$id', name='$name', date='$date', startTime='$startTime', endTime='$endTime', description='$description', capacity='$capacity', completed='$completed', event_type='$event_type', restricted_signup='$restricted_signup'
         where id='$eventID'
     ";
     $result = mysqli_query($connection, $query);
@@ -277,18 +310,23 @@ function update_event($eventID, $eventDetails) {
 
 function update_event2($eventID, $eventDetails) {
     $connection = connect();
+    $id = $eventDetails["id"];
     $name = $eventDetails["name"];
-    $abbrevName = $eventDetails["abbrevName"];
+    #$abbrevName = $eventDetails["abbrevName"];
     $date = $eventDetails["date"];
     $startTime = $eventDetails["startTime"];
     $endTime = $eventDetails["endTime"];
     $description = $eventDetails["description"];
-    $location = $eventDetails["locationID"];
     $capacity = $eventDetails["capacity"];
-    $animalID = $eventDetails["animalID"];
     $completed = $eventDetails["completed"];
+    $event_type = $eventDetails["event_type"];
+    $restricted_signup = $eventDetails["restricted_signup"];
+    #$query = "
+    #    update dbEvents set name='$name', abbrevName='$abbrevName', date='$date', startTime='$startTime', endTime='$endTime', description='$description', locationID='$location', capacity='$capacity', animalId='$animalID', completed='$completed'
+    #    where id='$eventID'
+    #";
     $query = "
-        update dbEvents set name='$name', abbrevName='$abbrevName', date='$date', startTime='$startTime', endTime='$endTime', description='$description', locationID='$location', capacity='$capacity', animalId='$animalID', completed='$completed'
+        update dbEvents set id='$id', name='$name', date='$date', startTime='$startTime', endTime='$endTime', description='$description', capacity='$capacity', completed='$completed', event_type='$event_type', restricted_signup='$restricted_signup'
         where id='$eventID'
     ";
     $result = mysqli_query($connection, $query);
@@ -345,6 +383,20 @@ function fetch_events_in_date_range_as_array($start_date, $end_date) {
     $end_date = mysqli_real_escape_string($connection, $end_date);
     $query = "select * from dbEvents
               where date >= '$start_date' and date <= '$end_date'
+              order by date, startTime asc";
+    $result = mysqli_query($connection, $query);
+    if (!$result) {
+        mysqli_close($connection);
+        return null;
+    }
+    $events = mysqli_fetch_all($result, MYSQLI_ASSOC);
+    mysqli_close($connection);
+    return $events;
+}
+
+function fetch_all_events() {
+    $connection = connect();
+    $query = "select * from dbEvents
               order by date, startTime asc";
     $result = mysqli_query($connection, $query);
     if (!$result) {
@@ -575,4 +627,4 @@ function update_animal2($animal) {
     return $id;
 }
 
-?>
+//There was a question mark followed by a > here
