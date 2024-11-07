@@ -229,10 +229,10 @@
             $event_name = $event_info['name'];
             $event_date = date('l, F j, Y', strtotime($event_info['date']));
             $event_startTime = time24hto12h($event_info['startTime']);
-            $event_location = $event_info['locationID'];
+            #$event_location = $event_info['locationID'];
             $event_description = $event_info['description'];
             $event_in_past = strcmp(date('Y-m-d'), $event_info['date']) > 0;
-            $event_animal_id = $event_info['animalID'];
+            #$event_animal_id = $event_info['animalID'];
             require_once('include/time.php');
             echo '<h2 class="centered">'.$event_name.'</h2>';
         ?>
@@ -243,10 +243,10 @@
                         <td class="label">Animal </td>
                         <td>
                             <?php 
-                                $animals = get_animal($event_animal_id);
-                                foreach($animals as $animal) {
-                                    echo "<a href='animal.php?id=" . $animal['id'] . "'>" . $animal['name'] . "</a>";
-                                }
+                                #$animals = get_animal($event_animal_id);
+                                #foreach($animals as $animal) {
+                                #    echo "<a href='animal.php?id=" . $animal['id'] . "'>" . $animal['name'] . "</a>";
+                                #}
                             ?>
                         </td>
                     </tr>
