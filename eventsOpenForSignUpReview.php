@@ -22,17 +22,17 @@
         <?php require_once('universal.inc') ?>
         <link rel="stylesheet" href="css/messages.css"></link>
         <script src="js/messages.js"></script>
-        <title>StepVA Volunteer System | Inbox</title>
+        <title>Step VA Volunteer System | Events</title>
     </head>
     <body>
         <?php require_once('header.php') ?>
-        <h1>Inbox</h1>
+        <h1>Events</h1>
         <main class="general">
-            <h2>Your Notifications</h2>
-            <?php 
-                require_once('database/dbMessages.php');
-                $messages = get_user_messages($userID);
-                if (count($messages) > 0): ?>
+            <h2>Open for Sign-Up</h2>
+            <!--<?php 
+                //equire_once('database/dbMessages.php');
+                //$messages = get_message_by_id($userID);
+                //if (count($messages) > 0): ?>
                 <div class="table-wrapper">
                     <table class="general">
                         <thead>
@@ -88,10 +88,11 @@
                         </tbody>
                     </table>
                 </div>
-            <?php else: ?>
+            <?php /* else: */ ?>
                 <p class="no-messages standout">You currently have no unread messages.</p>
-            <?php endif ?>
+            <?php /*endif */ ?>      -->
             <!-- <button>Compose New Message</button> -->
+            <a class="button next" href="eventSignUp.php">Sign Up</a>
             <a class="button cancel" href="index.php">Return to Dashboard</a>
         </main>
     </body>
