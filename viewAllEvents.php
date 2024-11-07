@@ -15,6 +15,8 @@
         $accessLevel = $_SESSION['access_level'];
         $userID = $_SESSION['_id'];
     }
+    include 'database/dbEvents.php';
+    //include 'domain/Event.php';
 ?>
 <!DOCTYPE html>
 <html>
@@ -26,14 +28,17 @@
     </head>
     <body>
         <?php require_once('header.php') ?>
-        <?php require('database/dbEvents.php');?>
+        <?php require_once('database/dbEvents.php');?>
         <h1>Events</h1>
         <main class="general">
             <?php 
                 //require_once('database/dbMessages.php');
                 //$messages = get_user_messages($userID);
-                if (2 + 2 == 5): ?> <!--$messages) > 0): ?> -->
-                <!--<div class="table-wrapper">
+                //require_once('database/dbevents.php');
+                //require_once('domain/Event.php');
+                $events = get_all_events();
+                if (sizeof(get_all_events()) > 0): ?>
+                <div class="table-wrapper">
                     <table class="general">
                         <thead>
                             <tr>
@@ -45,60 +50,53 @@
                         </thead>
                         <tbody class="standout">
                             <?php 
-                                require_once('database/dbPersons.php');
-                                require_once('include/output.php');
-                                $id_to_name_hash = [];
-                                foreach ($messages as $message) {
-                                    $sender = $message['senderID'];
-                                    if (isset($id_to_name_hash[$sender])) {
-                                        $sender = $id_to_name_hash[$sender];
-                                    } else {
-                                        $lookup = get_name_from_id($sender);
-                                        $id_to_name_hash[$sender] = $lookup;
-                                        $sender = $lookup;
+                                #require_once('database/dbPersons.php');
+                                #require_once('include/output.php');
+                                #$id_to_name_hash = [];
+                                foreach ($events as $event) {
+                                    #$sender = $message['senderID'];
+                                    #if (isset($id_to_name_hash[$sender])) {
+                                    #    $sender = $id_to_name_hash[$sender];
+                                    #} else {
+                                     #   $lookup = get_name_from_id($sender);
+                                    #    $id_to_name_hash[$sender] = $lookup;
+                                    #    $sender = $lookup;
+                                    #}
+                                    $eventID = $event->getID();
+                                    $title = $event->getName();
+                                    $date = $event->getDate();
+                                    $startTime = $event->getStartTime();
+                                    $endTime = $event->getEndTime();
+                                    $description = $event->getDescription();
+                                    $capacity = $event->getCapacity();
+                                    $completed = $event->getCompleted();
+                                    $event_type = $event->getEventType();
+                                    $restricted_signup = $event->getRestrictedSignup();
+                                    if ($restricted_signup == 0) {
+                                        $restricted_signup = "N";
                                     }
-                                    $messageID = $message['id'];
-                                    $title = $message['title'];
-                                    $timePacked = $message['time'];
-                                    $pieces = explode('-', $timePacked);
-                                    $year = $pieces[0];
-                                    $month = $pieces[1];
-                                    $day = $pieces[2];
-                                    $time = time24hto12h($pieces[3]);
-                                    $class = 'message';
-                                    if (!$message['wasRead']) {
-                                        $class .= ' unread';
-                                    }
-                                    echo "
-                                        <tr class='$class' data-message-id='$messageID'>
-                                            <td>$sender</td>
-                                            <td>$title</td>
-                                            <td>$month/$day/$year $time</td>
+                                    if($accessLevel < 3) {
+                                        echo "
+                                        <tr data-event-id='$eventID'>
+                                            <td>$restricted_signup</td>
+                                            <td><a href='Event.php'>$title</a> </td>
+                                            <td>$date</td>
                                             <td> <a class='button sign-up' href='eventSignUp.php'>Sign Up</a> </td>
                                         </tr>";
+                                    } else {
+                                        echo "
+                                        <tr data-event-id='$eventID'>
+                                            <td>$restricted_signup</td>
+                                            <td><a href='Event.php'>$title</a> </td>
+                                            <td>$date</td>
+                                            <td> </td>
+                                        </tr>";
+                                    }
                                 }
                             ?>
                         </tbody>
                     </table>
-                </div> -->
-                <?php elseif(!empty(fetch_all_events())): ?>
-                <?php
-                        $events = fetch_all_events();
-                        ?>
-                        <table>
-                            <tr>
-                                <th>Name</th>
-                                <th>Date</th>
-                                <th>Description</th>
-                            </tr>
-                        <?php
-                            $line = "<tr> \n <td> %s </td> \n <td> %s </td> <td> %s </td> </tr>";
-                            foreach($events as $event){
-                                echo sprintf($line, $event["name"], $event["date"], $event["description"]);
-                        }
-
-                    ?>
-                        </table>
+                </div>
                 <?php else: ?>
                 <p class="no-events standout">There are currently no events available to view.<a class="button add" href="addEvent.php">Create a New Event</a> </p>
             <?php endif ?>
