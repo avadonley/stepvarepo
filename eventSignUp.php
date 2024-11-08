@@ -61,17 +61,20 @@
                 die();
             }
             $id = sign_up_for_event($name, $account_name, $role, $notes);
+            //if(!$id) {}
             if(!$id){
                 echo "Oopsy!";
                 die();
             }
-            require_once('include/output.php');
-            
+            //require_once('include/output.php');
+            require_once('eventApproved.php');
+
             $startTime = time24hto12h($startTime);
-            $date = date('l, F j, Y', strtotime($date));
+            //$date = date('l, F j, Y', timestamp: strtotime($date));
             require_once('database/dbMessages.php');
-            system_message_all_users_except($userID, "Your sign-up has been approved!", "Exciting news!\r\n\r\nThe [$name](event: $id) event at $startTime on $date was added!\r\nSign up today!");
-            header("Location: event.php?id=$id&createSuccess");
+            //system_message_all_users_except($userID, "Your sign-up has been approved!", "Congratulations!");
+            //header(header: "Location: eventApproved.php?id=$id&createSuccess");
+            //header(header: "Location: eventApproved.php?id=$id&createSuccess");
             die();
         }
     }

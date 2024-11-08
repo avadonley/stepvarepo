@@ -54,29 +54,16 @@ function sign_up_for_event($eventID, $account_name, $role, $notes) {
         $connection = connect();
         $query1 = "SELECT id FROM dbevents WHERE name LIKE '$eventID'";
         $result1 = mysqli_query($connection, $query1);
-        if (!$result1) {
-            return null;
-        } else {
-            $result1 = null;
-            //$row = mysqli_fetch_array($result1);
-            //foreach($result1 as $value)
-                //$string += $value;
-
-        }
-        
-        
-
-
-        $query = "insert into dbeventpersons ($result1, userID, position, notes) values ('$eventID', '$account_name', '$role', '$notes')";
+        $row = mysqli_fetch_assoc($result1);
+        $value = $row['id'];
+        $query = "insert into dbeventpersons (eventID, userID, position, notes) values ('$value', '$account_name', '$role', '$notes')";
         $result = mysqli_query($connection, $query);
         if (!$result) {
             return null;
         }
-
-        $id = mysqli_insert_id($connection);
-
+        //$id = mysqli_insert_id($connection);
         mysqli_commit($connection);
-        return $id;
+        return $value;
     }
 
 /*
@@ -449,6 +436,20 @@ function get_animal($id) {
     mysqli_close($connection);
     return $animal;
 }
+
+function get_description($id) {
+    $connection = connect();
+    $query = "select description from dbEvents
+              where id='$id'";
+    $result = mysqli_query($connection, $query);
+    if (!$result) {
+        return [];
+    }
+    $description = mysqli_fetch_all($result, MYSQLI_ASSOC);
+    mysqli_close($connection);
+    return $description;
+}
+  
 
 function get_location($id) {
     $connection = connect();
