@@ -50,6 +50,35 @@ function add_event($event) {
     return false;
 }
 
+function sign_up_for_event($eventID, $account_name, $role, $notes) {
+        $connection = connect();
+        $query1 = "SELECT id FROM dbevents WHERE name LIKE '$eventID'";
+        $result1 = mysqli_query($connection, $query1);
+        if (!$result1) {
+            return null;
+        } else {
+            $result1 = null;
+            //$row = mysqli_fetch_array($result1);
+            //foreach($result1 as $value)
+                //$string += $value;
+
+        }
+        
+        
+
+
+        $query = "insert into dbeventpersons ($result1, userID, position, notes) values ('$eventID', '$account_name', '$role', '$notes')";
+        $result = mysqli_query($connection, $query);
+        if (!$result) {
+            return null;
+        }
+
+        $id = mysqli_insert_id($connection);
+
+        mysqli_commit($connection);
+        return $id;
+    }
+
 /*
  * remove an event from dbEvents table.  If already there, return false
  */

@@ -27,7 +27,7 @@
         require_once('database/dbEvents.php');
         $args = sanitize($_POST, null);
         $required = array(
-            "name", "abbrev-name", "date", "start-time", "description", "location", "service", "animal"
+            "name", "abbrev-name", "account-name", "start-time", "departure-time", /*"skills",*/ /*"diet-restrictions", "disabilities", "materials", "role"*/
         );
         if (!wereRequiredFieldsSubmitted($args, $required)) {
             echo 'bad form data';
@@ -39,30 +39,43 @@
                 die();
             }
             $startTime = $args['start-time'] = $validated[0];
-            $date = $args['date'] = validateDate($args["date"]);
+            $validated2 = validate12hTimeRangeAndConvertTo24h($args["departure-time"], "11:59 PM");
+            if (!$validated2) {
+                echo 'bad time range';
+                die();
+            }
+            $departureTime = $args['departure-time'] = $validated2[0];
+            $name = htmlspecialchars_decode($args['name']);
+            $account_name = htmlspecialchars_decode($args['account-name']);
+            $role = $args['role'];
+            $notes = "No notes here";//$args['skills'] + $args['diet-restrictions'] + $args['disabilities'] + $args['materials'];
+            //$date = $args['date'] = validateDate($args["date"]);
             //$capacity = intval($args["capacity"]);
             $abbrevLength = strlen($args['abbrev-name']);
-            if (!$startTime || !$date || $abbrevLength > 11){
+            if (!$startTime /*|| !$date */|| $abbrevLength > 11){
                 echo 'bad args';
                 die();
             }
-            $id = create_event($args);
+            if (!$departureTime /*|| !$date */|| $abbrevLength > 11){
+                echo 'bad args';
+                die();
+            }
+            $id = sign_up_for_event($name, $account_name, $role, $notes);
             if(!$id){
                 echo "Oopsy!";
                 die();
             }
             require_once('include/output.php');
             
-            $name = htmlspecialchars_decode($args['name']);
             $startTime = time24hto12h($startTime);
             $date = date('l, F j, Y', strtotime($date));
             require_once('database/dbMessages.php');
-            system_message_all_users_except($userID, "A new event was created!", "Exciting news!\r\n\r\nThe [$name](event: $id) event at $startTime on $date was added!\r\nSign up today!");
+            system_message_all_users_except($userID, "Your sign-up has been approved!", "Exciting news!\r\n\r\nThe [$name](event: $id) event at $startTime on $date was added!\r\nSign up today!");
             header("Location: event.php?id=$id&createSuccess");
             die();
         }
     }
-    $date = null;
+    /*$date = null;
     if (isset($_GET['date'])) {
         $date = $_GET['date'];
         $datePattern = '/[0-9]{4}-[0-9]{2}-[0-9]{2}/';
@@ -71,7 +84,7 @@
             header('Location: calendar.php');
             die();
         }
-    }
+    }*/
 
     // get animal data from database for form
     // Connect to database
@@ -100,30 +113,29 @@
             <form id="new-event-form" method="post">
                 <label for="name">* Event Name </label>
                 <input type="text" id="name" name="name" required placeholder="Enter name"> 
-                <label for="name">* Abbreviated Event Name</label>
+                <label for="abbrev-name">* Abbreviated Event Name</label>
                 <input type="text" id="abbrev-name" name="abbrev-name" maxlength="11" required placeholder="Enter name that will appear on calendar">
-                <label for="name">* Your Account Name </label>
-                <input type="text" id="name" name="name" required placeholder="Enter account name"> 
-                <label for="name">* What Time Will You Arrive? </label>
+                <label for="account-name">* Your Account Name </label>
+                <input type="text" id="account-name" name="account-name" required placeholder="Enter account name"> 
+                <label for="start-time">* What Time Will You Arrive? </label>
                 <input type="text" id="start-time" name="start-time" pattern="([1-9]|10|11|12):[0-5][0-9] ?([aApP][mM])" required placeholder="Enter arrival time. Ex. 12:00 PM">
-                <label for="name">* What Time Will You Leave? </label>
+                <label for="departure-time">* What Time Will You Leave? </label>
                 <input type="text" id="departure-time" name="departure-time" pattern="([1-9]|10|11|12):[0-5][0-9] ?([aApP][mM])" required placeholder="Enter departure time. Ex. 3:00 PM">
-                <label for="name"> Do You Have Any Skills To Share? </label>
+                <label for="skills"> Do You Have Any Skills To Share? </label>
                 <input type="text" id="skills" name="skills" placeholder="Enter skills. Ex. crochet, tap dancer">
-                <label for="name"> Do You Have Any Dietary Restrictions? </label>
+                <label for="diet-restrictions"> Do You Have Any Dietary Restrictions? </label>
                 <input type="text" id="restrictions" name="restrictions" placeholder="Enter restrictions">
-                <label for="name"> Do You Have Any Disabilities We Should Be Aware Of? </label>
+                <label for="disabilities"> Do You Have Any Disabilities We Should Be Aware Of? </label>
                 <input type="text" id="disabilities" name="disabilities" placeholder="Enter disabilities">
-                <label for="name"> Are You Bringing Any Materials (e.g. snacks, craft supplies)? </label>
+                <label for="materials"> Are You Bringing Any Materials (e.g. snacks, craft supplies)? </label>
                 <input type="text" id="materials" name="materials" placeholder="Enter materials. Ex. felt, pipe cleaners">
                 
                 <fieldset>
-                    <label for="name">* Role </label>
-                    <?php 
-                        // is the user signing up for the event a volunteer or participant?
-                            echo '<li><input class="checkboxes" type="checkbox" name="service" value="' . "Volunteer" . '" required/> ' . "Volunteer" . '</li>';
-                            echo '<li><input class="checkboxes" type="checkbox" name="service" value="' . "Volunteer" . '" required/> ' . "Participant" . '</li>';
-                    ?>
+                <label for="role"> Are you a volunteer or a participant? </label>
+            <div class="radio-group">
+                <input type="radio" id="v" name="role" value="v" required><label for="role">Volunteer</label>
+                <input type="radio" id="p" name="role" value="p" required><label for="role">Participant</label>
+            </div>
                 </fieldset>
                 
                 </fieldset> 
@@ -156,26 +168,11 @@
                 <p></p>
                 <input type="submit" value="Create Event">
             </form>
-                <?php if ($date): ?>
+                <?php /*if ($date): ?>
                     <a class="button cancel" href="calendar.php?month=<?php echo substr($date, 0, 7) ?>" style="margin-top: -.5rem">Return to Calendar</a>
                 <?php else: ?>
                     <a class="button cancel" href="index.php" style="margin-top: -.5rem">Return to Dashboard</a>
-                <?php endif ?>
-
-                <!-- Require at least one checkbox be checked -->
-                <script type="text/javascript">
-                    $(document).ready(function(){
-                        var checkboxes = $('.checkboxes');
-                        checkboxes.change(function(){
-                            if($('.checkboxes:checked').length>0) {
-                                checkboxes.removeAttr('required');
-                            } else {
-                                checkboxes.attr('required', 'required');
-                            }
-                        });
-                    });
-
-                </script>
+                <?php endif */?>
         </main>
     </body>
 </html>
