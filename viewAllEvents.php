@@ -14,7 +14,7 @@
         // 0 = not logged in, 1 = standard user, 2 = manager (Admin), 3 super admin (TBI)
         $accessLevel = $_SESSION['access_level'];
         $userID = $_SESSION['_id'];
-    }
+    }  
     include 'database/dbEvents.php';
     //include 'domain/Event.php';
 ?>
@@ -54,14 +54,6 @@
                                 #require_once('include/output.php');
                                 #$id_to_name_hash = [];
                                 foreach ($events as $event) {
-                                    #$sender = $message['senderID'];
-                                    #if (isset($id_to_name_hash[$sender])) {
-                                    #    $sender = $id_to_name_hash[$sender];
-                                    #} else {
-                                     #   $lookup = get_name_from_id($sender);
-                                    #    $id_to_name_hash[$sender] = $lookup;
-                                    #    $sender = $lookup;
-                                    #}
                                     $eventID = $event->getID();
                                     $title = $event->getName();
                                     $date = $event->getDate();
@@ -79,17 +71,17 @@
                                         echo "
                                         <tr data-event-id='$eventID'>
                                             <td>$restricted_signup</td>
-                                            <td><a href='Event.php'>$title</a> </td>
+                                            <td><a href='Event.php?id=$eventID'>$title</a></td> <!-- Link updated here -->
                                             <td>$date</td>
-                                            <td> <a class='button sign-up' href='eventSignUp.php'>Sign Up</a> </td>
+                                            <td><a class='button sign-up' href='eventSignUp.php'>Sign Up</a></td>
                                         </tr>";
                                     } else {
                                         echo "
                                         <tr data-event-id='$eventID'>
                                             <td>$restricted_signup</td>
-                                            <td><a href='Event.php'>$title</a> </td>
+                                            <td><a href='Event.php?id=$eventID'>$title</a></td> <!-- Link updated here -->
                                             <td>$date</td>
-                                            <td> </td>
+                                            <td></td>
                                         </tr>";
                                     }
                                 }
