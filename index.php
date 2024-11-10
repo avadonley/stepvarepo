@@ -50,25 +50,24 @@
             <p>Today is <?php echo date('l, F j, Y'); ?>.</p>
             <div id="dashboard">
                 <?php
-                    /*@ removing messages
-                    require_once('database/dbMessages.php');
-                    $unreadMessageCount = get_user_unread_count($person->get_id());
+                    //require_once('database/dbMessages.php');
+                    $unreadMessageCount = 0; //get_user_unread_count($person->get_id());
                     $inboxIcon = 'inbox.svg';
                     if ($unreadMessageCount) {
                         $inboxIcon = 'inbox-unread.svg';
                     }
-                    */
+                    
                 ?>
-                <!--@ removing messages
+                
                 <div class="dashboard-item" data-link="inbox.php">
-                    <img src="images/<?php/* echo $inboxIcon */?>">
-                    <span>Notifications<?php/* 
+                    <img src="images/<?php echo $inboxIcon ?>">
+                    <span>Notifications<?php 
                         if ($unreadMessageCount > 0) {
                             echo ' (' . $unreadMessageCount . ')';
                         }
-                    */?></span>
+                    ?></span>
                 </div>
-                -->
+                
                 <div class="dashboard-item" data-link="calendar.php">
                     <img src="images/view-calendar.svg">
                     <span>View Calendar</span>
