@@ -148,6 +148,10 @@
                     <img src="images/new-event.svg">
                     <span>Sign-Up for Event</span>
                 </div>
+                <div class="dashboard-item" data-link="editHours.php">
+                        <img src="images/add-person.svg">
+                        <span>See & Change My Event Hours</span>
+                    </div>
                 <?php endif ?>
                 <div class="dashboard-item" data-link="changePassword.php">
                     <img src="images/change-password.svg">
