@@ -161,6 +161,26 @@
         </fieldset>
 
         <fieldset class="section-box">
+            <legend>Optional Information</legend>
+
+            <p>Here are some optional pieces of information you can give us.</p>
+
+            <label>How did you hear about StepVA?</label>
+            <input type="text" id="how_did_you_hear_about_stepva" name="how_did_you_hear_about_stepva" required placeholder="">
+
+            <label>What is your preferred contact method?</label>
+            <div class="radio-group">
+                <input type="radio" id="text" name="preferred_contact" value="text"><label for="preferred_contact">Text</label>
+                <input type="radio" id="email" name="preferred_contact" value="email"><label for="preferred_contact">Email</label>
+                <input type="text" id="preferred_contact" name="preferred_contact" required placeholder="Other">
+            </div>
+
+            <label>What skills do you have that you believe could be helpful for volunteering?</label>
+            <input type="text" id="skills" name="skills" required placeholder="">
+
+        </fieldset>
+
+        <fieldset class="section-box">
             <legend>Login Credentials</legend>
             
             <p>You will use the following information to log in to the system.</p>
