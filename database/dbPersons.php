@@ -187,20 +187,19 @@ function update_volunteer_hours($eventname, $username, $new_start_time, $new_end
 /* Check-in a user by adding a new row and with start_time to dbpersonhours */
 function check_in($personID, $eventID, $start_time) {
     $con=connect();
-	$query = "INSERT INTO dbpersonhours (personID, eventID, start_time) VALUES ( '" .$personID. "', '" .$eventID. "', '" .$start_time. "')";
-    //$query = 'UPDATE dbpersonhours SET start_time = "' . $new_start_time . '", end_time = "' . $new_end_time . ' WHERE eventID = "' . $eventid . '" AND personID = "' . $username . '"';
-	$result = mysqli_query($con,$query);
-	mysqli_close($con);
-	return $result;
+    $query = "INSERT INTO dbpersonhours (personID, eventID, start_time) VALUES ( '" .$personID. "', '" .$eventID. "', '" .$start_time. "')";
+    $result = mysqli_query($con,$query);
+    mysqli_close($con);
+    return $result;
 }
 
-/* Check-out a user by updating their end_time */
+/* Check-out a user by adding their end_time to dbpersonhours */
 function check_out($personID, $eventID, $end_time) {
     $con=connect();
     $query = "UPDATE dbpersonhours SET end_time = '" . $end_time . "' WHERE eventID = '" .$eventID. "' AND personID = '" .$personID. "' and end_time IS NULL";
-	$result = mysqli_query($con,$query);
-	mysqli_close($con);
-	return $result;
+    $result = mysqli_query($con,$query);
+    mysqli_close($con);
+    return $result;
 }
 
 /* Return true if a given user is currently able to check-in to a given event */
@@ -216,7 +215,6 @@ function can_check_in($personID, $event_info) {
         return False;
     }
 
-    // ensure user is not already checked-in
     if (can_check_out($personID, $event_info)) {
         // user is already checked-in
         return False;
@@ -230,7 +228,7 @@ function can_check_in($personID, $event_info) {
 /* Return true if a user is able to check out from a given event (they have already checked in) */
 function can_check_out($personID, $event_info) {
     $con=connect();
-	$query = "SELECT * FROM dbpersonhours WHERE personID = '" .$personID. "' AND eventID = '" .$event_info['id']. "' AND end_time IS NULL";
+    $query = "SELECT * FROM dbpersonhours WHERE personID = '" .$personID. "' AND eventID = '" .$event_info['id']. "' AND end_time IS NULL";
     $result = mysqli_query($con, $query);
     $row = mysqli_fetch_assoc($result);
     if ($row) {
