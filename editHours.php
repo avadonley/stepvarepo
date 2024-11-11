@@ -6,13 +6,11 @@ error_reporting(E_ALL);
 
 $loggedIn = false;
 $accessLevel = 0;
-$userID = null;
 $username = null;
 
 if (isset($_SESSION['_id'])) {
     $loggedIn = true;
     $accessLevel = $_SESSION['access_level'];
-    $userID = $_SESSION['_id'];
     $username = $_SESSION['_id']; // Username is stored here
 }
 

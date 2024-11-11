@@ -75,7 +75,7 @@ else if ($accessLevel == 1){
                         $eventName = get_event_from_id($event['eventID']);
                         echo "<strong>Event Name:</strong> " . htmlspecialchars($eventName) . "<br>";
                         echo "<strong>Start Time:</strong> " . htmlspecialchars($event['start_time']) . "<br>";
-                        echo "<strong>End Time:</strong> " . htmlspecialchars($event['end_time']) . "<br>";
+                        echo "<strong>End Time:</strong> " . $event['end_time'] . "<br>";
                         echo "</div>";
                         
                         echo '<a class="button edit-button" href="editTimes.php?id=' . $event['eventID'] . '&user=' . $username . '&old_start_time=' . $event['start_time'] . '">Edit Event</a>';

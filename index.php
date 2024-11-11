@@ -114,7 +114,7 @@
                     </div>
                     <div class="dashboard-item" data-link="editHours.php">
                         <img src="images/add-person.svg">
-                        <span>See & Change Event Hours</span>
+                        <span>View & Change Event Hours</span>
                     </div>
 
                     <!--
@@ -150,7 +150,7 @@
                 </div>
                 <div class="dashboard-item" data-link="editHours.php">
                         <img src="images/add-person.svg">
-                        <span>See & Change My Event Hours</span>
+                        <span>View & Change My Event Hours</span>
                     </div>
                 <?php endif ?>
                 <div class="dashboard-item" data-link="changePassword.php">
@@ -164,7 +164,7 @@
                 <!-- autoredirects home as volunteer currently -->
                 <!-- <div class="dashboard-item" data-link="editHours.php">
                         <img src="images/add-person.svg">
-                        <span>See & Change Event Hours</span>
+                        <span>View & Change Event Hours</span>
                 </div> -->
             </div>
         </main>
