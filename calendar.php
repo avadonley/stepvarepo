@@ -145,6 +145,9 @@
                                         } else { //Completed Events
                                             $eventsStr .= '<a class="calendar-event" href="event.php?id=' . $info['id'] . '">' . $info['name'] .  '</a>';
                                         }
+                                        //if($info['restricted'] == 1) {
+                                            //$eventsStr = $eventsStr . 'R'
+                                        //}
                                     }
                                 }
                                 echo '<td class="calendar-day' . $extraClasses . '" ' . $extraAttributes . ' data-date="' . date('Y-m-d', $date) . '">
