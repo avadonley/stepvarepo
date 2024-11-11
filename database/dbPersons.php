@@ -182,6 +182,67 @@ function update_volunteer_hours($eventname, $username, $new_start_time, $new_end
 	return $result;
 }
 
+/*@@@ Thomas */
+
+/* Check-in a user by adding a new row and with start_time to dbpersonhours */
+function check_in($personID, $eventID, $start_time) {
+    $con=connect();
+	$query = "INSERT INTO dbpersonhours (personID, eventID, start_time) VALUES ( '" .$personID. "', '" .$eventID. "', '" .$start_time. "')";
+    //$query = 'UPDATE dbpersonhours SET start_time = "' . $new_start_time . '", end_time = "' . $new_end_time . ' WHERE eventID = "' . $eventid . '" AND personID = "' . $username . '"';
+	$result = mysqli_query($con,$query);
+	mysqli_close($con);
+	return $result;
+}
+
+/* Check-out a user by updating their end_time */
+function check_out($personID, $eventID, $end_time) {
+    $con=connect();
+    $query = "UPDATE dbpersonhours SET end_time = '" . $end_time . "' WHERE eventID = '" .$eventID. "' AND personID = '" .$personID. "' and end_time IS NULL";
+	$result = mysqli_query($con,$query);
+	mysqli_close($con);
+	return $result;
+}
+
+/* Return true if a given user is currently able to check-in to a given event */
+function can_check_in($personID, $event_info) {
+
+    if (!(time() > strtotime($event_info['date']) && time() < strtotime($event_info['date']) + 86400)) {
+        // event is not ongoing
+        return False;
+    }
+
+    if (!(check_if_signed_up($event_info['id'], $personID))) {
+        // user is not signed up for this event
+        return False;
+    }
+
+    // ensure user is not already checked-in
+    if (can_check_out($personID, $event_info)) {
+        // user is already checked-in
+        return False;
+    }
+
+    // validation passed
+    return True;
+
+}
+
+/* Return true if a user is able to check out from a given event (they have already checked in) */
+function can_check_out($personID, $event_info) {
+    $con=connect();
+	$query = "SELECT * FROM dbpersonhours WHERE personID = '" .$personID. "' AND eventID = '" .$event_info['id']. "' AND end_time IS NULL";
+    $result = mysqli_query($con, $query);
+    $row = mysqli_fetch_assoc($result);
+    if ($row) {
+        // user is checked-in and can now check-out
+        return True;
+    }
+    // user cannot current check-out
+    return False;
+}
+
+/*@@@ end Thomas */
+
 /*
  * Updates the profile picture link of the corresponding
  * id.
@@ -320,51 +381,6 @@ function make_a_person($result_row) {
         
     );
 
-    /*@@@$thePerson = new Person(
-                    $result_row['first_name'],
-                    $result_row['last_name'],
-                    $result_row['venue'],
-                    $result_row['address'],
-                    $result_row['city'],
-                    $result_row['state'],
-                    $result_row['zip'],
-                    $result_row['profile_pic'],
-                    $result_row['phone1'],
-                    $result_row['phone1type'],
-                    $result_row['phone2'],
-                    $result_row['phone2type'],
-                    $result_row['email'],
-                    $result_row['contact_name'],
-                    $result_row['contact_num'],
-                    $result_row['relation'],
-                    $result_row['contact_time'],
-                    $result_row['type'],
-                    $result_row['status'],
-                    $result_row['cMethod'],  
-                    $result_row['availability'],
-                    $result_row['schedule'],
-                    $result_row['hours'],
-                    $result_row['birthday'],
-                    $result_row['start_date'],
-                    $result_row['notes'],
-                    $result_row['password'],
-                    $result_row['sundays_start'],
-                    $result_row['sundays_end'],
-                    $result_row['mondays_start'],
-                    $result_row['mondays_end'],
-                    $result_row['tuesdays_start'],
-                    $result_row['tuesdays_end'],
-                    $result_row['wednesdays_start'],
-                    $result_row['wednesdays_end'],
-                    $result_row['thursdays_start'],
-                    $result_row['thursdays_end'],
-                    $result_row['fridays_start'],
-                    $result_row['fridays_end'],
-                    $result_row['saturdays_start'],
-                    $result_row['saturdays_end'],
-                    $result_row['force_password_change'],
-                    $result_row['gender']
-                );@@@*/
     return $thePerson;
 }
 

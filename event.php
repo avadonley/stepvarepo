@@ -318,6 +318,27 @@
         <?php if (isset($_GET['editSuccess'])): ?>
             <div class="happy-toast">Appointment details updated successfully!</div>
         <?php endif ?>
+
+        <!--@@@ Thomas: if user clicked check in/out-->
+        <?php
+            if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                if (isset($_POST['checking_in'])) {
+                    $personID = $_POST['personID'];
+                    $eventID = $_POST['eventID'];
+                    $timestamp = $_POST['timestamp'];
+                    check_in($personID, $eventID, $timestamp);
+                    echo "<div class='happy-toast'>You've checked in!</div>";
+                }
+                else if (isset($_POST['checking_out'])) {
+                    $personID = $_POST['personID'];
+                    $eventID = $_POST['eventID'];
+                    $timestamp = $_POST['timestamp'];
+                    check_out($personID, $eventID, $timestamp);
+                    echo "<div class='happy-toast'>You've checked out!</div>";
+                }
+            }
+        ?>
+        <!---->
         
         <?php    
             require_once('include/output.php');
@@ -386,6 +407,29 @@
 
         <!-- Action Buttons -->
         <div class="action-buttons">
+
+            <!--@@@ Check-In and Check-Out Buttons by Thomas -->
+            <?php if (can_check_in($user->get_id(), $event_info))  : ?>
+                <form method="POST" action="">
+                    <input type="hidden" name="checking_in" value="1">
+                    <input type="hidden" name="personID" value="<?php echo $user->get_id(); ?>">
+                    <input type="hidden" name="eventID" value="<?php echo $event_info['id']; ?>">
+                    <input type="hidden" name="timestamp" value="<?php echo date("Y-m-d H:i:s", time()); ?>">
+                    <button type="submit" class="button success">Check-In</button>
+                </form>
+            <?php endif ?>
+
+            <?php if (can_check_out($user->get_id(), $event_info))  : ?>
+                <form method="POST" action="">
+                    <input type="hidden" name="checking_out" value="1">
+                    <input type="hidden" name="personID" value="<?php echo $user->get_id(); ?>">
+                    <input type="hidden" name="eventID" value="<?php echo $event_info['id']; ?>">
+                    <input type="hidden" name="timestamp" value="<?php echo date("Y-m-d H:i:s", time()); ?>">
+                    <button type="submit" class="button danger">Check-Out</button>
+                </form>
+            <?php endif ?>
+            <!---->
+
             <?php if ($access_level >= 2) : ?>
                 <a href="editEvent.php?id=<?= $id ?>" class="button success">Edit Appointment Details</a>
                 <?php if ($event_info["completed"] == "no") : ?>
