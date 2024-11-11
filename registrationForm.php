@@ -166,26 +166,26 @@
             <p>Here are some optional pieces of information you can give us.</p>
 
             <label>How did you hear about StepVA?</label>
-            <input type="text" id="how_did_you_hear_about_stepva" name="how_did_you_hear_about_stepva" required placeholder="">
+            <input type="text" id="how_you_heard_of_stepva" name="how_you_heard_of_stepva" placeholder="">
 
             <label>What is your preferred contact method?</label>
             <div class="radio-group">
-                <input type="radio" id="text" name="preferred_contact_method" value="text"><label for="preferred_contact_method">Text</label>
-                <input type="radio" id="email" name="preferred_contact_method" value="email"><label for="preferred_contact_method">Email</label>
-                <input type="text" id="preferred_contact_method" name="preferred_contact_method" required placeholder="Other">
+                <input type="radio" id="text" name="preferred_feedback_method" value="text"><label for="preferred_feedback_method">Text</label>
+                <input type="radio" id="email" name="preferred_feedback_method" value="email"><label for="preferred_feedback_method">Email</label>
+                <input type="text" id="preferred_contact_method" name="preferred_contact_method" placeholder="Other">
             </div>
 
             <label>What are your hobbies?</label>
-            <input type="text" id="hobbies" name="hobbies" required placeholder="">
+            <input type="text" id="hobbies" name="hobbies" placeholder="">
 
             <label>What specific skills/interests do you have that you believe could be helpful for volunteering at StepVA?</label>
-            <input type="text" id="skills" name="skills" required placeholder="">
+            <input type="text" id="skills" name="skills" placeholder=""> <!-- have to add skills to persondb -->
 
             <label>Do you have any other experience with volunteering?</label>
-            <input type="text" id="experience" name="experience" required placeholder="">
+            <input type="text" id="professional_experience" name="professional_experience" placeholder="">
 
             <label>Are there any accomodations you may need? Anything we should keep in mind?</label>
-            <input type="text" id="accommodations" name="accommodations" required placeholder="">
+            <input type="text" id="disability_accomodation_needs" name="disability_accomodation_needs" placeholder="">
 
         </fieldset>
 
