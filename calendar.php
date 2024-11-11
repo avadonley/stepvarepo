@@ -140,12 +140,18 @@
                                 if (isset($events[$e])) {
                                     $dayEvents = $events[$e];
                                     foreach ($dayEvents as $info) {
+                                        if($info['restricted_signup'] == 1) { //Restricted Event
+                                            $backgroundCol = '#c73d06'; // Sets background color to a red to show the restriction
+                                        } else {
+                                            $backgroundCol = '#1a7024'; //Otherwise keeps background as green
+                                        }
                                         if($info["completed"] == "no"){ //Uncompleted events
                                             $eventsStr .= '<a class="calendar-event" style="background-color:#1a7024" href="event.php?id=' . $info['id'] . '">' . $info['name'] .  '</a>';
                                         } else { //Completed Events
                                             $eventsStr .= '<a class="calendar-event" href="event.php?id=' . $info['id'] . '">' . $info['name'] .  '</a>';
                                         }
-                                        //if($info['restricted'] == 1) {
+                                        // More visual changes for resrticted and unrestricted events to be made below
+                                        //if($info['restricted'] == 1) { 
                                             //$eventsStr = $eventsStr . 'R'
                                         //}
                                     }
