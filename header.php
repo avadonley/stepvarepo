@@ -101,6 +101,8 @@
         $permission_array['eventlist.php'] = 2;
         $permission_array['eventsignup.php'] = 1;
         $permission_array['edittimes.php'] = 1;
+        $permission_array['eventfailure.php'] = 1;
+        $permission_array['signupsuccess.php'] = 1;
         // LOWERCASE
 
 

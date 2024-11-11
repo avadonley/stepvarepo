@@ -63,9 +63,12 @@
             $id = sign_up_for_event($name, $account_name, $role, $notes);
             //if(!$id) {}
             if(!$id){
-                echo "Oopsy!";
-                die();
+                //echo "Oopsy!";
+                header('Location: eventFailure.php');
+                exit();
             }
+            header('Location: signupSuccess.php');
+
             //require_once('include/output.php');
             require_once('eventApproved.php');
 
