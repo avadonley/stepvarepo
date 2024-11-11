@@ -157,7 +157,7 @@
             </div>
 
             <label for="photo_release_notes"><em>* </em>Photo Release Restriction Notes (or N/A)</label>
-            <input type="text" id="photo_release_notes" name="photo_release_notes" required placeholder="Do you have any specific notes photo release">
+            <input type="text" id="photo_release_notes" name="photo_release_notes" required placeholder="Do you have any specific notes about your photo release status?">
         </fieldset>
 
         <fieldset class="section-box">
@@ -170,13 +170,22 @@
 
             <label>What is your preferred contact method?</label>
             <div class="radio-group">
-                <input type="radio" id="text" name="preferred_contact" value="text"><label for="preferred_contact">Text</label>
-                <input type="radio" id="email" name="preferred_contact" value="email"><label for="preferred_contact">Email</label>
-                <input type="text" id="preferred_contact" name="preferred_contact" required placeholder="Other">
+                <input type="radio" id="text" name="preferred_contact_method" value="text"><label for="preferred_contact_method">Text</label>
+                <input type="radio" id="email" name="preferred_contact_method" value="email"><label for="preferred_contact_method">Email</label>
+                <input type="text" id="preferred_contact_method" name="preferred_contact_method" required placeholder="Other">
             </div>
 
-            <label>What skills do you have that you believe could be helpful for volunteering?</label>
+            <label>What are your hobbies?</label>
+            <input type="text" id="hobbies" name="hobbies" required placeholder="">
+
+            <label>What specific skills/interests do you have that you believe could be helpful for volunteering at StepVA?</label>
             <input type="text" id="skills" name="skills" required placeholder="">
+
+            <label>Do you have any other experience with volunteering?</label>
+            <input type="text" id="experience" name="experience" required placeholder="">
+
+            <label>Are there any accomodations you may need? Anything we should keep in mind?</label>
+            <input type="text" id="accommodations" name="accommodations" required placeholder="">
 
         </fieldset>
 
