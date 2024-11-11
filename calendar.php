@@ -140,10 +140,10 @@
                                 if (isset($events[$e])) {
                                     $dayEvents = $events[$e];
                                     foreach ($dayEvents as $info) {
-                                        if($info["completed"] == "no"){
+                                        if($info["completed"] == "no"){ //Uncompleted events
                                             $eventsStr .= '<a class="calendar-event" style="background-color:#1a7024" href="event.php?id=' . $info['id'] . '">' . $info['name'] .  '</a>';
-                                        } else {
-                                            $eventsStr .= '<a class="calendar-event" href="event.php?id=' . $info['id'] . '">' . $info['abbrevName'] .  '</a>';
+                                        } else { //Completed Events
+                                            $eventsStr .= '<a class="calendar-event" href="event.php?id=' . $info['id'] . '">' . $info['name'] .  '</a>';
                                         }
                                     }
                                 }
