@@ -1,5 +1,6 @@
 <?php
     // Author: Lauren Knight
+    //comment this for ya.
     // Description: Profile edit page
     session_cache_expire(30);
     session_start();
