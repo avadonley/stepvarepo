@@ -38,9 +38,14 @@ function add_event($event) {
         mysqli_query($con,'INSERT INTO dbEvents VALUES("' .
                 $event->getID() . '","' .
                 $event->getDate() . '","' .
+                $event->getStartTime() . "," .
                 #$event->get_venue() . '","' .
                 $event->getName() . '","' . 
                 $event->getDescription() . '","' .
+                $event->getCapacity() . "," .
+                $event->getCompleted() . "," .
+                $event->getEventType() . "," .
+                $event->getRestrictedSignup() . "," .
                 #$event->getID() .            
                 '");');							
         mysqli_close($con);
