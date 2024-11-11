@@ -3,6 +3,8 @@
     //session_cache_expire(30);
     //session_start();
 
+    //This comment is for the purpose of the pull request.
+
     // Ensure user is logged in
     if (!isset($_SESSION['access_level']) || $_SESSION['access_level'] < 1) {
         header('Location: login.php');
