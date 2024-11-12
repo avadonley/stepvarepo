@@ -28,7 +28,7 @@
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $args = sanitize($_POST, null);
         $required = array(
-            "id", "name", "abbrev-name", "date", "start-time", "description", "location");
+            "id", "name", "date", "start-time", "description");
 
         if (!wereRequiredFieldsSubmitted($args, $required)) {
             echo 'bad form data';
@@ -49,8 +49,7 @@
            // if ($capacity < $assignedVolunteerCount) {
             //    $errors .= "<p>There are currently $assignedVolunteerCount volunteers assigned to this event. The new capacity must not exceed this number. You must remove $difference volunteer(s) from the event to reduce the capacity to $capacity.</p>";
            // }
-            $abbrevLength = strlen($args['abbrev-name']);
-            if (!$startTime || !$date || $abbrevLength > 11){
+            if (!$startTime || !$date > 11){
                 $errors .= '<p>Your request was missing arguments.</p>';
             }
             if (!$errors) {
@@ -80,13 +79,14 @@
     // Connect to database
     include_once('database/dbinfo.php'); 
     $con=connect();  
-    $sql = "SELECT * FROM `dbLocations`";
+    /*$sql = "SELECT * FROM `dbLocations`";
     $all_locations = mysqli_query($con,$sql);
     $sql = "SELECT * FROM `dbServices`";
     $all_services = mysqli_query($con,$sql);
 
     // get current selected services for event
     $current_services = get_services($id);
+    */
 ?>
 <!DOCTYPE html>
 <html>
@@ -106,17 +106,19 @@
                 <label for="name">Appointment Name </label>
                 <input type="hidden" name="id" value="<?php echo $id ?>"/> 
                 <input type="text" id="name" name="name" value="<?php echo $event['name'] ?>" required placeholder="Enter name"> 
+                <!--
                 <label for="name">Abbreviated Name</label>
-                <input type="text" id="abbrev-name" name="abbrev-name" value="<?php echo $event['abbrevName'] ?>" maxlength="11"  required placeholder="Enter name that will appear on calendar">
+                <input type="text" id="abbrev-name" name="abbrev-name" value="<//?php echo $event['abbrevName'] ?>" maxlength="11"  required placeholder="Enter name that will appear on calendar">
+                --->
                 <label for="name">Date </label>
                 <input type="date" id="date" name="date" value="<?php echo $event['date'] ?>" min="<?php echo date('Y-m-d'); ?>" required>
                 <label for="name">Start Time </label>
                 <input type="text" id="start-time" name="start-time" value="<?php echo time24hto12h($event['startTime']) ?>" pattern="([1-9]|10|11|12):[0-5][0-9] ?([aApP][mM])" required placeholder="Enter start time. Ex. 12:00 PM">
                 <label for="name">Description </label>
                 <input type="text" id="description" name="description" value="<?php echo $event['description'] ?>" required placeholder="Enter description">
-                <fieldset>
+                <!--<fieldset>
                     <label for="name">* Service </label>
-                    <?php 
+                    </?php 
                         // fetch data from the $all_services variable
                         // and individually display as an option
                         echo '<ul>';
@@ -135,10 +137,10 @@
                             }
                         endwhile;
                     ?>
-                </fieldset> 
-                <label for="name">Location </label>
+                </fieldset> --->
+                <!--<label for="name">Location </label>
                 <select for="name" id="location" name="location" required>
-                    <?php 
+                    </?php 
                         // fetch data from the $all_locations variable
                         // and individually display as an option
                         while ($location = mysqli_fetch_array(
@@ -155,7 +157,7 @@
                         endwhile; 
                         // terminate while loop
                     ?>
-                </select><p></p>
+                </select>---><p></p>
                 <input type="submit" value="Update Appointment">
                 <a class="button cancel" href="event.php?id=<?php echo htmlspecialchars($_GET['id']) ?>" style="margin-top: .5rem">Cancel</a>
             </form>
