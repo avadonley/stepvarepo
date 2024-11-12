@@ -19,8 +19,29 @@ if ($accessLevel < 1) {
     die();
 }
 
+# security: if admin access, use ?username from link
+if ($accessLevel >= 2) {
 if (isset($_GET['username'])) {
     $username = $_GET['username'];
+}
+# if admin does not provide username, redirect to editHours.php
+else {
+    // Redirect back to the form if username is not provided
+    header('Location: editHours.php'); // Change this to your form page name
+    die();
+}
+}
+# security: force user to stay as their username regardless of whats in the link
+else if ($accessLevel == 1){ 
+    // security: force user to not have ?user in link if its there
+    if (isset($_GET['username'])) {
+        header('Location: eventList.php');
+        die();
+    }
+    $username = $_SESSION['_id'];
+}
+
+
     
     // Include necessary files and sanitize input
     require_once('include/input-validation.php');
@@ -54,7 +75,7 @@ if (isset($_GET['username'])) {
                         $eventName = get_event_from_id($event['eventID']);
                         echo "<strong>Event Name:</strong> " . htmlspecialchars($eventName) . "<br>";
                         echo "<strong>Start Time:</strong> " . htmlspecialchars($event['start_time']) . "<br>";
-                        echo "<strong>End Time:</strong> " . htmlspecialchars($event['end_time']) . "<br>";
+                        echo "<strong>End Time:</strong> " . $event['end_time'] . "<br>";
                         echo "</div>";
                         
                         echo '<a class="button edit-button" href="editTimes.php?id=' . $event['eventID'] . '&user=' . $username . '&old_start_time=' . $event['start_time'] . '">Edit Event</a>';
@@ -66,14 +87,10 @@ if (isset($_GET['username'])) {
                     echo "<p class='no-events-message'>No events attended by $username.</p>";
                 }
                 ?>
+                <a class="button cancel" href="index.php" style="margin-top: -.5rem">Return to Dashboard</a>
             </main>
         </div>
     </body>
     </html>
     <?php
-} else {
-    // Redirect back to the form if username is not provided
-    header('Location: form_page.php'); // Change this to your form page name
-    die();
-}
 ?>
