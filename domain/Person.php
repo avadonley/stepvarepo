@@ -47,7 +47,11 @@ class Person {
 	private $archived;
 
 	// OPTIONAL FIELDS
-	// (to be added...)
+	private $how_you_heard_of_stepva;
+    private $preferred_feedback_method;
+    private $hobbies;
+    private $professional_experience;
+    private $disability_accomodation_needs;
 
 	/*
 	 * This is a temporary mini constructor for testing purposes. It will be expanded later.
@@ -56,7 +60,8 @@ class Person {
 						$id, $password, $start_date, $first_name, $last_name, $birthday, $street_address, $city,
 						$state, $zip_code, $phone1, $phone1type, $email, $emergency_contact_first_name,
 						$emergency_contact_last_name, $emergency_contact_phone, $emergency_contact_phone_type,
-						$emergency_contact_relation, $tshirt_size, $school_affiliation, $photo_release, $photo_release_notes, $type, $status, $archived
+						$emergency_contact_relation, $tshirt_size, $school_affiliation, $photo_release, $photo_release_notes, $type, $status, $archived,
+						$how_you_heard_of_stepva, $preferred_feedback_method, $hobbies, $professional_experience, $disability_accomodation_needs
 						) {
 		$this->id = $id; // (username)
 		$this->password = $password;
@@ -83,6 +88,11 @@ class Person {
 		$this->type = $type; // volunteer or participant...
 		$this->status = $status;
 		$this->archived = $archived;
+		$this->how_you_heard_of_stepva = $how_you_heard_of_stepva;
+		$this->preferred_feedback_method = $preferred_feedback_method;
+		$this->hobbies = $hobbies;
+		$this->professional_experience = $professional_experience;
+		$this->disability_accomodation_needs = $disability_accomodation_needs;
 
 		// access_level = 1 for users, and = 3 for admin
 		if ($id == 'vmsroot') {
@@ -196,6 +206,26 @@ class Person {
 
 	function get_access_level() {
 		return $this->access_level;
+	}
+
+	function get_how_you_heard_of_stepva() {
+		return $this->how_you_heard_of_stepva;
+	}
+
+	function get_preferred_feedback_method() {
+		return $this->preferred_feedback_method;
+	}
+
+	function get_hobbies() {
+		return $this->hobbies;
+	}
+
+	function get_professional_experience() {
+		return $this->professional_experience;
+	}
+
+	function get_disability_accomodation_needs() {
+		return $this->disability_accomodation_needs;
 	}
 
 }

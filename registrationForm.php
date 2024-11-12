@@ -175,11 +175,8 @@
                 <input type="text" id="preferred_contact_method" name="preferred_contact_method" placeholder="Other">
             </div>
 
-            <label>What are your hobbies?</label>
+            <label>What are your hobbies? Are there any specific skills/interests you have that you believe could be useful for volunteering at StepVA?</label>
             <input type="text" id="hobbies" name="hobbies" placeholder="">
-
-            <label>What specific skills/interests do you have that you believe could be helpful for volunteering at StepVA?</label>
-            <input type="text" id="skills" name="skills" placeholder=""> <!-- have to add skills to persondb -->
 
             <label>Do you have any other experience with volunteering?</label>
             <input type="text" id="professional_experience" name="professional_experience" placeholder="">
