@@ -119,10 +119,6 @@
                         <img src="images/volunteer-history.svg">
                         <span>View My Hours</span>
                     </div>
-                    <div class="dashboard-item" data-link="viewAllEvents.php">
-                    <img src="images/new-event.svg">
-                    <span>Sign-Up for Event</span>
-                </div>
                 <div class="dashboard-item" data-link="editHours.php">
                         <img src="images/add-person.svg">
                         <span>View & Change My Event Hours</span>
