@@ -64,14 +64,14 @@ function add_person($person) {
             'n/a' . '","' . /* ("profile_pic", we don't use this) */
             'gender' . '","' .
             $person->get_tshirt_size() . '","' .
-            'how_you_heard_of_stepva' . '","' .
+            $person->get_how_you_heard_of_stepva() . '","' .
             'sensory_sensitivities' . '","' .
-            'disability_accomodation_needs' . '","' .
+            $person->get_disability_accomodation_needs() . '","' .
             $person->get_school_affiliation() . '","' .
             'race' . '","' .
-            'preferred_feedback_method' . '","' .
-            'hobbies' . '","' .
-            'professional_experience' . '","' .
+            $person->get_preferred_feedback_method() . '","' .
+            $person->get_hobbies() . '","' .
+            $person->get_professional_experience() . '","' .
             $person->get_archived() . '","' .
             $person->get_emergency_contact_last_name() . '","' .
             $person->get_photo_release() . '","' .
@@ -376,7 +376,11 @@ function make_a_person($result_row) {
         $result_row['type'],
         $result_row['status'],
         $result_row['archived'],
-        
+        $result_row['how_you_heard_of_stepva'],
+        $result_row['preferred_feedback_method'],
+        $result_row['hobbies'],
+        $result_row['professional_experience'],
+        $result_row['disability_accomodation_needs']
     );
 
     return $thePerson;
@@ -591,7 +595,9 @@ function get_logged_hours($from, $to, $name_from, $name_to, $venue) {
         $zip_code, $email, $phone1, $phone1type, $emergency_contact_first_name,
         $emergency_contact_last_name, $emergency_contact_phone,
         $emergency_contact_phone_type, $emergency_contact_relation, $type,
-        $school_affiliation, $tshirt_size
+        $school_affiliation, $tshirt_size, $how_you_heard_of_stepva,
+        $preferred_feedback_method, $hobbies, $professional_experience,
+        $disability_accomodation_needs
     ) {
         $query = "update dbPersons set 
             first_name='$first_name', last_name='$last_name', birthday='$birthday',
@@ -602,7 +608,10 @@ function get_logged_hours($from, $to, $name_from, $name_to, $venue) {
             emergency_contact_phone='$emergency_contact_phone', 
             emergency_contact_phone_type='$emergency_contact_phone_type', 
             emergency_contact_relation='$emergency_contact_relation', type='$type',
-            school_affiliation='$school_affiliation', tshirt_size='$tshirt_size' 
+            school_affiliation='$school_affiliation', tshirt_size='$tshirt_size',
+            how_you_heard_of_stepva='$how_you_heard_of_stepva', preferred_feedback_method='$preferred_feedback_method',
+            hobbies='$hobbies', professional_experience='$professional_experience',
+            disability_accomodation_needs='$disability_accomodation_needs'
             where id='$id'";
         $connection = connect();
         $result = mysqli_query($connection, $query);

@@ -157,7 +157,32 @@
             </div>
 
             <label for="photo_release_notes"><em>* </em>Photo Release Restriction Notes (or N/A)</label>
-            <input type="text" id="photo_release_notes" name="photo_release_notes" required placeholder="Do you have any specific notes photo release">
+            <input type="text" id="photo_release_notes" name="photo_release_notes" required placeholder="Do you have any specific notes about your photo release status?">
+        </fieldset>
+
+        <fieldset class="section-box">
+            <legend>Optional Information</legend>
+
+            <p>Here are some optional pieces of information you can give us.</p>
+
+            <label>How did you hear about StepVA?</label>
+            <input type="text" id="how_you_heard_of_stepva" name="how_you_heard_of_stepva" placeholder="">
+
+            <label>What is your preferred contact method?</label>
+            <div class="radio-group">
+                <input type="radio" id="text" name="preferred_feedback_method" value="text"><label for="preferred_feedback_method">Text</label>
+                <input type="radio" id="email" name="preferred_feedback_method" value="email"><label for="preferred_feedback_method">Email</label>
+            </div>
+
+            <label>What are your hobbies? Are there any specific skills/interests you have that you believe could be useful for volunteering at StepVA?</label>
+            <input type="text" id="hobbies" name="hobbies" placeholder="">
+
+            <label>Do you have any other experience with volunteering?</label>
+            <input type="text" id="professional_experience" name="professional_experience" placeholder="">
+
+            <label>Are there any accomodations you may need? Anything we should keep in mind?</label>
+            <input type="text" id="disability_accomodation_needs" name="disability_accomodation_needs" placeholder="">
+
         </fieldset>
 
         <fieldset class="section-box">
