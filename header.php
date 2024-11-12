@@ -100,9 +100,10 @@
         $permission_array['edithours.php'] = 2;
         $permission_array['eventlist.php'] = 1;
         $permission_array['eventsignup.php'] = 1;
-        $permission_array['edittimes.php'] = 1;
         $permission_array['eventfailure.php'] = 1;
         $permission_array['signupsuccess.php'] = 1;
+        $permission_array['edittimes.php'] = 1;
+        $permission_array['adminviewingevents.php'] = 2;
         // LOWERCASE
 
 

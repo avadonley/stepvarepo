@@ -27,7 +27,7 @@
         require_once('database/dbEvents.php');
         $args = sanitize($_POST, null);
         $required = array(
-            "name", "date", "start-time", "description",
+            "name", "date", "start-time", "role", "description",
         );
         if (!wereRequiredFieldsSubmitted($args, $required)) {
             echo 'bad form data';
@@ -38,6 +38,9 @@
                 echo 'bad time range';
                 die();
             }
+
+            $restricted_signup = $args['role'];
+            
             $startTime = $args['start-time'] = $validated[0];
             $date = $args['date'] = validateDate($args["date"]);
             //$capacity = intval($args["capacity"]);
@@ -56,11 +59,11 @@
                 header('Location: eventSuccess.php');
                 exit();
             }
-            require_once('include/output.php');
+            //require_once('include/output.php');
             
-            $name = htmlspecialchars_decode($args['name']);
-            $startTime = time24hto12h($startTime);
-            $date = date('l, F j, Y', strtotime($date));
+            //$name = htmlspecialchars_decode($args['name']);
+            //$startTime = time24hto12h($startTime);
+            //$date = date('l, F j, Y', strtotime($date));
 
             /*require_once('database/dbMessages.php');
             system_message_all_users_except($userID, "A new event was created!", "Exciting news!\r\n\r\nThe [$name](event: $id) event at $startTime on $date was added!\r\nSign up today!");
@@ -118,8 +121,8 @@
                 <fieldset>
                 <label for="role"> * Restrictions </label>
             <div class="radio-group">
-                <input type="radio" id="u" name="role" value="u" required><label for="restrictions">Unrestricted</label>
-                <input type="radio" id="r" name="role" value="r" required><label for="restrictions">Restricted</label>
+                <input type="radio" id="u" name="role" value="u" required><label for="role">Unrestricted</label>
+                <input type="radio" id="r" name="role" value="r" required><label for="role">Restricted</label>
             </div>
                 </fieldset>
                 <label for="name">* Description </label>

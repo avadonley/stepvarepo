@@ -66,10 +66,8 @@
                                     $restricted_signup = $event->getRestrictedSignup();
                                     if ($restricted_signup == 0) {
                                         $restricted_signup = "N";
-                                    } else {
-                                        $restricted_signup = "Y";
                                     }
-                                    //if($accessLevel < 3) {
+                                    if($accessLevel < 3) {
                                         echo "
                                         <tr data-event-id='$eventID'>
                                             <td>$restricted_signup</td>
@@ -77,8 +75,8 @@
                                             <td>$date</td>
                                             <td><a class='button sign-up' href='eventSignUp.php'>Sign Up</a></td>
                                         </tr>";
-                                    //} else {
-                                        /*echo "
+                                    } else {
+                                        echo "
                                         <tr data-event-id='$eventID'>
                                             <td>$restricted_signup</td>
                                             <td><a href='Event.php?id=$eventID'>$title</a></td> <!-- Link updated here -->
@@ -86,7 +84,7 @@
                                             <td></td>
                                         </tr>";
                                     }
-                                */}
+                                }
                             ?>
                         </tbody>
                     </table>

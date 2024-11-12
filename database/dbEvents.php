@@ -284,8 +284,8 @@ function create_event($event) {
     $capacity = $event["capacity"];
     $completed = $event["completed"];
     $event_type = $event["event_type"];
-    $restricted_signup = $event["restricted_signup"];
-    if ($restricted_signup == "on") {
+    $restricted_signup = $event["role"];
+    if ($restricted_signup == "r") {
         $restricted = 1;
     } else {
         $restricted = 0;
