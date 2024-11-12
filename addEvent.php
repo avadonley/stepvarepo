@@ -115,11 +115,13 @@
                 <input type="date" id="date" name="date" <?php if ($date) echo 'value="' . $date . '"'; ?> min="<?php echo date('Y-m-d'); ?>" required>
                 <label for="name">* Start Time </label>
                 <input type="text" id="start-time" name="start-time" pattern="([1-9]|10|11|12):[0-5][0-9] ?([aApP][mM])" required placeholder="Enter start time. Ex. 12:00 PM">
-                <label for=""name">Restrictions</label>
-                <ul>
-                    <li><input type="radio" id="unrestricted" name="unrestricted"> Unrestricted Event</li>
-                    <li><input type="radio" id="restricted" name="restricted"> Restricted Event</li>
-                </ul>
+                <fieldset>
+                <label for="role"> * Restrictions </label>
+            <div class="radio-group">
+                <input type="radio" id="u" name="role" value="u" required><label for="restrictions">Unrestricted</label>
+                <input type="radio" id="r" name="role" value="r" required><label for="restrictions">Restricted</label>
+            </div>
+                </fieldset>
                 <label for="name">* Description </label>
                 <input type="text" id="description" name="description" required placeholder="Enter description">
                 <!-- Service function

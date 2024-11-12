@@ -38,9 +38,14 @@ function add_event($event) {
         mysqli_query($con,'INSERT INTO dbEvents VALUES("' .
                 $event->getID() . '","' .
                 $event->getDate() . '","' .
+                $event->getStartTime() . "," .
                 #$event->get_venue() . '","' .
                 $event->getName() . '","' . 
                 $event->getDescription() . '","' .
+                $event->getCapacity() . "," .
+                $event->getCompleted() . "," .
+                $event->getEventType() . "," .
+                $event->getRestrictedSignup() . "," .
                 #$event->getID() .            
                 '");');							
         mysqli_close($con);
@@ -56,13 +61,24 @@ function sign_up_for_event($eventID, $account_name, $role, $notes) {
         $result1 = mysqli_query($connection, $query1);
         $row = mysqli_fetch_assoc($result1);
         $value = $row['id'];
-        $query = "insert into dbeventpersons (eventID, userID, position, notes) values ('$value', '$account_name', '$role', '$notes')";
-        $result = mysqli_query($connection, $query);
-        if (!$result) {
-            return null;
-        }
-        //$id = mysqli_insert_id($connection);
-        mysqli_commit($connection);
+       
+        $query2 = "SELECT userID FROM dbeventpersons WHERE eventID LIKE '$value' AND userID LIKE '$account_name'";
+        $result2 = mysqli_query($connection, $query2);
+
+        $row2 = null;
+        $row2 = mysqli_fetch_assoc($result2);
+
+        if(!is_null($row2)) {
+                $value2 = $row2['userID'];
+                if($value2 == $account_name){
+                    return null;
+            } 
+        } else {       
+                $query = "insert into dbeventpersons (eventID, userID, position, notes) values ('$value', '$account_name', '$role', '$notes')";
+                $result = mysqli_query($connection, $query);
+                mysqli_commit($connection);
+                return $value;
+            }
         return $value;
     }
 
