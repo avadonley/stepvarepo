@@ -98,7 +98,7 @@
                 <?php if ($_SESSION['access_level'] >= 2): ?>
                     <div class="dashboard-item" data-link="addEvent.php">
                         <img src="images/new-event.svg">
-                        <span>Add Event</span>
+                        <span>Create Event</span>
                     </div>
                     <div class="dashboard-item" data-link="personSearch.php">
                         <img src="images/person-search.svg">
