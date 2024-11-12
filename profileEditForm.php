@@ -227,35 +227,36 @@
 
             <label for="photo_release"><em>* </em>Photo Release Restrictions: Can your photo be taken and used on our website and social media?</label>
             <div class="radio-group">
-                <input type="radio" id="Restricted" name="photo_release" value="Restricted" required><label for="photo_release">Restricted</label>
-                <input type="radio" id="Not Restricted" name="photo_release" value="Not Restricted" required><label for="photo_release">Not Restricted</label>
+                <?php $photo_release = $person->get_photo_release()?>
+                <input type="radio" id="Restricted" name="photo_release" value="Restricted" <?php if ($photo_release == 'Restricted') echo 'checked'; ?> required><label for="photo_release">Restricted</label>
+                <input type="radio" id="Not Restricted" name="photo_release" value="Not Restricted" <?php if ($photo_release == 'Not Restricted') echo 'checked'; ?> required><label for="photo_release">Not Restricted</label>
             </div>
 
             <label for="photo_release_notes"><em>* </em>Photo Release Restriction Notes (or N/A)</label>
-            <input type="text" id="photo_release_notes" name="photo_release_notes" required placeholder="Do you have any specific notes about your photo release status?">
+            <input type="text" id="photo_release_notes" name="photo_release_notes" value="<?php echo hsc($person->get_photo_release_notes()); ?>" required placeholder="Do you have any specific notes about your photo release status?">
         </fieldset>
 
         <fieldset class="section-box">
             <legend>Optional Information</legend>
 
             <label>How did you hear about StepVA?</label>
-            <input type="text" id="how_you_heard_of_stepva" name="how_you_heard_of_stepva" placeholder="">
+            <input type="text" id="how_you_heard_of_stepva" name="how_you_heard_of_stepva" value="<?php echo hsc($person->get_how_you_heard_of_stepva()); ?>" placeholder="">
 
             <label>What is your preferred contact method?</label>
             <div class="radio-group">
-                <input type="radio" id="text" name="preferred_feedback_method" value="text"><label for="preferred_feedback_method">Text</label>
-                <input type="radio" id="email" name="preferred_feedback_method" value="email"><label for="preferred_feedback_method">Email</label>
-                <input type="text" id="preferred_contact_method" name="preferred_contact_method" placeholder="Other">
+            <?php $preferred_contact_method = $person->get_preferred_feedback_method()?>
+                <input type="radio" id="text" name="preferred_feedback_method" value="text" <?php if ($preferred_contact_method == 'text') echo 'checked'; ?> ><label for="preferred_feedback_method">Text</label>
+                <input type="radio" id="email" name="preferred_feedback_method" value="email"> <?php if ($preferred_contact_method == 'email') echo 'checked'; ?> <label for="preferred_feedback_method">Email</label>
             </div>
 
             <label>What are your hobbies? Are there any specific skills/interests you have that you believe could be useful for volunteering at StepVA?</label>
-            <input type="text" id="hobbies" name="hobbies" placeholder="">
+            <input type="text" id="hobbies" name="hobbies" value="<?php echo hsc($person->get_hobbies()); ?>" placeholder="">
 
             <label>Do you have any other experience with volunteering?</label>
-            <input type="text" id="professional_experience" name="professional_experience" placeholder="">
+            <input type="text" id="professional_experience" name="professional_experience" value="<?php echo hsc($person->get_professional_experience()); ?>" placeholder="">
 
             <label>Are there any accomodations you may need? Anything we should keep in mind?</label>
-            <input type="text" id="disability_accomodation_needs" name="disability_accomodation_needs" placeholder="">
+            <input type="text" id="disability_accomodation_needs" name="disability_accomodation_needs" value="<?php echo hsc($person->get_disability_accomodation_needs()); ?>" placeholder="">
 
         </fieldset>
 
