@@ -1,6 +1,8 @@
 @media only screen and (min-width: 1024px) {
     main.event-info {
-        margin: 0rem 8rem 4rem 8rem;
+        margin: 0 auto;
+        max-width: 600px; /* Adjust as needed */
+        text-align: center;
     }
 
     div.pair > input[type=submit] {
@@ -325,9 +327,16 @@ td.label {
     font-family: Arial, sans-serif;
 }
 
-h1, h2 {
+h1 {
     text-align: center;
     font-weight: bold;
+}
+
+h2 {
+    text-align: center;
+    font-size: 2em; 
+    font-weight: bold; 
+    margin-bottom: 20px;
 }
 
 #table-wrapper {
@@ -463,14 +472,6 @@ html, body {
 
 
 /* Main content wrapper */
-#main-content {
-    display: flex;
-    justify-content: center; /* Horizontally center the content */
-    align-items: center; /* Vertically center content if necessary */
-    width: 100%;
-    height: calc(100% - 80px); /* Account for header height */
-    margin-top: 80px; /* Offset content to prevent overlap with fixed header */
-}
 
 /* Wrapper to hold the table */
 #table-wrapper {
@@ -491,14 +492,14 @@ table {
 td.label {
     padding-right: 10px; /* Reduced space on the right */
     font-weight: bold;
-    text-align: right;
+    text-align: left;
     width: 30%; /* Fix width for labels */
 }
 
 /* Style for information cells */
 td {
     padding-left: 10px; /* Reduced left padding */
-    text-align: right; /* Aligns information to the right */
+    text-align: left; /* Aligns information to the right */
     vertical-align: top;
 }
 
@@ -514,8 +515,10 @@ td {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    min-height: 100vh;
-  }
+    width: 100%;
+    margin-top: 80px; /* Offset to avoid overlap with fixed header */
+}
+
   
   .content-container {
     display: flex;
@@ -530,5 +533,63 @@ td {
     padding: 20px;
     text-align: center; /* Ensures text within the event-info is centered */
   }
-  
+
+  /* General container styling */
+.container {
+    width: 100%;
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Section styling for personal info, contact, etc. */
+.section-box {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 15px;
+    margin-bottom: 20px;
+    background-color: #fafafa;
+}
+
+/* Styling for legend text in section-box */
+.section-box legend {
+    font-weight: bold;
+    color: #333;
+    padding: 0 10px;
+}
+
+/* Field pair styling for consistent spacing */
+.field-pair {
+    margin-bottom: 15px;
+}
+
+.field-pair label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 2px;
+}
+
+.field-pair p {
+    margin: 0;
+}
+
+/* Button styling */
+.button {
+    display: inline-block;
+    padding: 10px 15px;
+    margin: 10px 5px 0 0;
+    color: #fff;
+    background-color: #007bff;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 4px;
+}
+
+.button.cancel {
+    background-color: #dc3545;
+}
+
 
