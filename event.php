@@ -178,145 +178,18 @@
     <?php if ($access_level >= 2) : ?>
         <script src="js/event.js"></script>
     <?php endif ?>
-    <style>
-        /* Improved Styling */
-        .event-info {
-            margin: 0 auto;
-            max-width: 600px;
-            font-family: Arial, sans-serif;
-        }
-
-        h1, h2 {
-            text-align: center;
-            font-weight: bold;
-        }
-
-        #table-wrapper {
-            margin-top: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 16px;
-        }
-
-        table tr:nth-child(odd) {
-            background-color: #f9f9f9;
-        }
-
-        table td {
-            padding: 12px 20px;
-        }
-
-        /* Styling for labels to make them bold and aligned */
-        .label {
-            font-weight: bold;
-            text-align: left;
-            color: #333;
-        }
-
-        table td .label {
-            font-weight: bold; /* Ensures that all labels are bold */
-        }
-
-        .centered {
-            text-align: center;
-            margin: 0 auto;
-        }
-
-        .action-buttons {
-            margin: 20px auto;
-            text-align: center;
-        }
-
-        .button {
-            padding: 10px 20px;
-            margin: 5px;
-            border: none;
-            border-radius: 5px;
-            font-size: 16px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-
-        .button.success {
-            background-color: #28a745;
-            color: #fff;
-        }
-
-        .button.success:hover {
-            background-color: #218838;
-        }
-
-        .button.danger {
-            background-color: #dc3545;
-            color: #fff;
-        }
-
-        .button.danger:hover {
-            background-color: #c82333;
-        }
-
-        .button.cancel {
-            background-color: #6c757d;
-            color: #fff;
-        }
-
-        .button.cancel:hover {
-            background-color: #5a6268;
-        }
-
-        /* Toast Notification Styling */
-        .happy-toast {
-            background-color: #28a745;
-            color: white;
-            text-align: center;
-            padding: 10px;
-            border-radius: 4px;
-            margin-bottom: 20px;
-        }
-
-        /* Modal Overlay */
-        .modal {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .modal-content {
-            background: white;
-            padding: 20px;
-            border-radius: 8px;
-            max-width: 400px;
-            text-align: center;
-        }
-
-        .modal p {
-            margin-bottom: 10px;
-        }
-    </style>
 </head>
 
 <body>
     <?php require_once('header.php') ?>
-    <h1>View Appointment</h1>
+    <h1>View Event</h1>
     <main class="event-info">
         <!-- Success notifications -->
         <?php if (isset($_GET['createSuccess'])): ?>
-            <div class="happy-toast">Appointment created successfully!</div>
+            <div class="happy-toast">Event created successfully!</div>
         <?php endif ?>
         <?php if (isset($_GET['editSuccess'])): ?>
-            <div class="happy-toast">Appointment details updated successfully!</div>
+            <div class="happy-toast">Event details updated successfully!</div>
         <?php endif ?>
 
         <!--@@@ Thomas: if user clicked check in/out-->
@@ -431,11 +304,11 @@
             <!---->
 
             <?php if ($access_level >= 2) : ?>
-                <a href="editEvent.php?id=<?= $id ?>" class="button success">Edit Appointment Details</a>
+                <a href="editEvent.php?id=<?= $id ?>" class="button success">Edit Event Details</a>
                 <?php if ($event_info["completed"] == "no") : ?>
                     <button onclick="showCompleteConfirmation()" class="button success">Complete Appointment</button>
                 <?php endif ?>
-                <button onclick="showDeleteConfirmation()" class="button danger">Delete Appointment</button>
+                <button onclick="showDeleteConfirmation()" class="button danger">Delete Event</button>
             <?php endif ?>
             <a href="calendar.php?month=<?= substr($event_info['date'], 0, 7) ?>" class="button cancel">Return to Calendar</a>
         </div>
