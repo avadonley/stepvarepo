@@ -224,7 +224,41 @@
                 <input type="radio" id="tshirt-size-l" name="tshirt_size" value="l" <?php if ($size == 'l') echo 'checked'; ?> required><label for="tshirt-size-l">L</label>
                 <input type="radio" id="tshirt-size-xl" name="tshirt_size" value="xl" <?php if ($size == 'xl') echo 'checked'; ?> required><label for="tshirt-size-xl">XL</label>
             </div>
+
+            <label for="photo_release"><em>* </em>Photo Release Restrictions: Can your photo be taken and used on our website and social media?</label>
+            <div class="radio-group">
+                <input type="radio" id="Restricted" name="photo_release" value="Restricted" required><label for="photo_release">Restricted</label>
+                <input type="radio" id="Not Restricted" name="photo_release" value="Not Restricted" required><label for="photo_release">Not Restricted</label>
+            </div>
+
+            <label for="photo_release_notes"><em>* </em>Photo Release Restriction Notes (or N/A)</label>
+            <input type="text" id="photo_release_notes" name="photo_release_notes" required placeholder="Do you have any specific notes about your photo release status?">
         </fieldset>
+
+        <fieldset class="section-box">
+            <legend>Optional Information</legend>
+
+            <label>How did you hear about StepVA?</label>
+            <input type="text" id="how_you_heard_of_stepva" name="how_you_heard_of_stepva" placeholder="">
+
+            <label>What is your preferred contact method?</label>
+            <div class="radio-group">
+                <input type="radio" id="text" name="preferred_feedback_method" value="text"><label for="preferred_feedback_method">Text</label>
+                <input type="radio" id="email" name="preferred_feedback_method" value="email"><label for="preferred_feedback_method">Email</label>
+                <input type="text" id="preferred_contact_method" name="preferred_contact_method" placeholder="Other">
+            </div>
+
+            <label>What are your hobbies? Are there any specific skills/interests you have that you believe could be useful for volunteering at StepVA?</label>
+            <input type="text" id="hobbies" name="hobbies" placeholder="">
+
+            <label>Do you have any other experience with volunteering?</label>
+            <input type="text" id="professional_experience" name="professional_experience" placeholder="">
+
+            <label>Are there any accomodations you may need? Anything we should keep in mind?</label>
+            <input type="text" id="disability_accomodation_needs" name="disability_accomodation_needs" placeholder="">
+
+        </fieldset>
+
         <p></p>
         <p></p>
 

@@ -134,8 +134,20 @@
         $type = $args['type'];
 
         $school_affiliation = $args['school_affiliation'];
+        $photo_release = $args['photo_release'];
+            if (!valueConstrainedTo($photo_release, array('Restricted', 'Not Restricted'))) {
+                $errors = true;
+                echo 'bad photo release type';
+            }
+            $photo_release_notes = $args['photo_release_notes'];
 
         $tshirt_size = $args['tshirt_size'];
+
+        $how_you_heard_of_stepva = $args['how_you_heard_of_stepva'];
+        $preferred_feedback_method = $args['preferred_feedback_method'];
+        $hobbies = $args['hobbies'];
+        $professional_experience = $args['professional_experience'];
+        $disability_accomodation_needs = $args['disability_accomodation_needs'];
 
         if ($errors) {
             $updateSuccess = false;
