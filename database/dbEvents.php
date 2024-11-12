@@ -82,6 +82,24 @@ function sign_up_for_event($eventID, $account_name, $role, $notes) {
         return $value;
     }
 
+/*@@@ Check if a user is is signed up for an event. Return true or false. */
+function check_if_signed_up($eventID, $userID) {
+    // look up event+user pair
+    $connection = connect();
+    $query1 = "SELECT * FROM dbeventpersons WHERE eventID = '$eventID' and userID = '$userID'";
+    $result1 = mysqli_query($connection, $query1);
+    $row = mysqli_fetch_assoc($result1);
+    mysqli_close($connection);
+
+    // check if a row was returned
+    if ($row) {
+        return True;
+    } else {
+        return False;
+    }
+}
+/**/
+
 /*
  * remove an event from dbEvents table.  If already there, return false
  */

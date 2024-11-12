@@ -178,158 +178,311 @@
     <?php if ($access_level >= 2) : ?>
         <script src="js/event.js"></script>
     <?php endif ?>
+    <style>
+        /* Improved Styling */
+        .event-info {
+            margin: 0 auto;
+            max-width: 600px;
+            font-family: Arial, sans-serif;
+        }
+
+        h1, h2 {
+            text-align: center;
+            font-weight: bold;
+        }
+
+        #table-wrapper {
+            margin-top: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 16px;
+        }
+
+        table tr:nth-child(odd) {
+            background-color: #f9f9f9;
+        }
+
+        table td {
+            padding: 12px 20px;
+        }
+
+        /* Styling for labels to make them bold and aligned */
+        .label {
+            font-weight: bold;
+            text-align: left;
+            color: #333;
+        }
+
+        table td .label {
+            font-weight: bold; /* Ensures that all labels are bold */
+        }
+
+        .centered {
+            text-align: center;
+            margin: 0 auto;
+        }
+
+        .action-buttons {
+            margin: 20px auto;
+            text-align: center;
+        }
+
+        .button {
+            padding: 10px 20px;
+            margin: 5px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .button.success {
+            background-color: #28a745;
+            color: #fff;
+        }
+
+        .button.success:hover {
+            background-color: #218838;
+        }
+
+        .button.danger {
+            background-color: #dc3545;
+            color: #fff;
+        }
+
+        .button.danger:hover {
+            background-color: #c82333;
+        }
+
+        .button.cancel {
+            background-color: #6c757d;
+            color: #fff;
+        }
+
+        .button.cancel:hover {
+            background-color: #5a6268;
+        }
+
+        /* Toast Notification Styling */
+        .happy-toast {
+            background-color: #28a745;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+        }
+
+        /* Modal Overlay */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        .modal p {
+            margin-bottom: 10px;
+        }
+    </style>
 </head>
 
 <body>
-    <?php if ($access_level >= 2) : ?>
-        <div id="delete-confirmation-wrapper" class="hidden">
-            <div id="delete-confirmation">
-                <p>Are you sure you want to delete this appointment?</p>
-                <p>This action cannot be undone.</p>
-
-                <form method="post" action="deleteEvent.php">
-                    <input type="submit" value="Delete Appointment">
-                    <input type="hidden" name="id" value="<?= $id ?>">
-                </form>
-                <button id="delete-cancel">Cancel</button>
-            </div>
-        </div>
-    <?php endif ?>
-    <?php if ($access_level >= 2) : ?>
-        <div id="complete-confirmation-wrapper" class="hidden">
-            <div id="complete-confirmation">
-                <p>Are you sure you want to complete this appointment?</p>
-                <p>This action cannot be undone.</p>
-                <form method="post" action="completeEvent.php">
-                    <input type="submit" value="Complete Appointment">
-                    <input type="hidden" name="id" value="<?= $id ?>">
-                </form>
-                <button id="complete-cancel">Cancel</button>
-            </div>
-        </div>
-    <?php endif ?>
-
     <?php require_once('header.php') ?>
     <h1>View Appointment</h1>
     <main class="event-info">
+        <!-- Success notifications -->
         <?php if (isset($_GET['createSuccess'])): ?>
             <div class="happy-toast">Appointment created successfully!</div>
-        <?php endif ?>
-        <?php if (isset($_GET['attachSuccess'])): ?>
-            <div class="happy-toast">Media attached successfully!</div>
-        <?php endif ?>
-        <?php if (isset($_GET['removeSuccess'])): ?>
-            <div class="happy-toast">Media removed successfully!</div>
         <?php endif ?>
         <?php if (isset($_GET['editSuccess'])): ?>
             <div class="happy-toast">Appointment details updated successfully!</div>
         <?php endif ?>
+
+        <!--@@@ Thomas: if user clicked check in/out-->
+        <?php
+            if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                if (isset($_POST['checking_in'])) {
+                    $personID = $_POST['personID'];
+                    $eventID = $_POST['eventID'];
+                    $timestamp = $_POST['timestamp'];
+                    check_in($personID, $eventID, $timestamp);
+                    echo "<div class='happy-toast'>You've checked in!</div>";
+                }
+                else if (isset($_POST['checking_out'])) {
+                    $personID = $_POST['personID'];
+                    $eventID = $_POST['eventID'];
+                    $timestamp = $_POST['timestamp'];
+                    check_out($personID, $eventID, $timestamp);
+                    echo "<div class='happy-toast'>You've checked out!</div>";
+                }
+            }
+        ?>
+        <!---->
+        
         <?php    
             require_once('include/output.php');
             $event_name = $event_info['name'];
             $event_date = date('l, F j, Y', strtotime($event_info['date']));
             $event_startTime = time24hto12h($event_info['startTime']);
-            #$event_location = $event_info['locationID'];
             $event_description = $event_info['description'];
-            $event_in_past = strcmp(date('Y-m-d'), $event_info['date']) > 0;
-            #$event_animal_id = $event_info['animalID'];
             require_once('include/time.php');
-            echo '<h2 class="centered">'.$event_name.'</h2>';
         ?>
+
+        <!-- Event Information Table -->
+        <h2><?php echo $event_name; ?></h2>
         <div id="table-wrapper">
-            <table class="centered">
-                <tbody>
-                <tr>	
-                        <td class="label">Animal </td>
-                        <td>
-                            <?php 
-                                #$animals = get_animal($event_animal_id);
-                                #foreach($animals as $animal) {
-                                #    echo "<a href='animal.php?id=" . $animal['id'] . "'>" . $animal['name'] . "</a>";
-                                #}
-                            ?>
-                        </td>
-                    </tr>
-                    <tr>	
-                        <td class="label">Date </td>
-                        <td><?php echo $event_date ?></td>     		
-                    </tr>
-                    <tr>	
-                        <td class="label">Time </td>
-                        <td><?php echo $event_startTime?></td>
-                    </tr>
-                    <tr>	
-                        <td class="label">Service(s) </td>
-                        <td>
-                            <?php 
-                                $services = get_services($id);
-                                $length = count($services);
-                                for ($i = 0; $i < $length; $i++) { 
-                                    echo $services[$i]['name'];
-                                    if ($i < $length - 1) {
-                                        echo ', ';
-                                    }
-                                }
-                            ?>
-                        </td>     		
-                    </tr>
-                    <tr>	
-                        <td class="label">Location </td>
-                        <td>
-                            <?php 
+            <table>
+                <tr>  
+                    <td class="label">Date</td>
+                    <td><?php echo $event_date; ?></td>
+                </tr>
+                <tr>
+                    <td class="label">Time</td>
+                    <td><?php echo $event_startTime; ?></td>
+                </tr>
+                <tr>
+                    <td class="label">Location</td>
+                    <td>
+                        <?php 
+                            if (isset($event_location)) {
                                 $locations = get_location($event_location);
                                 foreach($locations as $location) {
                                     echo $location['name'];
                                 }
-                            ?>
-                        </td>     		
-                    </tr>
-                    <tr>	
-                        <td class="label">Location Address </td>
-                        <td>
-                            <?php 
+                            } else {
+                                echo "Location not specified.";
+                            }
+                        ?>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="label">Location Address</td>
+                    <td>
+                        <?php 
+                            if (isset($event_location)) {
                                 foreach($locations as $location) {
                                     echo $location['address'];
                                 }
-                            ?>
-                        </td>     		
-                    </tr>
-                    <tr>	
-                        <td class="label">Description </td><td></td>
-                    </tr>
-                    <tr>
-                        <td id="description-cell" colspan="2"><?php echo $event_description ?></td>     		
-                    </tr>
-                    
-                    <tr>
-                        
-        <!-- TODO: will figure out another way to center
-                 later -->
-        <?php
-		if ($access_level >= 2) {
-                	echo '
-                        <tr>
-                        	<td colspan="2">
-                                	<a href="editEvent.php?id=' . $id . '" class="button">Edit Appointment Details</a>
-                                </td>
-                        </tr>
-                        ';
-                 }
-	?> 
+                            } else {
+                                echo "Address not available.";
+                            }
+                        ?>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="label">Access Level</td>
+                    <td>
+                        <?php 
+                            echo $access_level >= 2 ? "Restricted" : "Unrestricted";
+                        ?>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="label">Description</td>
+                    <td id="description-cell"><?php echo $event_description; ?></td>
+                </tr>
+            </table>
+        </div>
 
-        <?php if ($access_level >= 2) : ?>
-            <!-- <form method="post" action="deleteEvent.php">
-                <input type="submit" value="Delete Event">
-                <input type="hidden" name="id" value="<?= $id ?>">
-            </form> -->
-            <?php if ($event_info["completed"] == "no") : ?>
-                <button onclick="showCompleteConfirmation()">Complete Appointment</button>
+        <!-- Action Buttons -->
+        <div class="action-buttons">
+
+            <!--@@@ Check-In and Check-Out Buttons by Thomas -->
+            <?php if (can_check_in($user->get_id(), $event_info))  : ?>
+                <form method="POST" action="">
+                    <input type="hidden" name="checking_in" value="1">
+                    <input type="hidden" name="personID" value="<?php echo $user->get_id(); ?>">
+                    <input type="hidden" name="eventID" value="<?php echo $event_info['id']; ?>">
+                    <input type="hidden" name="timestamp" value="<?php echo date("Y-m-d H:i:s", time()); ?>">
+                    <button type="submit" class="button success">Check-In</button>
+                </form>
             <?php endif ?>
-            <button onclick="showDeleteConfirmation()">Delete Appointment</button>
+
+            <?php if (can_check_out($user->get_id(), $event_info))  : ?>
+                <form method="POST" action="">
+                    <input type="hidden" name="checking_out" value="1">
+                    <input type="hidden" name="personID" value="<?php echo $user->get_id(); ?>">
+                    <input type="hidden" name="eventID" value="<?php echo $event_info['id']; ?>">
+                    <input type="hidden" name="timestamp" value="<?php echo date("Y-m-d H:i:s", time()); ?>">
+                    <button type="submit" class="button danger">Check-Out</button>
+                </form>
+            <?php endif ?>
+            <!---->
+
+            <?php if ($access_level >= 2) : ?>
+                <a href="editEvent.php?id=<?= $id ?>" class="button success">Edit Appointment Details</a>
+                <?php if ($event_info["completed"] == "no") : ?>
+                    <button onclick="showCompleteConfirmation()" class="button success">Complete Appointment</button>
+                <?php endif ?>
+                <button onclick="showDeleteConfirmation()" class="button danger">Delete Appointment</button>
+            <?php endif ?>
+            <a href="calendar.php?month=<?= substr($event_info['date'], 0, 7) ?>" class="button cancel">Return to Calendar</a>
+        </div>
+
+        <!-- Confirmation Modals -->
+        <?php if ($access_level >= 2) : ?>
+            <div id="delete-confirmation-wrapper" class="modal hidden">
+                <div class="modal-content">
+                    <p>Are you sure you want to delete this appointment?</p>
+                    <p>This action cannot be undone.</p>
+                    <form method="post" action="deleteEvent.php">
+                        <input type="submit" value="Delete Appointment" class="button danger">
+                        <input type="hidden" name="id" value="<?= $id ?>">
+                    </form>
+                    <button id="delete-cancel" class="button cancel">Cancel</button>
+                </div>
+            </div>
+
+            <div id="complete-confirmation-wrapper" class="modal hidden">
+                <div class="modal-content">
+                    <p>Are you sure you want to complete this appointment?</p>
+                    <p>This action cannot be undone.</p>
+                    <form method="post" action="completeEvent.php">
+                        <input type="submit" value="Complete Appointment" class="button success">
+                        <input type="hidden" name="id" value="<?= $id ?>">
+                    </form>
+                    <button id="complete-cancel" class="button cancel">Cancel</button>
+                </div>
+            </div>
         <?php endif ?>
 
-        <a href="calendar.php?month=<?php echo substr($event_info['date'], 0, 7) ?>" class="button cancel" style="margin-top: -.5rem">Return to Calendar</a>
+        <!-- Scripts for Modal Controls -->
+        <script>
+            function showDeleteConfirmation() {
+                document.getElementById('delete-confirmation-wrapper').classList.remove('hidden');
+            }
+            function showCompleteConfirmation() {
+                document.getElementById('complete-confirmation-wrapper').classList.remove('hidden');
+            }
+            document.getElementById('delete-cancel').onclick = function() {
+                document.getElementById('delete-confirmation-wrapper').classList.add('hidden');
+            };
+            document.getElementById('complete-cancel').onclick = function() {
+                document.getElementById('complete-confirmation-wrapper').classList.add('hidden');
+            };
+        </script>
     </main>
 </body>
-
 </html>
+
