@@ -17,11 +17,11 @@
         $userID = $_SESSION['_id'];
     } 
     // Require admin privileges
-    if ($accessLevel != 1) {
+    /*if ($accessLevel == 1) {
         header('Location: login.php');
         echo 'bad access level';
         die();
-    }
+    }*/
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         require_once('include/input-validation.php');
         require_once('database/dbEvents.php');
@@ -48,7 +48,7 @@
             $name = htmlspecialchars_decode($args['name']);
             $account_name = htmlspecialchars_decode($args['account-name']);
             $role = $args['role'];
-            $notes = "No notes here";//$args['skills'] + $args['diet-restrictions'] + $args['disabilities'] + $args['materials'];
+            $notes = "Skills: " . $args['skills'] . " | Dietary restrictions: " . $args['restrictions'] . " | Disabilities: " . $args['disabilities'] . " | Materials: " . $args['materials'];
             //$date = $args['date'] = validateDate($args["date"]);
             //$capacity = intval($args["capacity"]);
             $abbrevLength = strlen($args['abbrev-name']);
@@ -60,10 +60,11 @@
                 echo 'bad args';
                 die();
             }
+            if($event['role'] == "r") {
+                echo "Yay!";
+            } else {
             $id = sign_up_for_event($name, $account_name, $role, $notes);
-            //if(!$id) {}
             if(!$id){
-                //echo "Oopsy!";
                 header('Location: eventFailure.php');
                 exit();
             }
@@ -79,6 +80,7 @@
             //header(header: "Location: eventApproved.php?id=$id&createSuccess");
             //header(header: "Location: eventApproved.php?id=$id&createSuccess");
             die();
+        }
         }
     }
     /*$date = null;

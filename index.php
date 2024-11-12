@@ -72,39 +72,24 @@
                     <img src="images/view-calendar.svg">
                     <span>View Calendar</span>
                 </div>
+
+                <div class="dashboard-item" data-link="viewAllEvents.php">
+                    <img src="images/new-event.svg">
+                    <span>Sign-Up for Event</span>
+                </div>
                 
-                <!--
-				<div class="dashboard-item" data-link="addService.php">
-                    <img src="images/settings.png">
-                    <span>Add Service</span>
-                </div>
-				<div class="dashboard-item" data-link="addLocation.php">
-                    <img src="images/settings.png">
-                    <span>Add Location</span>
-                </div>
-                <div class="dashboard-item" data-link="findAnimal.php">
-                        <img src="images/person-search.svg">
-                        <span>Find Animal</span>
-                </div>
-
-                -->
-
-                <!-- Commenting out because volunteers won't be searching events
-                <div class="dashboard-item" data-link="eventSearch.php">
-                    <img src="images/search.svg">
-                    <span>Find Event</span>
-                </div>
-                -->
+                <!-- ADMIN ONLY -->
                 <?php if ($_SESSION['access_level'] >= 2): ?>
                     <div class="dashboard-item" data-link="addEvent.php">
                         <img src="images/new-event.svg">
                         <span>Add Event</span>
                     </div>
+                    
                     <div class="dashboard-item" data-link="personSearch.php">
                         <img src="images/person-search.svg">
                         <span>Find Volunteer</span>
                     </div>
-                    <div class="dashboard-item" data-link="viewAllEvents.php">
+                    <div class="dashboard-item" data-link="adminViewingEvents.php">
                         <img src="images/new-event.svg">
                         <span>View Events</span>
                     </div>
@@ -116,19 +101,9 @@
                         <img src="images/add-person.svg">
                         <span>See & Change Event Hours</span>
                     </div>
-
-                    <!--
-                    <div class="dashboard-item" data-link="viewArchived.php">
-                        <img src="images/person-search.svg">
-                        <span>Archived Animals</span>
-                    </div>
-                
-                    <div class="dashboard-item" data-link="report.php">
-                        <img src="images/create-report.svg">
-                        <span>Create Report</span>
-                    </div>
-                -->
                 <?php endif ?>
+
+                <!-- FOR VOLUNTEERS AND PARTICIPANTS ONLY -->
                 <?php if ($notRoot) : ?>
                     <div class="dashboard-item" data-link="viewProfile.php">
                         <img src="images/view-profile.svg">
@@ -144,10 +119,6 @@
                         <img src="images/volunteer-history.svg">
                         <span>View My Hours</span>
                     </div>
-                    <div class="dashboard-item" data-link="viewAllEvents.php">
-                    <img src="images/new-event.svg">
-                    <span>Sign-Up for Event</span>
-                </div>
                 <?php endif ?>
                 <div class="dashboard-item" data-link="changePassword.php">
                     <img src="images/change-password.svg">
