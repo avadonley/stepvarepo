@@ -136,6 +136,11 @@
                     <label>Phone Number</label>
                     <p><a href="tel:<?php echo $user->get_phone1() ?>"><?php echo formatPhoneNumber($user->get_phone1()) ?></a> (<?php echo ucfirst($user->get_phone1type()) ?>)</p>
                 </div>
+
+                <div class="field-pair">
+                    <label>Preferred Feedback Method</label>
+                    <p><?php echo ucfirst($user->get_preferred_feedback_method()) ?></p>
+                </div>
             </fieldset>
 
             <fieldset class="section-box">
@@ -173,6 +178,26 @@
                 <div class="field-pair">
                     <label>Tshirt Size</label>
                     <p><?php echo ucfirst($user->get_tshirt_size()) ?></p>
+                </div>
+
+                <div class="field-pair">
+                    <label>Accomodations</label>
+                    <p><?php echo ucfirst($user->get_disability_accomodation_needs()) ?></p>
+                </div>
+                
+                <div class="field-pair">
+                    <label>Professional Experience</label>
+                    <p><?php echo ucfirst($user->get_professional_experience()) ?></p>
+                </div>
+
+                <div class="field-pair">
+                    <label>Hobbies</label>
+                    <p><?php echo ucfirst($user->get_hobbies()) ?></p>
+                </div>
+
+                <div class="field-pair">
+                    <label>How You Heard of StepVa</label>
+                    <p><?php echo ucfirst($user->get_how_you_heard_of_stepva()) ?></p>
                 </div>
             </fieldset>
 

@@ -4,11 +4,11 @@
         if (is_array($input)) {
             $arr = [];
             foreach ($input as $key => $value) {
-                $arr[$key] = htmlspecialchars($value);
+                $arr[$key] = htmlspecialchars($value ?? '');
             }
             return $arr;
         }
-        return htmlspecialchars($input);
+        return htmlspecialchars($input ?? '');
     }
 
     function time24hTo12h($time) {
