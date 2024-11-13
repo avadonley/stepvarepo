@@ -61,7 +61,7 @@
                 die();
             }
             if($event['role'] == "r") {
-                echo "Yay!";
+                //echo "Yay!";
             } else {
             $id = sign_up_for_event($name, $account_name, $role, $notes);
             if(!$id){
@@ -76,7 +76,7 @@
             $startTime = time24hto12h($startTime);
             //$date = date('l, F j, Y', timestamp: strtotime($date));
             require_once('database/dbMessages.php');
-            //system_message_all_users_except($userID, "Your sign-up has been approved!", "Congratulations!");
+            system_message_all_users_except($userID, "Your sign-up has been approved!", "Congratulations!");
             //header(header: "Location: eventApproved.php?id=$id&createSuccess");
             //header(header: "Location: eventApproved.php?id=$id&createSuccess");
             die();

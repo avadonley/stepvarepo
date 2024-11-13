@@ -65,7 +65,9 @@
                                     $event_type = $event->getEventType();
                                     $restricted_signup = $event->getRestrictedSignup();
                                     if ($restricted_signup == 0) {
-                                        $restricted_signup = "N";
+                                        $restricted_signup = "No";
+                                    } else {
+                                        $restricted_signup = "Yes";
                                     }
                                     if($accessLevel < 3) {
                                         echo "
