@@ -592,4 +592,50 @@ td {
     background-color: #dc3545;
 }
 
+/* General styling for the event section */
+.section-box {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 15px;
+    margin-bottom: 20px;
+    background-color: #fafafa;
+}
+
+.section-box legend {
+    font-weight: bold;
+    color: #333;
+    padding: 0 10px;
+}
+
+/* Styling for each label-data pair */
+.field-pair {
+    margin-bottom: 15px; /* Space between each field-pair */
+}
+
+.field-pair label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px; /* Space between label and data */
+    color: #333;
+}
+
+.field-pair p {
+    margin: 0;
+    color: #555;
+}
+
+/* Button styling */
+.button.edit-button {
+    display: inline-block;
+    padding: 10px 20px;
+    margin-top: 15px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.button.edit-button:hover {
+    background-color: #0056b3;
+}
 

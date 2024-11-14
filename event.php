@@ -173,7 +173,7 @@
     <?php
         require_once('universal.inc');
     ?>
-    <title>Step VA | View Appointment: <?php echo $event_info['name'] ?></title>
+    <title>Step VA | View Event: <?php echo $event_info['name'] ?></title>
     <link rel="stylesheet" href="css/event.css" type="text/css" />
     <?php if ($access_level >= 2) : ?>
         <script src="js/event.js"></script>
@@ -320,7 +320,7 @@
                     <p>Are you sure you want to delete this appointment?</p>
                     <p>This action cannot be undone.</p>
                     <form method="post" action="deleteEvent.php">
-                        <input type="submit" value="Delete Appointment" class="button danger">
+                        <input type="submit" value="Delete Event" class="button danger">
                         <input type="hidden" name="id" value="<?= $id ?>">
                     </form>
                     <button id="delete-cancel" class="button cancel">Cancel</button>
@@ -329,7 +329,7 @@
 
             <div id="complete-confirmation-wrapper" class="modal hidden">
                 <div class="modal-content">
-                    <p>Are you sure you want to complete this appointment?</p>
+                    <p>Are you sure you want to complete this event?</p>
                     <p>This action cannot be undone.</p>
                     <form method="post" action="completeEvent.php">
                         <input type="submit" value="Complete Appointment" class="button success">
