@@ -27,7 +27,7 @@
         require_once('database/dbEvents.php');
         $args = sanitize($_POST, null);
         $required = array(
-            "name", "abbrev-name", "account-name", "start-time", "departure-time", /*"skills",*/ /*"diet-restrictions", "disabilities", "materials", "role"*/
+            "name", /*"abbrev-name",*/ "account-name", "start-time", "departure-time", /*"skills",*/ /*"diet-restrictions", "disabilities", "materials", "role"*/
         );
         if (!wereRequiredFieldsSubmitted($args, $required)) {
             echo 'bad form data';
@@ -51,12 +51,12 @@
             $notes = "Skills: " . $args['skills'] . " | Dietary restrictions: " . $args['restrictions'] . " | Disabilities: " . $args['disabilities'] . " | Materials: " . $args['materials'];
             //$date = $args['date'] = validateDate($args["date"]);
             //$capacity = intval($args["capacity"]);
-            $abbrevLength = strlen($args['abbrev-name']);
-            if (!$startTime /*|| !$date */|| $abbrevLength > 11){
+            //$abbrevLength = strlen($args['abbrev-name']);
+            if (!$startTime /*|| !$date || $abbrevLength > 11*/){
                 echo 'bad args';
                 die();
             }
-            if (!$departureTime /*|| !$date */|| $abbrevLength > 11){
+            if (!$departureTime /*|| !$date || $abbrevLength > 11*/){
                 echo 'bad args';
                 die();
             }
@@ -121,8 +121,6 @@
             <form id="new-event-form" method="post">
                 <label for="name">* Event Name </label>
                 <input type="text" id="name" name="name" required placeholder="Enter name"> 
-                <label for="abbrev-name">* Abbreviated Event Name</label>
-                <input type="text" id="abbrev-name" name="abbrev-name" maxlength="11" required placeholder="Enter name that will appear on calendar">
                 <label for="account-name">* Your Account Name </label>
                 <input type="text" id="account-name" name="account-name" required placeholder="Enter account name"> 
                 <label for="start-time">* What Time Will You Arrive? </label>
@@ -139,7 +137,7 @@
                 <input type="text" id="materials" name="materials" placeholder="Enter materials. Ex. felt, pipe cleaners">
                 
                 <fieldset>
-                <label for="role"> Are you a volunteer or a participant? </label>
+                <label for="role">* Are you a volunteer or a participant? </label>
             <div class="radio-group">
                 <input type="radio" id="v" name="role" value="v" required><label for="role">Volunteer</label>
                 <input type="radio" id="p" name="role" value="p" required><label for="role">Participant</label>
