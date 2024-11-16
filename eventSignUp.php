@@ -4,9 +4,6 @@
     session_cache_expire(30);
     session_start();
 
-    ini_set("display_errors",1);
-    error_reporting(E_ALL);
-
     $loggedIn = false;
     $accessLevel = 0;
     $userID = null;
@@ -27,7 +24,7 @@
         require_once('database/dbEvents.php');
         $args = sanitize($_POST, null);
         $required = array(
-            "name", "abbrev-name", "account-name", "start-time", "departure-time", /*"skills",*/ /*"diet-restrictions", "disabilities", "materials", "role"*/
+            "event-name", "abbrev-name", "account-name", "start-time", "departure-time", /*"skills",*/ /*"diet-restrictions", "disabilities", "materials", "role"*/
         );
         if (!wereRequiredFieldsSubmitted($args, $required)) {
             echo 'bad form data';
@@ -123,20 +120,14 @@
         // exit();
     }
 
-    ini_set("display_errors", 1);
-    error_reporting(E_ALL);
-
     // Debugging: Output the session data to inspect
-    var_dump($_SESSION); // This will show all session variables
+    //var_dump($_SESSION); // This will show all session variables
 
     if (isset($_SESSION['_id'])) {
         $account_name = $_SESSION['_id'];
     } else {
         $account_name = ''; // Default value if the account name is not set
     }
-    ?>
-    
-
 ?>
 <!DOCTYPE html>
 <html>
@@ -150,8 +141,12 @@
         <main class="date">
             <h2>Sign-Up for Event Form</h2>
             <form id="new-event-form" method="post">
-                <label for="name">* Event Name </label>
-                <input type="text" id="event-name" name="event-name" required value="<?php echo htmlspecialchars($event_name); ?>" placeholder="Event name" readonly>
+                <label for="event-name">* Event Name </label>
+                <input type="text" id="event-name" name="event-name" required 
+                    value="<?php echo htmlspecialchars(isset($_GET['event_name']) ? $_GET['event_name'] : ''); ?>" 
+                    placeholder="Event name" readonly>
+
+
 
                 <label for="abbrev-name">* Abbreviated Event Name</label>
                 <input type="text" id="abbrev-name" name="abbrev-name" maxlength="11" required value="<?php echo $abbrevName; ?>" placeholder="Enter name that will appear on calendar">
