@@ -209,6 +209,16 @@
                     check_out($personID, $eventID, $timestamp);
                     echo "<div class='happy-toast'>You've checked out!</div>";
                 }
+                else if (isset($_POST['archiving'])) {
+                    $eventID = $_POST['eventID'];
+                    archive_event($eventID);
+                    echo "<div class='happy-toast'>Event has been archived!</div>";
+                }
+                else if (isset($_POST['unarchiving'])) {
+                    $eventID = $_POST['eventID'];
+                    unarchive_event($eventID);
+                    echo "<div class='happy-toast'>Event has been unarchived!</div>";
+                }
             }
         ?>
         <!---->
@@ -301,15 +311,34 @@
                     <button type="submit" class="button danger">Check-Out</button>
                 </form>
             <?php endif ?>
-            <!---->
+
+            <!-- end of Thomas's work-->
 
             <?php if ($access_level >= 2) : ?>
-                <a href="editEvent.php?id=<?= $id ?>" class="button success">Edit Event Details</a>
-                <?php if ($event_info["completed"] == "no") : ?>
-                    <button onclick="showCompleteConfirmation()" class="button success">Complete Appointment</button>
-                <?php endif ?>
+
+                <a href="editEvent.php?id=<?= $id ?>" class="button">Edit Event Details</a>
+
+                <!-- Thomas's work -->
+
+                <?php if (is_archived($event_info['id']))  : ?>
+                    <form method="POST" action="">
+                    <input type="hidden" name="unarchiving" value="1">
+                    <input type="hidden" name="eventID" value="<?php echo $event_info['id']; ?>">
+                    <button type="submit" class="button">Unarchive</button>
+                </form>
+
+                <?php else : ?>
+                    <form method="POST" action="">
+                    <input type="hidden" name="archiving" value="1">
+                    <input type="hidden" name="eventID" value="<?php echo $event_info['id']; ?>">
+                    <button type="submit" class="button">Archive</button>                <?php endif ?>
+
+                <!-- end of Thomas's work -->
+
                 <button onclick="showDeleteConfirmation()" class="button danger">Delete Event</button>
+
             <?php endif ?>
+            
             <a href="calendar.php?month=<?= substr($event_info['date'], 0, 7) ?>" class="button cancel">Return to Calendar</a>
         </div>
 
@@ -317,10 +346,10 @@
         <?php if ($access_level >= 2) : ?>
             <div id="delete-confirmation-wrapper" class="modal hidden">
                 <div class="modal-content">
-                    <p>Are you sure you want to delete this appointment?</p>
+                    <p>Are you sure you want to delete this event?</p>
                     <p>This action cannot be undone.</p>
                     <form method="post" action="deleteEvent.php">
-                        <input type="submit" value="Delete Appointment" class="button danger">
+                        <input type="submit" value="Delete Event" class="button danger">
                         <input type="hidden" name="id" value="<?= $id ?>">
                     </form>
                     <button id="delete-cancel" class="button cancel">Cancel</button>
@@ -329,10 +358,10 @@
 
             <div id="complete-confirmation-wrapper" class="modal hidden">
                 <div class="modal-content">
-                    <p>Are you sure you want to complete this appointment?</p>
-                    <p>This action cannot be undone.</p>
+                    <p>Are you sure you want to archive this event?</p>
+                    <p>Users will no longer have acces to this event. It can always be unarchived later.</p>
                     <form method="post" action="completeEvent.php">
-                        <input type="submit" value="Complete Appointment" class="button success">
+                        <input type="submit" value="Archive Event" class="button">
                         <input type="hidden" name="id" value="<?= $id ?>">
                     </form>
                     <button id="complete-cancel" class="button cancel">Cancel</button>
