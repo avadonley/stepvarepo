@@ -588,8 +588,10 @@ td {
     border-radius: 4px;
 }
 
+/* shouldn't we keep cancel as grey? We have red buttons already using "button.danger"
 .button.cancel {
     background-color: #dc3545;
 }
+*/
 
 

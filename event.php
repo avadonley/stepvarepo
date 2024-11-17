@@ -318,27 +318,29 @@
 
                 <a href="editEvent.php?id=<?= $id ?>" class="button">Edit Event Details</a>
 
-                <!-- Thomas's work -->
+                <!-- Archive and Unarchive buttons by Thomas -->
 
                 <?php if (is_archived($event_info['id']))  : ?>
-                    <form method="POST" action="">
-                    <input type="hidden" name="unarchiving" value="1">
-                    <input type="hidden" name="eventID" value="<?php echo $event_info['id']; ?>">
-                    <button type="submit" class="button">Unarchive</button>
-                </form>
+                    <form method="POST" action="" onsubmit="return confirmAction('unarchive')">
+                        <input type="hidden" name="unarchiving" value="1">
+                        <input type="hidden" name="eventID" value="<?php echo $event_info['id']; ?>">
+                        <button type="submit" class="button">Unarchive</button>
+                    </form>
 
                 <?php else : ?>
-                    <form method="POST" action="">
-                    <input type="hidden" name="archiving" value="1">
-                    <input type="hidden" name="eventID" value="<?php echo $event_info['id']; ?>">
-                    <button type="submit" class="button">Archive</button>                <?php endif ?>
+                    <form method="POST" action="" onsubmit="return confirmAction('archive')">
+                        <input type="hidden" name="archiving" value="1">
+                        <input type="hidden" name="eventID" value="<?php echo $event_info['id']; ?>">
+                        <button type="submit" class="button">Archive</button>
+                    </form>
+                <?php endif ?>
 
                 <!-- end of Thomas's work -->
 
                 <button onclick="showDeleteConfirmation()" class="button danger">Delete Event</button>
 
             <?php endif ?>
-            
+
             <a href="calendar.php?month=<?= substr($event_info['date'], 0, 7) ?>" class="button cancel">Return to Calendar</a>
         </div>
 
