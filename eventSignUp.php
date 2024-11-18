@@ -148,13 +148,17 @@
                     value="<?php echo htmlspecialchars(isset($_GET['event_name']) ? $_GET['event_name'] : ''); ?>" 
                     placeholder="Event name" readonly>
 
+
+
+                <label for="abbrev-name">* Abbreviated Event Name</label>
+                <input type="text" id="abbrev-name" name="abbrev-name" maxlength="11" required value="<?php echo $abbrevName; ?>" placeholder="Enter name that will appear on calendar">
                 <!-- Autofill and make the account name readonly -->
                 <label for="account-name">* Your Account Name</label>
                 <input type="text" id="account-name" name="account-name" 
                     <?php echo ($accessLevel >= 2) ? '' : 'readonly'; ?> 
                     value="<?php echo htmlspecialchars($account_name); ?>" 
                     placeholder="Enter account name">
-
+                    
                 <label for="start-time">* What Time Will You Arrive? </label>
                 <input type="text" id="start-time" name="start-time" pattern="([1-9]|10|11|12):[0-5][0-9] ?([aApP][mM])" required value="<?php echo $startTime; ?>" placeholder="Enter arrival time. Ex. 12:00 PM">
                 <label for="departure-time">* What Time Will You Leave? </label>
@@ -169,7 +173,7 @@
                 <input type="text" id="materials" name="materials" placeholder="Enter materials. Ex. felt, pipe cleaners">
                 
                 <fieldset>
-                <label for="role"> Are you a volunteer or a participant? </label>
+                <label for="role">* Are you a volunteer or a participant? </label>
             <div class="radio-group">
                 <input type="radio" id="v" name="role" value="v" required><label for="role">Volunteer</label>
                 <input type="radio" id="p" name="role" value="p" required><label for="role">Participant</label>
