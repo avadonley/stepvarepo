@@ -65,17 +65,17 @@
                                     $event_type = $event->getEventType();
                                     $restricted_signup = $event->getRestrictedSignup();
                                     if ($restricted_signup == 0) {
-                                        $restricted_signup = "N";
+                                        $restricted_signup = "No";
                                     } else {
-                                        $restricted_signup = "Y";
+                                        $restricted_signup = "Yes";
                                     }
                                     //if($accessLevel < 3) {
                                         echo "
                                         <tr data-event-id='$eventID'>
                                             <td>$restricted_signup</td>
-                                            <td><a href='Event.php?id=$eventID'>$title</a></td> <!-- Link updated here -->
+                                            <td><a href='Event.php?id=$eventID'>$title</a></td>
                                             <td>$date</td>
-                                            <td><a class='button sign-up' href='eventSignUp.php'>Sign Up</a></td>
+                                            <td><a class='button sign-up' href='eventSignUp.php?event_name=" . urlencode($title) . "'>Sign Up</a></td>
                                         </tr>";
                                     //} else {
                                         /*echo "
