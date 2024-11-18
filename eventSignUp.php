@@ -4,9 +4,6 @@
     session_cache_expire(30);
     session_start();
 
-    ini_set("display_errors",1);
-    error_reporting(E_ALL);
-
     $loggedIn = false;
     $accessLevel = 0;
     $userID = null;
@@ -27,7 +24,7 @@
         require_once('database/dbEvents.php');
         $args = sanitize($_POST, null);
         $required = array(
-            "name", /*"abbrev-name",*/ "account-name", "start-time", "departure-time", /*"skills",*/ /*"diet-restrictions", "disabilities", "materials", "role"*/
+            "event-name", "abbrev-name", "account-name", "start-time", "departure-time", /*"skills",*/ /*"diet-restrictions", "disabilities", "materials", "role"*/
         );
         if (!wereRequiredFieldsSubmitted($args, $required)) {
             echo 'bad form data';
@@ -63,6 +60,7 @@
             if($event['role'] == "r") {
                 //echo "Yay!";
             } else {
+                $name = htmlspecialchars(isset($_GET['event_name']) ? $_GET['event_name'] : '');
             $id = sign_up_for_event($name, $account_name, $role, $notes);
             if(!$id){
                 header('Location: eventFailure.php');
@@ -105,13 +103,39 @@
     $all_locations = mysqli_query($con,$sql);
     $sql = "SELECT * FROM `dbServices`";
     $all_services = mysqli_query($con,$sql);*/
+    
+    // Get the event information from URL parameters if they exist
+    $event_name = isset($_GET['event_name']) ? htmlspecialchars($_GET['event_name']) : '';
+
+    $abbrevName = isset($_GET['abbrev-name']) ? htmlspecialchars($_GET['abbrev-name']) : '';
+    $startTime = isset($_GET['start-time']) ? htmlspecialchars($_GET['start-time']) : '';
+    $departureTime = isset($_GET['departure-time']) ? htmlspecialchars($_GET['departure-time']) : '';
+    
+    if (isset($_SESSION['username'])) {
+        $username = $_SESSION['username'];
+    } else {
+        // Handle the case where the username is not set in the session
+        $username = ''; // You can set it to an empty string or handle the error as needed
+        // For example, redirecting the user to login page:
+        // header('Location: login.php');
+        // exit();
+    }
+
+    // Debugging: Output the session data to inspect
+    //var_dump($_SESSION); // This will show all session variables
+
+    if (isset($_SESSION['_id'])) {
+        $account_name = $_SESSION['_id'];
+    } else {
+        $account_name = ''; // Default value if the account name is not set
+    }
 
 ?>
 <!DOCTYPE html>
 <html>
     <head>
         <?php require_once('universal.inc') ?>
-        <title>Step VA | Create Event</title>
+        <title>Step VA | Sign-Up for Event</title>
     </head>
     <body>
         <?php require_once('header.php') ?>
@@ -119,14 +143,23 @@
         <main class="date">
             <h2>Sign-Up for Event Form</h2>
             <form id="new-event-form" method="post">
-                <label for="name">* Event Name </label>
-                <input type="text" id="name" name="name" required placeholder="Enter name"> 
+                <label for="event-name">* Event Name </label>
+                <input type="text" id="event-name" name="event-name" required 
+                    value="<?php echo htmlspecialchars(isset($_GET['event_name']) ? $_GET['event_name'] : ''); ?>" 
+                    placeholder="Event name" readonly>
+
+
+
+                <label for="abbrev-name">* Abbreviated Event Name</label>
+                <input type="text" id="abbrev-name" name="abbrev-name" maxlength="11" required value="<?php echo $abbrevName; ?>" placeholder="Enter name that will appear on calendar">
+                <!-- Autofill and make the account name readonly -->               
                 <label for="account-name">* Your Account Name </label>
-                <input type="text" id="account-name" name="account-name" required placeholder="Enter account name"> 
+                <input type="text" id="account-name" name="account-name" required value="<?php echo htmlspecialchars($account_name); ?>" placeholder="Enter account name" readonly>
+
                 <label for="start-time">* What Time Will You Arrive? </label>
-                <input type="text" id="start-time" name="start-time" pattern="([1-9]|10|11|12):[0-5][0-9] ?([aApP][mM])" required placeholder="Enter arrival time. Ex. 12:00 PM">
+                <input type="text" id="start-time" name="start-time" pattern="([1-9]|10|11|12):[0-5][0-9] ?([aApP][mM])" required value="<?php echo $startTime; ?>" placeholder="Enter arrival time. Ex. 12:00 PM">
                 <label for="departure-time">* What Time Will You Leave? </label>
-                <input type="text" id="departure-time" name="departure-time" pattern="([1-9]|10|11|12):[0-5][0-9] ?([aApP][mM])" required placeholder="Enter departure time. Ex. 3:00 PM">
+                <input type="text" id="departure-time" name="departure-time" pattern="([1-9]|10|11|12):[0-5][0-9] ?([aApP][mM])" required value="<?php echo $departureTime; ?>" placeholder="Enter departure time. Ex. 3:00 PM">
                 <label for="skills"> Do You Have Any Skills To Share? </label>
                 <input type="text" id="skills" name="skills" placeholder="Enter skills. Ex. crochet, tap dancer">
                 <label for="diet-restrictions"> Do You Have Any Dietary Restrictions? </label>
