@@ -16,6 +16,7 @@
     } else {
         $month = $_GET['month'];
     }
+    
     $year = substr($month, 0, 4);
     $month2digit = substr($month, 5, 2);
 
