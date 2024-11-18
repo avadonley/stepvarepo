@@ -103,18 +103,17 @@
 // }
 
 // Fetch event data from session
-if //(isset($_GET['eventId'], $_GET['user'], $_GET['start_time'], $_GET['end_time'])) {
-    (isset($_SESSION['edit_event'])) {
-    // $eventId = htmlspecialchars($_GET['eventId']);
-    // $user = htmlspecialchars($_GET['user']);
-    // $oldStartTime = htmlspecialchars($_GET['start_time']);
-    // $oldEndTime = htmlspecialchars($_GET['end_time']);
-    $eventData = $_SESSION['edit_event'];
+if (isset($_GET['eventId'], $_GET['user'], $_GET['start_time'], $_GET['end_time'])) {
+    $eventId = htmlspecialchars($_GET['eventId']);
+    $user = htmlspecialchars($_GET['user']);
+    $oldStartTime = htmlspecialchars($_GET['start_time']);
+    $oldEndTime = htmlspecialchars($_GET['end_time']);
+    //$eventData = $_SESSION['edit_event'];
 
-    $eventID = $eventData['id'];
-    $username = $eventData['user'];
-    $oldStartTime = $eventData['old_start_time'];
-    $oldEndTime = $eventData['old_end_time'];
+    //$eventID = $eventData['id'];
+    //$username = $eventData['user'];
+    //$oldStartTime = $eventData['old_start_time'];
+    //$oldEndTime = $eventData['old_end_time'];
 
     $timeStampStart = strtotime($oldStartTime);
     $timeStampEnd = strtotime($oldEndTime);
