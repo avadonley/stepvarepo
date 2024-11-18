@@ -9,7 +9,7 @@
     require_once('database/dbEvents.php');
     require_once('include/input-validation.php');
     $args = sanitize($_POST);
-    $id = $args['id'];
+    $id = $args['account-name'];
     if (!$id) {
         header('Location: index.php');
         die();

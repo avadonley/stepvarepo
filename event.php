@@ -344,12 +344,32 @@
                     <button id="complete-cancel" class="button cancel">Cancel</button>
                 </div>
             </div>
-        <?php endif ?>
+            <?php endif ?>
+
+
+            <?php if ($access_level < 2) : ?>
+                <div id="cancel-confirmation-wrapper" class="modal hidden">
+                <div class="modal-content">
+                    <p>Are you sure you want to cancel your sign-up for this event?</p>
+                    <p>This action cannot be undone.</p>
+                    <form method="post" action="cancelEvent.php">
+                        <input type="submit" value="Cancel Sign-Up" class="button danger">
+                        <input type="hidden" name="id" value="<?= $id ?>">
+                    </form>
+                    <button id="delete-cancel" class="button cancel">Cancel</button>
+                </div>
+            </div>
+            <?php endif ?>
+
+            
 
         <!-- Scripts for Modal Controls -->
         <script>
             function showDeleteConfirmation() {
                 document.getElementById('delete-confirmation-wrapper').classList.remove('hidden');
+            }
+            function showCancelConfirmation() {
+                document.getElementById('cancel-confirmation-wrapper').classList.remove('hidden');
             }
             function showCompleteConfirmation() {
                 document.getElementById('complete-confirmation-wrapper').classList.remove('hidden');

@@ -147,10 +147,11 @@
                                         } else {
                                             $backgroundCol = '#1a7024'; //Otherwise keeps background as green
                                         }
+
                                         if($info["completed"] == "no"){ //Uncompleted events
-                                            $eventsStr .= '<a class="calendar-event" style="background-color:#1a7024" href="event.php?id=' . $info['id'] . '">' . htmlspecialchars_decode($info['name']) .  '</a>';
+                                            $eventsStr .= '<a class="calendar-event" style="background-color:#1a7024" href="event.php?id=' . $info['id'] . '&user_id=' /*. $info['name'] */. '">' . htmlspecialchars_decode($info['name']) . '</a>';
                                         } else { //Completed Events
-                                            $eventsStr .= '<a class="calendar-event" href="event.php?id=' . $info['id'] . '">' . htmlspecialchars_decode($info['name']) .  '</a>';
+                                            $eventsStr .= '<a class="calendar-event" href="event.php?id=' . $info['id'] . '">' . htmlspecialchars_decode($info['name']) .  ' </a>';
                                         }
                                         // More visual changes for resrticted and unrestricted events to be made below
                                         //if($info['restricted'] == 1) { 
