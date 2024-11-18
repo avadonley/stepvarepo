@@ -24,7 +24,7 @@
         require_once('database/dbEvents.php');
         $args = sanitize($_POST, null);
         $required = array(
-            "event-name", "abbrev-name", "account-name", "start-time", "departure-time", /*"skills",*/ /*"diet-restrictions", "disabilities", "materials", "role"*/
+            "event-name", "account-name", "start-time", "departure-time", /*"skills",*/ /*"diet-restrictions", "disabilities", "materials", "role"*/
         );
         if (!wereRequiredFieldsSubmitted($args, $required)) {
             echo 'bad form data';
@@ -48,15 +48,15 @@
             $notes = "Skills: " . $args['skills'] . " | Dietary restrictions: " . $args['restrictions'] . " | Disabilities: " . $args['disabilities'] . " | Materials: " . $args['materials'];
             //$date = $args['date'] = validateDate($args["date"]);
             //$capacity = intval($args["capacity"]);
-            $abbrevLength = strlen($args['abbrev-name']);
-            if (!$startTime /*|| !$date */|| $abbrevLength > 11){
-                echo 'bad args';
-                die();
-            }
-            if (!$departureTime /*|| !$date */|| $abbrevLength > 11){
-                echo 'bad args';
-                die();
-            }
+            //$abbrevLength = strlen($args['abbrev-name']);
+            //if (!$startTime /*|| !$date */|| $abbrevLength > 11){
+                //echo 'bad args';
+                //die();
+            //}
+            //if (!$departureTime /*|| !$date */|| $abbrevLength > 11){
+                //echo 'bad args';
+                //die();
+            //}
             if($event['role'] == "r") {
                 //echo "Yay!";
             } else {
@@ -148,13 +148,12 @@
                     value="<?php echo htmlspecialchars(isset($_GET['event_name']) ? $_GET['event_name'] : ''); ?>" 
                     placeholder="Event name" readonly>
 
-
-
-                <label for="abbrev-name">* Abbreviated Event Name</label>
-                <input type="text" id="abbrev-name" name="abbrev-name" maxlength="11" required value="<?php echo $abbrevName; ?>" placeholder="Enter name that will appear on calendar">
                 <!-- Autofill and make the account name readonly -->
-                <label for="account-name">* Your Account Name </label>
-                <input type="text" id="account-name" name="account-name" required value="<?php echo htmlspecialchars($account_name); ?>" placeholder="Enter account name" readonly>
+                <label for="account-name">* Your Account Name</label>
+                <input type="text" id="account-name" name="account-name" 
+                    <?php echo ($accessLevel >= 2) ? '' : 'readonly'; ?> 
+                    value="<?php echo htmlspecialchars($account_name); ?>" 
+                    placeholder="Enter account name">
 
                 <label for="start-time">* What Time Will You Arrive? </label>
                 <input type="text" id="start-time" name="start-time" pattern="([1-9]|10|11|12):[0-5][0-9] ?([aApP][mM])" required value="<?php echo $startTime; ?>" placeholder="Enter arrival time. Ex. 12:00 PM">
