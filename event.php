@@ -303,6 +303,12 @@
             <?php endif ?>
             <!---->
 
+            <?php if ($access_level < 2) : ?>
+                <?php if ($event_info["completed"] == "no") : ?>
+                    <button onclick="showCancelConfirmation()" class="button danger">Cancel My Sign-Up</button>
+                <?php endif ?>
+            <?php endif ?>
+
             <?php if ($access_level >= 2) : ?>
                 <a href="editEvent.php?id=<?= $id ?>" class="button success">Edit Event Details</a>
                 <?php if ($event_info["completed"] == "no") : ?>
@@ -310,7 +316,6 @@
                 <?php endif ?>
                 <button onclick="showDeleteConfirmation()" class="button danger">Delete Event</button>
             <?php endif ?>
-            <button onclick="showCancelConfirmation()" class="button danger">Cancel Event</button>
             <a href="calendar.php?month=<?= substr($event_info['date'], 0, 7) ?>" class="button cancel">Return to Calendar</a>
         </div>
 
@@ -322,18 +327,6 @@
                     <p>This action cannot be undone.</p>
                     <form method="post" action="deleteEvent.php">
                         <input type="submit" value="Delete Event" class="button danger">
-                        <input type="hidden" name="id" value="<?= $id ?>">
-                    </form>
-                    <button id="delete-cancel" class="button cancel">Cancel</button>
-                </div>
-            </div>
-
-            <div id="cancel-confirmation-wrapper" class="modal hidden">
-                <div class="modal-content">
-                    <p>Are you sure you want to cancel this appointment?</p>
-                    <p>This action cannot be undone.</p>
-                    <form method="post" action="cancelEvent.php">
-                        <input type="submit" value="Cancel Event" class="button danger">
                         <input type="hidden" name="id" value="<?= $id ?>">
                     </form>
                     <button id="delete-cancel" class="button cancel">Cancel</button>
@@ -357,9 +350,6 @@
         <script>
             function showDeleteConfirmation() {
                 document.getElementById('delete-confirmation-wrapper').classList.remove('hidden');
-            }
-            function showCancelConfirmation() {
-                document.getElementById('cancel-confirmation-wrapper').classList.remove('hidden');
             }
             function showCompleteConfirmation() {
                 document.getElementById('complete-confirmation-wrapper').classList.remove('hidden');
