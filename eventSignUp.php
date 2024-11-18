@@ -60,6 +60,7 @@
             if($event['role'] == "r") {
                 //echo "Yay!";
             } else {
+                $name = htmlspecialchars(isset($_GET['event_name']) ? $_GET['event_name'] : '');
             $id = sign_up_for_event($name, $account_name, $role, $notes);
             if(!$id){
                 header('Location: eventFailure.php');
