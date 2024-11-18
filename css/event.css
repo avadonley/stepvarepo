@@ -117,6 +117,17 @@ td.label {
     background-color: rgba(0, 0, 0, .3);
 }
 
+#cancel-confirmation-wrapper {
+    z-index: 99;
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, .3);
+}
+
 #complete-confirmation-wrapper {
     z-index: 99;
     position: fixed;

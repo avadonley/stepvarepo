@@ -317,6 +317,12 @@
                  }
 	?> 
 
+            <?php if ($access_level < 2) : ?>
+                <?php if ($event_info["completed"] == "no") : ?>
+                    <button onclick="showCancelConfirmation()" class="button danger">Cancel My Sign-Up</button>
+                <?php endif ?>
+            <?php endif ?>
+
         <?php if ($access_level >= 2) : ?>
             <!-- <form method="post" action="deleteEvent.php">
                 <input type="submit" value="Delete Event">
@@ -325,10 +331,51 @@
             <?php if ($event_info["completed"] == "no") : ?>
                 <button onclick="showCompleteConfirmation()">Complete Appointment</button>
             <?php endif ?>
-            <button onclick="showDeleteConfirmation()">Delete Appointment</button>
+            <a href="calendar.php?month=<?= substr($event_info['date'], 0, 7) ?>" class="button cancel">Return to Calendar</a>
+        </div>
+
+        <!-- Confirmation Modals -->
+        <?php if ($access_level >= 2) : ?>
+            <div id="delete-confirmation-wrapper" class="modal hidden">
+                <div class="modal-content">
+                    <p>Are you sure you want to delete this appointment?</p>
+                    <p>This action cannot be undone.</p>
+                    <form method="post" action="deleteEvent.php">
+                        <input type="submit" value="Delete Appointment" class="button danger">
+                        <input type="hidden" name="id" value="<?= $id ?>">
+                    </form>
+                    <button id="delete-cancel" class="button cancel">Cancel</button>
+                </div>
+            </div>
+
+            <div id="complete-confirmation-wrapper" class="modal hidden">
+                <div class="modal-content">
+                    <p>Are you sure you want to complete this appointment?</p>
+                    <p>This action cannot be undone.</p>
+                    <form method="post" action="completeEvent.php">
+                        <input type="submit" value="Complete Appointment" class="button success">
+                        <input type="hidden" name="id" value="<?= $id ?>">
+                    </form>
+                    <button id="complete-cancel" class="button cancel">Cancel</button>
+                </div>
+            </div>
         <?php endif ?>
 
-        <a href="calendar.php?month=<?php echo substr($event_info['date'], 0, 7) ?>" class="button cancel" style="margin-top: -.5rem">Return to Calendar</a>
+        <!-- Scripts for Modal Controls -->
+        <script>
+            function showDeleteConfirmation() {
+                document.getElementById('delete-confirmation-wrapper').classList.remove('hidden');
+            }
+            function showCompleteConfirmation() {
+                document.getElementById('complete-confirmation-wrapper').classList.remove('hidden');
+            }
+            document.getElementById('delete-cancel').onclick = function() {
+                document.getElementById('delete-confirmation-wrapper').classList.add('hidden');
+            };
+            document.getElementById('complete-cancel').onclick = function() {
+                document.getElementById('complete-confirmation-wrapper').classList.add('hidden');
+            };
+        </script>
     </main>
 </body>
 

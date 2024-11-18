@@ -331,4 +331,13 @@ function delete_event($id) {
     return $result;
 }
 
+function cancel_event($id) {
+    $query = "delete from dbeventpersons where userID='$id'";
+    $connection = connect();
+    $result = mysqli_query($connection, $query);
+    $result = boolval($result);
+    mysqli_close($connection);
+    return $result;
+}
+
 ?>
