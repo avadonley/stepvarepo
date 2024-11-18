@@ -103,7 +103,12 @@
 // }
 
 // Fetch event data from session
-if (isset($_SESSION['edit_event'])) {
+if //(isset($_GET['eventId'], $_GET['user'], $_GET['start_time'], $_GET['end_time'])) {
+    (isset($_SESSION['edit_event'])) {
+    // $eventId = htmlspecialchars($_GET['eventId']);
+    // $user = htmlspecialchars($_GET['user']);
+    // $oldStartTime = htmlspecialchars($_GET['start_time']);
+    // $oldEndTime = htmlspecialchars($_GET['end_time']);
     $eventData = $_SESSION['edit_event'];
 
     $eventID = $eventData['id'];
