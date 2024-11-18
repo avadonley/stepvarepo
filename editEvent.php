@@ -92,18 +92,18 @@
 <html>
     <head>
         <?php require_once('universal.inc') ?>
-        <title>Step VA | Edit Appointment</title>
+        <title>Step VA | Edit Event</title>
     </head>
     <body>
         <?php require_once('header.php') ?>
-        <h1>Modify Appointment</h1>
+        <h1>Edit Event</h1>
         <main class="date">
         <?php if ($errors): ?>
             <div class="error-toast"><?php echo $errors ?></div>
         <?php endif ?>
-            <h2>Appointment Details</h2>
+            <h2>Event Details</h2>
             <form id="new-event-form" method="post">
-                <label for="name">Appointment Name </label>
+                <label for="name">Event Name </label>
                 <input type="hidden" name="id" value="<?php echo $id ?>"/> 
                 <input type="text" id="name" name="name" value="<?php echo $event['name'] ?>" required placeholder="Enter name"> 
                 <!--
@@ -158,7 +158,7 @@
                         // terminate while loop
                     ?>
                 </select>---><p></p>
-                <input type="submit" value="Update Appointment">
+                <input type="submit" value="Update Event">
                 <a class="button cancel" href="event.php?id=<?php echo htmlspecialchars($_GET['id']) ?>" style="margin-top: .5rem">Cancel</a>
             </form>
 

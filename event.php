@@ -178,6 +178,7 @@
     <?php if ($access_level >= 2) : ?>
         <script src="js/event.js"></script>
     <?php endif ?>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 
 <body>
@@ -223,8 +224,16 @@
         ?>
 
         <!-- Event Information Table -->
-        <h2><?php echo $event_name; ?></h2>
-        <div id="table-wrapper">
+        <h2 style="font-size: 2.25em; font-weight: 700; color: black;">
+            <?php echo $event_name; ?>
+            <?php if ($access_level >= 2): ?>
+                <a href="editEvent.php?id=<?= $id ?>" title="Edit Event" class="edit-icon">
+                    <i class="fas fa-pencil-alt"></i>
+                </a>
+            <?php endif; ?>
+        </h2>
+
+                <div id="table-wrapper">
             <table>
                 <tr>  
                     <td class="label">Date</td>
@@ -304,13 +313,19 @@
             <!---->
 
             <?php if ($access_level >= 2) : ?>
-                <a href="editEvent.php?id=<?= $id ?>" class="button success">Edit Event Details</a>
+
                 <?php if ($event_info["completed"] == "no") : ?>
-                    <button onclick="showCompleteConfirmation()" class="button success">Complete Appointment</button>
+                    <button onclick="showCompleteConfirmation()" class="button success">Complete Event</button>
                 <?php endif ?>
                 <button onclick="showDeleteConfirmation()" class="button danger">Delete Event</button>
+                <a href="editEvent.php?id=<?= $id ?>" class="button cancel">Edit Event Details</a>
             <?php endif ?>
             <a href="calendar.php?month=<?= substr($event_info['date'], 0, 7) ?>" class="button cancel">Return to Calendar</a>
+            <a href="viewAllEvents.php" class="button cancel">Return to All Events</a>
+
+            <!-- Sign Up for Event Button -->
+            <a href="eventSignUp.php?event_name=<?= isset($event_info['name']) ? urlencode($event_info['name']) : 'Untitled Event' ?>" class="button signup">Sign Up for Event</a>
+
         </div>
 
         <!-- Confirmation Modals -->
