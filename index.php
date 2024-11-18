@@ -82,7 +82,7 @@
                 <?php if ($_SESSION['access_level'] >= 2): ?>
                     <div class="dashboard-item" data-link="addEvent.php">
                         <img src="images/new-event.svg">
-                        <span>Add Event</span>
+                        <span>Create Event</span>
                     </div>
                     
                     <div class="dashboard-item" data-link="personSearch.php">
@@ -99,7 +99,7 @@
                     </div>
                     <div class="dashboard-item" data-link="editHours.php">
                         <img src="images/add-person.svg">
-                        <span>See & Change Event Hours</span>
+                        <span>View & Change Event Hours</span>
                     </div>
                 <?php endif ?>
 
@@ -119,6 +119,10 @@
                         <img src="images/volunteer-history.svg">
                         <span>View My Hours</span>
                     </div>
+                <div class="dashboard-item" data-link="editHours.php">
+                        <img src="images/add-person.svg">
+                        <span>View & Change My Event Hours</span>
+                    </div>
                 <?php endif ?>
                 <div class="dashboard-item" data-link="changePassword.php">
                     <img src="images/change-password.svg">
@@ -131,7 +135,7 @@
                 <!-- autoredirects home as volunteer currently -->
                 <!-- <div class="dashboard-item" data-link="editHours.php">
                         <img src="images/add-person.svg">
-                        <span>See & Change Event Hours</span>
+                        <span>View & Change Event Hours</span>
                 </div> -->
             </div>
         </main>

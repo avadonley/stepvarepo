@@ -40,6 +40,11 @@
                 'volunteer_or_participant', 'photo_release', 'photo_release_notes'
             );
 
+            $optional = array(
+                'how_you_heard_of_stepva', 'preferred_feedback_method', 'hobbies',
+                'skills', 'professional_experience', 'disability_accomodation_needs'
+            );
+
             $errors = false;
             if (!wereRequiredFieldsSubmitted($args, $required)) {
                 $errors = true;
@@ -121,6 +126,12 @@
             //$username = $args['username'];
             $password = password_hash($args['password'], PASSWORD_BCRYPT);
 
+            $how_you_heard_of_stepva = $args['how_you_heard_of_stepva'];
+            $preferred_feedback_method = $args['preferred_feedback_method'];
+            $hobbies = $args['hobbies'];
+            $professional_experience = $args['professional_experience'];
+            $disability_accomodation_needs = $args['disability_accomodation_needs'];
+
             if ($errors) {
                 echo '<p>Your form submission contained unexpected input.</p>';
                 die();
@@ -131,7 +142,7 @@
             $newperson = new Person(
                 $id, // (id = username)
                 $password,
-                '01-01-2024', // (placeholder $start_date)
+                date("Y-m-d"),
                 $first_name,
                 $last_name,
                 $birthday,
@@ -154,6 +165,11 @@
                 $type, // admin or volunteer or participant...
                 $status,
                 $archived,
+                $how_you_heard_of_stepva,
+                $preferred_feedback_method,
+                $hobbies,
+                $professional_experience,
+                $disability_accomodation_needs
             );
 
             $result = add_person($newperson);
