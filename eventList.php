@@ -50,6 +50,7 @@ else if ($accessLevel == 1){
 
     // Fetch events attended by the user
     $events = get_events_attended_by_2($username);
+    
     ?>
     <!DOCTYPE html>
     <html lang="en">
@@ -78,7 +79,17 @@ else if ($accessLevel == 1){
                         echo "<strong>End Time:</strong> " . $event['end_time'] . "<br>";
                         echo "</div>";
                         
-                        echo '<a class="button edit-button" href="editTimes.php?id=' . $event['eventID'] . '&user=' . $username . '&old_start_time=' . $event['start_time'] . '">Edit Event</a>';
+                        //echo '<a class="button edit-button" href="editTimes.php?id=' . $event['eventID'] . '&user=' . urlencode($username) . '&old_start_time=' . urlencode($event['start_time']) . '">Edit Event</a>';
+
+$_SESSION['edit_event'] = [
+    'id' => $event['eventID'],
+    'user' => $username,
+    'old_start_time' => $event['start_time'],
+    'old_end_time' => $event['end_time']
+    
+];
+echo '<a class="button edit-button" href="editTimes.php">Edit Event</a>';
+
                         echo "</li>";
                     }
                     
@@ -92,5 +103,34 @@ else if ($accessLevel == 1){
         </div>
     </body>
     </html>
+    <script>
+// JavaScript function to set global variables for PHP using a form submission
+function storeEditEventData(eventID, username, startTime) {
+    const form = document.createElement('form');
+    form.method = 'post';
+    form.action = 'storeEditEventData.php';
+
+    const idInput = document.createElement('input');
+    idInput.type = 'hidden';
+    idInput.name = 'eventID';
+    idInput.value = eventID;
+    form.appendChild(idInput);
+
+    const userInput = document.createElement('input');
+    userInput.type = 'hidden';
+    userInput.name = 'username';
+    userInput.value = username;
+    form.appendChild(userInput);
+
+    const startTimeInput = document.createElement('input');
+    startTimeInput.type = 'hidden';
+    startTimeInput.name = 'start_time';
+    startTimeInput.value = startTime;
+    form.appendChild(startTimeInput);
+
+    document.body.appendChild(form);
+    form.submit();
+}
+</script>
     <?php
 ?>

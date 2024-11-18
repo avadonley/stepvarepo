@@ -25,8 +25,8 @@
     //     die();
     // }
     require_once('include/input-validation.php');
-    $get = sanitize($_GET);
-    $eventIDGiven = $get['id'];
+  //  $get = sanitize($_GET);
+    //$eventIDGiven = $get['id'];
     
     // Split the string by "?"
     //$parts = explode('?', $eventIDGiven);
@@ -44,10 +44,10 @@
     //echo "Start Time: $old_start_time\n";
 
     // Split the string by "?"
-    $parts = explode('?', $eventIDGiven);
+   // $parts = explode('?', $eventIDGiven);
 
     // Assign each part to a variable
-    $id = $parts[0];
+ //   $id = $parts[0];
 
     // Check if $parts[1] exists before trying to parse it
     if (isset($parts[1])) {
@@ -66,9 +66,9 @@
     }
 
     // Output the variables
-    echo "ID: $id\n";
-    echo "User: $user\n";
-    echo "Start Time: $old_start_time\n";
+    // echo "ID: $id\n";
+    // echo "User: $user\n";
+    // echo "Start Time: $old_start_time\n";
 
 
     // $datePattern = '/[0-9]{4}-[0-9]{2}-[0-9]{2}/';
@@ -77,47 +77,127 @@
     //     header('Location: calendar.php');
     //     die();
     // }
+
+// Check if session variables are set
+// if (isset($_SESSION['edit_event'])) {
+//     $eventData = $_SESSION['edit_event'];
+
+//     $eventID = $eventData['id'];
+//     $username = $eventData['user'];
+//     $oldStartTime = $eventData['old_start_time'];
+//     $oldEndTime = $eventData['old_end_time'];
+
+//     $timeStampStart = strtotime($oldStartTime);
+//     $timeStampEnd = strtotime($oldEndTime);
+
+//     $displayTimeStart = $timeStampStart !== false 
+//         ? date("l, F j, Y, H:i:s", $timeStampStart) 
+//         : "Invalid time format.";
+
+//     $displayTimeEnd = $timeStampEnd !== false 
+//         ? date("l, F j, Y, H:i:s", $timeStampEnd) 
+//         : "Invalid time format.";
+// } else {
+//     $displayTimeStart = "Invalid or missing data.";
+//     $displayTimeEnd = "Invalid or missing data.";
+// }
+
+// Fetch event data from session
+if (isset($_SESSION['edit_event'])) {
+    $eventData = $_SESSION['edit_event'];
+
+    $eventID = $eventData['id'];
+    $username = $eventData['user'];
+    $oldStartTime = $eventData['old_start_time'];
+    $oldEndTime = $eventData['old_end_time'];
+
+    $timeStampStart = strtotime($oldStartTime);
+    $timeStampEnd = strtotime($oldEndTime);
+
+    $displayTimeStart = $timeStampStart !== false 
+        ? date("l, F j, Y, H:i:s", $timeStampStart)  
+        : "Invalid time format.";
+
+    $displayTimeEnd = $timeStampEnd !== false 
+        ? date("l, F j, Y, H:i:s", $timeStampEnd) 
+        : "Invalid time format.";
+} else {
+    $displayTimeStart = "Invalid or missing data.";
+    $displayTimeEnd = "Invalid or missing data.";
+}
 ?>
 <?php
 // Check if the form has been submitted
+// if ($_SERVER["REQUEST_METHOD"] === "POST") {
+//     // Get the submitted form data and sanitize inputs
+//     $startTime = trim($_POST['start-time']);
+//     $endTime = trim($_POST['end-time']);
+
+//     // Check if both start time and end time are not empty
+//     if (!empty($startTime) && !empty($endTime)) {
+//         // Convert the times to a standard format if needed
+//     // Convert the times to a standard format with date
+//     $startDateTime = date("Y-m-d H:i:s", strtotime($eventDate . ' ' . $startTime));
+//     $endDateTime = date("Y-m-d H:i:s", strtotime($eventDate . ' ' . $endTime));
+
+//     $formattedStartDateTime = $startDateTime->format('Y-m-d H:i:s');
+//     $formattedEndDateTime = $endDateTime->format('Y-m-d H:i:s');
+
+//     echo $formattedStartDateTime;
+//     echo "<br>";
+//     echo $formattedEndDateTime;
+//     echo "<br>";
+
+//         // Connect to the database
+//         $connection = connect(); // Assumes you have a connect() function for database connection
+
+//         // Prepare the SQL query to update the hours
+//         $query = "UPDATE dbpersonhours SET start_time = ?, end_time = ? WHERE personID = ? AND eventID = ?";
+
+//         // Prepare statement to avoid SQL injection
+//         $stmt = mysqli_prepare($connection, $query);
+
+//         // Replace these with actual values for personID and eventID
+//         $eventID = $id; // e.g., from session or other source
+//         $personID = $user; // e.g., passed to this page or session
+//         //$oldStartTime = $old_start_time;
+
+//         // Bind parameters to the SQL query
+//         mysqli_stmt_bind_param($stmt, "ssss", $startDateTime, $endDateTime, $personID, $eventID);
+
+//         // Execute the query
+//         if (mysqli_stmt_execute($stmt)) {
+//             echo "Volunteer hours updated successfully.";
+//         } else {
+//             echo "Error updating hours: " . mysqli_error($connection);
+//         }
+
+//         // Close statement and connection
+//         mysqli_stmt_close($stmt);
+//         mysqli_close($connection);
+
+//     } else {
+//         echo "Please fill in both start and end times.";
+//     }
+// }
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    // Get the submitted form data and sanitize inputs
     $startTime = trim($_POST['start-time']);
     $endTime = trim($_POST['end-time']);
 
-    // Check if both start time and end time are not empty
     if (!empty($startTime) && !empty($endTime)) {
-        // Convert the times to a standard format if needed
-    // Convert the times to a standard format with date
-    $startDateTime = date("Y-m-d H:i:s", strtotime($eventDate . ' ' . $startTime));
-    $endDateTime = date("Y-m-d H:i:s", strtotime($eventDate . ' ' . $endTime));
-
-    $formattedStartDateTime = $startDateTime->format('Y-m-d H:i:s');
-    $formattedEndDateTime = $endDateTime->format('Y-m-d H:i:s');
-
-    echo $formattedStartDateTime;
-    echo "<br>";
-    echo $formattedEndDateTime;
-    echo "<br>";
+        $formattedStartDateTime = date("Y-m-d H:i:s", strtotime($startTime));
+        $formattedEndDateTime = date("Y-m-d H:i:s", strtotime($endTime));
 
         // Connect to the database
-        $connection = connect(); // Assumes you have a connect() function for database connection
+        $connection = connect();
 
-        // Prepare the SQL query to update the hours
-        $query = "UPDATE dbpersonhours SET start_time = ?, end_time = ? WHERE personID = ? AND eventID = ?";
-
-        // Prepare statement to avoid SQL injection
+        // Prepare the SQL query
+        $query = "UPDATE dbpersonhours 
+                  SET start_time = ?, end_time = ? 
+                  WHERE personID = ? AND eventID = ?";
         $stmt = mysqli_prepare($connection, $query);
+        mysqli_stmt_bind_param($stmt, "ssss", $formattedStartDateTime, $formattedEndDateTime, $username, $eventID);
 
-        // Replace these with actual values for personID and eventID
-        $eventID = $id; // e.g., from session or other source
-        $personID = $user; // e.g., passed to this page or session
-        //$oldStartTime = $old_start_time;
-
-        // Bind parameters to the SQL query
-        mysqli_stmt_bind_param($stmt, "ssss", $startDateTime, $endDateTime, $personID, $eventID);
-
-        // Execute the query
         if (mysqli_stmt_execute($stmt)) {
             echo "Volunteer hours updated successfully.";
         } else {
@@ -127,12 +207,14 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         // Close statement and connection
         mysqli_stmt_close($stmt);
         mysqli_close($connection);
-
     } else {
         echo "Please fill in both start and end times.";
     }
 }
-?>
+
+ ?>
+
+
 
 <!DOCTYPE html>
 <html>
@@ -144,8 +226,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         <?php require_once('header.php') ?>
         <h1>Edit Event</h1>
         <main class="date">
-            <h2>Edit this time: <?php echo date('l, F j, Y, H:i:s', $timeStamp) ?></h2>            <form id="new-event-form" method="post">
-              <!--  <label for="name">* Event Name </label>
+            <h2>Edit this time: 
+            </h2>            
+            <form id="new-event-form" method="post">
+            <p><strong>Start Time: </strong><?= htmlspecialchars($displayTimeStart); ?></p>  
+            <p><strong>End Time: </strong><?= htmlspecialchars($displayTimeEnd); ?></p> 
+            <!--  <label for="name">* Event Name </label>
                 <input type="text" id="name" name="name" required placeholder="Enter name"> 
                 <!-- <label for="name">* Abbreviated Event Name</label> 
                 <input type="text" id="abbrev-name" name="abbrev-name" maxlength="11" required placeholder="Enter name that will appear on calendar">
