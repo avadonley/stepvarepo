@@ -128,6 +128,7 @@
     } else {
         $account_name = ''; // Default value if the account name is not set
     }
+
 ?>
 <!DOCTYPE html>
 <html>
