@@ -358,10 +358,11 @@ h1 {
 
 h2 {
     text-align: center;
-    font-size: 2em; 
-    font-weight: bold; 
-    margin-bottom: 20px;
+    font-size: 4em; /* Increased font size for bigger text */
+    font-weight: 900; /* Maximum boldness */
+    margin-bottom: 20px; /* Adjust this if needed for spacing */
 }
+
 
 #table-wrapper {
     margin-top: 20px;
@@ -434,12 +435,21 @@ table td .label {
 }
 
 .button.cancel {
-    background-color: #6c757d;
-    color: #fff;
+    background-color: #6c757d !important;
+    color: #fff !important;
 }
 
 .button.cancel:hover {
-    background-color: #5a6268;
+    background-color: #5a6268!important;
+}
+
+.button.signup {
+    background-color: #0190d2!important;
+    color: #fff;
+}
+
+.button.signup:hover {
+    background-color: #096e9d!important;
 }
 
 /* Toast Notification Styling */

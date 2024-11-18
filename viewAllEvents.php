@@ -37,7 +37,15 @@
                 //require_once('database/dbevents.php');
                 //require_once('domain/Event.php');
                 $events = get_all_events();
-                if (sizeof(get_all_events()) > 0): ?>
+                $today = new DateTime(); // Current date
+                
+                // Filter out expired events
+                $upcomingEvents = array_filter($events, function($event) use ($today) {
+                    $eventDate = new DateTime($event->getDate());
+                    return $eventDate >= $today; // Only include events on or after today
+                });
+
+                if (sizeof($upcomingEvents) > 0): ?>
                 <div class="table-wrapper">
                     <table class="general">
                         <thead>
@@ -53,7 +61,7 @@
                                 #require_once('database/dbPersons.php');
                                 #require_once('include/output.php');
                                 #$id_to_name_hash = [];
-                                foreach ($events as $event) {
+                                foreach ($upcomingEvents as $event) {
                                     $eventID = $event->getID();
                                     $title = $event->getName();
                                     $date = $event->getDate();

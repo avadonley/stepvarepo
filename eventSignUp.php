@@ -24,7 +24,7 @@
         require_once('database/dbEvents.php');
         $args = sanitize($_POST, null);
         $required = array(
-            "event-name", /*"abbrev-name", */"account-name", "start-time", "departure-time", /*"skills",*/ /*"diet-restrictions", "disabilities", "materials", "role"*/
+            "event-name", "account-name", "start-time", "departure-time", /*"skills",*/ /*"diet-restrictions", "disabilities", "materials", "role"*/
         );
         if (!wereRequiredFieldsSubmitted($args, $required)) {
             echo 'bad form data';
@@ -49,14 +49,14 @@
             //$date = $args['date'] = validateDate($args["date"]);
             //$capacity = intval($args["capacity"]);
             //$abbrevLength = strlen($args['abbrev-name']);
-            if (!$startTime /*|| !$date || $abbrevLength > 11*/){
-                echo 'bad args';
-                die();
-            }
-            if (!$departureTime /*|| !$date || $abbrevLength > 11*/){
-                echo 'bad args';
-                die();
-            }
+            //if (!$startTime /*|| !$date */|| $abbrevLength > 11){
+                //echo 'bad args';
+                //die();
+            //}
+            //if (!$departureTime /*|| !$date */|| $abbrevLength > 11){
+                //echo 'bad args';
+                //die();
+            //}
             if($event['role'] == "r") {
                 //echo "Yay!";
             } else {
@@ -150,8 +150,8 @@
 
 
 
-                <!--<label for="abbrev-name">* Abbreviated Event Name</label>
-                <input type="text" id="abbrev-name" name="abbrev-name" maxlength="11" required value="<?php //echo $abbrevName; ?>" placeholder="Enter name that will appear on calendar">-->
+                <label for="abbrev-name">* Abbreviated Event Name</label>
+                <input type="text" id="abbrev-name" name="abbrev-name" maxlength="11" required value="<?php echo $abbrevName; ?>" placeholder="Enter name that will appear on calendar">
                 <!-- Autofill and make the account name readonly -->               
                 <label for="account-name">* Your Account Name </label>
                 <input type="text" id="account-name" name="account-name" required value="<?php echo htmlspecialchars($account_name); ?>" placeholder="Enter account name" readonly>
