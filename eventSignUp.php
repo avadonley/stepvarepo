@@ -48,12 +48,12 @@
             $notes = "Skills: " . $args['skills'] . " | Dietary restrictions: " . $args['restrictions'] . " | Disabilities: " . $args['disabilities'] . " | Materials: " . $args['materials'];
             //$date = $args['date'] = validateDate($args["date"]);
             //$capacity = intval($args["capacity"]);
-            $abbrevLength = strlen($args['abbrev-name']);
-            if (!$startTime /*|| !$date */|| $abbrevLength > 11){
+            //$abbrevLength = strlen($args['abbrev-name']);
+            if (!$startTime /*|| !$date || $abbrevLength > 11*/){
                 echo 'bad args';
                 die();
             }
-            if (!$departureTime /*|| !$date */|| $abbrevLength > 11){
+            if (!$departureTime /*|| !$date || $abbrevLength > 11*/){
                 echo 'bad args';
                 die();
             }
@@ -152,7 +152,7 @@
 
                 <label for="abbrev-name">* Abbreviated Event Name</label>
                 <input type="text" id="abbrev-name" name="abbrev-name" maxlength="11" required value="<?php echo $abbrevName; ?>" placeholder="Enter name that will appear on calendar">
-                <!-- Autofill and make the account name readonly -->
+                <!-- Autofill and make the account name readonly -->               
                 <label for="account-name">* Your Account Name </label>
                 <input type="text" id="account-name" name="account-name" required value="<?php echo htmlspecialchars($account_name); ?>" placeholder="Enter account name" readonly>
 
@@ -170,7 +170,7 @@
                 <input type="text" id="materials" name="materials" placeholder="Enter materials. Ex. felt, pipe cleaners">
                 
                 <fieldset>
-                <label for="role"> Are you a volunteer or a participant? </label>
+                <label for="role">* Are you a volunteer or a participant? </label>
             <div class="radio-group">
                 <input type="radio" id="v" name="role" value="v" required><label for="role">Volunteer</label>
                 <input type="radio" id="p" name="role" value="p" required><label for="role">Participant</label>
