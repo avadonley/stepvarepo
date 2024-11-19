@@ -41,7 +41,7 @@
                 $errors .= '<p>The provided time range was invalid.</p>';
             }
             $startTime = $args['start-time'] = $validated[0];
-            $endTime = $validated[1];
+            $endTime = $args['end-time'] = $validated[1];
             $date = $args['date'] = validateDate($args["date"]);
            // $capacity = intval($args["capacity"]);
            // $assignedVolunteerCount = count(getvolunteers_byevent($id));
