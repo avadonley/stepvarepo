@@ -173,11 +173,12 @@
     <?php
         require_once('universal.inc');
     ?>
-    <title>Step VA | View Appointment: <?php echo $event_info['name'] ?></title>
+    <title>Step VA | View Event: <?php echo $event_info['name'] ?></title>
     <link rel="stylesheet" href="css/event.css" type="text/css" />
     <?php if ($access_level >= 2) : ?>
         <script src="js/event.js"></script>
     <?php endif ?>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 
 <body>
@@ -190,6 +191,9 @@
         <?php endif ?>
         <?php if (isset($_GET['editSuccess'])): ?>
             <div class="happy-toast">Event details updated successfully!</div>
+        <?php endif ?>
+        <?php if (isset($_GET['cancelSuccess'])): ?>
+            <div class="happy-toast">Sign-up canceled successfully!</div>
         <?php endif ?>
 
         <!--@@@ Thomas: if user clicked check in/out-->
@@ -233,8 +237,16 @@
         ?>
 
         <!-- Event Information Table -->
-        <h2><?php echo $event_name; ?></h2>
-        <div id="table-wrapper">
+        <h2 style="font-size: 2.25em; font-weight: 700; color: black;">
+            <?php echo $event_name; ?>
+            <?php if ($access_level >= 2): ?>
+                <a href="editEvent.php?id=<?= $id ?>" title="Edit Event" class="edit-icon">
+                    <i class="fas fa-pencil-alt"></i>
+                </a>
+            <?php endif; ?>
+        </h2>
+
+                <div id="table-wrapper">
             <table>
                 <tr>  
                     <td class="label">Date</td>
@@ -314,6 +326,12 @@
 
             <!-- end of Thomas's work-->
 
+            <?php if ($access_level < 2) : ?>
+                <?php if ($event_info["completed"] == "no") : ?>
+                    <button onclick="showCancelConfirmation()" class="button danger">Cancel My Sign-Up</button>
+                <?php endif ?>
+            <?php endif ?>
+
             <?php if ($access_level >= 2) : ?>
 
                 <a href="editEvent.php?id=<?= $id ?>" class="button">Edit Event Details</a>
@@ -333,15 +351,23 @@
                         <input type="hidden" name="eventID" value="<?php echo $event_info['id']; ?>">
                         <button type="submit" class="button">Archive</button>
                     </form>
+
                 <?php endif ?>
 
                 <!-- end of Thomas's work -->
 
                 <button onclick="showDeleteConfirmation()" class="button danger">Delete Event</button>
 
+                <a href="editEvent.php?id=<?= $id ?>" class="button cancel">Edit Event Details</a>
+
             <?php endif ?>
 
             <a href="calendar.php?month=<?= substr($event_info['date'], 0, 7) ?>" class="button cancel">Return to Calendar</a>
+            <a href="viewAllEvents.php" class="button cancel">Return to All Events</a>
+
+            <!-- Sign Up for Event Button -->
+            <a href="eventSignUp.php?event_name=<?= isset($event_info['name']) ? urlencode($event_info['name']) : 'Untitled Event' ?>" class="button signup">Sign Up for Event</a>
+
         </div>
 
         <!-- Confirmation Modals -->
@@ -360,21 +386,45 @@
 
             <div id="complete-confirmation-wrapper" class="modal hidden">
                 <div class="modal-content">
-                    <p>Are you sure you want to archive this event?</p>
-                    <p>Users will no longer have acces to this event. It can always be unarchived later.</p>
+                    <p>Are you sure you want to complete this event?</p>
+                    <p>This action cannot be undone.</p>
                     <form method="post" action="completeEvent.php">
                         <input type="submit" value="Archive Event" class="button">
                         <input type="hidden" name="id" value="<?= $id ?>">
                     </form>
                     <button id="complete-cancel" class="button cancel">Cancel</button>
+
                 </div>
             </div>
-        <?php endif ?>
+            <?php endif ?>
+
+
+            <?php if ($access_level < 2) : ?>
+                <div id="cancel-confirmation-wrapper" class="modal hidden">
+                <div class="modal-content">
+                    <p>Are you sure you want to cancel your sign-up for this event?</p>
+                    <p>This action cannot be undone.</p>
+                   <form method="post" action="cancelEvent.php">
+                        <input type="submit" value="Cancel Sign-Up" class="button danger">
+                        <input type="hidden" name="id" value="<?= $_REQUEST['id'] ?>">
+                        <input type="hidden" name="user_id" value="<?= $_REQUEST['user_id'] ?>">
+                    </form>
+                    <button onclick="document.getElementById('cancel-confirmation-wrapper').classList.add('hidden')" id="cancel-cancel" class="button cancel">Cancel</button>
+                </div>
+            </div>
+            <?php
+        ?>
+            <?php endif ?>
+
+            
 
         <!-- Scripts for Modal Controls -->
         <script>
             function showDeleteConfirmation() {
                 document.getElementById('delete-confirmation-wrapper').classList.remove('hidden');
+            }
+            function showCancelConfirmation() {
+                document.getElementById('cancel-confirmation-wrapper').classList.remove('hidden');
             }
             function showCompleteConfirmation() {
                 document.getElementById('complete-confirmation-wrapper').classList.remove('hidden');
@@ -382,6 +432,9 @@
             document.getElementById('delete-cancel').onclick = function() {
                 document.getElementById('delete-confirmation-wrapper').classList.add('hidden');
             };
+            document.getElementById('cancel-cancel').onclick = function() {
+                document.getElementById('cancel-confirmation-wrapper').classList.add('hidden');
+            }
             document.getElementById('complete-cancel').onclick = function() {
                 document.getElementById('complete-confirmation-wrapper').classList.add('hidden');
             };

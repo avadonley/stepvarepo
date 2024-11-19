@@ -37,7 +37,15 @@
                 //require_once('database/dbevents.php');
                 //require_once('domain/Event.php');
                 $events = get_all_events();
-                if (sizeof(get_all_events()) > 0): ?>
+                $today = new DateTime(); // Current date
+                
+                // Filter out expired events
+                $upcomingEvents = array_filter($events, function($event) use ($today) {
+                    $eventDate = new DateTime($event->getDate());
+                    return $eventDate >= $today; // Only include events on or after today
+                });
+
+                if (sizeof($upcomingEvents) > 0): ?>
                 <div class="table-wrapper">
                     <table class="general">
                         <thead>
@@ -53,7 +61,7 @@
                                 #require_once('database/dbPersons.php');
                                 #require_once('include/output.php');
                                 #$id_to_name_hash = [];
-                                foreach ($events as $event) {
+                                foreach ($upcomingEvents as $event) {
                                     $eventID = $event->getID();
                                     $title = $event->getName();
                                     $date = $event->getDate();
@@ -73,9 +81,9 @@
                                         echo "
                                         <tr data-event-id='$eventID'>
                                             <td>$restricted_signup</td>
-                                            <td><a href='Event.php?id=$eventID'>$title</a></td> <!-- Link updated here -->
+                                            <td><a href='Event.php?id=$eventID'>$title</a></td>
                                             <td>$date</td>
-                                            <td><a class='button sign-up' href='eventSignUp.php'>Sign Up</a></td>
+                                            <td><a class='button sign-up' href='eventSignUp.php?event_name=" . urlencode($title) . "'>Sign Up</a></td>
                                         </tr>";
                                     //} else {
                                         /*echo "

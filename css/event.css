@@ -258,7 +258,31 @@ td.label {
     background-color: rgba(0, 0, 0, .3);
 }
 
+#cancel-confirmation-wrapper {
+    z-index: 99;
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, .3);
+}
+
 #delete-confirmation {
+    z-index: 99;
+    background-color: var(--page-background-color);
+    /* border: 1px solid var(--secondary-accent-color); */
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    border-radius: .5rem;
+    box-shadow: 0px 1rem 1rem rgba(0, 0, 0, 0.5);
+    margin: 0.5rem;
+}
+
+#cancel-confirmation {
     z-index: 99;
     background-color: var(--page-background-color);
     /* border: 1px solid var(--secondary-accent-color); */
@@ -300,6 +324,14 @@ td.label {
     background-color: var(--accent-color);
 }
 
+#cancel-cancel {
+    background-color: var(--cancel-button-background-color);
+}
+
+#cancel-cancel:hover {
+    background-color: var(--accent-color);
+}
+
 #complete-cancel {
     background-color: var(--cancel-button-background-color);
 }
@@ -334,10 +366,11 @@ h1 {
 
 h2 {
     text-align: center;
-    font-size: 2em; 
-    font-weight: bold; 
-    margin-bottom: 20px;
+    font-size: 4em; /* Increased font size for bigger text */
+    font-weight: 900; /* Maximum boldness */
+    margin-bottom: 20px; /* Adjust this if needed for spacing */
 }
+
 
 #table-wrapper {
     margin-top: 20px;
@@ -410,12 +443,21 @@ table td .label {
 }
 
 .button.cancel {
-    background-color: #6c757d;
-    color: #fff;
+    background-color: #6c757d !important;
+    color: #fff !important;
 }
 
 .button.cancel:hover {
-    background-color: #5a6268;
+    background-color: #5a6268!important;
+}
+
+.button.signup {
+    background-color: #0190d2!important;
+    color: #fff;
+}
+
+.button.signup:hover {
+    background-color: #096e9d!important;
 }
 
 /* Toast Notification Styling */
@@ -594,4 +636,50 @@ td {
 }
 */
 
+/* General styling for the event section */
+.section-box {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 15px;
+    margin-bottom: 20px;
+    background-color: #fafafa;
+}
+
+.section-box legend {
+    font-weight: bold;
+    color: #333;
+    padding: 0 10px;
+}
+
+/* Styling for each label-data pair */
+.field-pair {
+    margin-bottom: 15px; /* Space between each field-pair */
+}
+
+.field-pair label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px; /* Space between label and data */
+    color: #333;
+}
+
+.field-pair p {
+    margin: 0;
+    color: #555;
+}
+
+/* Button styling */
+.button.edit-button {
+    display: inline-block;
+    padding: 10px 20px;
+    margin-top: 15px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.button.edit-button:hover {
+    background-color: #0056b3;
+}
 

@@ -56,31 +56,31 @@ function add_event($event) {
 }
 
 function sign_up_for_event($eventID, $account_name, $role, $notes) {
-        $connection = connect();
-        $query1 = "SELECT id FROM dbevents WHERE name LIKE '$eventID'";
-        $result1 = mysqli_query($connection, $query1);
-        $row = mysqli_fetch_assoc($result1);
-        $value = $row['id'];
-       
-        $query2 = "SELECT userID FROM dbeventpersons WHERE eventID LIKE '$value' AND userID LIKE '$account_name'";
-        $result2 = mysqli_query($connection, $query2);
+    $connection = connect();
+    $query1 = "SELECT id FROM dbevents WHERE name LIKE '$eventID'";
+    $result1 = mysqli_query($connection, $query1);
+    $row = mysqli_fetch_assoc($result1);
+    $value = $row['id'];
+   
+    $query2 = "SELECT userID FROM dbeventpersons WHERE eventID LIKE '$value' AND userID LIKE '$account_name'";
+    $result2 = mysqli_query($connection, $query2);
 
-        $row2 = null;
-        $row2 = mysqli_fetch_assoc($result2);
+    $row2 = null;
+    $row2 = mysqli_fetch_assoc($result2);
 
-        if(!is_null($row2)) {
-                $value2 = $row2['userID'];
-                if($value2 == $account_name){
-                    return null;
-            } 
-        } else {       
-                $query = "insert into dbeventpersons (eventID, userID, position, notes) values ('$value', '$account_name', '$role', '$notes')";
-                $result = mysqli_query($connection, $query);
-                mysqli_commit($connection);
-                return $value;
-            }
-        return $value;
-    }
+    if(!is_null($row2)) {
+            $value2 = $row2['userID'];
+            if($value2 == $account_name){
+                return null;
+        } 
+    } else {       
+            $query = "insert into dbeventpersons (eventID, userID, position, notes) values ('$value', '$account_name', '$role', '$notes')";
+            $result = mysqli_query($connection, $query);
+            mysqli_commit($connection);
+            return $value;
+        }
+    return $value;
+}
 
 /* @@@ Thomas's work! */
 /*
@@ -147,6 +147,8 @@ function unarchive_event($id) {
 }
 
 /* end of Thomas's work*/
+
+/**/
 
 /*
  * remove an event from dbEvents table.  If already there, return false
@@ -614,6 +616,15 @@ function detach_media($mediaID) {
 
 function delete_event($id) {
     $query = "delete from dbEvents where id='$id'";
+    $connection = connect();
+    $result = mysqli_query($connection, $query);
+    $result = boolval($result);
+    mysqli_close($connection);
+    return $result;
+}
+
+function cancel_event($event_id, $account_name) {
+    $query = "DELETE from dbeventpersons where userID LIKE '$account_name' AND eventID LIKE $event_id";
     $connection = connect();
     $result = mysqli_query($connection, $query);
     $result = boolval($result);
