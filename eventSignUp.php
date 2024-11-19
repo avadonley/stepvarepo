@@ -152,7 +152,10 @@
 
                 <!-- Autofill and make the account name readonly -->               
                 <label for="account-name">* Your Account Name </label>
-                <input type="text" id="account-name" name="account-name" required value="<?php echo htmlspecialchars($account_name); ?>" placeholder="Enter account name" readonly>
+                <input type="text" id="account-name" name="account-name" 
+                    <?php echo ($accessLevel >= 2) ? '' : 'readonly'; ?> 
+                    value="<?php echo htmlspecialchars($account_name); ?>" 
+                    placeholder="Enter account name">
 
                 <label for="start-time">* What Time Will You Arrive? </label>
                 <input type="text" id="start-time" name="start-time" pattern="([1-9]|10|11|12):[0-5][0-9] ?([aApP][mM])" required value="<?php echo $startTime; ?>" placeholder="Enter arrival time. Ex. 12:00 PM">
