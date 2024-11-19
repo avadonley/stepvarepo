@@ -82,7 +82,10 @@ function sign_up_for_event($eventID, $account_name, $role, $notes) {
     return $value;
 }
 
-/*@@@ Check if a user is is signed up for an event. Return true or false. */
+/* @@@ Thomas's work! */
+/*
+ * Check if a user is is signed up for an event. Return true or false.
+ */
 function check_if_signed_up($eventID, $userID) {
     // look up event+user pair
     $connection = connect();
@@ -98,7 +101,52 @@ function check_if_signed_up($eventID, $userID) {
         return False;
     }
 }
-/**/
+
+
+/*
+ * Returns true if the given event is archived.
+ */
+function is_archived($id) {
+    // look-up 'completed' in the event's DB entry
+    $connection = connect();
+    $query1 = "SELECT completed FROM dbevents WHERE id = '$id'";
+    $result1 = mysqli_query($connection, $query1);
+    $row = mysqli_fetch_assoc($result1);
+    mysqli_close($connection);
+
+    if ($row == NULL) return False; // no match for that event ID
+
+    if ($row['completed'] == 'yes') {
+        // event is archived
+        return True;
+    } else {
+        return False;
+    }
+}
+
+/*
+ * Mark an event as archived in the DB by setting the 'completed' column to 'yes'.
+ */
+function archive_event($id) {
+    $con=connect();
+    $query = "UPDATE dbevents SET completed = 'yes' WHERE id = '" .$id. "'";
+    $result = mysqli_query($con, $query);
+    mysqli_close($con);
+    return $result;
+}
+
+/*
+ * Mark an event as not archived in the DB by setting the 'completed' column to 'no'.
+ */
+function unarchive_event($id) {
+    $con=connect();
+    $query = "UPDATE dbevents SET completed = 'no' WHERE id = '" .$id. "'";
+    $result = mysqli_query($con,$query);
+    mysqli_close($con);
+    return $result;
+}
+
+/* end of Thomas's work*/
 
 /**/
 
