@@ -238,7 +238,7 @@
 
         <!-- Event Information Table -->
         <h2 style="font-size: 2.25em; font-weight: 700; color: black;">
-            <?php echo $event_name; ?>
+            <?php echo htmlspecialchars_decode($event_name); ?>
             <?php if ($access_level >= 2): ?>
                 <a href="editEvent.php?id=<?= $id ?>" title="Edit Event" class="edit-icon">
                     <i class="fas fa-pencil-alt"></i>
