@@ -150,8 +150,6 @@
 
 
 
-                <label for="abbrev-name">* Abbreviated Event Name</label>
-                <input type="text" id="abbrev-name" name="abbrev-name" maxlength="11" required value="<?php echo $abbrevName; ?>" placeholder="Enter name that will appear on calendar">
                 <!-- Autofill and make the account name readonly -->               
                 <label for="account-name">* Your Account Name </label>
                 <input type="text" id="account-name" name="account-name" required value="<?php echo htmlspecialchars($account_name); ?>" placeholder="Enter account name" readonly>

@@ -575,8 +575,8 @@ function delete_event($id) {
     return $result;
 }
 
-function cancel_event($id) {
-    $query = "delete from dbEvents where userid='$id'";
+function cancel_event($event_id, $account_name) {
+    $query = "DELETE from dbeventpersons where userID LIKE '$account_name' AND eventID LIKE $event_id";
     $connection = connect();
     $result = mysqli_query($connection, $query);
     $result = boolval($result);

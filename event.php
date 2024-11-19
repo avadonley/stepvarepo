@@ -192,6 +192,9 @@
         <?php if (isset($_GET['editSuccess'])): ?>
             <div class="happy-toast">Event details updated successfully!</div>
         <?php endif ?>
+        <?php if (isset($_GET['cancelSuccess'])): ?>
+            <div class="happy-toast">Sign-up canceled successfully!</div>
+        <?php endif ?>
 
         <!--@@@ Thomas: if user clicked check in/out-->
         <?php
@@ -367,13 +370,16 @@
                 <div class="modal-content">
                     <p>Are you sure you want to cancel your sign-up for this event?</p>
                     <p>This action cannot be undone.</p>
-                    <form method="post" action="cancelEvent.php">
+                   <form method="post" action="cancelEvent.php">
                         <input type="submit" value="Cancel Sign-Up" class="button danger">
-                        <input type="hidden" name="id" value="<?= $id ?>">
+                        <input type="hidden" name="id" value="<?= $_REQUEST['id'] ?>">
+                        <input type="hidden" name="user_id" value="<?= $_REQUEST['user_id'] ?>">
                     </form>
                     <button id="delete-cancel" class="button cancel">Cancel</button>
                 </div>
             </div>
+            <?php
+        ?>
             <?php endif ?>
 
             
