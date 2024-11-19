@@ -324,6 +324,14 @@ td.label {
     background-color: var(--accent-color);
 }
 
+#cancel-cancel {
+    background-color: var(--cancel-button-background-color);
+}
+
+#cancel-cancel:hover {
+    background-color: var(--accent-color);
+}
+
 #complete-cancel {
     background-color: var(--cancel-button-background-color);
 }

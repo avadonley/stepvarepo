@@ -360,6 +360,7 @@
                         <input type="hidden" name="id" value="<?= $id ?>">
                     </form>
                     <button id="complete-cancel" class="button cancel">Cancel</button>
+
                 </div>
             </div>
             <?php endif ?>
@@ -375,7 +376,7 @@
                         <input type="hidden" name="id" value="<?= $_REQUEST['id'] ?>">
                         <input type="hidden" name="user_id" value="<?= $_REQUEST['user_id'] ?>">
                     </form>
-                    <button id="delete-cancel" class="button cancel">Cancel</button>
+                    <button onclick="document.getElementById('cancel-confirmation-wrapper').classList.add('hidden')" id="cancel-cancel" class="button cancel">Cancel</button>
                 </div>
             </div>
             <?php
@@ -398,6 +399,9 @@
             document.getElementById('delete-cancel').onclick = function() {
                 document.getElementById('delete-confirmation-wrapper').classList.add('hidden');
             };
+            document.getElementById('cancel-cancel').onclick = function() {
+                document.getElementById('cancel-confirmation-wrapper').classList.add('hidden');
+            }
             document.getElementById('complete-cancel').onclick = function() {
                 document.getElementById('complete-confirmation-wrapper').classList.add('hidden');
             };
