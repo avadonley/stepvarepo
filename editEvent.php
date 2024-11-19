@@ -36,7 +36,7 @@
         } else {
             require_once('database/dbPersons.php');
             $id = $args['id'];
-            $validated = validate12hTimeRangeAndConvertTo24h($args["start-time"], "11:59 PM");
+            $validated = validate12hTimeRangeAndConvertTo24h($args["start-time"], $args["end-time"]);
             if (!$validated) {
                 $errors .= '<p>The provided time range was invalid.</p>';
             }
@@ -114,6 +114,8 @@
                 <input type="date" id="date" name="date" value="<?php echo $event['date'] ?>" min="<?php echo date('Y-m-d'); ?>" required>
                 <label for="name">Start Time </label>
                 <input type="text" id="start-time" name="start-time" value="<?php echo time24hto12h($event['startTime']) ?>" pattern="([1-9]|10|11|12):[0-5][0-9] ?([aApP][mM])" required placeholder="Enter start time. Ex. 12:00 PM">
+                <label for="name">End Time </label>
+                <input type="text" id="end-time" name="end-time" value="<?php echo time24hto12h($event['endTime']) ?>" pattern="([1-9]|10|11|12):[0-5][0-9] ?([aApP][mM])" required placeholder="Enter end time. Ex. 12:00 PM">
                 <label for="name">Description </label>
                 <input type="text" id="description" name="description" value="<?php echo $event['description'] ?>" required placeholder="Enter description">
                 <!--<fieldset>

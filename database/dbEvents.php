@@ -381,9 +381,9 @@ function update_event($eventID, $eventDetails) {
     $name = $eventDetails["name"];
     #$abbrevName = $eventDetails["abbrev-name"];
     $date = $eventDetails["date"];
-    $startTime = $eventDetails["startTime"];
+    $startTime = $eventDetails["start-time"];
     #$restricted = $eventDetails["restricted"];
-    $endTime = $eventDetails["endTime"];
+    $endTime = $eventDetails["end-time"];
     $description = $eventDetails["description"];
     $capacity = $eventDetails["capacity"];
     $completed = $eventDetails["completed"];

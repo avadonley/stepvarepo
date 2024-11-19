@@ -139,8 +139,8 @@
                 
                 $eventName = htmlspecialchars_decode($event['name']);
                 $eventDate = date('l, F j, Y', strtotime($event['date']));
-                $eventStart = time24hto12h($event['startTime']);
-                $eventEnd = time24hto12h($event['endTime']);
+                $eventStart = time24hto12h($event['start-time']);
+                $eventEnd = time24hto12h($event['end-time']);
                 system_message_all_admins("$name signed up for an event!", "Exciting news!\r\n\r\n$name signed up for the [$eventName](event: $eventID) event from $eventStart to $eventEnd on $eventDate.");
                 // Check if GET request from user is from an admin/super admin
             // (Only admins and super admins can add another user)
