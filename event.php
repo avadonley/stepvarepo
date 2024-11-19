@@ -192,6 +192,9 @@
         <?php if (isset($_GET['editSuccess'])): ?>
             <div class="happy-toast">Event details updated successfully!</div>
         <?php endif ?>
+        <?php if (isset($_GET['cancelSuccess'])): ?>
+            <div class="happy-toast">Sign-up canceled successfully!</div>
+        <?php endif ?>
 
         <!--@@@ Thomas: if user clicked check in/out-->
         <?php
@@ -312,6 +315,12 @@
             <?php endif ?>
             <!---->
 
+            <?php if ($access_level < 2) : ?>
+                <?php if ($event_info["completed"] == "no") : ?>
+                    <button onclick="showCancelConfirmation()" class="button danger">Cancel My Sign-Up</button>
+                <?php endif ?>
+            <?php endif ?>
+
             <?php if ($access_level >= 2) : ?>
 
                 <?php if ($event_info["completed"] == "no") : ?>
@@ -351,14 +360,38 @@
                         <input type="hidden" name="id" value="<?= $id ?>">
                     </form>
                     <button id="complete-cancel" class="button cancel">Cancel</button>
+
                 </div>
             </div>
-        <?php endif ?>
+            <?php endif ?>
+
+
+            <?php if ($access_level < 2) : ?>
+                <div id="cancel-confirmation-wrapper" class="modal hidden">
+                <div class="modal-content">
+                    <p>Are you sure you want to cancel your sign-up for this event?</p>
+                    <p>This action cannot be undone.</p>
+                   <form method="post" action="cancelEvent.php">
+                        <input type="submit" value="Cancel Sign-Up" class="button danger">
+                        <input type="hidden" name="id" value="<?= $_REQUEST['id'] ?>">
+                        <input type="hidden" name="user_id" value="<?= $_REQUEST['user_id'] ?>">
+                    </form>
+                    <button onclick="document.getElementById('cancel-confirmation-wrapper').classList.add('hidden')" id="cancel-cancel" class="button cancel">Cancel</button>
+                </div>
+            </div>
+            <?php
+        ?>
+            <?php endif ?>
+
+            
 
         <!-- Scripts for Modal Controls -->
         <script>
             function showDeleteConfirmation() {
                 document.getElementById('delete-confirmation-wrapper').classList.remove('hidden');
+            }
+            function showCancelConfirmation() {
+                document.getElementById('cancel-confirmation-wrapper').classList.remove('hidden');
             }
             function showCompleteConfirmation() {
                 document.getElementById('complete-confirmation-wrapper').classList.remove('hidden');
@@ -366,6 +399,9 @@
             document.getElementById('delete-cancel').onclick = function() {
                 document.getElementById('delete-confirmation-wrapper').classList.add('hidden');
             };
+            document.getElementById('cancel-cancel').onclick = function() {
+                document.getElementById('cancel-confirmation-wrapper').classList.add('hidden');
+            }
             document.getElementById('complete-cancel').onclick = function() {
                 document.getElementById('complete-confirmation-wrapper').classList.add('hidden');
             };

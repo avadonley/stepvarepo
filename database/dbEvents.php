@@ -575,6 +575,15 @@ function delete_event($id) {
     return $result;
 }
 
+function cancel_event($event_id, $account_name) {
+    $query = "DELETE from dbeventpersons where userID LIKE '$account_name' AND eventID LIKE $event_id";
+    $connection = connect();
+    $result = mysqli_query($connection, $query);
+    $result = boolval($result);
+    mysqli_close($connection);
+    return $result;
+}
+
 function complete_event($id) {
     $event = retrieve_event2($id);
     $animal = get_animal($event["animalID"])[0];

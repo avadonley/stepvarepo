@@ -16,6 +16,7 @@
     } else {
         $month = $_GET['month'];
     }
+    
     $year = substr($month, 0, 4);
     $month2digit = substr($month, 5, 2);
 
@@ -100,6 +101,8 @@
                 <div class="happy-toast">Event deleted successfully.</div>
             <?php elseif (isset($_GET['completeSuccess'])) : ?>
                 <div class="happy-toast">Event completed successfully.</div>
+            <?php elseif (isset($_GET['cancelSuccess'])) : ?>
+                <div class="happy-toast">Event canceled successfully.</div>
             <?php endif ?>
             <div class="table-wrapper">
                 <table id="calendar">
@@ -145,10 +148,11 @@
                                         } else {
                                             $backgroundCol = '#1a7024'; //Otherwise keeps background as green
                                         }
+
                                         if($info["completed"] == "no"){ //Uncompleted events
-                                            $eventsStr .= '<a class="calendar-event" style="background-color:#1a7024" href="event.php?id=' . $info['id'] . '">' . htmlspecialchars_decode($info['name']) .  '</a>';
+                                            $eventsStr .= '<a class="calendar-event" style="background-color:#1a7024" href="event.php?id=' . $info['id'] . '&user_id=' . $_SESSION['_id'] . '">' . htmlspecialchars_decode($info['name']) . '</a>';
                                         } else { //Completed Events
-                                            $eventsStr .= '<a class="calendar-event" href="event.php?id=' . $info['id'] . '">' . htmlspecialchars_decode($info['name']) .  '</a>';
+                                            $eventsStr .= '<a class="calendar-event" href="event.php?id=' . $info['id'] . '">' . htmlspecialchars_decode($info['name']) .  ' </a>';
                                         }
                                         // More visual changes for resrticted and unrestricted events to be made below
                                         //if($info['restricted'] == 1) { 

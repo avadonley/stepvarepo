@@ -14,6 +14,10 @@ function showDeleteConfirmation() {
     $('#delete-confirmation-wrapper').removeClass('hidden');
 }
 
+function showCancelConfirmation() {
+    $('#cancel-confirmation-wrapper').removeClass('hidden');
+}
+
 function hideCompleteConfirmation(e) {
     if (e.target === this) {
         $('#complete-confirmation-wrapper').addClass('hidden');
