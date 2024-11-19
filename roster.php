@@ -20,7 +20,7 @@
         die();
   	}
   	
-  	include_once('database/dbEvents.php');
+  	include_once('database/dbevents.php');
   	
     // We need to check for a bad ID here before we query the db
     // otherwise we may be vulnerable to SQL injection(!)
@@ -34,7 +34,7 @@
         die();
     }
 
-    include_once('database/dbPersons.php');
+    include_once('database/dbpersons.php');
     include_once('include/output.php');
 
     $loggedIn = false;

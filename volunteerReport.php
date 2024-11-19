@@ -21,7 +21,7 @@
         die();
     }
     $isAdmin = $accessLevel >= 2;
-    require_once('database/dbPersons.php');
+    require_once('database/dbpersons.php');
     if ($isAdmin && isset($_GET['id'])) {
         require_once('include/input-validation.php');
         $args = sanitize($_GET);

@@ -45,8 +45,8 @@ else if ($accessLevel == 1){
     
     // Include necessary files and sanitize input
     require_once('include/input-validation.php');
-    require_once('database/dbEvents.php');
-    require_once('database/dbPersons.php');
+    require_once('database/dbevents.php');
+    require_once('database/dbpersons.php');
 
     // Fetch events attended by the user
     $events = get_events_attended_by_2($username);

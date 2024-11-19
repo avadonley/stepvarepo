@@ -47,7 +47,7 @@
             <h2>Events for <?php echo date('l, F j, Y', $timeStamp) ?></h2>
             <!-- Loop -->
             <?php
-                require('database/dbEvents.php');
+                require('database/dbevents.php');
                 require('include/output.php');
                 require('include/time.php');
                 $events = fetch_events_on_date($date);

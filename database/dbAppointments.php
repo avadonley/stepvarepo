@@ -21,7 +21,7 @@
 
 
  /*
-  * Copy of dbEvents.php
+  * Copy of dbevents.php
   */
 
 include_once('dbinfo.php');
@@ -75,7 +75,7 @@ function remove_event($id) {
 
 
 /*
- * @return an Event from dbEvents table matching a particular id.
+ * @return an Event from dbevents table matching a particular id.
  * if not in table, return false
  */
 
@@ -271,7 +271,7 @@ function fetch_events_in_date_range_as_array($start_date, $end_date) {
 
 function get_media($id, $type) {
     $connection = connect();
-    $query = "select * from dbEventMedia
+    $query = "select * from dbeventmedia
               where eventID='$id' and type='$type'";
     $result = mysqli_query($connection, $query);
     if (!$result) {
@@ -291,7 +291,7 @@ function get_post_event_media($id) {
 }
 
 function attach_media($eventID, $type, $url, $format, $description) {
-    $query = "insert into dbEventMedia
+    $query = "insert into dbeventmedia
               (eventID, type, url, format, description)
               values ('$eventID', '$type', '$url', '$format', '$description')";
     $connection = connect();
@@ -312,7 +312,7 @@ function attach_post_event_media($eventID, $url, $format, $description) {
 }
 
 function detach_media($mediaID) {
-    $query = "delete from dbEventMedia where id='$mediaID'";
+    $query = "delete from dbeventmedia where id='$mediaID'";
     $connection = connect();
     $result = mysqli_query($connection, $query);
     mysqli_close($connection);

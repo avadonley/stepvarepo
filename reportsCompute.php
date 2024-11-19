@@ -8,9 +8,9 @@
  */
 
 include_once('dbinfo.php');
-include_once('database/dbPersons.php');
+include_once('database/dbpersons.php');
 include_once('domain/Person.php');
-include_once('dbEvents.php');
+include_once('dbevents.php');
 
 include_once('database/dbShifts.php');
 include_once('domain/Shift.php');

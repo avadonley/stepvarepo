@@ -35,7 +35,7 @@
     //     die();
     // }
 
-    include_once('database/dbPersons.php');
+    include_once('database/dbpersons.php');
     $access_level = $_SESSION['access_level'];
     $user = retrieve_person($_SESSION['_id']);
     $active = $user->get_status() == 'Active';

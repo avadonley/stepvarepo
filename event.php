@@ -17,7 +17,7 @@
         die();
   	}
   	
-  	include_once('database/dbEvents.php');
+  	include_once('database/dbevents.php');
   	
     // We need to check for a bad ID here before we query the db
     // otherwise we may be vulnerable to SQL injection(!)
@@ -31,7 +31,7 @@
         die();
     }
 
-    include_once('database/dbPersons.php');
+    include_once('database/dbpersons.php');
     $access_level = $_SESSION['access_level'];
     $user = retrieve_person($_SESSION['_id']);
     $active = $user->get_status() == 'Active';

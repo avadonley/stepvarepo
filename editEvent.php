@@ -23,7 +23,7 @@
         die();
     }
     require_once('include/input-validation.php');
-    require_once('database/dbEvents.php');
+    require_once('database/dbevents.php');
     $errors = '';
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $args = sanitize($_POST, null);
@@ -34,7 +34,7 @@
             echo 'bad form data';
             die();
         } else {
-            require_once('database/dbPersons.php');
+            require_once('database/dbpersons.php');
             $id = $args['id'];
             $validated = validate12hTimeRangeAndConvertTo24h($args["start-time"], "11:59 PM");
             if (!$validated) {

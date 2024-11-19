@@ -29,7 +29,7 @@ session_cache_expire(30);
 <div id="container"><?php include_once('header.php'); ?>
 <div id="content"><?php
 include_once('domain/Person.php');
-include_once('database/dbPersons.php');
+include_once('database/dbpersons.php');
 
 if ($_POST['_form_submit'] != 1 && $_POST['_form_submit'] != 2 && $_POST['_form_submit'] != 3)
 include('dataSearch.inc.php'); // the form has not been submitted, so show it

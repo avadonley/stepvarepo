@@ -20,8 +20,8 @@
   }
 
   require_once('include/input-validation.php');
-  require_once('database/dbPersons.php');
-  require_once('database/dbEvents.php');
+  require_once('database/dbpersons.php');
+  require_once('database/dbevents.php');
   require_once('include/output.php');
   require_once('database/dbinfo.php');
   
@@ -30,7 +30,7 @@
   if(isset($_GET['animal'])){
     $selected_animal_name = $_GET['animal'];
     $connection = connect();
-    $query = "select * from dbAnimals where name = '$selected_animal_name'";
+    $query = "select * from dbanimals where name = '$selected_animal_name'";
     $result = mysqli_query($connection, $query);
     $animal_info = mysqli_fetch_assoc($result);
 } else {

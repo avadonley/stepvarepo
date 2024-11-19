@@ -13,7 +13,7 @@
       $userID = $_SESSION['_id'];
   }
   require_once('include/input-validation.php');
-  require_once('database/dbPersons.php');
+  require_once('database/dbpersons.php');
 
   if ($accessLevel < 2) {
     header('Location: index.php');
@@ -24,7 +24,7 @@
     include_once('database/dbinfo.php'); 
     $con=connect();  
     // Get all the animals from animal table
-    $sql = "SELECT * FROM `dbAnimals`";
+    $sql = "SELECT * FROM `dbanimals`";
     $all_animals = mysqli_query($con,$sql); 
 ?>
 <!DOCTYPE html>

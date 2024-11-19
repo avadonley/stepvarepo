@@ -46,7 +46,7 @@ function displaySearchRow($animal){
         <form id="animal-search" class="general" method="get">
             <?php 
                 require_once('include/input-validation.php');
-                require_once('database/dbAnimals.php');
+                require_once('database/dbanimals.php');
                     $animals = find_archived();
                     require_once('include/output.php');
                     if (count($animals) > 0) {

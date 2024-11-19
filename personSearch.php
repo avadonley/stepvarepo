@@ -35,7 +35,7 @@
             <?php 
                 if (isset($_GET['name'])) {
                     require_once('include/input-validation.php');
-                    require_once('database/dbPersons.php');
+                    require_once('database/dbpersons.php');
                     $args = sanitize($_GET);
                     $required = ['name', 'id', 'phone', 'zip', 'role', 'status', 'photo_release'];
                     //var_dump($args);

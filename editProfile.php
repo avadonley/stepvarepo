@@ -17,7 +17,7 @@
         header("Location: /gwyneth/modifyUserRole.php?id=$id");
     } else if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["profile-edit-form"])) {
         require_once('domain/Person.php');
-        require_once('database/dbPersons.php');
+        require_once('database/dbpersons.php');
         // make every submitted field SQL-safe except for password
         $ignoreList = array('password');
         $args = sanitize($_POST, $ignoreList);

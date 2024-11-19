@@ -100,7 +100,7 @@ function mark_read($id) {
 function message_all_users_of_types($from, $types, $title, $body) {
     $types = implode(', ', $types);
     $time = date('Y-m-d-H:i');
-    $query = "select id from dbPersons where type in ($types)";
+    $query = "select id from dbpersons where type in ($types)";
     $connection = connect();
     $result = mysqli_query($connection, $query);
     $rows = mysqli_fetch_all($result, MYSQLI_NUM);
@@ -132,7 +132,7 @@ function system_message_all_admins($title, $body) {
 
 function system_message_all_users_except($except, $title, $body) {
     $time = date('Y-m-d-H:i');
-    $query = "select id from dbPersons where id!='$except'";
+    $query = "select id from dbpersons where id!='$except'";
     $connection = connect();
     $result = mysqli_query($connection, $query);
     $rows = mysqli_fetch_all($result, MYSQLI_NUM);
@@ -149,10 +149,10 @@ function system_message_all_users_except($except, $title, $body) {
 //function to go through all users within the database of user accounts and send them a notification given a title and body 
 function message_all_users($from, $title, $body) {
     $time = date('Y-m-d-H:i');
-    $query = "select id from dbPersons where id!='$from'";
+    $query = "select id from dbpersons where id!='$from'";
     $connection = connect();
     $result = mysqli_query($connection, $query);
-    $rows = mysqli_fetch_all($result, MYSQLI_NUM); //get all the users in the database dbPersons
+    $rows = mysqli_fetch_all($result, MYSQLI_NUM); //get all the users in the database dbpersons
     foreach ($rows as $row) { //for every user in db person, generate a notification
         $to = json_encode($row); //converting the array of users into strings to put into the database of messages
         $to = substr($to,2,-2); //getting rid of the brackets and quotes in the string: ie - ["user"]
@@ -166,10 +166,10 @@ function message_all_users($from, $title, $body) {
 
 function message_all_users_prio($from, $title, $body, $prio) {
     $time = date('Y-m-d-H:i');
-    $query = "select id from dbPersons where id!='$from'";
+    $query = "select id from dbpersons where id!='$from'";
     $connection = connect();
     $result = mysqli_query($connection, $query);
-    $rows = mysqli_fetch_all($result, MYSQLI_NUM); //get all the users in the database dbPersons
+    $rows = mysqli_fetch_all($result, MYSQLI_NUM); //get all the users in the database dbpersons
     foreach ($rows as $row) { //for every user in db person, generate a notification
         $to = json_encode($row); //converting the array of users into strings to put into the database of messages
         $to = substr($to,2,-2); //getting rid of the brackets and quotes in the string: ie - ["user"]
@@ -190,7 +190,7 @@ function delete_message($id) {
 }
 
 function dateChecker(){
-    $query = "select * from dbAnimals";
+    $query = "select * from dbanimals";
     $connection = connect();
     $result = mysqli_query($connection, $query);
     $twoWeeksAhead = date('Y-m-d', strtotime('+2 weeks'));

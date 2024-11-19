@@ -6,7 +6,7 @@
         header('Location: index.php');
         die();
     }
-    require_once('database/dbAnimals.php');
+    require_once('database/dbanimals.php');
     require_once('include/input-validation.php');
     $args = sanitize($_POST);
     $id = $args['id'];

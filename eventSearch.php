@@ -21,7 +21,7 @@
     }
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         require_once('include/input-validation.php');
-        require_once('database/dbEvents.php');
+        require_once('database/dbevents.php');
         $args = sanitize($_POST);
         if (isset($args['submitName'])) {
             if (!wereRequiredFieldsSubmitted($args, array('name'))) {

@@ -30,7 +30,7 @@
         header('Location: index.php');
         die();
     } else if ($_SERVER["REQUEST_METHOD"] == "POST"){
-        require_once('database/dbPersons.php');
+        require_once('database/dbpersons.php');
         $post = sanitize($_POST);
         $new_role = $post['s_role'];
         if (!valueConstrainedTo($new_role, ['volunteer', 'participant'])) {
@@ -70,7 +70,7 @@
 
     // Does the person exist?
     require_once('domain/Person.php');
-    require_once('database/dbPersons.php');
+    require_once('database/dbpersons.php');
     $thePerson = retrieve_person($id);
     if (!$thePerson) {
         echo "That user does not exist";

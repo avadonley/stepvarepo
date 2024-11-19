@@ -1,6 +1,6 @@
 <?php
 /**
- * Encapsulated version of a dbEvents entry.
+ * Encapsulated version of a dbevents entry.
  */
 class Event {
     private $id;

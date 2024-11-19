@@ -50,7 +50,7 @@
         <h1>View Notification</h1>
         <main class="message">
             <?php 
-                require_once('database/dbPersons.php');
+                require_once('database/dbpersons.php');
                 require_once('include/output.php');
             ?>
             <p class="sender-time-line"><span><label>From </label><?php echo get_name_from_id($message['senderID']) ?></span>

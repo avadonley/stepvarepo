@@ -26,7 +26,7 @@
         $errors = 'No user ID was supplied';
     } else {
         $resetID = strtolower($args['id']);
-        require_once('database/dbPersons.php');
+        require_once('database/dbpersons.php');
         $targetUser = retrieve_person($resetID);
         if (!$targetUser) {
             $errors = 'No user with that ID exists';

@@ -45,7 +45,7 @@
                         </thead>
                         <tbody class="standout">
                             <?php 
-                                require_once('database/dbPersons.php');
+                                require_once('database/dbpersons.php');
                                 require_once('include/output.php');
                                 $id_to_name_hash = [];
                                 foreach ($messages as $message) {

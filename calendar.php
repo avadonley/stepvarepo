@@ -119,7 +119,7 @@
                         $date = $calendarStart;
                         $start = date('Y-m-d', $calendarStart);
                         $end = date('Y-m-d', $calendarEndEpoch);
-                        require_once('database/dbEvents.php');
+                        require_once('database/dbevents.php');
                         $events = fetch_events_in_date_range($start, $end);
                         for ($week = 0; $week < $weeks; $week++) {
                             echo '

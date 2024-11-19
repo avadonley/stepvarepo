@@ -24,10 +24,10 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `dbAnimals`
+-- Table structure for table `dbanimals`
 --
 
-CREATE TABLE `dbAnimals` (
+CREATE TABLE `dbanimals` (
   `id` int(11) NOT NULL,
   `odhs_id` varchar(11) NOT NULL,
   `name` varchar(256) NOT NULL,
@@ -52,10 +52,10 @@ CREATE TABLE `dbAnimals` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `dbAnimals`
+-- Dumping data for table `dbanimals`
 --
 
-INSERT INTO `dbAnimals` (`id`, `odhs_id`, `name`, `breed`, `age`, `gender`, `notes`, `spay_neuter_done`, `spay_neuter_date`, `rabies_given_date`, `rabies_due_date`, `heartworm_given_date`, `heartworm_due_date`, `distemper1_given_date`, `distemper1_due_date`, `distemper2_given_date`, `distemper2_due_date`, `distemper3_given_date`, `distemper3_due_date`, `microchip_done`, `archived`) VALUES
+INSERT INTO `dbanimals` (`id`, `odhs_id`, `name`, `breed`, `age`, `gender`, `notes`, `spay_neuter_done`, `spay_neuter_date`, `rabies_given_date`, `rabies_due_date`, `heartworm_given_date`, `heartworm_due_date`, `distemper1_given_date`, `distemper1_due_date`, `distemper2_given_date`, `distemper2_due_date`, `distemper3_given_date`, `distemper3_due_date`, `microchip_done`, `archived`) VALUES
 (1, '1234', 'Noodle', 'Schnoodle', 5, 'female', '', 'yes', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', 'no', 'no'),
 (2, '43221', 'Cin', 'Poodle', 18, 'female', ' | Bordetella: 2024-01-24', 'yes', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '2024-01-24', '2030-01-24', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', 'no', 'no'),
 (3, '543534', 'Rosie', 'Cat', 9, 'male', '', 'yes', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', 'no', 'no'),
@@ -64,10 +64,10 @@ INSERT INTO `dbAnimals` (`id`, `odhs_id`, `name`, `breed`, `age`, `gender`, `not
 -- --------------------------------------------------------
 
 --
--- Table structure for table `dbEventMedia`
+-- Table structure for table `dbeventmedia`
 --
 
-CREATE TABLE `dbEventMedia` (
+CREATE TABLE `dbeventmedia` (
   `id` int(11) NOT NULL,
   `eventID` int(11) NOT NULL,
   `url` text NOT NULL,
@@ -79,10 +79,10 @@ CREATE TABLE `dbEventMedia` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `dbEvents`
+-- Table structure for table `dbevents`
 --
 
-CREATE TABLE `dbEvents` (
+CREATE TABLE `dbevents` (
   `id` int(11) NOT NULL,
   `name` text NOT NULL,
   `abbrevName` text NOT NULL,
@@ -97,10 +97,10 @@ CREATE TABLE `dbEvents` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `dbEvents`
+-- Dumping data for table `dbevents`
 --
 
-INSERT INTO `dbEvents` (`id`, `name`, `abbrevName`, `date`, `startTime`, `endTime`, `description`, `locationID`, `capacity`, `animalID`, `completed`) VALUES
+INSERT INTO `dbevents` (`id`, `name`, `abbrevName`, `date`, `startTime`, `endTime`, `description`, `locationID`, `capacity`, `animalID`, `completed`) VALUES
 (4, 'Jennifer', 'POL', '2024-01-23', '15:00', '23:59', 'I am testing this shit', 3, 0, 1, ''),
 (6, 'Waching TV', 'WTV', '2024-01-27', '09:00', '23:59', 'I am testing PHP and watching TV', 3, 0, 4, 'no'),
 (7, 'Sleeping', 'SLE', '2024-01-21', '00:00', '23:59', 'We all like to sleep', 3, 0, 3, 'no');
@@ -2964,10 +2964,10 @@ INSERT INTO `dbMessages` (`id`, `senderID`, `recipientID`, `title`, `body`, `tim
 -- --------------------------------------------------------
 
 --
--- Table structure for table `dbPersons`
+-- Table structure for table `dbpersons`
 --
 
-CREATE TABLE `dbPersons` (
+CREATE TABLE `dbpersons` (
   `id` varchar(256) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `start_date` text DEFAULT NULL,
   `venue` text DEFAULT NULL,
@@ -3015,10 +3015,10 @@ CREATE TABLE `dbPersons` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
--- Dumping data for table `dbPersons`
+-- Dumping data for table `dbpersons`
 --
 
-INSERT INTO `dbPersons` (`id`, `start_date`, `venue`, `first_name`, `last_name`, `address`, `city`, `state`, `zip`, `phone1`, `phone1type`, `phone2`, `phone2type`, `birthday`, `email`, `contact_name`, `contact_num`, `relation`, `contact_time`, `cMethod`, `type`, `status`, `availability`, `schedule`, `hours`, `notes`, `password`, `sundays_start`, `sundays_end`, `mondays_start`, `mondays_end`, `tuesdays_start`, `tuesdays_end`, `wednesdays_start`, `wednesdays_end`, `thursdays_start`, `thursdays_end`, `fridays_start`, `fridays_end`, `saturdays_start`, `saturdays_end`, `profile_pic`, `force_password_change`, `gender`) VALUES
+INSERT INTO `dbpersons` (`id`, `start_date`, `venue`, `first_name`, `last_name`, `address`, `city`, `state`, `zip`, `phone1`, `phone1type`, `phone2`, `phone2type`, `birthday`, `email`, `contact_name`, `contact_num`, `relation`, `contact_time`, `cMethod`, `type`, `status`, `availability`, `schedule`, `hours`, `notes`, `password`, `sundays_start`, `sundays_end`, `mondays_start`, `mondays_end`, `tuesdays_start`, `tuesdays_end`, `wednesdays_start`, `wednesdays_end`, `thursdays_start`, `thursdays_end`, `fridays_start`, `fridays_end`, `saturdays_start`, `saturdays_end`, `profile_pic`, `force_password_change`, `gender`) VALUES
 ('brianna@gmail.com', '2024-01-22', 'portland', 'Brianna', 'Wahl', '212 Latham Road', 'Mineola', 'VA', '11501', '1234567890', 'cellphone', '', '', '2004-04-04', 'brianna@gmail.com', 'Mom', '1234567890', 'Mother', 'Days', 'text', 'admin', 'Active', '', '', '', '', '$2y$10$jNbMmZwq.1r/5/oy61IRkOSX4PY6sxpYEdWfu9tLRZA6m1NgsxD6m', '00:00', '10:00', '', '', '', '', '02:00', '16:00', '', '', '', '', '', '', '', 0, 'Female'),
 ('bum@gmail.com', '2024-01-24', 'portland', 'bum', 'bum', '1345 Strattford St.', 'Mineola', 'VA', '22401', '1234567890', 'home', '', '', '1111-11-11', 'bum@gmail.com', 'Mom', '1234567890', 'Mom', 'Mornings', 'text', 'admin', 'Active', '', '', '', '', '$2y$10$Ps8FnZXT7d4uiU/R5YFnRecIRbRakyVtbXP9TVqp7vVpuB3yTXFIO', '', '', '15:00', '18:00', '', '', '', '', '', '', '', '', '', '', '', 0, 'Male'),
 ('mom@gmail.com', '2024-01-22', 'portland', 'Lorraine', 'Egan', '212 Latham Road', 'Mineola', 'NY', '11501', '5167423832', 'home', '', '', '1910-10-10', 'mom@gmail.com', 'Mom', '5167423832', 'Dead', 'Never', 'phone', 'admin', 'Active', '', '', '', '', '$2y$10$of1CkoNXZwyhAMS5GQ.aYuAW1SHptF6z31ONahnF2qK4Y/W9Ty2h2', '00:00', '10:00', '18:00', '19:00', '06:00', '14:00', '02:00', '12:00', '02:00', '16:00', '12:00', '18:00', '08:00', '17:00', '', 0, 'Male'),
@@ -3056,22 +3056,22 @@ INSERT INTO `dbServices` (`id`, `name`, `type`, `duration_years`) VALUES
 --
 
 --
--- Indexes for table `dbAnimals`
+-- Indexes for table `dbanimals`
 --
-ALTER TABLE `dbAnimals`
+ALTER TABLE `dbanimals`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `dbEventMedia`
+-- Indexes for table `dbeventmedia`
 --
-ALTER TABLE `dbEventMedia`
+ALTER TABLE `dbeventmedia`
   ADD PRIMARY KEY (`id`),
   ADD KEY `FKeventID2` (`eventID`);
 
 --
--- Indexes for table `dbEvents`
+-- Indexes for table `dbevents`
 --
-ALTER TABLE `dbEvents`
+ALTER TABLE `dbevents`
   ADD PRIMARY KEY (`id`),
   ADD KEY `FKanimalID` (`animalID`),
   ADD KEY `FKlocationID` (`locationID`);
@@ -3110,9 +3110,9 @@ ALTER TABLE `dbMessages`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `dbPersons`
+-- Indexes for table `dbpersons`
 --
-ALTER TABLE `dbPersons`
+ALTER TABLE `dbpersons`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -3126,21 +3126,21 @@ ALTER TABLE `dbServices`
 --
 
 --
--- AUTO_INCREMENT for table `dbAnimals`
+-- AUTO_INCREMENT for table `dbanimals`
 --
-ALTER TABLE `dbAnimals`
+ALTER TABLE `dbanimals`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT for table `dbEventMedia`
+-- AUTO_INCREMENT for table `dbeventmedia`
 --
-ALTER TABLE `dbEventMedia`
+ALTER TABLE `dbeventmedia`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `dbEvents`
+-- AUTO_INCREMENT for table `dbevents`
 --
-ALTER TABLE `dbEvents`
+ALTER TABLE `dbevents`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
@@ -3166,31 +3166,31 @@ ALTER TABLE `dbServices`
 --
 
 --
--- Constraints for table `dbEventMedia`
+-- Constraints for table `dbeventmedia`
 --
-ALTER TABLE `dbEventMedia`
-  ADD CONSTRAINT `FKeventID2` FOREIGN KEY (`eventID`) REFERENCES `dbEvents` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `dbeventmedia`
+  ADD CONSTRAINT `FKeventID2` FOREIGN KEY (`eventID`) REFERENCES `dbevents` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `dbEvents`
+-- Constraints for table `dbevents`
 --
-ALTER TABLE `dbEvents`
-  ADD CONSTRAINT `FKanimalID` FOREIGN KEY (`animalID`) REFERENCES `dbAnimals` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+ALTER TABLE `dbevents`
+  ADD CONSTRAINT `FKanimalID` FOREIGN KEY (`animalID`) REFERENCES `dbanimals` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `FKlocationID` FOREIGN KEY (`locationID`) REFERENCES `dbLocations` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `dbEventsServices`
 --
 ALTER TABLE `dbEventsServices`
-  ADD CONSTRAINT `FKEventID3` FOREIGN KEY (`eventID`) REFERENCES `dbEvents` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `FKEventID3` FOREIGN KEY (`eventID`) REFERENCES `dbevents` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `FKserviceID3` FOREIGN KEY (`serviceID`) REFERENCES `dbServices` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `dbEventVolunteers`
 --
 ALTER TABLE `dbEventVolunteers`
-  ADD CONSTRAINT `FKeventID` FOREIGN KEY (`eventID`) REFERENCES `dbEvents` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `FKpersonID` FOREIGN KEY (`userID`) REFERENCES `dbPersons` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `FKeventID` FOREIGN KEY (`eventID`) REFERENCES `dbevents` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `FKpersonID` FOREIGN KEY (`userID`) REFERENCES `dbpersons` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `dbLocationsServices`

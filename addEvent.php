@@ -24,7 +24,7 @@
     }
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         require_once('include/input-validation.php');
-        require_once('database/dbEvents.php');
+        require_once('database/dbevents.php');
         $args = sanitize($_POST, null);
         $required = array(
             "name", "date", "start-time", "role", "description",
@@ -88,7 +88,7 @@
     include_once('database/dbinfo.php'); 
     $con=connect();  
     // Get all the animals from animal table
-    //$sql = "SELECT * FROM `dbAnimals`";
+    //$sql = "SELECT * FROM `dbanimals`";
     //$all_animals = mysqli_query($con,$sql);
     //$sql = "SELECT * FROM `dbLocations`";
     //$all_locations = mysqli_query($con,$sql);

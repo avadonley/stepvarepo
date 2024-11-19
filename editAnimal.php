@@ -30,7 +30,7 @@ $ages = [
     }
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         require_once('include/input-validation.php');
-        require_once('database/dbAnimals.php');
+        require_once('database/dbanimals.php');
         $args = sanitize($_POST, null);
         //echo $args;
         $required = array(
@@ -55,7 +55,7 @@ $ages = [
     }
     elseif ($_SERVER["REQUEST_METHOD"] == "GET") {
         require_once('include/input-validation.php');
-        require_once('database/dbAnimals.php');
+        require_once('database/dbanimals.php');
         $args = sanitize($_GET, null);
         //echo $args;
         $required = array(

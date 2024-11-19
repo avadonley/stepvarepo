@@ -15,7 +15,7 @@
         $accessLevel = $_SESSION['access_level'];
         $userID = $_SESSION['_id'];
     }  
-    include 'database/dbEvents.php';
+    include 'database/dbevents.php';
     //include 'domain/Event.php';
 ?>
 <!DOCTYPE html>
@@ -28,7 +28,7 @@
     </head>
     <body>
         <?php require_once('header.php') ?>
-        <?php require_once('database/dbEvents.php');?>
+        <?php require_once('database/dbevents.php');?>
         <h1>Events</h1>
         <main class="general">
             <?php 
@@ -50,7 +50,7 @@
                         </thead>
                         <tbody class="standout">
                             <?php 
-                                #require_once('database/dbPersons.php');
+                                #require_once('database/dbpersons.php');
                                 #require_once('include/output.php');
                                 #$id_to_name_hash = [];
                                 foreach ($events as $event) {

@@ -32,7 +32,7 @@ $ages = [
     }
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         require_once('include/input-validation.php');
-        require_once('database/dbAnimals.php');
+        require_once('database/dbanimals.php');
         $args = sanitize($_POST, null);
         $required = array(
 			"name", "breed", "age", "gender", "spay_neuter_done", "microchip_done"

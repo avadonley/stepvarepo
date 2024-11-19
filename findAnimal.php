@@ -110,7 +110,7 @@ function displaySearchRow($animal, $other){
             <?php 
                 if (isset($_GET['name'])) {
                     require_once('include/input-validation.php');
-                    require_once('database/dbAnimals.php');
+                    require_once('database/dbanimals.php');
                     $args = sanitize($_GET);
                     $required = ['name', 'breed', 'age1', 'age2', 'gender', 'spay_neuter_done', 'microchip_done', 'needs_attention', 'other'];
                     if (!wereRequiredFieldsSubmitted($args, $required, true)) {

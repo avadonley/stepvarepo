@@ -7,7 +7,7 @@
         die();
     }
     require_once('include/input-validation.php');
-    require_once('database/dbEvents.php');
+    require_once('database/dbevents.php');
     $args = sanitize($_GET);
     $required = ['eid', 'mid'];
     if (!wereRequiredFieldsSubmitted($args, $required)) {

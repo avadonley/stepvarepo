@@ -29,7 +29,7 @@
     } else {
         $id = $userID;
     }
-    require_once('database/dbPersons.php');
+    require_once('database/dbpersons.php');
     if (isset($_GET['removePic'])) {
       if ($_GET['removePic'] === 'true') {
         remove_profile_picture($id);

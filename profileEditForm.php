@@ -1,6 +1,6 @@
 <?php
     require_once('domain/Person.php');
-    require_once('database/dbPersons.php');
+    require_once('database/dbpersons.php');
     require_once('include/output.php');
 
     $args = sanitize($_GET);

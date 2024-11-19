@@ -17,7 +17,7 @@
         die();
   	}
 
-  	include_once('database/dbAnimals.php');
+  	include_once('database/dbanimals.php');
 
     // need to get all events for the animal
     $animal_events = find_animal_appointments($id);
@@ -34,7 +34,7 @@
         die();
     }
 
-    include_once('database/dbPersons.php');
+    include_once('database/dbpersons.php');
     $access_level = $_SESSION['access_level'];
     $user = retrieve_person($_SESSION['_id']);
     $active = $user->get_status() == 'Active';
