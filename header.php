@@ -104,6 +104,7 @@
         $permission_array['signupsuccess.php'] = 1;
         $permission_array['edittimes.php'] = 1;
         $permission_array['adminviewingevents.php'] = 2;
+        $permission_array['signuppending.php'] = 1;
         // LOWERCASE
 
 

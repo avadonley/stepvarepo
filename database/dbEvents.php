@@ -55,6 +55,39 @@ function add_event($event) {
     return false;
 }
 
+
+function request_event_signup($eventID, $account_name, $role, $notes) {
+    $connection = connect();
+    $query1 = "SELECT id FROM dbevents WHERE name LIKE '$eventID'";
+    $result1 = mysqli_query($connection, $query1);
+    $row = mysqli_fetch_assoc($result1);
+    $value = $row['id'];
+   
+    $query2 = "SELECT userID FROM dbeventpersons WHERE eventID LIKE '$value' AND userID LIKE '$account_name'";
+    $result2 = mysqli_query($connection, $query2);
+
+    $query3 = "SELECT username FROM dbpendingsignups WHERE eventname LIKE '$value' AND username LIKE '$account_name'";
+    $result3 = mysqli_query($connection, $query3);
+
+    $row2 = null;
+    $row2 = mysqli_fetch_assoc($result2);
+    $row3 = null;
+    $row3 = mysqli_fetch_assoc($result3);
+
+    if(!is_null($row2) || !is_null($row3)) {
+            $value2 = $row2['userID'];
+            $value3 = $row3['username'];
+            if($value2 == $account_name || $value3 == $account_name){
+                return null;
+        } 
+    } else {       
+            $query = "insert into dbpendingsignups (username, eventname, role, notes) values ('$account_name', '$value', '$role', '$notes')";
+            $result = mysqli_query($connection, $query);
+            mysqli_commit($connection);
+            return $value;
+        }
+    return $value;
+}
 function sign_up_for_event($eventID, $account_name, $role, $notes) {
     $connection = connect();
     $query1 = "SELECT id FROM dbevents WHERE name LIKE '$eventID'";
