@@ -133,6 +133,7 @@ function remove_user_from_event($event_id, $user_id) {
     return $result;
 }
 
+
 /*
  * Returns true if the given event is archived.
  */
