@@ -190,7 +190,14 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     if (!empty($startTime) && !empty($endTime)) {
         $formattedStartDateTime = date("Y-m-d H:i:s", strtotime($startTime));
+        $ymdStartDate = strtotime($timeStampStart);
+        echo $ymdStartDate; // does not work
+        echo $timeStampStart;
+        //$ymdStartDate = strtotime($displayTimeStart->format('Y-m-d'));
+       // $formattedStartDateTime->modify($ymdStartDate);
+       // echo $formattedStartDateTime;
         $formattedEndDateTime = date("Y-m-d H:i:s", strtotime($endTime));
+// Y-m-d needed before times too
 
         // Connect to the database
         $connection = connect();
@@ -242,10 +249,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 -->
                 <label for="name">* New Start Time </label>
                 <!--- add pattern -->
-                <input type="text" id="start-time" name="start-time" required placeholder="Enter new start time">
+                <input type="text" id="start-time" name="start-time" pattern="([1-9]|10|11|12):[0-5][0-9] ?([aApP][mM])" required placeholder="Enter new start time. Ex. 12:00 PM">
                 <label for="name">* New End Time </label>
                  <!--- add pattern -->
-                <input type="text" id="end-time" name="end-time" required placeholder="Enter new end time">
+                 <input type="text" id="end-time" name="end-time" pattern="([1-9]|10|11|12):[0-5][0-9] ?([aApP][mM])" required placeholder="Enter new end time. Ex. 12:00 PM">
                 
                 <!--
                 <label for="name">* What Time Did You Arrive For This Event? </label>
