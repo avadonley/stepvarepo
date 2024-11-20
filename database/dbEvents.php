@@ -124,23 +124,13 @@ function fetch_event_signups($eventID) {
     return $signups;
 }
 
-function remove_user_from_event($event_id, $user_id) {
-    global $db; // Access the global $db variable
-
-    if (!$db) {
-        die('Database connection is not initialized.');
-    }
-
-    try {
-        $query = 'DELETE FROM event_signups WHERE event_id = :event_id AND user_id = :user_id';
-        $stmt = $db->prepare($query);
-        $stmt->bindParam(':event_id', $event_id, PDO::PARAM_INT);
-        $stmt->bindParam(':user_id', $user_id, PDO::PARAM_STR);
-        return $stmt->execute();
-    } catch (PDOException $e) {
-        error_log('Error removing user from event: ' . $e->getMessage());
-        return false;
-    }
+function remove_user_from_event($event_id, $user_id) {    
+    $query = "DELETE FROM dbeventpersons WHERE eventID LIKE '$event_id' AND userID LIKE '$user_id'";
+    $connection = connect();
+    $result = mysqli_query($connection, $query);
+    $result = boolval($result);
+    mysqli_close($connection);
+    return $result;
 }
 
 
