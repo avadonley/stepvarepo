@@ -1,0 +1,1115 @@
+[19-Nov-2024 13:31:26 America/New_York] PHP Fatal error:  Uncaught mysqli_sql_exception: Table 'dbeq5aamznytup.dbPersons' doesn't exist in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbPersons.php:113
+Stack trace:
+#0 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbPersons.php(113): mysqli_query(Object(mysqli), 'SELECT * FROM d...')
+#1 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/index.php(20): retrieve_person('vmsroot')
+#2 {main}
+  thrown in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbPersons.php on line 113
+[19-Nov-2024 13:31:28 America/New_York] PHP Fatal error:  Uncaught mysqli_sql_exception: Table 'dbeq5aamznytup.dbPersons' doesn't exist in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbPersons.php:113
+Stack trace:
+#0 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbPersons.php(113): mysqli_query(Object(mysqli), 'SELECT * FROM d...')
+#1 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/index.php(20): retrieve_person('vmsroot')
+#2 {main}
+  thrown in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbPersons.php on line 113
+[19-Nov-2024 13:31:42 America/New_York] PHP Fatal error:  Uncaught mysqli_sql_exception: Table 'dbeq5aamznytup.dbPersons' doesn't exist in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbPersons.php:113
+Stack trace:
+#0 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbPersons.php(113): mysqli_query(Object(mysqli), 'SELECT * FROM d...')
+#1 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/login.php(31): retrieve_person('vmsroot')
+#2 {main}
+  thrown in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbPersons.php on line 113
+[19-Nov-2024 14:17:44 America/New_York] PHP Warning:  Undefined variable $changePassword in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/login.php on line 49
+[19-Nov-2024 14:17:44 America/New_York] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/login.php:49) in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/login.php on line 55
+[19-Nov-2024 14:19:32 America/New_York] PHP Fatal error:  Uncaught mysqli_sql_exception: Table 'dbeq5aamznytup.dbEvents' doesn't exist in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php:271
+Stack trace:
+#0 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php(271): mysqli_query(Object(mysqli), 'select * from d...')
+#1 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/calendar.php(126): fetch_events_in_date_range('2024-10-27', '2024-11-30')
+#2 {main}
+  thrown in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php on line 271
+[19-Nov-2024 14:19:41 America/New_York] PHP Fatal error:  Uncaught mysqli_sql_exception: Table 'dbeq5aamznytup.dbEvents' doesn't exist in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php:237
+Stack trace:
+#0 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php(237): mysqli_query(Object(mysqli), 'SELECT * FROM d...')
+#1 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/adminViewingEvents.php(39): get_all_events()
+#2 {main}
+  thrown in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php on line 237
+[19-Nov-2024 14:19:46 America/New_York] PHP Fatal error:  Uncaught mysqli_sql_exception: Table 'dbeq5aamznytup.dbEvents' doesn't exist in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php:237
+Stack trace:
+#0 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php(237): mysqli_query(Object(mysqli), 'SELECT * FROM d...')
+#1 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/viewAllEvents.php(39): get_all_events()
+#2 {main}
+  thrown in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php on line 237
+[19-Nov-2024 14:20:53 America/New_York] PHP Fatal error:  Uncaught mysqli_sql_exception: Table 'dbeq5aamznytup.dbEvents' doesn't exist in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php:271
+Stack trace:
+#0 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php(271): mysqli_query(Object(mysqli), 'select * from d...')
+#1 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/calendar.php(126): fetch_events_in_date_range('2024-10-27', '2024-11-30')
+#2 {main}
+  thrown in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php on line 271
+[19-Nov-2024 14:24:25 America/New_York] PHP Warning:  Undefined variable $all_animals in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php on line 197
+[19-Nov-2024 14:24:25 America/New_York] PHP Fatal error:  Uncaught TypeError: mysqli_fetch_array(): Argument #1 ($result) must be of type mysqli_result, null given in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php:196
+Stack trace:
+#0 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php(196): mysqli_fetch_array(NULL, 1)
+#1 {main}
+  thrown in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php on line 196
+[19-Nov-2024 14:25:00 America/New_York] PHP Warning:  Undefined variable $all_animals in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php on line 197
+[19-Nov-2024 14:25:00 America/New_York] PHP Fatal error:  Uncaught TypeError: mysqli_fetch_array(): Argument #1 ($result) must be of type mysqli_result, null given in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php:196
+Stack trace:
+#0 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php(196): mysqli_fetch_array(NULL, 1)
+#1 {main}
+  thrown in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php on line 196
+[19-Nov-2024 14:25:40 America/New_York] PHP Warning:  Undefined array key "capacity" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php on line 388
+[19-Nov-2024 14:25:40 America/New_York] PHP Warning:  Undefined array key "completed" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php on line 389
+[19-Nov-2024 14:25:40 America/New_York] PHP Warning:  Undefined array key "event_type" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php on line 390
+[19-Nov-2024 14:25:40 America/New_York] PHP Warning:  Undefined array key "restricted_signup" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php on line 391
+[19-Nov-2024 14:25:40 America/New_York] PHP Warning:  Undefined array key "completed" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php on line 395
+[19-Nov-2024 14:25:40 America/New_York] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php:388) in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/editEvent.php on line 61
+[19-Nov-2024 14:33:23 America/New_York] PHP Warning:  Undefined array key "completed" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php on line 395
+[19-Nov-2024 14:33:23 America/New_York] PHP Warning:  Undefined variable $capacity in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php on line 401
+[19-Nov-2024 14:33:23 America/New_York] PHP Warning:  Undefined variable $event_type in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php on line 401
+[19-Nov-2024 14:33:23 America/New_York] PHP Warning:  Undefined variable $restricted_signup in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php on line 401
+[19-Nov-2024 14:33:23 America/New_York] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php:395) in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/editEvent.php on line 61
+[19-Nov-2024 14:33:25 America/New_York] PHP Warning:  Undefined array key "completed" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php on line 395
+[19-Nov-2024 14:33:25 America/New_York] PHP Warning:  Undefined variable $capacity in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php on line 401
+[19-Nov-2024 14:33:25 America/New_York] PHP Warning:  Undefined variable $event_type in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php on line 401
+[19-Nov-2024 14:33:25 America/New_York] PHP Warning:  Undefined variable $restricted_signup in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php on line 401
+[19-Nov-2024 14:33:25 America/New_York] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php:395) in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/editEvent.php on line 61
+[19-Nov-2024 14:33:27 America/New_York] PHP Warning:  Undefined array key "completed" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php on line 395
+[19-Nov-2024 14:33:27 America/New_York] PHP Warning:  Undefined variable $capacity in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php on line 401
+[19-Nov-2024 14:33:27 America/New_York] PHP Warning:  Undefined variable $event_type in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php on line 401
+[19-Nov-2024 14:33:27 America/New_York] PHP Warning:  Undefined variable $restricted_signup in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php on line 401
+[19-Nov-2024 14:33:27 America/New_York] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php:395) in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/editEvent.php on line 61
+[19-Nov-2024 14:39:31 America/New_York] PHP Warning:  Undefined variable $all_animals in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php on line 197
+[19-Nov-2024 14:39:31 America/New_York] PHP Fatal error:  Uncaught TypeError: mysqli_fetch_array(): Argument #1 ($result) must be of type mysqli_result, null given in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php:196
+Stack trace:
+#0 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php(196): mysqli_fetch_array(NULL, 1)
+#1 {main}
+  thrown in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php on line 196
+[19-Nov-2024 19:40:25 UTC] PHP Warning:  Undefined array key "id" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php on line 327
+[19-Nov-2024 19:40:25 UTC] PHP Warning:  Undefined array key "startTime" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php on line 331
+[19-Nov-2024 19:40:25 UTC] PHP Warning:  Undefined array key "capacity" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php on line 334
+[19-Nov-2024 19:40:25 UTC] PHP Warning:  Undefined array key "completed" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php on line 335
+[19-Nov-2024 19:40:25 UTC] PHP Warning:  Undefined array key "event_type" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php on line 336
+[19-Nov-2024 19:40:25 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/addEvent.php:53) in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/addEvent.php on line 59
+[19-Nov-2024 19:44:04 UTC] PHP Warning:  Undefined array key "id" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php on line 327
+[19-Nov-2024 19:44:04 UTC] PHP Warning:  Undefined array key "startTime" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php on line 331
+[19-Nov-2024 19:44:04 UTC] PHP Warning:  Undefined array key "capacity" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php on line 334
+[19-Nov-2024 19:44:04 UTC] PHP Warning:  Undefined array key "completed" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php on line 335
+[19-Nov-2024 19:44:04 UTC] PHP Warning:  Undefined array key "event_type" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php on line 336
+[19-Nov-2024 19:44:04 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/addEvent.php:53) in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/addEvent.php on line 59
+[19-Nov-2024 19:47:46 UTC] PHP Warning:  Undefined array key "id" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php on line 327
+[19-Nov-2024 19:47:46 UTC] PHP Warning:  Undefined array key "startTime" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php on line 331
+[19-Nov-2024 19:47:46 UTC] PHP Warning:  Undefined array key "capacity" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php on line 334
+[19-Nov-2024 19:47:46 UTC] PHP Warning:  Undefined array key "completed" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php on line 335
+[19-Nov-2024 19:47:46 UTC] PHP Warning:  Undefined array key "event_type" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php on line 336
+[19-Nov-2024 19:47:46 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/addEvent.php:53) in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/addEvent.php on line 59
+[19-Nov-2024 14:50:14 America/New_York] PHP Warning:  Undefined variable $all_animals in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php on line 197
+[19-Nov-2024 14:50:14 America/New_York] PHP Fatal error:  Uncaught TypeError: mysqli_fetch_array(): Argument #1 ($result) must be of type mysqli_result, null given in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php:196
+Stack trace:
+#0 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php(196): mysqli_fetch_array(NULL, 1)
+#1 {main}
+  thrown in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php on line 196
+[19-Nov-2024 14:50:25 America/New_York] PHP Warning:  Undefined variable $all_animals in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php on line 197
+[19-Nov-2024 14:50:25 America/New_York] PHP Fatal error:  Uncaught TypeError: mysqli_fetch_array(): Argument #1 ($result) must be of type mysqli_result, null given in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php:196
+Stack trace:
+#0 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php(196): mysqli_fetch_array(NULL, 1)
+#1 {main}
+  thrown in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php on line 196
+[19-Nov-2024 19:50:37 UTC] PHP Deprecated:  htmlspecialchars_decode(): Passing null to parameter #1 ($string) of type string is deprecated in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php on line 45
+[19-Nov-2024 14:50:37 America/New_York] PHP Fatal error:  Uncaught mysqli_sql_exception: Table 'dbeq5aamznytup.dbPersons' doesn't exist in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbMessages.php:137
+Stack trace:
+#0 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbMessages.php(137): mysqli_query(Object(mysqli), 'select id from ...')
+#1 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php(77): system_message_all_users_except('vmsroot', 'Your sign-up ha...', 'Congratulations...')
+#2 {main}
+  thrown in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbMessages.php on line 137
+[19-Nov-2024 14:50:37 America/New_York] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/signupSuccess.php:5) in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/signupSuccess.php on line 18
+[19-Nov-2024 14:56:25 America/New_York] PHP Warning:  Undefined variable $all_animals in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php on line 197
+[19-Nov-2024 14:56:25 America/New_York] PHP Fatal error:  Uncaught TypeError: mysqli_fetch_array(): Argument #1 ($result) must be of type mysqli_result, null given in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php:196
+Stack trace:
+#0 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php(196): mysqli_fetch_array(NULL, 1)
+#1 {main}
+  thrown in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php on line 196
+[19-Nov-2024 14:57:55 America/New_York] PHP Warning:  Undefined variable $all_animals in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php on line 197
+[19-Nov-2024 14:57:55 America/New_York] PHP Fatal error:  Uncaught TypeError: mysqli_fetch_array(): Argument #1 ($result) must be of type mysqli_result, null given in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php:196
+Stack trace:
+#0 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php(196): mysqli_fetch_array(NULL, 1)
+#1 {main}
+  thrown in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php on line 196
+[19-Nov-2024 14:58:28 America/New_York] PHP Warning:  Undefined array key "s_reason" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/modifyUserRole.php on line 57
+[19-Nov-2024 14:58:28 America/New_York] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/modifyUserRole.php:57) in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/modifyUserRole.php on line 66
+[19-Nov-2024 19:59:56 UTC] PHP Parse error:  Unmatched '}' in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/modifyUserRole.php on line 69
+[19-Nov-2024 20:00:00 UTC] PHP Parse error:  Unmatched '}' in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/modifyUserRole.php on line 69
+[19-Nov-2024 20:00:10 UTC] PHP Parse error:  Unmatched '}' in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/modifyUserRole.php on line 69
+[19-Nov-2024 20:00:12 UTC] PHP Parse error:  Unmatched '}' in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/modifyUserRole.php on line 69
+[19-Nov-2024 20:00:43 UTC] PHP Parse error:  Unmatched '}' in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/modifyUserRole.php on line 69
+[19-Nov-2024 20:00:46 UTC] PHP Parse error:  Unmatched '}' in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/modifyUserRole.php on line 69
+[19-Nov-2024 20:01:11 UTC] PHP Parse error:  Unmatched '}' in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/modifyUserRole.php on line 69
+[19-Nov-2024 20:01:47 UTC] PHP Parse error:  Unmatched '}' in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/modifyUserRole.php on line 69
+[19-Nov-2024 20:02:03 UTC] PHP Parse error:  Unmatched '}' in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/modifyUserRole.php on line 69
+[19-Nov-2024 15:44:02 America/New_York] PHP Fatal error:  Uncaught mysqli_sql_exception: Table 'dbeq5aamznytup.dbEventPersons' doesn't exist in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbPersons.php:825
+Stack trace:
+#0 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbPersons.php(825): mysqli_query(Object(mysqli), 'select * from d...')
+#1 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/volunteerReport.php(34): get_events_attended_by('username')
+#2 {main}
+  thrown in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbPersons.php on line 825
+[19-Nov-2024 20:46:50 UTC] PHP Warning:  Undefined array key "id" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php on line 327
+[19-Nov-2024 20:46:50 UTC] PHP Warning:  Undefined array key "startTime" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php on line 331
+[19-Nov-2024 20:46:50 UTC] PHP Warning:  Undefined array key "capacity" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php on line 334
+[19-Nov-2024 20:46:50 UTC] PHP Warning:  Undefined array key "completed" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php on line 335
+[19-Nov-2024 20:46:50 UTC] PHP Warning:  Undefined array key "event_type" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php on line 336
+[19-Nov-2024 20:46:50 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/addEvent.php:53) in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/addEvent.php on line 59
+[19-Nov-2024 15:50:43 America/New_York] PHP Warning:  Undefined variable $all_animals in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php on line 197
+[19-Nov-2024 15:50:43 America/New_York] PHP Fatal error:  Uncaught TypeError: mysqli_fetch_array(): Argument #1 ($result) must be of type mysqli_result, null given in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php:196
+Stack trace:
+#0 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php(196): mysqli_fetch_array(NULL, 1)
+#1 {main}
+  thrown in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php on line 196
+[19-Nov-2024 20:51:29 UTC] PHP Deprecated:  htmlspecialchars_decode(): Passing null to parameter #1 ($string) of type string is deprecated in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php on line 45
+[19-Nov-2024 15:51:29 America/New_York] PHP Fatal error:  Uncaught mysqli_sql_exception: Table 'dbeq5aamznytup.dbPersons' doesn't exist in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbMessages.php:137
+Stack trace:
+#0 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbMessages.php(137): mysqli_query(Object(mysqli), 'select id from ...')
+#1 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php(77): system_message_all_users_except('username', 'Your sign-up ha...', 'Congratulations...')
+#2 {main}
+  thrown in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbMessages.php on line 137
+[19-Nov-2024 15:51:29 America/New_York] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/signupSuccess.php:5) in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/signupSuccess.php on line 18
+[19-Nov-2024 15:51:39 America/New_York] PHP Fatal error:  Uncaught mysqli_sql_exception: Table 'dbeq5aamznytup.dbEventPersons' doesn't exist in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbPersons.php:825
+Stack trace:
+#0 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbPersons.php(825): mysqli_query(Object(mysqli), 'select * from d...')
+#1 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/volunteerReport.php(34): get_events_attended_by('username')
+#2 {main}
+  thrown in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbPersons.php on line 825
+[19-Nov-2024 15:53:29 America/New_York] PHP Warning:  Undefined variable $all_animals in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php on line 197
+[19-Nov-2024 15:53:29 America/New_York] PHP Fatal error:  Uncaught TypeError: mysqli_fetch_array(): Argument #1 ($result) must be of type mysqli_result, null given in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php:196
+Stack trace:
+#0 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php(196): mysqli_fetch_array(NULL, 1)
+#1 {main}
+  thrown in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php on line 196
+[19-Nov-2024 20:53:38 UTC] PHP Deprecated:  htmlspecialchars_decode(): Passing null to parameter #1 ($string) of type string is deprecated in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php on line 45
+[19-Nov-2024 15:53:38 America/New_York] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventFailure.php:5) in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventFailure.php on line 18
+[19-Nov-2024 15:53:53 America/New_York] PHP Warning:  Undefined variable $all_animals in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php on line 197
+[19-Nov-2024 15:53:53 America/New_York] PHP Fatal error:  Uncaught TypeError: mysqli_fetch_array(): Argument #1 ($result) must be of type mysqli_result, null given in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php:196
+Stack trace:
+#0 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php(196): mysqli_fetch_array(NULL, 1)
+#1 {main}
+  thrown in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php on line 196
+[19-Nov-2024 15:56:55 America/New_York] PHP Warning:  Undefined variable $all_animals in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php on line 197
+[19-Nov-2024 15:56:55 America/New_York] PHP Fatal error:  Uncaught TypeError: mysqli_fetch_array(): Argument #1 ($result) must be of type mysqli_result, null given in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php:196
+Stack trace:
+#0 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php(196): mysqli_fetch_array(NULL, 1)
+#1 {main}
+  thrown in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php on line 196
+[19-Nov-2024 15:58:07 America/New_York] PHP Warning:  Undefined array key "user_id" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/event.php on line 410
+[19-Nov-2024 15:58:12 America/New_York] PHP Warning:  Undefined variable $all_animals in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php on line 197
+[19-Nov-2024 15:58:12 America/New_York] PHP Fatal error:  Uncaught TypeError: mysqli_fetch_array(): Argument #1 ($result) must be of type mysqli_result, null given in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php:196
+Stack trace:
+#0 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php(196): mysqli_fetch_array(NULL, 1)
+#1 {main}
+  thrown in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php on line 196
+[19-Nov-2024 15:58:18 America/New_York] PHP Warning:  Undefined array key "user_id" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/event.php on line 410
+[19-Nov-2024 15:58:27 America/New_York] PHP Warning:  Undefined variable $all_animals in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php on line 197
+[19-Nov-2024 15:58:27 America/New_York] PHP Fatal error:  Uncaught TypeError: mysqli_fetch_array(): Argument #1 ($result) must be of type mysqli_result, null given in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php:196
+Stack trace:
+#0 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php(196): mysqli_fetch_array(NULL, 1)
+#1 {main}
+  thrown in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php on line 196
+[19-Nov-2024 15:58:49 America/New_York] PHP Warning:  Undefined array key "user_id" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/event.php on line 410
+[19-Nov-2024 15:58:50 America/New_York] PHP Warning:  Undefined variable $all_animals in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php on line 197
+[19-Nov-2024 15:58:50 America/New_York] PHP Fatal error:  Uncaught TypeError: mysqli_fetch_array(): Argument #1 ($result) must be of type mysqli_result, null given in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php:196
+Stack trace:
+#0 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php(196): mysqli_fetch_array(NULL, 1)
+#1 {main}
+  thrown in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php on line 196
+[19-Nov-2024 20:58:56 UTC] PHP Deprecated:  htmlspecialchars_decode(): Passing null to parameter #1 ($string) of type string is deprecated in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php on line 45
+[19-Nov-2024 15:58:56 America/New_York] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventFailure.php:5) in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventFailure.php on line 18
+[19-Nov-2024 20:59:29 UTC] PHP Warning:  Undefined array key "id" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php on line 327
+[19-Nov-2024 20:59:29 UTC] PHP Warning:  Undefined array key "startTime" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php on line 331
+[19-Nov-2024 20:59:29 UTC] PHP Warning:  Undefined array key "capacity" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php on line 334
+[19-Nov-2024 20:59:29 UTC] PHP Warning:  Undefined array key "completed" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php on line 335
+[19-Nov-2024 20:59:29 UTC] PHP Warning:  Undefined array key "event_type" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php on line 336
+[19-Nov-2024 20:59:29 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/addEvent.php:53) in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/addEvent.php on line 59
+[19-Nov-2024 15:59:53 America/New_York] PHP Warning:  Undefined array key "user_id" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/event.php on line 410
+[19-Nov-2024 16:00:00 America/New_York] PHP Warning:  Undefined array key "user_id" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/event.php on line 410
+[19-Nov-2024 16:00:03 America/New_York] PHP Warning:  Undefined variable $all_animals in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php on line 197
+[19-Nov-2024 16:00:03 America/New_York] PHP Fatal error:  Uncaught TypeError: mysqli_fetch_array(): Argument #1 ($result) must be of type mysqli_result, null given in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php:196
+Stack trace:
+#0 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php(196): mysqli_fetch_array(NULL, 1)
+#1 {main}
+  thrown in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php on line 196
+[19-Nov-2024 21:00:11 UTC] PHP Deprecated:  htmlspecialchars_decode(): Passing null to parameter #1 ($string) of type string is deprecated in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php on line 45
+[19-Nov-2024 16:00:11 America/New_York] PHP Fatal error:  Uncaught mysqli_sql_exception: Table 'dbeq5aamznytup.dbPersons' doesn't exist in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbMessages.php:137
+Stack trace:
+#0 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbMessages.php(137): mysqli_query(Object(mysqli), 'select id from ...')
+#1 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php(77): system_message_all_users_except('username', 'Your sign-up ha...', 'Congratulations...')
+#2 {main}
+  thrown in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbMessages.php on line 137
+[19-Nov-2024 16:00:11 America/New_York] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/signupSuccess.php:5) in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/signupSuccess.php on line 18
+[19-Nov-2024 16:13:51 America/New_York] PHP Warning:  Undefined variable $all_animals in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php on line 197
+[19-Nov-2024 16:13:51 America/New_York] PHP Fatal error:  Uncaught TypeError: mysqli_fetch_array(): Argument #1 ($result) must be of type mysqli_result, null given in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php:196
+Stack trace:
+#0 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php(196): mysqli_fetch_array(NULL, 1)
+#1 {main}
+  thrown in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php on line 196
+[19-Nov-2024 21:14:15 UTC] PHP Deprecated:  htmlspecialchars_decode(): Passing null to parameter #1 ($string) of type string is deprecated in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php on line 45
+[19-Nov-2024 16:14:15 America/New_York] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventFailure.php:5) in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventFailure.php on line 18
+[19-Nov-2024 16:17:15 America/New_York] PHP Warning:  Undefined array key "user_id" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/event.php on line 410
+[19-Nov-2024 16:17:21 America/New_York] PHP Warning:  Undefined array key "user_id" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/event.php on line 410
+[19-Nov-2024 16:17:24 America/New_York] PHP Warning:  Undefined array key "user_id" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/event.php on line 410
+[19-Nov-2024 16:17:26 America/New_York] PHP Warning:  Undefined variable $all_animals in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php on line 197
+[19-Nov-2024 16:17:26 America/New_York] PHP Fatal error:  Uncaught TypeError: mysqli_fetch_array(): Argument #1 ($result) must be of type mysqli_result, null given in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php:196
+Stack trace:
+#0 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php(196): mysqli_fetch_array(NULL, 1)
+#1 {main}
+  thrown in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php on line 196
+[19-Nov-2024 21:17:34 UTC] PHP Deprecated:  htmlspecialchars_decode(): Passing null to parameter #1 ($string) of type string is deprecated in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php on line 45
+[19-Nov-2024 16:17:34 America/New_York] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventFailure.php:5) in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventFailure.php on line 18
+[19-Nov-2024 16:17:42 America/New_York] PHP Warning:  Undefined array key "user_id" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/event.php on line 410
+[19-Nov-2024 16:20:26 America/New_York] PHP Warning:  Undefined variable $all_animals in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php on line 197
+[19-Nov-2024 16:20:26 America/New_York] PHP Fatal error:  Uncaught TypeError: mysqli_fetch_array(): Argument #1 ($result) must be of type mysqli_result, null given in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php:196
+Stack trace:
+#0 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php(196): mysqli_fetch_array(NULL, 1)
+#1 {main}
+  thrown in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php on line 196
+[19-Nov-2024 21:21:11 UTC] PHP Deprecated:  htmlspecialchars_decode(): Passing null to parameter #1 ($string) of type string is deprecated in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php on line 45
+[19-Nov-2024 16:21:11 America/New_York] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventFailure.php:5) in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventFailure.php on line 18
+[19-Nov-2024 16:44:54 America/New_York] PHP Warning:  Undefined variable $all_animals in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php on line 197
+[19-Nov-2024 16:44:54 America/New_York] PHP Fatal error:  Uncaught TypeError: mysqli_fetch_array(): Argument #1 ($result) must be of type mysqli_result, null given in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php:196
+Stack trace:
+#0 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php(196): mysqli_fetch_array(NULL, 1)
+#1 {main}
+  thrown in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php on line 196
+[19-Nov-2024 21:45:01 UTC] PHP Deprecated:  htmlspecialchars_decode(): Passing null to parameter #1 ($string) of type string is deprecated in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php on line 45
+[19-Nov-2024 16:45:01 America/New_York] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventFailure.php:5) in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventFailure.php on line 18
+[19-Nov-2024 16:45:07 America/New_York] PHP Warning:  Undefined variable $all_animals in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php on line 197
+[19-Nov-2024 16:45:07 America/New_York] PHP Fatal error:  Uncaught TypeError: mysqli_fetch_array(): Argument #1 ($result) must be of type mysqli_result, null given in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php:196
+Stack trace:
+#0 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php(196): mysqli_fetch_array(NULL, 1)
+#1 {main}
+  thrown in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php on line 196
+[19-Nov-2024 16:45:11 America/New_York] PHP Warning:  Undefined array key "user_id" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/event.php on line 410
+[19-Nov-2024 16:45:15 America/New_York] PHP Warning:  Undefined array key "user_id" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/event.php on line 410
+[19-Nov-2024 16:45:17 America/New_York] PHP Warning:  Undefined array key "user_id" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/event.php on line 410
+[19-Nov-2024 16:48:17 America/New_York] PHP Warning:  Undefined variable $all_animals in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php on line 197
+[19-Nov-2024 16:48:17 America/New_York] PHP Fatal error:  Uncaught TypeError: mysqli_fetch_array(): Argument #1 ($result) must be of type mysqli_result, null given in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php:196
+Stack trace:
+#0 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php(196): mysqli_fetch_array(NULL, 1)
+#1 {main}
+  thrown in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php on line 196
+[19-Nov-2024 21:48:24 UTC] PHP Deprecated:  htmlspecialchars_decode(): Passing null to parameter #1 ($string) of type string is deprecated in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php on line 45
+[19-Nov-2024 16:48:24 America/New_York] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventFailure.php:5) in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventFailure.php on line 18
+[19-Nov-2024 16:48:33 America/New_York] PHP Warning:  Undefined array key "user_id" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/event.php on line 410
+[19-Nov-2024 16:48:38 America/New_York] PHP Warning:  Undefined array key "user_id" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/event.php on line 410
+[19-Nov-2024 16:48:41 America/New_York] PHP Warning:  Undefined array key "user_id" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/event.php on line 410
+[19-Nov-2024 16:49:31 America/New_York] PHP Warning:  Undefined array key "user_id" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/event.php on line 410
+[19-Nov-2024 16:49:33 America/New_York] PHP Warning:  Undefined array key "user_id" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/event.php on line 410
+[19-Nov-2024 16:50:38 America/New_York] PHP Warning:  Undefined array key "user_id" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/event.php on line 410
+[19-Nov-2024 16:52:11 America/New_York] PHP Warning:  Undefined array key "user_id" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/event.php on line 411
+[19-Nov-2024 16:52:37 America/New_York] PHP Warning:  Undefined array key "user_id" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/event.php on line 412
+[19-Nov-2024 16:52:39 America/New_York] PHP Warning:  Undefined array key "user_id" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/event.php on line 412
+[19-Nov-2024 16:53:18 America/New_York] PHP Warning:  Undefined array key "user_id" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/event.php on line 412
+[19-Nov-2024 16:57:27 America/New_York] PHP Warning:  Undefined array key "user_id" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/event.php on line 410
+[19-Nov-2024 16:57:29 America/New_York] PHP Warning:  Undefined array key "user_id" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/event.php on line 410
+[19-Nov-2024 16:58:09 America/New_York] PHP Warning:  Undefined array key "user_id" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/event.php on line 410
+[19-Nov-2024 16:58:13 America/New_York] PHP Warning:  Undefined array key "user_id" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/event.php on line 410
+[19-Nov-2024 16:58:14 America/New_York] PHP Warning:  Undefined array key "user_id" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/event.php on line 410
+[19-Nov-2024 16:58:31 America/New_York] PHP Warning:  Undefined array key "user_id" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/event.php on line 410
+[19-Nov-2024 16:58:32 America/New_York] PHP Warning:  Undefined array key "user_id" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/event.php on line 410
+[19-Nov-2024 16:58:56 America/New_York] PHP Warning:  Undefined array key "user_id" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/event.php on line 411
+[19-Nov-2024 16:59:13 America/New_York] PHP Warning:  Undefined variable $all_animals in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php on line 197
+[19-Nov-2024 16:59:13 America/New_York] PHP Fatal error:  Uncaught TypeError: mysqli_fetch_array(): Argument #1 ($result) must be of type mysqli_result, null given in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php:196
+Stack trace:
+#0 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php(196): mysqli_fetch_array(NULL, 1)
+#1 {main}
+  thrown in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php on line 196
+[19-Nov-2024 16:59:14 America/New_York] PHP Warning:  Undefined array key "user_id" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/event.php on line 411
+[19-Nov-2024 16:59:53 America/New_York] PHP Warning:  Undefined variable $all_animals in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php on line 197
+[19-Nov-2024 16:59:53 America/New_York] PHP Fatal error:  Uncaught TypeError: mysqli_fetch_array(): Argument #1 ($result) must be of type mysqli_result, null given in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php:196
+Stack trace:
+#0 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php(196): mysqli_fetch_array(NULL, 1)
+#1 {main}
+  thrown in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php on line 196
+[19-Nov-2024 21:59:55 UTC] PHP Parse error:  syntax error, unexpected token "<", expecting end of file in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/event.php on line 330
+[19-Nov-2024 21:59:58 UTC] PHP Parse error:  syntax error, unexpected token "<", expecting end of file in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/event.php on line 330
+[19-Nov-2024 22:00:03 UTC] PHP Parse error:  syntax error, unexpected token "<", expecting end of file in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/event.php on line 330
+[19-Nov-2024 22:00:17 UTC] PHP Parse error:  syntax error, unexpected token "<", expecting end of file in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/event.php on line 330
+[19-Nov-2024 22:00:19 UTC] PHP Parse error:  syntax error, unexpected token "<", expecting end of file in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/event.php on line 330
+[19-Nov-2024 22:00:29 UTC] PHP Parse error:  syntax error, unexpected token "<", expecting end of file in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/event.php on line 330
+[19-Nov-2024 22:06:39 UTC] PHP Warning:  Undefined array key "id" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php on line 327
+[19-Nov-2024 22:06:39 UTC] PHP Warning:  Undefined array key "startTime" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php on line 331
+[19-Nov-2024 22:06:39 UTC] PHP Warning:  Undefined array key "capacity" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php on line 334
+[19-Nov-2024 22:06:39 UTC] PHP Warning:  Undefined array key "completed" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php on line 335
+[19-Nov-2024 22:06:39 UTC] PHP Warning:  Undefined array key "event_type" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php on line 336
+[19-Nov-2024 22:06:39 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/addEvent.php:53) in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/addEvent.php on line 59
+[19-Nov-2024 17:08:08 America/New_York] PHP Warning:  Undefined variable $all_animals in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php on line 197
+[19-Nov-2024 17:08:08 America/New_York] PHP Fatal error:  Uncaught TypeError: mysqli_fetch_array(): Argument #1 ($result) must be of type mysqli_result, null given in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php:196
+Stack trace:
+#0 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php(196): mysqli_fetch_array(NULL, 1)
+#1 {main}
+  thrown in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php on line 196
+[19-Nov-2024 22:08:28 UTC] PHP Deprecated:  htmlspecialchars_decode(): Passing null to parameter #1 ($string) of type string is deprecated in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php on line 45
+[19-Nov-2024 17:08:28 America/New_York] PHP Fatal error:  Uncaught mysqli_sql_exception: Table 'dbeq5aamznytup.dbPersons' doesn't exist in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbMessages.php:137
+Stack trace:
+#0 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbMessages.php(137): mysqli_query(Object(mysqli), 'select id from ...')
+#1 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php(77): system_message_all_users_except('username', 'Your sign-up ha...', 'Congratulations...')
+#2 {main}
+  thrown in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbMessages.php on line 137
+[19-Nov-2024 17:08:28 America/New_York] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/signupSuccess.php:5) in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/signupSuccess.php on line 18
+[19-Nov-2024 17:08:42 America/New_York] PHP Warning:  Undefined array key "location" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/volunteerReport.php on line 78
+[19-Nov-2024 17:09:14 America/New_York] PHP Warning:  Undefined array key "location" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/volunteerReport.php on line 78
+[19-Nov-2024 17:09:37 America/New_York] PHP Warning:  Undefined array key "location" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/volunteerReport.php on line 78
+[19-Nov-2024 17:09:40 America/New_York] PHP Warning:  Undefined array key "location" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/volunteerReport.php on line 78
+[19-Nov-2024 17:10:04 America/New_York] PHP Warning:  Undefined array key "user_id" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/event.php on line 410
+[19-Nov-2024 17:10:09 America/New_York] PHP Warning:  Undefined array key "user_id" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/event.php on line 410
+[19-Nov-2024 17:10:10 America/New_York] PHP Warning:  Undefined variable $all_animals in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php on line 197
+[19-Nov-2024 17:10:10 America/New_York] PHP Fatal error:  Uncaught TypeError: mysqli_fetch_array(): Argument #1 ($result) must be of type mysqli_result, null given in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php:196
+Stack trace:
+#0 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php(196): mysqli_fetch_array(NULL, 1)
+#1 {main}
+  thrown in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php on line 196
+[19-Nov-2024 22:10:19 UTC] PHP Deprecated:  htmlspecialchars_decode(): Passing null to parameter #1 ($string) of type string is deprecated in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php on line 45
+[19-Nov-2024 17:10:19 America/New_York] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventFailure.php:5) in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventFailure.php on line 18
+[19-Nov-2024 17:14:42 America/New_York] PHP Warning:  Undefined variable $all_animals in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php on line 197
+[19-Nov-2024 17:14:42 America/New_York] PHP Fatal error:  Uncaught TypeError: mysqli_fetch_array(): Argument #1 ($result) must be of type mysqli_result, null given in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php:196
+Stack trace:
+#0 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php(196): mysqli_fetch_array(NULL, 1)
+#1 {main}
+  thrown in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php on line 196
+[19-Nov-2024 22:14:55 UTC] PHP Deprecated:  htmlspecialchars_decode(): Passing null to parameter #1 ($string) of type string is deprecated in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php on line 45
+[19-Nov-2024 17:14:55 America/New_York] PHP Fatal error:  Uncaught mysqli_sql_exception: Table 'dbeq5aamznytup.dbPersons' doesn't exist in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbMessages.php:137
+Stack trace:
+#0 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbMessages.php(137): mysqli_query(Object(mysqli), 'select id from ...')
+#1 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php(77): system_message_all_users_except('username', 'Your sign-up ha...', 'Congratulations...')
+#2 {main}
+  thrown in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbMessages.php on line 137
+[19-Nov-2024 17:14:55 America/New_York] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/signupSuccess.php:5) in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/signupSuccess.php on line 18
+[19-Nov-2024 17:15:05 America/New_York] PHP Warning:  Undefined array key "user_id" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/event.php on line 410
+[19-Nov-2024 17:16:04 America/New_York] PHP Warning:  Undefined variable $all_animals in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php on line 197
+[19-Nov-2024 17:16:04 America/New_York] PHP Fatal error:  Uncaught TypeError: mysqli_fetch_array(): Argument #1 ($result) must be of type mysqli_result, null given in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php:196
+Stack trace:
+#0 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php(196): mysqli_fetch_array(NULL, 1)
+#1 {main}
+  thrown in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php on line 196
+[19-Nov-2024 22:16:10 UTC] PHP Deprecated:  htmlspecialchars_decode(): Passing null to parameter #1 ($string) of type string is deprecated in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php on line 45
+[19-Nov-2024 17:16:10 America/New_York] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventFailure.php:5) in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventFailure.php on line 18
+[19-Nov-2024 17:16:13 America/New_York] PHP Warning:  Undefined variable $all_animals in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php on line 197
+[19-Nov-2024 17:16:13 America/New_York] PHP Fatal error:  Uncaught TypeError: mysqli_fetch_array(): Argument #1 ($result) must be of type mysqli_result, null given in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php:196
+Stack trace:
+#0 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php(196): mysqli_fetch_array(NULL, 1)
+#1 {main}
+  thrown in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php on line 196
+[19-Nov-2024 17:16:13 America/New_York] PHP Warning:  Undefined array key "user_id" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/event.php on line 410
+[19-Nov-2024 17:16:15 America/New_York] PHP Warning:  Undefined array key "user_id" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/event.php on line 410
+[19-Nov-2024 17:16:26 America/New_York] PHP Warning:  Undefined array key "user_id" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/event.php on line 410
+[19-Nov-2024 17:16:37 America/New_York] PHP Warning:  Undefined array key "animalID" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/date.php on line 56
+[19-Nov-2024 17:16:37 America/New_York] PHP Warning:  Undefined array key 0 in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/date.php on line 56
+[19-Nov-2024 17:16:37 America/New_York] PHP Warning:  Trying to access array offset on value of type null in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/date.php on line 56
+[19-Nov-2024 17:16:37 America/New_York] PHP Warning:  Undefined array key "locationID" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/date.php on line 57
+[19-Nov-2024 17:16:37 America/New_York] PHP Fatal error:  Uncaught mysqli_sql_exception: Table 'dbeq5aamznytup.dblocations' doesn't exist in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php:546
+Stack trace:
+#0 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php(546): mysqli_query(Object(mysqli), 'select * from d...')
+#1 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/date.php(57): get_location(NULL)
+#2 {main}
+  thrown in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php on line 546
+[19-Nov-2024 17:16:41 America/New_York] PHP Warning:  Undefined array key "animalID" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/date.php on line 56
+[19-Nov-2024 17:16:41 America/New_York] PHP Warning:  Undefined array key 0 in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/date.php on line 56
+[19-Nov-2024 17:16:41 America/New_York] PHP Warning:  Trying to access array offset on value of type null in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/date.php on line 56
+[19-Nov-2024 17:16:41 America/New_York] PHP Warning:  Undefined array key "locationID" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/date.php on line 57
+[19-Nov-2024 17:16:41 America/New_York] PHP Fatal error:  Uncaught mysqli_sql_exception: Table 'dbeq5aamznytup.dblocations' doesn't exist in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php:546
+Stack trace:
+#0 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php(546): mysqli_query(Object(mysqli), 'select * from d...')
+#1 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/date.php(57): get_location(NULL)
+#2 {main}
+  thrown in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php on line 546
+[19-Nov-2024 17:16:49 America/New_York] PHP Warning:  Undefined array key "user_id" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/event.php on line 410
+[19-Nov-2024 17:16:58 America/New_York] PHP Warning:  Undefined array key "user_id" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/event.php on line 410
+[19-Nov-2024 17:17:00 America/New_York] PHP Warning:  Undefined variable $all_animals in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php on line 197
+[19-Nov-2024 17:17:00 America/New_York] PHP Fatal error:  Uncaught TypeError: mysqli_fetch_array(): Argument #1 ($result) must be of type mysqli_result, null given in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php:196
+Stack trace:
+#0 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php(196): mysqli_fetch_array(NULL, 1)
+#1 {main}
+  thrown in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php on line 196
+[19-Nov-2024 22:17:07 UTC] PHP Deprecated:  htmlspecialchars_decode(): Passing null to parameter #1 ($string) of type string is deprecated in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php on line 45
+[19-Nov-2024 17:17:07 America/New_York] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventFailure.php:5) in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventFailure.php on line 18
+[19-Nov-2024 17:17:08 America/New_York] PHP Warning:  Undefined variable $all_animals in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php on line 197
+[19-Nov-2024 17:17:08 America/New_York] PHP Fatal error:  Uncaught TypeError: mysqli_fetch_array(): Argument #1 ($result) must be of type mysqli_result, null given in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php:196
+Stack trace:
+#0 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php(196): mysqli_fetch_array(NULL, 1)
+#1 {main}
+  thrown in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php on line 196
+[19-Nov-2024 17:17:08 America/New_York] PHP Warning:  Undefined array key "user_id" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/event.php on line 410
+[19-Nov-2024 22:25:02 UTC] PHP Warning:  Undefined array key "id" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php on line 327
+[19-Nov-2024 22:25:02 UTC] PHP Warning:  Undefined array key "startTime" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php on line 331
+[19-Nov-2024 22:25:02 UTC] PHP Warning:  Undefined array key "capacity" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php on line 334
+[19-Nov-2024 22:25:02 UTC] PHP Warning:  Undefined array key "completed" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php on line 335
+[19-Nov-2024 22:25:02 UTC] PHP Warning:  Undefined array key "event_type" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php on line 336
+[19-Nov-2024 22:25:02 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/addEvent.php:53) in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/addEvent.php on line 59
+[19-Nov-2024 17:25:22 America/New_York] PHP Warning:  Undefined variable $all_animals in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php on line 197
+[19-Nov-2024 17:25:22 America/New_York] PHP Fatal error:  Uncaught TypeError: mysqli_fetch_array(): Argument #1 ($result) must be of type mysqli_result, null given in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php:196
+Stack trace:
+#0 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php(196): mysqli_fetch_array(NULL, 1)
+#1 {main}
+  thrown in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php on line 196
+[19-Nov-2024 22:25:46 UTC] PHP Deprecated:  htmlspecialchars_decode(): Passing null to parameter #1 ($string) of type string is deprecated in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php on line 45
+[19-Nov-2024 17:25:46 America/New_York] PHP Fatal error:  Uncaught mysqli_sql_exception: Table 'dbeq5aamznytup.dbPersons' doesn't exist in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbMessages.php:137
+Stack trace:
+#0 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbMessages.php(137): mysqli_query(Object(mysqli), 'select id from ...')
+#1 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php(77): system_message_all_users_except('username', 'Your sign-up ha...', 'Congratulations...')
+#2 {main}
+  thrown in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbMessages.php on line 137
+[19-Nov-2024 17:25:46 America/New_York] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/signupSuccess.php:5) in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/signupSuccess.php on line 18
+[19-Nov-2024 17:26:02 America/New_York] PHP Warning:  Undefined array key "user_id" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/event.php on line 410
+[19-Nov-2024 17:26:04 America/New_York] PHP Warning:  Undefined variable $all_animals in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php on line 197
+[19-Nov-2024 17:26:04 America/New_York] PHP Fatal error:  Uncaught TypeError: mysqli_fetch_array(): Argument #1 ($result) must be of type mysqli_result, null given in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php:196
+Stack trace:
+#0 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php(196): mysqli_fetch_array(NULL, 1)
+#1 {main}
+  thrown in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php on line 196
+[19-Nov-2024 22:26:10 UTC] PHP Deprecated:  htmlspecialchars_decode(): Passing null to parameter #1 ($string) of type string is deprecated in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php on line 45
+[19-Nov-2024 17:26:10 America/New_York] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventFailure.php:5) in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventFailure.php on line 18
+[19-Nov-2024 17:26:20 America/New_York] PHP Warning:  Undefined array key "user_id" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/event.php on line 410
+[19-Nov-2024 17:27:57 America/New_York] PHP Warning:  Undefined variable $all_animals in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php on line 197
+[19-Nov-2024 17:27:57 America/New_York] PHP Fatal error:  Uncaught TypeError: mysqli_fetch_array(): Argument #1 ($result) must be of type mysqli_result, null given in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php:196
+Stack trace:
+#0 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php(196): mysqli_fetch_array(NULL, 1)
+#1 {main}
+  thrown in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php on line 196
+[19-Nov-2024 22:28:03 UTC] PHP Deprecated:  htmlspecialchars_decode(): Passing null to parameter #1 ($string) of type string is deprecated in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php on line 45
+[19-Nov-2024 17:28:03 America/New_York] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventFailure.php:5) in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventFailure.php on line 18
+[19-Nov-2024 17:28:06 America/New_York] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventFailure.php:5) in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventFailure.php on line 18
+[19-Nov-2024 17:28:10 America/New_York] PHP Warning:  Undefined variable $all_animals in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php on line 197
+[19-Nov-2024 17:28:10 America/New_York] PHP Fatal error:  Uncaught TypeError: mysqli_fetch_array(): Argument #1 ($result) must be of type mysqli_result, null given in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php:196
+Stack trace:
+#0 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php(196): mysqli_fetch_array(NULL, 1)
+#1 {main}
+  thrown in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php on line 196
+[19-Nov-2024 17:31:32 America/New_York] PHP Warning:  Undefined array key "animalID" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/date.php on line 56
+[19-Nov-2024 17:31:32 America/New_York] PHP Warning:  Undefined array key 0 in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/date.php on line 56
+[19-Nov-2024 17:31:32 America/New_York] PHP Warning:  Trying to access array offset on value of type null in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/date.php on line 56
+[19-Nov-2024 17:31:32 America/New_York] PHP Warning:  Undefined array key "locationID" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/date.php on line 57
+[19-Nov-2024 17:31:32 America/New_York] PHP Fatal error:  Uncaught mysqli_sql_exception: Table 'dbeq5aamznytup.dblocations' doesn't exist in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php:546
+Stack trace:
+#0 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php(546): mysqli_query(Object(mysqli), 'select * from d...')
+#1 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/date.php(57): get_location(NULL)
+#2 {main}
+  thrown in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php on line 546
+[19-Nov-2024 17:31:34 America/New_York] PHP Warning:  Undefined array key "animalID" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/date.php on line 56
+[19-Nov-2024 17:31:34 America/New_York] PHP Warning:  Undefined array key 0 in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/date.php on line 56
+[19-Nov-2024 17:31:34 America/New_York] PHP Warning:  Trying to access array offset on value of type null in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/date.php on line 56
+[19-Nov-2024 17:31:34 America/New_York] PHP Warning:  Undefined array key "locationID" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/date.php on line 57
+[19-Nov-2024 17:31:34 America/New_York] PHP Fatal error:  Uncaught mysqli_sql_exception: Table 'dbeq5aamznytup.dblocations' doesn't exist in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php:546
+Stack trace:
+#0 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php(546): mysqli_query(Object(mysqli), 'select * from d...')
+#1 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/date.php(57): get_location(NULL)
+#2 {main}
+  thrown in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php on line 546
+[19-Nov-2024 17:31:41 America/New_York] PHP Warning:  Undefined array key "animalID" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/date.php on line 56
+[19-Nov-2024 17:31:41 America/New_York] PHP Warning:  Undefined array key 0 in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/date.php on line 56
+[19-Nov-2024 17:31:41 America/New_York] PHP Warning:  Trying to access array offset on value of type null in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/date.php on line 56
+[19-Nov-2024 17:31:41 America/New_York] PHP Warning:  Undefined array key "locationID" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/date.php on line 57
+[19-Nov-2024 17:31:41 America/New_York] PHP Fatal error:  Uncaught mysqli_sql_exception: Table 'dbeq5aamznytup.dblocations' doesn't exist in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php:546
+Stack trace:
+#0 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php(546): mysqli_query(Object(mysqli), 'select * from d...')
+#1 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/date.php(57): get_location(NULL)
+#2 {main}
+  thrown in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php on line 546
+[19-Nov-2024 17:31:50 America/New_York] PHP Warning:  Undefined variable $all_animals in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php on line 197
+[19-Nov-2024 17:31:50 America/New_York] PHP Fatal error:  Uncaught TypeError: mysqli_fetch_array(): Argument #1 ($result) must be of type mysqli_result, null given in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php:196
+Stack trace:
+#0 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php(196): mysqli_fetch_array(NULL, 1)
+#1 {main}
+  thrown in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php on line 196
+[19-Nov-2024 22:32:06 UTC] PHP Deprecated:  htmlspecialchars_decode(): Passing null to parameter #1 ($string) of type string is deprecated in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php on line 45
+[19-Nov-2024 17:32:06 America/New_York] PHP Fatal error:  Uncaught mysqli_sql_exception: Table 'dbeq5aamznytup.dbPersons' doesn't exist in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbMessages.php:137
+Stack trace:
+#0 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbMessages.php(137): mysqli_query(Object(mysqli), 'select id from ...')
+#1 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php(77): system_message_all_users_except('username', 'Your sign-up ha...', 'Congratulations...')
+#2 {main}
+  thrown in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbMessages.php on line 137
+[19-Nov-2024 17:32:06 America/New_York] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/signupSuccess.php:5) in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/signupSuccess.php on line 18
+[19-Nov-2024 17:33:31 America/New_York] PHP Warning:  Undefined variable $all_animals in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php on line 197
+[19-Nov-2024 17:33:31 America/New_York] PHP Fatal error:  Uncaught TypeError: mysqli_fetch_array(): Argument #1 ($result) must be of type mysqli_result, null given in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php:196
+Stack trace:
+#0 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php(196): mysqli_fetch_array(NULL, 1)
+#1 {main}
+  thrown in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php on line 196
+[19-Nov-2024 22:33:37 UTC] PHP Deprecated:  htmlspecialchars_decode(): Passing null to parameter #1 ($string) of type string is deprecated in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php on line 45
+[19-Nov-2024 17:33:37 America/New_York] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventFailure.php:5) in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventFailure.php on line 18
+[19-Nov-2024 22:55:19 UTC] PHP Warning:  Undefined array key "id" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php on line 327
+[19-Nov-2024 22:55:19 UTC] PHP Warning:  Undefined array key "startTime" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php on line 331
+[19-Nov-2024 22:55:19 UTC] PHP Warning:  Undefined array key "capacity" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php on line 334
+[19-Nov-2024 22:55:19 UTC] PHP Warning:  Undefined array key "completed" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php on line 335
+[19-Nov-2024 22:55:19 UTC] PHP Warning:  Undefined array key "event_type" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php on line 336
+[19-Nov-2024 22:55:19 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/addEvent.php:53) in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/addEvent.php on line 59
+[19-Nov-2024 22:59:34 UTC] PHP Warning:  Undefined array key "id" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php on line 327
+[19-Nov-2024 22:59:34 UTC] PHP Warning:  Undefined array key "startTime" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php on line 331
+[19-Nov-2024 22:59:34 UTC] PHP Warning:  Undefined array key "capacity" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php on line 334
+[19-Nov-2024 22:59:34 UTC] PHP Warning:  Undefined array key "completed" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php on line 335
+[19-Nov-2024 22:59:34 UTC] PHP Warning:  Undefined array key "event_type" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php on line 336
+[19-Nov-2024 22:59:34 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/addEvent.php:53) in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/addEvent.php on line 59
+[19-Nov-2024 17:59:51 America/New_York] PHP Warning:  Undefined variable $all_animals in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php on line 197
+[19-Nov-2024 17:59:51 America/New_York] PHP Fatal error:  Uncaught TypeError: mysqli_fetch_array(): Argument #1 ($result) must be of type mysqli_result, null given in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php:196
+Stack trace:
+#0 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php(196): mysqli_fetch_array(NULL, 1)
+#1 {main}
+  thrown in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php on line 196
+[19-Nov-2024 23:00:50 UTC] PHP Deprecated:  htmlspecialchars_decode(): Passing null to parameter #1 ($string) of type string is deprecated in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php on line 45
+[19-Nov-2024 18:00:50 America/New_York] PHP Fatal error:  Uncaught mysqli_sql_exception: Table 'dbeq5aamznytup.dbPersons' doesn't exist in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbMessages.php:137
+Stack trace:
+#0 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbMessages.php(137): mysqli_query(Object(mysqli), 'select id from ...')
+#1 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php(77): system_message_all_users_except('vmsroot', 'Your sign-up ha...', 'Congratulations...')
+#2 {main}
+  thrown in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbMessages.php on line 137
+[19-Nov-2024 18:00:50 America/New_York] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/signupSuccess.php:5) in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/signupSuccess.php on line 18
+[19-Nov-2024 18:01:39 America/New_York] PHP Warning:  Undefined variable $all_animals in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php on line 197
+[19-Nov-2024 18:01:39 America/New_York] PHP Fatal error:  Uncaught TypeError: mysqli_fetch_array(): Argument #1 ($result) must be of type mysqli_result, null given in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php:196
+Stack trace:
+#0 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php(196): mysqli_fetch_array(NULL, 1)
+#1 {main}
+  thrown in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php on line 196
+[19-Nov-2024 23:02:02 UTC] PHP Deprecated:  htmlspecialchars_decode(): Passing null to parameter #1 ($string) of type string is deprecated in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php on line 45
+[19-Nov-2024 18:02:02 America/New_York] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventFailure.php:5) in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventFailure.php on line 18
+[19-Nov-2024 18:02:36 America/New_York] PHP Warning:  Undefined variable $all_animals in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php on line 197
+[19-Nov-2024 18:02:36 America/New_York] PHP Fatal error:  Uncaught TypeError: mysqli_fetch_array(): Argument #1 ($result) must be of type mysqli_result, null given in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php:196
+Stack trace:
+#0 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php(196): mysqli_fetch_array(NULL, 1)
+#1 {main}
+  thrown in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php on line 196
+[19-Nov-2024 23:02:44 UTC] PHP Deprecated:  htmlspecialchars_decode(): Passing null to parameter #1 ($string) of type string is deprecated in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php on line 45
+[19-Nov-2024 18:02:44 America/New_York] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventFailure.php:5) in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventFailure.php on line 18
+[19-Nov-2024 18:03:18 America/New_York] PHP Warning:  Undefined array key "animalID" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/date.php on line 56
+[19-Nov-2024 18:03:18 America/New_York] PHP Warning:  Undefined array key 0 in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/date.php on line 56
+[19-Nov-2024 18:03:18 America/New_York] PHP Warning:  Trying to access array offset on value of type null in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/date.php on line 56
+[19-Nov-2024 18:03:18 America/New_York] PHP Warning:  Undefined array key "locationID" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/date.php on line 57
+[19-Nov-2024 18:03:18 America/New_York] PHP Fatal error:  Uncaught mysqli_sql_exception: Table 'dbeq5aamznytup.dblocations' doesn't exist in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php:546
+Stack trace:
+#0 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php(546): mysqli_query(Object(mysqli), 'select * from d...')
+#1 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/date.php(57): get_location(NULL)
+#2 {main}
+  thrown in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php on line 546
+[19-Nov-2024 18:03:29 America/New_York] PHP Warning:  Undefined array key "animalID" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/date.php on line 56
+[19-Nov-2024 18:03:29 America/New_York] PHP Warning:  Undefined array key 0 in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/date.php on line 56
+[19-Nov-2024 18:03:29 America/New_York] PHP Warning:  Trying to access array offset on value of type null in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/date.php on line 56
+[19-Nov-2024 18:03:29 America/New_York] PHP Warning:  Undefined array key "locationID" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/date.php on line 57
+[19-Nov-2024 18:03:29 America/New_York] PHP Fatal error:  Uncaught mysqli_sql_exception: Table 'dbeq5aamznytup.dblocations' doesn't exist in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php:546
+Stack trace:
+#0 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php(546): mysqli_query(Object(mysqli), 'select * from d...')
+#1 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/date.php(57): get_location(NULL)
+#2 {main}
+  thrown in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php on line 546
+[19-Nov-2024 18:03:31 America/New_York] PHP Warning:  Undefined variable $all_animals in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php on line 197
+[19-Nov-2024 18:03:31 America/New_York] PHP Fatal error:  Uncaught TypeError: mysqli_fetch_array(): Argument #1 ($result) must be of type mysqli_result, null given in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php:196
+Stack trace:
+#0 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php(196): mysqli_fetch_array(NULL, 1)
+#1 {main}
+  thrown in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php on line 196
+[19-Nov-2024 23:03:37 UTC] PHP Deprecated:  htmlspecialchars_decode(): Passing null to parameter #1 ($string) of type string is deprecated in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php on line 45
+[19-Nov-2024 18:03:37 America/New_York] PHP Fatal error:  Uncaught mysqli_sql_exception: Table 'dbeq5aamznytup.dbPersons' doesn't exist in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbMessages.php:137
+Stack trace:
+#0 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbMessages.php(137): mysqli_query(Object(mysqli), 'select id from ...')
+#1 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php(77): system_message_all_users_except('username', 'Your sign-up ha...', 'Congratulations...')
+#2 {main}
+  thrown in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbMessages.php on line 137
+[19-Nov-2024 18:03:37 America/New_York] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/signupSuccess.php:5) in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/signupSuccess.php on line 18
+[19-Nov-2024 18:03:41 America/New_York] PHP Warning:  Undefined array key "animalID" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/date.php on line 56
+[19-Nov-2024 18:03:41 America/New_York] PHP Warning:  Undefined array key 0 in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/date.php on line 56
+[19-Nov-2024 18:03:41 America/New_York] PHP Warning:  Trying to access array offset on value of type null in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/date.php on line 56
+[19-Nov-2024 18:03:41 America/New_York] PHP Warning:  Undefined array key "locationID" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/date.php on line 57
+[19-Nov-2024 18:03:41 America/New_York] PHP Fatal error:  Uncaught mysqli_sql_exception: Table 'dbeq5aamznytup.dblocations' doesn't exist in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php:546
+Stack trace:
+#0 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php(546): mysqli_query(Object(mysqli), 'select * from d...')
+#1 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/date.php(57): get_location(NULL)
+#2 {main}
+  thrown in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php on line 546
+[19-Nov-2024 18:03:58 America/New_York] PHP Warning:  Undefined array key "location" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/volunteerReport.php on line 78
+[19-Nov-2024 18:04:22 America/New_York] PHP Warning:  Undefined array key "animalID" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/date.php on line 56
+[19-Nov-2024 18:04:22 America/New_York] PHP Warning:  Undefined array key 0 in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/date.php on line 56
+[19-Nov-2024 18:04:22 America/New_York] PHP Warning:  Trying to access array offset on value of type null in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/date.php on line 56
+[19-Nov-2024 18:04:22 America/New_York] PHP Warning:  Undefined array key "locationID" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/date.php on line 57
+[19-Nov-2024 18:04:22 America/New_York] PHP Fatal error:  Uncaught mysqli_sql_exception: Table 'dbeq5aamznytup.dblocations' doesn't exist in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php:546
+Stack trace:
+#0 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php(546): mysqli_query(Object(mysqli), 'select * from d...')
+#1 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/date.php(57): get_location(NULL)
+#2 {main}
+  thrown in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php on line 546
+[19-Nov-2024 18:04:39 America/New_York] PHP Warning:  Undefined variable $all_animals in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/editTimes.php on line 182
+[19-Nov-2024 18:04:39 America/New_York] PHP Fatal error:  Uncaught TypeError: mysqli_fetch_array(): Argument #1 ($result) must be of type mysqli_result, null given in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/editTimes.php:181
+Stack trace:
+#0 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/editTimes.php(181): mysqli_fetch_array(NULL, 1)
+#1 {main}
+  thrown in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/editTimes.php on line 181
+[19-Nov-2024 18:07:48 America/New_York] PHP Warning:  Undefined variable $all_animals in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/editTimes.php on line 182
+[19-Nov-2024 18:07:48 America/New_York] PHP Fatal error:  Uncaught TypeError: mysqli_fetch_array(): Argument #1 ($result) must be of type mysqli_result, null given in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/editTimes.php:181
+Stack trace:
+#0 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/editTimes.php(181): mysqli_fetch_array(NULL, 1)
+#1 {main}
+  thrown in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/editTimes.php on line 181
+[19-Nov-2024 18:29:36 America/New_York] PHP Warning:  Undefined array key "animalID" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/date.php on line 56
+[19-Nov-2024 18:29:36 America/New_York] PHP Warning:  Undefined array key 0 in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/date.php on line 56
+[19-Nov-2024 18:29:36 America/New_York] PHP Warning:  Trying to access array offset on value of type null in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/date.php on line 56
+[19-Nov-2024 18:29:36 America/New_York] PHP Warning:  Undefined array key "locationID" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/date.php on line 57
+[19-Nov-2024 18:29:36 America/New_York] PHP Fatal error:  Uncaught mysqli_sql_exception: Table 'dbeq5aamznytup.dblocations' doesn't exist in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php:546
+Stack trace:
+#0 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php(546): mysqli_query(Object(mysqli), 'select * from d...')
+#1 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/date.php(57): get_location(NULL)
+#2 {main}
+  thrown in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php on line 546
+[19-Nov-2024 23:30:29 UTC] PHP Warning:  Undefined array key "id" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php on line 327
+[19-Nov-2024 23:30:29 UTC] PHP Warning:  Undefined array key "startTime" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php on line 331
+[19-Nov-2024 23:30:29 UTC] PHP Warning:  Undefined array key "capacity" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php on line 334
+[19-Nov-2024 23:30:29 UTC] PHP Warning:  Undefined array key "completed" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php on line 335
+[19-Nov-2024 23:30:29 UTC] PHP Warning:  Undefined array key "event_type" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php on line 336
+[19-Nov-2024 23:30:29 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/addEvent.php:53) in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/addEvent.php on line 59
+[19-Nov-2024 18:31:32 America/New_York] PHP Warning:  Undefined variable $all_animals in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php on line 197
+[19-Nov-2024 18:31:32 America/New_York] PHP Fatal error:  Uncaught TypeError: mysqli_fetch_array(): Argument #1 ($result) must be of type mysqli_result, null given in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php:196
+Stack trace:
+#0 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php(196): mysqli_fetch_array(NULL, 1)
+#1 {main}
+  thrown in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php on line 196
+[19-Nov-2024 23:31:38 UTC] PHP Deprecated:  htmlspecialchars_decode(): Passing null to parameter #1 ($string) of type string is deprecated in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php on line 45
+[19-Nov-2024 18:31:38 America/New_York] PHP Fatal error:  Uncaught mysqli_sql_exception: Table 'dbeq5aamznytup.dbPersons' doesn't exist in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbMessages.php:137
+Stack trace:
+#0 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbMessages.php(137): mysqli_query(Object(mysqli), 'select id from ...')
+#1 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php(77): system_message_all_users_except('username', 'Your sign-up ha...', 'Congratulations...')
+#2 {main}
+  thrown in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbMessages.php on line 137
+[19-Nov-2024 18:31:38 America/New_York] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/signupSuccess.php:5) in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/signupSuccess.php on line 18
+[19-Nov-2024 18:31:43 America/New_York] PHP Fatal error:  Uncaught Error: Undefined constant "php" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/profileEditForm.php:111
+Stack trace:
+#0 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/editProfile.php(186): require_once()
+#1 {main}
+  thrown in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/profileEditForm.php on line 111
+[19-Nov-2024 18:34:35 America/New_York] PHP Warning:  Undefined variable $all_animals in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php on line 197
+[19-Nov-2024 18:34:35 America/New_York] PHP Fatal error:  Uncaught TypeError: mysqli_fetch_array(): Argument #1 ($result) must be of type mysqli_result, null given in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php:196
+Stack trace:
+#0 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php(196): mysqli_fetch_array(NULL, 1)
+#1 {main}
+  thrown in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php on line 196
+[19-Nov-2024 23:35:13 UTC] PHP Deprecated:  htmlspecialchars_decode(): Passing null to parameter #1 ($string) of type string is deprecated in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php on line 45
+[19-Nov-2024 18:35:13 America/New_York] PHP Fatal error:  Uncaught mysqli_sql_exception: Table 'dbeq5aamznytup.dbPersons' doesn't exist in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbMessages.php:137
+Stack trace:
+#0 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbMessages.php(137): mysqli_query(Object(mysqli), 'select id from ...')
+#1 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php(77): system_message_all_users_except('vmsroot', 'Your sign-up ha...', 'Congratulations...')
+#2 {main}
+  thrown in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbMessages.php on line 137
+[19-Nov-2024 18:35:13 America/New_York] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/signupSuccess.php:5) in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/signupSuccess.php on line 18
+[19-Nov-2024 18:35:39 America/New_York] PHP Warning:  Undefined array key "animalID" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/date.php on line 56
+[19-Nov-2024 18:35:39 America/New_York] PHP Warning:  Undefined array key 0 in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/date.php on line 56
+[19-Nov-2024 18:35:39 America/New_York] PHP Warning:  Trying to access array offset on value of type null in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/date.php on line 56
+[19-Nov-2024 18:35:39 America/New_York] PHP Warning:  Undefined array key "locationID" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/date.php on line 57
+[19-Nov-2024 18:35:39 America/New_York] PHP Fatal error:  Uncaught mysqli_sql_exception: Table 'dbeq5aamznytup.dblocations' doesn't exist in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php:546
+Stack trace:
+#0 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php(546): mysqli_query(Object(mysqli), 'select * from d...')
+#1 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/date.php(57): get_location(NULL)
+#2 {main}
+  thrown in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php on line 546
+[19-Nov-2024 18:35:43 America/New_York] PHP Warning:  Undefined variable $all_animals in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php on line 197
+[19-Nov-2024 18:35:43 America/New_York] PHP Fatal error:  Uncaught TypeError: mysqli_fetch_array(): Argument #1 ($result) must be of type mysqli_result, null given in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php:196
+Stack trace:
+#0 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php(196): mysqli_fetch_array(NULL, 1)
+#1 {main}
+  thrown in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php on line 196
+[19-Nov-2024 23:36:01 UTC] PHP Deprecated:  htmlspecialchars_decode(): Passing null to parameter #1 ($string) of type string is deprecated in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php on line 45
+[19-Nov-2024 18:36:01 America/New_York] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventFailure.php:5) in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventFailure.php on line 18
+[19-Nov-2024 18:36:10 America/New_York] PHP Warning:  Undefined variable $all_animals in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php on line 197
+[19-Nov-2024 18:36:10 America/New_York] PHP Fatal error:  Uncaught TypeError: mysqli_fetch_array(): Argument #1 ($result) must be of type mysqli_result, null given in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php:196
+Stack trace:
+#0 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php(196): mysqli_fetch_array(NULL, 1)
+#1 {main}
+  thrown in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php on line 196
+[19-Nov-2024 18:36:17 America/New_York] PHP Warning:  Undefined array key "animalID" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/date.php on line 56
+[19-Nov-2024 18:36:17 America/New_York] PHP Warning:  Undefined array key 0 in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/date.php on line 56
+[19-Nov-2024 18:36:17 America/New_York] PHP Warning:  Trying to access array offset on value of type null in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/date.php on line 56
+[19-Nov-2024 18:36:17 America/New_York] PHP Warning:  Undefined array key "locationID" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/date.php on line 57
+[19-Nov-2024 18:36:17 America/New_York] PHP Fatal error:  Uncaught mysqli_sql_exception: Table 'dbeq5aamznytup.dblocations' doesn't exist in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php:546
+Stack trace:
+#0 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php(546): mysqli_query(Object(mysqli), 'select * from d...')
+#1 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/date.php(57): get_location(NULL)
+#2 {main}
+  thrown in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php on line 546
+[19-Nov-2024 18:36:20 America/New_York] PHP Warning:  Undefined variable $all_animals in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php on line 197
+[19-Nov-2024 18:36:20 America/New_York] PHP Fatal error:  Uncaught TypeError: mysqli_fetch_array(): Argument #1 ($result) must be of type mysqli_result, null given in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php:196
+Stack trace:
+#0 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php(196): mysqli_fetch_array(NULL, 1)
+#1 {main}
+  thrown in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php on line 196
+[19-Nov-2024 23:36:26 UTC] PHP Deprecated:  htmlspecialchars_decode(): Passing null to parameter #1 ($string) of type string is deprecated in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php on line 45
+[19-Nov-2024 18:36:26 America/New_York] PHP Fatal error:  Uncaught mysqli_sql_exception: Table 'dbeq5aamznytup.dbPersons' doesn't exist in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbMessages.php:137
+Stack trace:
+#0 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbMessages.php(137): mysqli_query(Object(mysqli), 'select id from ...')
+#1 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php(77): system_message_all_users_except('username', 'Your sign-up ha...', 'Congratulations...')
+#2 {main}
+  thrown in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbMessages.php on line 137
+[19-Nov-2024 18:36:26 America/New_York] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/signupSuccess.php:5) in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/signupSuccess.php on line 18
+[19-Nov-2024 18:36:32 America/New_York] PHP Warning:  Undefined array key "animalID" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/date.php on line 56
+[19-Nov-2024 18:36:32 America/New_York] PHP Warning:  Undefined array key 0 in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/date.php on line 56
+[19-Nov-2024 18:36:32 America/New_York] PHP Warning:  Trying to access array offset on value of type null in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/date.php on line 56
+[19-Nov-2024 18:36:32 America/New_York] PHP Warning:  Undefined array key "locationID" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/date.php on line 57
+[19-Nov-2024 18:36:32 America/New_York] PHP Fatal error:  Uncaught mysqli_sql_exception: Table 'dbeq5aamznytup.dblocations' doesn't exist in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php:546
+Stack trace:
+#0 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php(546): mysqli_query(Object(mysqli), 'select * from d...')
+#1 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/date.php(57): get_location(NULL)
+#2 {main}
+  thrown in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php on line 546
+[19-Nov-2024 18:37:19 America/New_York] PHP Warning:  Undefined array key "animalID" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/date.php on line 56
+[19-Nov-2024 18:37:19 America/New_York] PHP Warning:  Undefined array key 0 in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/date.php on line 56
+[19-Nov-2024 18:37:19 America/New_York] PHP Warning:  Trying to access array offset on value of type null in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/date.php on line 56
+[19-Nov-2024 18:37:19 America/New_York] PHP Warning:  Undefined array key "locationID" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/date.php on line 57
+[19-Nov-2024 18:37:19 America/New_York] PHP Fatal error:  Uncaught mysqli_sql_exception: Table 'dbeq5aamznytup.dblocations' doesn't exist in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php:546
+Stack trace:
+#0 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php(546): mysqli_query(Object(mysqli), 'select * from d...')
+#1 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/date.php(57): get_location(NULL)
+#2 {main}
+  thrown in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php on line 546
+[19-Nov-2024 23:57:29 UTC] PHP Warning:  Undefined array key "id" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php on line 327
+[19-Nov-2024 23:57:29 UTC] PHP Warning:  Undefined array key "startTime" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php on line 331
+[19-Nov-2024 23:57:29 UTC] PHP Warning:  Undefined array key "capacity" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php on line 334
+[19-Nov-2024 23:57:29 UTC] PHP Warning:  Undefined array key "completed" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php on line 335
+[19-Nov-2024 23:57:29 UTC] PHP Warning:  Undefined array key "event_type" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php on line 336
+[19-Nov-2024 23:57:29 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/addEvent.php:53) in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/addEvent.php on line 59
+[19-Nov-2024 18:57:35 America/New_York] PHP Warning:  Undefined variable $all_animals in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php on line 197
+[19-Nov-2024 18:57:35 America/New_York] PHP Fatal error:  Uncaught TypeError: mysqli_fetch_array(): Argument #1 ($result) must be of type mysqli_result, null given in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php:196
+Stack trace:
+#0 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php(196): mysqli_fetch_array(NULL, 1)
+#1 {main}
+  thrown in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php on line 196
+[19-Nov-2024 23:57:41 UTC] PHP Deprecated:  htmlspecialchars_decode(): Passing null to parameter #1 ($string) of type string is deprecated in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php on line 45
+[19-Nov-2024 18:57:41 America/New_York] PHP Fatal error:  Uncaught mysqli_sql_exception: Table 'dbeq5aamznytup.dbPersons' doesn't exist in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbMessages.php:137
+Stack trace:
+#0 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbMessages.php(137): mysqli_query(Object(mysqli), 'select id from ...')
+#1 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php(77): system_message_all_users_except('username', 'Your sign-up ha...', 'Congratulations...')
+#2 {main}
+  thrown in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbMessages.php on line 137
+[19-Nov-2024 18:57:41 America/New_York] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/signupSuccess.php:5) in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/signupSuccess.php on line 18
+[20-Nov-2024 00:05:28 UTC] PHP Warning:  Undefined array key "id" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php on line 327
+[20-Nov-2024 00:05:28 UTC] PHP Warning:  Undefined array key "startTime" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php on line 331
+[20-Nov-2024 00:05:28 UTC] PHP Warning:  Undefined array key "capacity" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php on line 334
+[20-Nov-2024 00:05:28 UTC] PHP Warning:  Undefined array key "completed" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php on line 335
+[20-Nov-2024 00:05:28 UTC] PHP Warning:  Undefined array key "event_type" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php on line 336
+[20-Nov-2024 00:05:28 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/addEvent.php:53) in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/addEvent.php on line 59
+[20-Nov-2024 00:07:06 UTC] PHP Warning:  Undefined array key "id" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php on line 327
+[20-Nov-2024 00:07:06 UTC] PHP Warning:  Undefined array key "startTime" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php on line 331
+[20-Nov-2024 00:07:06 UTC] PHP Warning:  Undefined array key "capacity" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php on line 334
+[20-Nov-2024 00:07:06 UTC] PHP Warning:  Undefined array key "completed" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php on line 335
+[20-Nov-2024 00:07:06 UTC] PHP Warning:  Undefined array key "event_type" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php on line 336
+[20-Nov-2024 00:07:06 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/addEvent.php:53) in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/addEvent.php on line 59
+[19-Nov-2024 19:07:22 America/New_York] PHP Warning:  Undefined variable $all_animals in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php on line 197
+[19-Nov-2024 19:07:22 America/New_York] PHP Fatal error:  Uncaught TypeError: mysqli_fetch_array(): Argument #1 ($result) must be of type mysqli_result, null given in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php:196
+Stack trace:
+#0 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php(196): mysqli_fetch_array(NULL, 1)
+#1 {main}
+  thrown in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php on line 196
+[20-Nov-2024 00:08:04 UTC] PHP Deprecated:  htmlspecialchars_decode(): Passing null to parameter #1 ($string) of type string is deprecated in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php on line 45
+[19-Nov-2024 19:08:04 America/New_York] PHP Fatal error:  Uncaught mysqli_sql_exception: Table 'dbeq5aamznytup.dbPersons' doesn't exist in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbMessages.php:137
+Stack trace:
+#0 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbMessages.php(137): mysqli_query(Object(mysqli), 'select id from ...')
+#1 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php(77): system_message_all_users_except('vmsroot', 'Your sign-up ha...', 'Congratulations...')
+#2 {main}
+  thrown in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbMessages.php on line 137
+[19-Nov-2024 19:08:04 America/New_York] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/signupSuccess.php:5) in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/signupSuccess.php on line 18
+[19-Nov-2024 19:08:30 America/New_York] PHP Warning:  Undefined array key "animalID" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/date.php on line 56
+[19-Nov-2024 19:08:30 America/New_York] PHP Warning:  Undefined array key 0 in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/date.php on line 56
+[19-Nov-2024 19:08:30 America/New_York] PHP Warning:  Trying to access array offset on value of type null in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/date.php on line 56
+[19-Nov-2024 19:08:30 America/New_York] PHP Warning:  Undefined array key "locationID" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/date.php on line 57
+[19-Nov-2024 19:08:30 America/New_York] PHP Fatal error:  Uncaught mysqli_sql_exception: Table 'dbeq5aamznytup.dblocations' doesn't exist in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php:546
+Stack trace:
+#0 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php(546): mysqli_query(Object(mysqli), 'select * from d...')
+#1 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/date.php(57): get_location(NULL)
+#2 {main}
+  thrown in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php on line 546
+[19-Nov-2024 19:08:39 America/New_York] PHP Warning:  Undefined variable $all_animals in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php on line 197
+[19-Nov-2024 19:08:39 America/New_York] PHP Fatal error:  Uncaught TypeError: mysqli_fetch_array(): Argument #1 ($result) must be of type mysqli_result, null given in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php:196
+Stack trace:
+#0 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php(196): mysqli_fetch_array(NULL, 1)
+#1 {main}
+  thrown in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php on line 196
+[20-Nov-2024 00:09:05 UTC] PHP Deprecated:  htmlspecialchars_decode(): Passing null to parameter #1 ($string) of type string is deprecated in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php on line 45
+[19-Nov-2024 19:09:05 America/New_York] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventFailure.php:5) in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventFailure.php on line 18
+[19-Nov-2024 19:09:18 America/New_York] PHP Warning:  Undefined array key "animalID" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/date.php on line 56
+[19-Nov-2024 19:09:18 America/New_York] PHP Warning:  Undefined array key 0 in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/date.php on line 56
+[19-Nov-2024 19:09:18 America/New_York] PHP Warning:  Trying to access array offset on value of type null in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/date.php on line 56
+[19-Nov-2024 19:09:18 America/New_York] PHP Warning:  Undefined array key "locationID" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/date.php on line 57
+[19-Nov-2024 19:09:18 America/New_York] PHP Fatal error:  Uncaught mysqli_sql_exception: Table 'dbeq5aamznytup.dblocations' doesn't exist in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php:546
+Stack trace:
+#0 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php(546): mysqli_query(Object(mysqli), 'select * from d...')
+#1 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/date.php(57): get_location(NULL)
+#2 {main}
+  thrown in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php on line 546
+[19-Nov-2024 19:09:32 America/New_York] PHP Warning:  Undefined array key "animalID" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/date.php on line 56
+[19-Nov-2024 19:09:32 America/New_York] PHP Warning:  Undefined array key 0 in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/date.php on line 56
+[19-Nov-2024 19:09:32 America/New_York] PHP Warning:  Trying to access array offset on value of type null in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/date.php on line 56
+[19-Nov-2024 19:09:32 America/New_York] PHP Warning:  Undefined array key "locationID" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/date.php on line 57
+[19-Nov-2024 19:09:32 America/New_York] PHP Fatal error:  Uncaught mysqli_sql_exception: Table 'dbeq5aamznytup.dblocations' doesn't exist in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php:546
+Stack trace:
+#0 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php(546): mysqli_query(Object(mysqli), 'select * from d...')
+#1 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/date.php(57): get_location(NULL)
+#2 {main}
+  thrown in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php on line 546
+[19-Nov-2024 19:09:34 America/New_York] PHP Warning:  Undefined variable $all_animals in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php on line 197
+[19-Nov-2024 19:09:34 America/New_York] PHP Fatal error:  Uncaught TypeError: mysqli_fetch_array(): Argument #1 ($result) must be of type mysqli_result, null given in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php:196
+Stack trace:
+#0 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php(196): mysqli_fetch_array(NULL, 1)
+#1 {main}
+  thrown in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php on line 196
+[20-Nov-2024 00:09:40 UTC] PHP Deprecated:  htmlspecialchars_decode(): Passing null to parameter #1 ($string) of type string is deprecated in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php on line 45
+[19-Nov-2024 19:09:40 America/New_York] PHP Fatal error:  Uncaught mysqli_sql_exception: Table 'dbeq5aamznytup.dbPersons' doesn't exist in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbMessages.php:137
+Stack trace:
+#0 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbMessages.php(137): mysqli_query(Object(mysqli), 'select id from ...')
+#1 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php(77): system_message_all_users_except('username', 'Your sign-up ha...', 'Congratulations...')
+#2 {main}
+  thrown in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbMessages.php on line 137
+[19-Nov-2024 19:09:40 America/New_York] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/signupSuccess.php:5) in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/signupSuccess.php on line 18
+[19-Nov-2024 19:09:44 America/New_York] PHP Warning:  Undefined array key "animalID" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/date.php on line 56
+[19-Nov-2024 19:09:44 America/New_York] PHP Warning:  Undefined array key 0 in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/date.php on line 56
+[19-Nov-2024 19:09:44 America/New_York] PHP Warning:  Trying to access array offset on value of type null in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/date.php on line 56
+[19-Nov-2024 19:09:44 America/New_York] PHP Warning:  Undefined array key "locationID" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/date.php on line 57
+[19-Nov-2024 19:09:44 America/New_York] PHP Fatal error:  Uncaught mysqli_sql_exception: Table 'dbeq5aamznytup.dblocations' doesn't exist in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php:546
+Stack trace:
+#0 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php(546): mysqli_query(Object(mysqli), 'select * from d...')
+#1 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/date.php(57): get_location(NULL)
+#2 {main}
+  thrown in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php on line 546
+[19-Nov-2024 19:10:35 America/New_York] PHP Warning:  Undefined array key "animalID" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/date.php on line 56
+[19-Nov-2024 19:10:35 America/New_York] PHP Warning:  Undefined array key 0 in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/date.php on line 56
+[19-Nov-2024 19:10:35 America/New_York] PHP Warning:  Trying to access array offset on value of type null in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/date.php on line 56
+[19-Nov-2024 19:10:35 America/New_York] PHP Warning:  Undefined array key "locationID" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/date.php on line 57
+[19-Nov-2024 19:10:35 America/New_York] PHP Fatal error:  Uncaught mysqli_sql_exception: Table 'dbeq5aamznytup.dblocations' doesn't exist in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php:546
+Stack trace:
+#0 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php(546): mysqli_query(Object(mysqli), 'select * from d...')
+#1 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/date.php(57): get_location(NULL)
+#2 {main}
+  thrown in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php on line 546
+[20-Nov-2024 13:24:06 UTC] PHP Warning:  Undefined array key "id" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php on line 327
+[20-Nov-2024 13:24:06 UTC] PHP Warning:  Undefined array key "startTime" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php on line 331
+[20-Nov-2024 13:24:06 UTC] PHP Warning:  Undefined array key "capacity" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php on line 334
+[20-Nov-2024 13:24:06 UTC] PHP Warning:  Undefined array key "completed" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php on line 335
+[20-Nov-2024 13:24:06 UTC] PHP Warning:  Undefined array key "event_type" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php on line 336
+[20-Nov-2024 13:24:06 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/addEvent.php:53) in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/addEvent.php on line 59
+[20-Nov-2024 08:24:21 America/New_York] PHP Warning:  Undefined array key "animalID" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/date.php on line 56
+[20-Nov-2024 08:24:21 America/New_York] PHP Warning:  Undefined array key 0 in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/date.php on line 56
+[20-Nov-2024 08:24:21 America/New_York] PHP Warning:  Trying to access array offset on value of type null in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/date.php on line 56
+[20-Nov-2024 08:24:21 America/New_York] PHP Warning:  Undefined array key "locationID" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/date.php on line 57
+[20-Nov-2024 08:24:21 America/New_York] PHP Fatal error:  Uncaught mysqli_sql_exception: Table 'dbeq5aamznytup.dblocations' doesn't exist in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php:546
+Stack trace:
+#0 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php(546): mysqli_query(Object(mysqli), 'select * from d...')
+#1 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/date.php(57): get_location(NULL)
+#2 {main}
+  thrown in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php on line 546
+[20-Nov-2024 08:25:04 America/New_York] PHP Warning:  Undefined array key "animalID" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/date.php on line 56
+[20-Nov-2024 08:25:04 America/New_York] PHP Warning:  Undefined array key 0 in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/date.php on line 56
+[20-Nov-2024 08:25:04 America/New_York] PHP Warning:  Trying to access array offset on value of type null in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/date.php on line 56
+[20-Nov-2024 08:25:04 America/New_York] PHP Warning:  Undefined array key "locationID" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/date.php on line 57
+[20-Nov-2024 08:25:04 America/New_York] PHP Fatal error:  Uncaught mysqli_sql_exception: Table 'dbeq5aamznytup.dblocations' doesn't exist in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php:546
+Stack trace:
+#0 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php(546): mysqli_query(Object(mysqli), 'select * from d...')
+#1 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/date.php(57): get_location(NULL)
+#2 {main}
+  thrown in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php on line 546
+[20-Nov-2024 08:25:23 America/New_York] PHP Warning:  Undefined array key "animalID" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/date.php on line 56
+[20-Nov-2024 08:25:23 America/New_York] PHP Warning:  Undefined array key 0 in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/date.php on line 56
+[20-Nov-2024 08:25:23 America/New_York] PHP Warning:  Trying to access array offset on value of type null in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/date.php on line 56
+[20-Nov-2024 08:25:23 America/New_York] PHP Warning:  Undefined array key "locationID" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/date.php on line 57
+[20-Nov-2024 08:25:23 America/New_York] PHP Fatal error:  Uncaught mysqli_sql_exception: Table 'dbeq5aamznytup.dblocations' doesn't exist in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php:546
+Stack trace:
+#0 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php(546): mysqli_query(Object(mysqli), 'select * from d...')
+#1 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/date.php(57): get_location(NULL)
+#2 {main}
+  thrown in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php on line 546
+[20-Nov-2024 13:25:45 UTC] PHP Warning:  Undefined array key "id" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php on line 327
+[20-Nov-2024 13:25:45 UTC] PHP Warning:  Undefined array key "startTime" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php on line 331
+[20-Nov-2024 13:25:45 UTC] PHP Warning:  Undefined array key "capacity" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php on line 334
+[20-Nov-2024 13:25:45 UTC] PHP Warning:  Undefined array key "completed" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php on line 335
+[20-Nov-2024 13:25:45 UTC] PHP Warning:  Undefined array key "event_type" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php on line 336
+[20-Nov-2024 13:25:45 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/addEvent.php:53) in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/addEvent.php on line 59
+[20-Nov-2024 08:25:50 America/New_York] PHP Warning:  Undefined array key "animalID" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/date.php on line 56
+[20-Nov-2024 08:25:50 America/New_York] PHP Warning:  Undefined array key 0 in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/date.php on line 56
+[20-Nov-2024 08:25:50 America/New_York] PHP Warning:  Trying to access array offset on value of type null in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/date.php on line 56
+[20-Nov-2024 08:25:50 America/New_York] PHP Warning:  Undefined array key "locationID" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/date.php on line 57
+[20-Nov-2024 08:25:50 America/New_York] PHP Fatal error:  Uncaught mysqli_sql_exception: Table 'dbeq5aamznytup.dblocations' doesn't exist in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php:546
+Stack trace:
+#0 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php(546): mysqli_query(Object(mysqli), 'select * from d...')
+#1 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/date.php(57): get_location(NULL)
+#2 {main}
+  thrown in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php on line 546
+[20-Nov-2024 08:25:54 America/New_York] PHP Warning:  Undefined variable $all_animals in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php on line 197
+[20-Nov-2024 08:25:54 America/New_York] PHP Fatal error:  Uncaught TypeError: mysqli_fetch_array(): Argument #1 ($result) must be of type mysqli_result, null given in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php:196
+Stack trace:
+#0 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php(196): mysqli_fetch_array(NULL, 1)
+#1 {main}
+  thrown in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php on line 196
+[20-Nov-2024 08:26:22 America/New_York] PHP Warning:  Undefined array key "animalID" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/date.php on line 56
+[20-Nov-2024 08:26:22 America/New_York] PHP Warning:  Undefined array key 0 in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/date.php on line 56
+[20-Nov-2024 08:26:22 America/New_York] PHP Warning:  Trying to access array offset on value of type null in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/date.php on line 56
+[20-Nov-2024 08:26:22 America/New_York] PHP Warning:  Undefined array key "locationID" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/date.php on line 57
+[20-Nov-2024 08:26:22 America/New_York] PHP Fatal error:  Uncaught mysqli_sql_exception: Table 'dbeq5aamznytup.dblocations' doesn't exist in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php:546
+Stack trace:
+#0 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php(546): mysqli_query(Object(mysqli), 'select * from d...')
+#1 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/date.php(57): get_location(NULL)
+#2 {main}
+  thrown in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php on line 546
+[20-Nov-2024 13:26:34 UTC] PHP Warning:  Undefined array key "id" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php on line 327
+[20-Nov-2024 13:26:34 UTC] PHP Warning:  Undefined array key "startTime" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php on line 331
+[20-Nov-2024 13:26:34 UTC] PHP Warning:  Undefined array key "capacity" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php on line 334
+[20-Nov-2024 13:26:34 UTC] PHP Warning:  Undefined array key "completed" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php on line 335
+[20-Nov-2024 13:26:34 UTC] PHP Warning:  Undefined array key "event_type" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php on line 336
+[20-Nov-2024 13:26:34 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/addEvent.php:53) in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/addEvent.php on line 59
+[20-Nov-2024 08:26:56 America/New_York] PHP Warning:  Undefined array key "animalID" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/date.php on line 56
+[20-Nov-2024 08:26:56 America/New_York] PHP Warning:  Undefined array key 0 in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/date.php on line 56
+[20-Nov-2024 08:26:56 America/New_York] PHP Warning:  Trying to access array offset on value of type null in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/date.php on line 56
+[20-Nov-2024 08:26:56 America/New_York] PHP Warning:  Undefined array key "locationID" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/date.php on line 57
+[20-Nov-2024 08:26:56 America/New_York] PHP Fatal error:  Uncaught mysqli_sql_exception: Table 'dbeq5aamznytup.dblocations' doesn't exist in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php:546
+Stack trace:
+#0 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php(546): mysqli_query(Object(mysqli), 'select * from d...')
+#1 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/date.php(57): get_location(NULL)
+#2 {main}
+  thrown in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php on line 546
+[20-Nov-2024 08:56:22 America/New_York] PHP Warning:  Undefined array key "animalID" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/date.php on line 56
+[20-Nov-2024 08:56:22 America/New_York] PHP Warning:  Undefined array key 0 in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/date.php on line 56
+[20-Nov-2024 08:56:22 America/New_York] PHP Warning:  Trying to access array offset on value of type null in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/date.php on line 56
+[20-Nov-2024 08:56:22 America/New_York] PHP Warning:  Undefined array key "locationID" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/date.php on line 57
+[20-Nov-2024 08:56:22 America/New_York] PHP Fatal error:  Uncaught mysqli_sql_exception: Table 'dbeq5aamznytup.dblocations' doesn't exist in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php:546
+Stack trace:
+#0 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php(546): mysqli_query(Object(mysqli), 'select * from d...')
+#1 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/date.php(57): get_location(NULL)
+#2 {main}
+  thrown in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php on line 546
+[20-Nov-2024 08:56:44 America/New_York] PHP Warning:  Undefined array key "animalID" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/date.php on line 56
+[20-Nov-2024 08:56:44 America/New_York] PHP Warning:  Undefined array key 0 in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/date.php on line 56
+[20-Nov-2024 08:56:44 America/New_York] PHP Warning:  Trying to access array offset on value of type null in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/date.php on line 56
+[20-Nov-2024 08:56:44 America/New_York] PHP Warning:  Undefined array key "locationID" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/date.php on line 57
+[20-Nov-2024 08:56:44 America/New_York] PHP Fatal error:  Uncaught mysqli_sql_exception: Table 'dbeq5aamznytup.dblocations' doesn't exist in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php:546
+Stack trace:
+#0 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php(546): mysqli_query(Object(mysqli), 'select * from d...')
+#1 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/date.php(57): get_location(NULL)
+#2 {main}
+  thrown in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php on line 546
+[20-Nov-2024 08:56:51 America/New_York] PHP Warning:  Undefined array key "animalID" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/date.php on line 56
+[20-Nov-2024 08:56:51 America/New_York] PHP Warning:  Undefined array key 0 in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/date.php on line 56
+[20-Nov-2024 08:56:51 America/New_York] PHP Warning:  Trying to access array offset on value of type null in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/date.php on line 56
+[20-Nov-2024 08:56:51 America/New_York] PHP Warning:  Undefined array key "locationID" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/date.php on line 57
+[20-Nov-2024 08:56:51 America/New_York] PHP Fatal error:  Uncaught mysqli_sql_exception: Table 'dbeq5aamznytup.dblocations' doesn't exist in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php:546
+Stack trace:
+#0 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php(546): mysqli_query(Object(mysqli), 'select * from d...')
+#1 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/date.php(57): get_location(NULL)
+#2 {main}
+  thrown in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php on line 546
+[20-Nov-2024 09:10:29 America/New_York] PHP Warning:  Undefined variable $all_animals in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php on line 197
+[20-Nov-2024 09:10:29 America/New_York] PHP Fatal error:  Uncaught TypeError: mysqli_fetch_array(): Argument #1 ($result) must be of type mysqli_result, null given in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php:196
+Stack trace:
+#0 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php(196): mysqli_fetch_array(NULL, 1)
+#1 {main}
+  thrown in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php on line 196
+[20-Nov-2024 14:11:01 UTC] PHP Deprecated:  htmlspecialchars_decode(): Passing null to parameter #1 ($string) of type string is deprecated in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php on line 45
+[20-Nov-2024 09:11:01 America/New_York] PHP Fatal error:  Uncaught mysqli_sql_exception: Table 'dbeq5aamznytup.dbPersons' doesn't exist in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbMessages.php:137
+Stack trace:
+#0 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbMessages.php(137): mysqli_query(Object(mysqli), 'select id from ...')
+#1 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php(77): system_message_all_users_except('vmsroot', 'Your sign-up ha...', 'Congratulations...')
+#2 {main}
+  thrown in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbMessages.php on line 137
+[20-Nov-2024 09:11:01 America/New_York] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/signupSuccess.php:5) in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/signupSuccess.php on line 18
+[20-Nov-2024 09:11:30 America/New_York] PHP Warning:  Undefined array key "animalID" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/date.php on line 56
+[20-Nov-2024 09:11:30 America/New_York] PHP Warning:  Undefined array key 0 in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/date.php on line 56
+[20-Nov-2024 09:11:30 America/New_York] PHP Warning:  Trying to access array offset on value of type null in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/date.php on line 56
+[20-Nov-2024 09:11:30 America/New_York] PHP Warning:  Undefined array key "locationID" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/date.php on line 57
+[20-Nov-2024 09:11:30 America/New_York] PHP Fatal error:  Uncaught mysqli_sql_exception: Table 'dbeq5aamznytup.dblocations' doesn't exist in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php:546
+Stack trace:
+#0 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php(546): mysqli_query(Object(mysqli), 'select * from d...')
+#1 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/date.php(57): get_location(NULL)
+#2 {main}
+  thrown in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php on line 546
+[20-Nov-2024 09:11:33 America/New_York] PHP Warning:  Undefined variable $all_animals in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php on line 197
+[20-Nov-2024 09:11:33 America/New_York] PHP Fatal error:  Uncaught TypeError: mysqli_fetch_array(): Argument #1 ($result) must be of type mysqli_result, null given in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php:196
+Stack trace:
+#0 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php(196): mysqli_fetch_array(NULL, 1)
+#1 {main}
+  thrown in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php on line 196
+[20-Nov-2024 14:11:47 UTC] PHP Deprecated:  htmlspecialchars_decode(): Passing null to parameter #1 ($string) of type string is deprecated in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php on line 45
+[20-Nov-2024 09:11:47 America/New_York] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventFailure.php:5) in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventFailure.php on line 18
+[20-Nov-2024 09:11:54 America/New_York] PHP Warning:  Undefined array key "animalID" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/date.php on line 56
+[20-Nov-2024 09:11:54 America/New_York] PHP Warning:  Undefined array key 0 in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/date.php on line 56
+[20-Nov-2024 09:11:54 America/New_York] PHP Warning:  Trying to access array offset on value of type null in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/date.php on line 56
+[20-Nov-2024 09:11:54 America/New_York] PHP Warning:  Undefined array key "locationID" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/date.php on line 57
+[20-Nov-2024 09:11:54 America/New_York] PHP Fatal error:  Uncaught mysqli_sql_exception: Table 'dbeq5aamznytup.dblocations' doesn't exist in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php:546
+Stack trace:
+#0 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php(546): mysqli_query(Object(mysqli), 'select * from d...')
+#1 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/date.php(57): get_location(NULL)
+#2 {main}
+  thrown in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php on line 546
+[20-Nov-2024 09:12:05 America/New_York] PHP Warning:  Undefined array key "animalID" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/date.php on line 56
+[20-Nov-2024 09:12:05 America/New_York] PHP Warning:  Undefined array key 0 in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/date.php on line 56
+[20-Nov-2024 09:12:05 America/New_York] PHP Warning:  Trying to access array offset on value of type null in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/date.php on line 56
+[20-Nov-2024 09:12:05 America/New_York] PHP Warning:  Undefined array key "locationID" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/date.php on line 57
+[20-Nov-2024 09:12:05 America/New_York] PHP Fatal error:  Uncaught mysqli_sql_exception: Table 'dbeq5aamznytup.dblocations' doesn't exist in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php:546
+Stack trace:
+#0 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php(546): mysqli_query(Object(mysqli), 'select * from d...')
+#1 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/date.php(57): get_location(NULL)
+#2 {main}
+  thrown in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php on line 546
+[20-Nov-2024 09:12:07 America/New_York] PHP Warning:  Undefined variable $all_animals in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php on line 197
+[20-Nov-2024 09:12:07 America/New_York] PHP Fatal error:  Uncaught TypeError: mysqli_fetch_array(): Argument #1 ($result) must be of type mysqli_result, null given in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php:196
+Stack trace:
+#0 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php(196): mysqli_fetch_array(NULL, 1)
+#1 {main}
+  thrown in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php on line 196
+[20-Nov-2024 14:12:15 UTC] PHP Deprecated:  htmlspecialchars_decode(): Passing null to parameter #1 ($string) of type string is deprecated in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php on line 45
+[20-Nov-2024 09:12:15 America/New_York] PHP Fatal error:  Uncaught mysqli_sql_exception: Table 'dbeq5aamznytup.dbPersons' doesn't exist in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbMessages.php:137
+Stack trace:
+#0 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbMessages.php(137): mysqli_query(Object(mysqli), 'select id from ...')
+#1 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/eventSignUp.php(77): system_message_all_users_except('username', 'Your sign-up ha...', 'Congratulations...')
+#2 {main}
+  thrown in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbMessages.php on line 137
+[20-Nov-2024 09:12:15 America/New_York] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/signupSuccess.php:5) in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/signupSuccess.php on line 18
+[20-Nov-2024 09:12:22 America/New_York] PHP Warning:  Undefined array key "animalID" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/date.php on line 56
+[20-Nov-2024 09:12:22 America/New_York] PHP Warning:  Undefined array key 0 in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/date.php on line 56
+[20-Nov-2024 09:12:22 America/New_York] PHP Warning:  Trying to access array offset on value of type null in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/date.php on line 56
+[20-Nov-2024 09:12:22 America/New_York] PHP Warning:  Undefined array key "locationID" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/date.php on line 57
+[20-Nov-2024 09:12:22 America/New_York] PHP Fatal error:  Uncaught mysqli_sql_exception: Table 'dbeq5aamznytup.dblocations' doesn't exist in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php:546
+Stack trace:
+#0 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php(546): mysqli_query(Object(mysqli), 'select * from d...')
+#1 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/date.php(57): get_location(NULL)
+#2 {main}
+  thrown in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php on line 546
+[20-Nov-2024 09:12:56 America/New_York] PHP Warning:  Undefined array key "animalID" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/date.php on line 56
+[20-Nov-2024 09:12:56 America/New_York] PHP Warning:  Undefined array key 0 in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/date.php on line 56
+[20-Nov-2024 09:12:56 America/New_York] PHP Warning:  Trying to access array offset on value of type null in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/date.php on line 56
+[20-Nov-2024 09:12:56 America/New_York] PHP Warning:  Undefined array key "locationID" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/date.php on line 57
+[20-Nov-2024 09:12:56 America/New_York] PHP Fatal error:  Uncaught mysqli_sql_exception: Table 'dbeq5aamznytup.dblocations' doesn't exist in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php:546
+Stack trace:
+#0 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php(546): mysqli_query(Object(mysqli), 'select * from d...')
+#1 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/date.php(57): get_location(NULL)
+#2 {main}
+  thrown in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php on line 546
+[20-Nov-2024 09:15:13 America/New_York] PHP Warning:  Undefined array key "animalID" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/date.php on line 56
+[20-Nov-2024 09:15:13 America/New_York] PHP Warning:  Undefined array key 0 in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/date.php on line 56
+[20-Nov-2024 09:15:13 America/New_York] PHP Warning:  Trying to access array offset on value of type null in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/date.php on line 56
+[20-Nov-2024 09:15:13 America/New_York] PHP Warning:  Undefined array key "locationID" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/date.php on line 57
+[20-Nov-2024 09:15:13 America/New_York] PHP Fatal error:  Uncaught mysqli_sql_exception: Table 'dbeq5aamznytup.dblocations' doesn't exist in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php:546
+Stack trace:
+#0 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php(546): mysqli_query(Object(mysqli), 'select * from d...')
+#1 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/date.php(57): get_location(NULL)
+#2 {main}
+  thrown in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php on line 546
+[20-Nov-2024 09:15:30 America/New_York] PHP Warning:  Undefined array key "animalID" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/date.php on line 56
+[20-Nov-2024 09:15:30 America/New_York] PHP Warning:  Undefined array key 0 in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/date.php on line 56
+[20-Nov-2024 09:15:30 America/New_York] PHP Warning:  Trying to access array offset on value of type null in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/date.php on line 56
+[20-Nov-2024 09:15:30 America/New_York] PHP Warning:  Undefined array key "locationID" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/date.php on line 57
+[20-Nov-2024 09:15:30 America/New_York] PHP Fatal error:  Uncaught mysqli_sql_exception: Table 'dbeq5aamznytup.dblocations' doesn't exist in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php:546
+Stack trace:
+#0 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php(546): mysqli_query(Object(mysqli), 'select * from d...')
+#1 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/date.php(57): get_location(NULL)
+#2 {main}
+  thrown in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/database/dbEvents.php on line 546
+[20-Nov-2024 09:24:39 America/New_York] PHP Warning:  Undefined array key "location" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/volunteerReport.php on line 78
+[20-Nov-2024 09:24:57 America/New_York] PHP Warning:  Undefined variable $all_animals in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/editTimes.php on line 182
+[20-Nov-2024 09:24:57 America/New_York] PHP Fatal error:  Uncaught TypeError: mysqli_fetch_array(): Argument #1 ($result) must be of type mysqli_result, null given in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/editTimes.php:181
+Stack trace:
+#0 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/editTimes.php(181): mysqli_fetch_array(NULL, 1)
+#1 {main}
+  thrown in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/editTimes.php on line 181
+[20-Nov-2024 09:35:51 America/New_York] PHP Warning:  Undefined array key "location" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/volunteerReport.php on line 78
+[20-Nov-2024 09:42:20 America/New_York] PHP Warning:  Undefined array key "location" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/volunteerReport.php on line 78
+[20-Nov-2024 09:43:44 America/New_York] PHP Fatal error:  Uncaught Error: Undefined constant "php" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/profileEditForm.php:111
+Stack trace:
+#0 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/editProfile.php(186): require_once()
+#1 {main}
+  thrown in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/profileEditForm.php on line 111
+[20-Nov-2024 09:49:31 America/New_York] PHP Warning:  Undefined array key "preferred_feedback_method" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/register.php on line 130
+[20-Nov-2024 09:49:38 America/New_York] PHP Fatal error:  Uncaught Error: Undefined constant "php" in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/profileEditForm.php:111
+Stack trace:
+#0 /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/editProfile.php(186): require_once()
+#1 {main}
+  thrown in /home/customer/www/jenniferp130.sg-host.com/public_html/stepvarepo/profileEditForm.php on line 111

@@ -358,7 +358,7 @@
 
                 <button onclick="showDeleteConfirmation()" class="button danger">Delete Event</button>
 
-                <a href="editEvent.php?id=<?= $id ?>" class="button cancel">Edit Event Details</a>
+                <!-- <a href="editEvent.php?id=<?= $id ?>" class="button cancel">Edit Event Details</a> -->
 
             <?php endif ?>
 
