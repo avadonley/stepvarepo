@@ -102,6 +102,36 @@ function check_if_signed_up($eventID, $userID) {
     }
 }
 
+/* @@@ Madison's work! */
+/*
+ * Check for all users signed up for an event. 
+ */
+function fetch_event_signups($eventID) {
+    $connection = connect();
+    $query = "SELECT userID, position FROM dbeventpersons WHERE eventID = '$eventID'";
+    $result = mysqli_query($connection, $query);
+
+    if (!$result) {
+        die('Query failed: ' . mysqli_error($connection));
+    }
+
+    $signups = [];
+    while ($row = mysqli_fetch_assoc($result)) {
+        $signups[] = $row;
+    }
+
+    mysqli_close($connection);
+    return $signups;
+}
+
+function remove_user_from_event($event_id, $user_id) {    
+    $query = "DELETE FROM dbeventpersons WHERE eventID LIKE '$event_id' AND userID LIKE '$user_id'";
+    $connection = connect();
+    $result = mysqli_query($connection, $query);
+    $result = boolval($result);
+    mysqli_close($connection);
+    return $result;
+}
 
 /*
  * Returns true if the given event is archived.
