@@ -125,14 +125,11 @@ function fetch_event_signups($eventID) {
 }
 
 function remove_user_from_event($event_id, $user_id) {
-    global $db; // Access the global $db variable
-
-    if (!$db) {
-        die('Database connection is not initialized.');
-    }
+    $connection = connect();
 
     try {
         $query = 'DELETE FROM event_signups WHERE event_id = :event_id AND user_id = :user_id';
+        $result = mysqli_query($connection, $query);
         $stmt = $db->prepare($query);
         $stmt->bindParam(':event_id', $event_id, PDO::PARAM_INT);
         $stmt->bindParam(':user_id', $user_id, PDO::PARAM_STR);
