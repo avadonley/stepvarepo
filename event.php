@@ -333,8 +333,7 @@
             <?php endif ?>
 
             <?php if ($access_level >= 2) : ?>
-
-                <a href="editEvent.php?id=<?= $id ?>" class="button">Edit Event Details</a>
+                <a href="viewSignUpList.php?id=<?php echo $id; ?>"class = "button signup">View Event Signups</a>
 
                 <!-- Archive and Unarchive buttons by Thomas -->
 
