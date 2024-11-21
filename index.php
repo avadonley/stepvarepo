@@ -99,7 +99,7 @@
                     </div>
                     <div class="dashboard-item" data-link="editHours.php">
                         <img src="images/add-person.svg">
-                        <span>View & Change Event Hours</span>
+                        <span><center>View & Change Event Hours</center></span>
                     </div>
                 <?php endif ?>
 
