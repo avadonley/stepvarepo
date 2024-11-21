@@ -32,7 +32,6 @@
         $viewingSelf = true;
     }
     $events = get_events_attended_by($id);
-    $totalHours = get_hours_volunteered_by($id);
     $volunteer = retrieve_person($id);
 ?>
 <!DOCTYPE html>
@@ -62,24 +61,31 @@
                         <tr>
                             <th>Date</th>
                             <th>Event</th>
-                            <th>Location</th>
                             <th class="align-right">Hours</th>
                         </tr>
                     </thead>
                     <tbody class="standout">
                         <?php 
                             require_once('include/output.php');
+                            $total_hours = 0;
                             foreach ($events as $event) {
+                                $time = fetch_volunteering_hours($userID, $event['id']); // get time volunteered for event (seconds)
+                                $hours = ($time/60)/60; // convert to hours
+                                if ($time == -1) {
+                                    continue; // skip events with no time volunteered
+                                }
+                                $total_hours += $hours;
                                 $date = strtotime($event['date']);
                                 $date = date('m/d/Y', $date);
                                 echo '<tr>
                                     <td>' . $date . '</td>
                                     <td>' . $event["name"] . '</td>
-                                    <td>' . $event["location"] . '</td>
-                                    <td class="align-right">' . floatPrecision($event["duration"], 2) . '</td>
+                                    
+                                    <td class="align-right">' . floatPrecision($hours, 2) . '</td>
                                 </tr>';
-                            } 
-                            echo "<tr class='total-hours'><td></td><td></td><td class='total-hours'>Total Hours</td><td class='align-right'>" . floatPrecision($totalHours, 2) . "</td></tr>";
+                            }
+                            
+                            echo "<tr class='total-hours'><td></td><td class='total-hours'>Total Hours</td><td class='align-right'>" . floatPrecision($total_hours, 2) . "</td></tr>";
                         ?>
                     </tbody></table>
                     <p class="print-only">I hereby certify that this volunteer has contributed the above volunteer hours to the Gwyneth's Gift organization.</p>
