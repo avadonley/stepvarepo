@@ -170,7 +170,7 @@
 <html>
 
 <head>
-    <?php
+    <?php 
         require_once('universal.inc');
     ?>
     <title>Step VA | View Event: <?php echo $event_info['name'] ?></title>
@@ -338,6 +338,11 @@
             <?php if ($access_level >= 2) : ?>
 
                 <a href="viewSignUpList.php?id=<?php echo $id; ?>"class = "button signup">View Event Signups</a>
+
+                <a href="viewEventSignUps.php?id=<?php echo $id; ?>"class = "button signup">View Event Signups</a>
+
+                <a href="editEvent.php?id=<?= $id ?>" class="button">Edit Event Details</a>
+
                 <!-- Archive and Unarchive buttons by Thomas -->
 
                 <?php if (is_archived($event_info['id']))  : ?>
@@ -360,6 +365,9 @@
 
 
                 <!-- <a href="editEvent.php?id=<?= $id ?>" class="button cancel">Edit Event Details</a> -->
+
+                <a href="editEvent.php?id=<?= $id ?>" class="button cancel">Edit Event Details</a>
+                
 
             <?php endif ?>
 

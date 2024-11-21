@@ -57,13 +57,25 @@
                 //echo 'bad args';
                 //die();
             //}
-            if($event['role'] == "r") {
-                //echo "Yay!";
+            $restricted = htmlspecialchars(string: isset($_GET['restricted']) ? $_GET['restricted'] : '');
+           
+            if($restricted == "Yes") {
+                $name = htmlspecialchars(string: isset($_GET['event_name']) ? $_GET['event_name'] : '');
+                $id = request_event_signup($name, $account_name, $role, $signup);
+                if(!$id){
+                    header(header: 'Location: eventFailure.php');
+                    exit();
+                }
+                //$name = htmlspecialchars(string: isset($_GET['event_name']) ? $_GET['event_name'] : '');
+                //$id = sign_up_for_event($name, $account_name, $role, $notes);
+                header('Location: signupPending.php');
+                die();
             } else {
-                $name = htmlspecialchars(isset($_GET['event_name']) ? $_GET['event_name'] : '');
-            $id = sign_up_for_event($name, $account_name, $role, $notes);
+                $name = htmlspecialchars(string: isset($_GET['event_name']) ? $_GET['event_name'] : '');
+            
+                $id = sign_up_for_event($name, $account_name, $role, $notes);
             if(!$id){
-                header('Location: eventFailure.php');
+                header(header: 'Location: eventFailure.php');
                 exit();
             }
             header('Location: signupSuccess.php');
