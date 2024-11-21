@@ -63,7 +63,7 @@
                 $name = htmlspecialchars(string: isset($_GET['event_name']) ? $_GET['event_name'] : '');
                 $id = request_event_signup($name, $account_name, $role, $signup);
                 if(!$id){
-                    header(header: 'Location: eventFailure.php');
+                    header(header: 'Location: requestFailed.php');
                     exit();
                 }
                 //$name = htmlspecialchars(string: isset($_GET['event_name']) ? $_GET['event_name'] : '');
