@@ -668,18 +668,27 @@ td {
     color: #555;
 }
 
-/* Button styling */
-.button.edit-button {
-    display: inline-block;
-    padding: 10px 20px;
-    margin-top: 15px;
-    background-color: #007bff;
-    color: white;
+.edit-icon {
+    font-size: 0.8em; /* Resize the icon to fit next to the text */
+    color: #555;
+    margin-left: 5px;
     text-decoration: none;
-    border-radius: 5px;
 }
 
-.button.edit-button:hover {
-    background-color: #0056b3;
+.edit-icon:hover {
+    color: #007bff; /* Change color on hover */
+    text-decoration: none;
 }
 
+.delete-icon {
+    font-size: 0.8em; /* Resize the icon to fit next to the text */
+    color: #ed0303;
+    margin-left: 5px;
+    text-decoration: none;
+    text-decoration: none;
+}
+
+.delete-icon:hover {
+    color: #ad0000; /* Change color on hover */
+    text-decoration: none;
+}
