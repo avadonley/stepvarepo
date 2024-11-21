@@ -406,7 +406,7 @@ function getall_type($t) {
         mysqli_close($con);
         return false;
     }
-    mysqli_close;
+    //mysqli_close;
     return $result;
 }
 
@@ -507,12 +507,12 @@ function get_people_for_export($attr, $first_name, $last_name, $type, $status, $
 }
 
 //return an array of "last_name:first_name:birth_date", and sorted by month and day
-function get_birthdays($name_from, $name_to, $venue) {
+/*function get_birthdays($name_from, $name_to, $venue) {
 	$con=connect();
    	$query = "SELECT * FROM dbpersons WHERE availability LIKE '%" . $venue . "%'" . 
-   	$query.= " AND last_name BETWEEN '" .$name_from. "' AND '" .$name_to. "'";
-    $query.= " ORDER BY birthday";
-	$result = mysqli_query($con,$query);
+   	//$query.= " AND last_name BETWEEN '" .$name_from. "' AND '" .$name_to. "'";
+    //$query.= " ORDER BY birthday";
+	//$result = mysqli_query($con,$query);
 	$thePersons = array();
 	while ($result_row = mysqli_fetch_assoc($result)) {
     	$thePerson = make_a_person($result_row);
@@ -520,7 +520,7 @@ function get_birthdays($name_from, $name_to, $venue) {
 	}
    	mysqli_close($con);
    	return $thePersons;
-}
+}*/
 
 //return an array of "last_name;first_name;hours", which is "last_name;first_name;date:start_time-end_time:venue:totalhours"
 // and sorted alphabetically
