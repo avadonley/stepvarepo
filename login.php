@@ -46,12 +46,13 @@
                 if ($user->get_id() == 'vmsroot') {
                     $_SESSION['access_level'] = 3;
                 }
-                if ($changePassword) {
-                    $_SESSION['access_level'] = 0;
-                    $_SESSION['change-password'] = true;
-                    header('Location: changePassword.php');
-                    die();
-                } else {
+                //if ($changePassword) {
+                //    $_SESSION['access_level'] = 0;
+                //    $_SESSION['change-password'] = true;
+                //    header('Location: changePassword.php');
+                //    die();
+                //} 
+                else {
                     header('Location: index.php');
                     die();
                 }
