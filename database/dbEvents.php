@@ -56,6 +56,7 @@ function add_event($event) {
 }
 
 
+
 function request_event_signup($eventID, $account_name, $role, $notes) {
     $connection = connect();
     $query1 = "SELECT id FROM dbevents WHERE name LIKE '$eventID'";
@@ -142,6 +143,24 @@ function check_if_signed_up($eventID, $userID) {
 function fetch_event_signups($eventID) {
     $connection = connect();
     $query = "SELECT userID, position FROM dbeventpersons WHERE eventID = '$eventID'";
+    $result = mysqli_query($connection, $query);
+
+    if (!$result) {
+        die('Query failed: ' . mysqli_error($connection));
+    }
+
+    $signups = [];
+    while ($row = mysqli_fetch_assoc($result)) {
+        $signups[] = $row;
+    }
+
+    mysqli_close($connection);
+    return $signups;
+}
+
+function fetch_pending($eventID) {
+    $connection = connect();
+    $query = "SELECT username, role FROM dbpendingsignups WHERE eventname = '$eventID'";
     $result = mysqli_query($connection, $query);
 
     if (!$result) {
@@ -697,6 +716,29 @@ function cancel_event($event_id, $account_name) {
     $result = mysqli_query($connection, $query);
     $result = boolval($result);
     mysqli_close($connection);
+    return $result;
+}
+
+function approve_signup($event_id, $account_name, $position) {
+    $query = "DELETE from dbpendingsignups where username LIKE '$account_name' AND eventname LIKE $event_id";
+    $connection = connect();
+    $result = mysqli_query($connection, $query);
+    $result = boolval($result);
+    
+    $query2 = "INSERT INTO dbeventpersons (userID, eventID, position) VALUES ('$account_name', '$event_id', '$position')";
+    //$connection = connect();
+    $result2 = mysqli_query($connection, $query2);
+    $result2 = boolval($result2);
+    mysqli_close($connection);
+    return $result;
+}
+
+function reject_signup($event_id, $account_name) {
+    $query = "DELETE from dbpendingsignups where username LIKE '$account_name' AND eventname LIKE '$event_id'";
+    $connection = connect();
+    $result = mysqli_query($connection, $query);
+    $result = boolval($result);
+    
     return $result;
 }
 

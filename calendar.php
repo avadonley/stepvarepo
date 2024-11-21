@@ -103,6 +103,8 @@
                 <div class="happy-toast">Event completed successfully.</div>
             <?php elseif (isset($_GET['cancelSuccess'])) : ?>
                 <div class="happy-toast">Event canceled successfully.</div>
+                <?php elseif (isset($_GET['cancelSuccess'])) : ?>
+                <div class="happy-toast">Event canceled successfully.</div>
             <?php endif ?>
             <div class="table-wrapper">
                 <table id="calendar">

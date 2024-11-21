@@ -269,6 +269,39 @@ td.label {
     background-color: rgba(0, 0, 0, .3);
 }
 
+#resolution-confirmation-wrapper {
+    z-index: 99;
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, .3);
+}
+
+#approve-confirmation-wrapper {
+    z-index: 99;
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, .3);
+}
+
+#reject-confirmation-wrapper {
+    z-index: 99;
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, .3);
+}
+
 #delete-confirmation {
     z-index: 99;
     background-color: var(--page-background-color);
