@@ -61,6 +61,7 @@
                         <tr>
                             <th>Date</th>
                             <th>Event</th>
+                            <th></th>
                             <th class="align-right">Hours</th>
                         </tr>
                     </thead>
@@ -69,7 +70,7 @@
                             require_once('include/output.php');
                             $total_hours = 0;
                             foreach ($events as $event) {
-                                $time = fetch_volunteering_hours($userID, $event['id']); // get time volunteered for event (seconds)
+                                $time = fetch_volunteering_hours($id, $event['id']); // get time volunteered for event (seconds)
                                 $hours = ($time/60)/60; // convert to hours
                                 if ($time == -1) {
                                     continue; // skip events with no time volunteered
@@ -80,15 +81,15 @@
                                 echo '<tr>
                                     <td>' . $date . '</td>
                                     <td>' . $event["name"] . '</td>
-                                    
+                                    <td></td>
                                     <td class="align-right">' . floatPrecision($hours, 2) . '</td>
                                 </tr>';
                             }
                             
-                            echo "<tr class='total-hours'><td></td><td class='total-hours'>Total Hours</td><td class='align-right'>" . floatPrecision($total_hours, 2) . "</td></tr>";
+                            echo "<tr class='total-hours'><td></td><td></td><td class='total-hours'>Total Hours</td><td class='align-right'>" . floatPrecision($total_hours, 2) . "</td></tr>";
                         ?>
                     </tbody></table>
-                    <p class="print-only">I hereby certify that this volunteer has contributed the above volunteer hours to the Gwyneth's Gift organization.</p>
+                    <p class="print-only">I hereby certify that this volunteer has contributed the above volunteer hours to the Step VA organization.</p>
                     <table id="signature-table" class="print-only">
                         <tbody>
                             <tr><td>Admin Signature:  ______________________________________ Date: <?php echo date('m/d/Y') ?></td></tr>
