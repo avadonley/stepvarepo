@@ -339,8 +339,6 @@
 
                 <a href="viewSignUpList.php?id=<?php echo $id; ?>"class = "button signup">View Event Signups</a>
 
-                <a href="viewEventSignUps.php?id=<?php echo $id; ?>"class = "button signup">View Event Signups</a>
-
                 <a href="editEvent.php?id=<?= $id ?>" class="button">Edit Event Details</a>
 
                 <!-- Archive and Unarchive buttons by Thomas -->
