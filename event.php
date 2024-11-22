@@ -337,7 +337,7 @@
 
             <?php if ($access_level >= 2) : ?>
 
-                <a href="viewEventSignups.php?id=<?php echo $id; ?>"class = "button signup">View Event Signups</a>
+                <a href="viewSignUpList.php?id=<?php echo $id; ?>"class = "button signup">View Event Signups</a>
 
                 <!-- Archive and Unarchive buttons by Thomas -->
 
