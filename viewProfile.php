@@ -98,6 +98,12 @@
             <?php else: ?>
                 <h2>Viewing <?php echo $user->get_first_name() . ' ' . $user->get_last_name() ?></h2>
             <?php endif ?>
+            
+            <?php if ($accessLevel < 2) : ?>
+                <p>Click <a href="volunteerReport.php?id=<?php echo $user->get_id() ?>">here</a> to view your volunteering report.</p>
+            <?php else : ?>
+                <p>Click <a href="volunteerReport.php?id=<?php echo $user->get_id() ?>">here</a> to view <?php echo $user->get_first_name() ?> <?php echo $user->get_last_name() ?>'s volunteering report.</p>
+            <?php endif ?>
 
             <fieldset class="section-box">
                 <legend>Personal Information</legend>

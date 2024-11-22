@@ -239,6 +239,25 @@ function can_check_out($personID, $event_info) {
     return False;
 }
 
+/* Return number of seconds a volunteer worked for a specific event */
+function fetch_volunteering_hours($personID, $eventID) {
+    $con=connect();
+    $query = "SELECT start_time, end_time FROM dbpersonhours WHERE personID = '" .$personID. "' AND eventID = '" .$eventID. "' AND end_time IS NOT NULL";
+    $result = mysqli_query($con, $query);
+    $total_time = 0;
+
+    if ($result) {
+        // for each check-in/check-out pair
+        while ($row = mysqli_fetch_assoc($result)) {
+            $start_time = strtotime($row['start_time']);
+            $end_time = strtotime($row['end_time']);
+            $total_time += $end_time - $start_time; // add time to total
+        }
+        return $total_time;
+    }
+    return -1; // no check-ins found
+}
+
 /*@@@ end Thomas */
 
 /*
