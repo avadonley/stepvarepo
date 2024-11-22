@@ -69,6 +69,7 @@
         $permission_array['viewprofile.php'] = 1;
         $permission_array['viewnotification.php'] = 1;
         $permission_array['volunteerreport.php'] = 1;
+        $permission_array['viewmyupcomingevents.php'] = 1;
         //pages only managers can view
         $permission_array['viewallevents.php'] = 0;
         $permission_array['personsearch.php'] = 2;
@@ -95,6 +96,7 @@
         $permission_array['animal.php'] = 2;
         $permission_array['editanimal.php'] = 2;
         $permission_array['eventsuccess.php'] = 2;
+        $permission_array['viewsignuplist.php'] = 2;
         $permission_array['vieweventsignups.php'] = 2;
 
         $permission_array['edithours.php'] = 2;

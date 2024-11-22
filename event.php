@@ -242,6 +242,9 @@
             <?php if ($access_level >= 2): ?>
                 <a href="editEvent.php?id=<?= $id ?>" title="Edit Event" class="edit-icon">
                     <i class="fas fa-pencil-alt"></i>
+                <a href="deleteEvent.php?id=<?= $id ?>" title="Delete Event" class="delete-icon" 
+                    onclick="return confirm('Are you sure you want to delete this event?');">
+                        <i class="fas fa-trash"></i>
                 </a>
             <?php endif; ?>
         </h2>
@@ -334,8 +337,9 @@
 
             <?php if ($access_level >= 2) : ?>
 
-                <a href="viewEventSignUps.php?id=<?php echo $id; ?>"class = "button signup">View Event Signups</a>
+                <a href="viewSignUpList.php?id=<?php echo $id; ?>"class = "button signup">View Event Signups</a>
 
+                <a href="viewEventSignUps.php?id=<?php echo $id; ?>"class = "button signup">View Event Signups</a>
 
                 <a href="editEvent.php?id=<?= $id ?>" class="button">Edit Event Details</a>
 
@@ -359,11 +363,10 @@
 
                 <!-- end of Thomas's work -->
 
-                <button onclick="showDeleteConfirmation()" class="button danger">Delete Event</button>
 
+                <!-- <a href="editEvent.php?id=<?= $id ?>" class="button cancel">Edit Event Details</a> -->
 
                 <a href="editEvent.php?id=<?= $id ?>" class="button cancel">Edit Event Details</a>
-
                 
 
             <?php endif ?>
