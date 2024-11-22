@@ -329,11 +329,11 @@
 
             <!-- end of Thomas's work-->
 
-            <?php if ($access_level < 2) : ?>
+            <?php /*if ($access_level < 2) : ?>
                 <?php if ($event_info["completed"] == "no") : ?>
                     <button onclick="showCancelConfirmation()" class="button danger">Cancel My Sign-Up</button>
                 <?php endif ?>
-            <?php endif ?>
+            <?php endif*/ ?>
 
             <?php if ($access_level >= 2) : ?>
 
