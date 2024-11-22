@@ -83,7 +83,7 @@
                                             <td>$restricted_signup</td>
                                             <td><a href='event.php?id=$eventID'>$title</a></td>
                                             <td>$date</td>
-                                            <td><a class='button sign-up' href='eventSignUp.php?event_name=" . urlencode($title) . "'>Sign Up</a></td>
+                                            <td><a class='button sign-up' href='eventSignUp.php?event_name=" . urlencode($title) . '&restricted=' . urlencode($restricted_signup) . "'>Sign Up</a></td>
                                         </tr>";
                                     //} else {
                                         /*echo "

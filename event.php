@@ -170,7 +170,7 @@
 <html>
 
 <head>
-    <?php
+    <?php 
         require_once('universal.inc');
     ?>
     <title>Step VA | View Event: <?php echo $event_info['name'] ?></title>
@@ -242,6 +242,9 @@
             <?php if ($access_level >= 2): ?>
                 <a href="editEvent.php?id=<?= $id ?>" title="Edit Event" class="edit-icon">
                     <i class="fas fa-pencil-alt"></i>
+                <a href="deleteEvent.php?id=<?= $id ?>" title="Delete Event" class="delete-icon" 
+                    onclick="return confirm('Are you sure you want to delete this event?');">
+                        <i class="fas fa-trash"></i>
                 </a>
             <?php endif; ?>
         </h2>
@@ -326,17 +329,16 @@
 
             <!-- end of Thomas's work-->
 
-            <?php if ($access_level < 2) : ?>
+            <?php /*if ($access_level < 2) : ?>
                 <?php if ($event_info["completed"] == "no") : ?>
                     <button onclick="showCancelConfirmation()" class="button danger">Cancel My Sign-Up</button>
                 <?php endif ?>
-            <?php endif ?>
+            <?php endif*/ ?>
 
             <?php if ($access_level >= 2) : ?>
 
-                <a href="editEvent.php?id=<?= $id ?>" class="button">Edit Event Details</a>
+                <a href="viewEventSignups.php?id=<?php echo $id; ?>"class = "button signup">View Event Signups</a>
 
-                <a href="viewSignUpList.php?id=<?php echo $id; ?>"class = "button signup">View Event Signups</a>
                 <!-- Archive and Unarchive buttons by Thomas -->
 
                 <?php if (is_archived($event_info['id']))  : ?>
@@ -357,9 +359,9 @@
 
                 <!-- end of Thomas's work -->
 
-                <button onclick="showDeleteConfirmation()" class="button danger">Delete Event</button>
 
                 <!-- <a href="editEvent.php?id=<?= $id ?>" class="button cancel">Edit Event Details</a> -->
+                
 
             <?php endif ?>
 

@@ -113,6 +113,10 @@
                         <img src="images/manage-account.svg">
                         <span>Edit Profile</span>
                     </div>
+                    <div class="dashboard-item" data-link="viewMyUpcomingEvents.php">
+                        <img src="images/view-profile.svg">
+                        <span>My Upcoming Events</span>
+                    </div>
                 <?php endif ?>
                 <?php if ($notRoot) : ?>
                     <div class="dashboard-item" data-link="volunteerReport.php">
