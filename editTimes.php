@@ -184,6 +184,7 @@ if (isset($_GET['eventId'], $_GET['user'], $_GET['start_time'], $_GET['end_time'
 //         echo "Please fill in both start and end times.";
 //     }
 // }
+require_once('include/input-validation.php');
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $startTime = trim($_POST['start-time']);
     $endTime = trim($_POST['end-time']);
@@ -198,6 +199,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
        // echo $formattedStartDateTime;
         $formattedEndDateTime = date("Y-m-d H:i:s", strtotime($endTime));
 // Y-m-d needed before times too
+// use this to convert start time and end time
+$validated = validate12hTimeRangeAndConvertTo24h($args["start-time"], $args["end-time"]);
+if (!$validated) {
+    $errors .= '<p>The provided time range was invalid.</p>';
+}
+$startTime = $args['start-time'] = $validated[0];
+$endTime = $args['end-time'] = $validated[1];
 
         // Connect to the database
         $connection = connect();
