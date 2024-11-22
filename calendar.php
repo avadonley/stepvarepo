@@ -140,24 +140,29 @@
                                 }
                                 $eventsStr = '';
                                 $e = date('Y-m-d', $date);
+
                                 if (isset($events[$e])) {
                                     $dayEvents = $events[$e];
                                     foreach ($dayEvents as $info) {
-                                        if($info['restricted_signup'] == 1) { //Restricted Event
-                                            $backgroundCol = '#c73d06'; // Sets background color to a red to show the restriction
-                                        } else {
-                                            $backgroundCol = '#1a7024'; //Otherwise keeps background as green
-                                        }
 
-                                        if($info["completed"] == "no"){ //Uncompleted events
-                                            $eventsStr .= '<a class="calendar-event" style="background-color:#1a7024" href="event.php?id=' . $info['id'] . '&user_id=' . $_SESSION['_id'] . '">' . htmlspecialchars_decode($info['name']) . '</a>';
-                                        } else { //Completed Events
-                                            $eventsStr .= '<a class="calendar-event" href="event.php?id=' . $info['id'] . '">' . htmlspecialchars_decode($info['name']) .  ' </a>';
+                                        $backgroundCol = '#00aeef'; // default color
+
+                                        if (is_archived($info['id'])) { // archived event
+                                            if ($_SESSION['access_level'] < 2) {
+                                                continue; // users cannot see archived events
+                                            }
+                                            $backgroundCol = '#aaaaaa';
+
+                                        } elseif (check_if_signed_up($info['id'], $_SESSION['_id'])) {
+                                            $backgroundCol = '#1cc202';// user is signed-up for event
+
+                                        } elseif($info['restricted_signup'] == 1) { //Restricted Event
+                                            $backgroundCol = '#c73d06'; // Sets background color to a red to show the restriction
+
                                         }
-                                        // More visual changes for resrticted and unrestricted events to be made below
-                                        //if($info['restricted'] == 1) { 
-                                            //$eventsStr = $eventsStr . 'R'
-                                        //}
+                                        
+                                        $eventsStr .= '<a class="calendar-event" style="background-color: ' . $backgroundCol . '" href="event.php?id=' . $info['id'] . '&user_id=' . $_SESSION['_id'] . '">' . htmlspecialchars_decode($info['name']) . '</a>';
+
                                     }
                                 }
                                 echo '<td class="calendar-day' . $extraClasses . '" ' . $extraAttributes . ' data-date="' . date('Y-m-d', $date) . '">
