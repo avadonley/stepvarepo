@@ -142,7 +142,7 @@ function check_if_signed_up($eventID, $userID) {
  */
 function fetch_event_signups($eventID) {
     $connection = connect();
-    $query = "SELECT userID, position FROM dbeventpersons WHERE eventID = '$eventID'";
+    $query = "SELECT userID, position, notes FROM dbeventpersons WHERE eventID = '$eventID'";
     $result = mysqli_query($connection, $query);
 
     if (!$result) {
@@ -160,7 +160,7 @@ function fetch_event_signups($eventID) {
 
 function fetch_pending($eventID) {
     $connection = connect();
-    $query = "SELECT username, role FROM dbpendingsignups WHERE eventname = '$eventID'";
+    $query = "SELECT username, role, notes FROM dbpendingsignups WHERE eventname = '$eventID'";
     $result = mysqli_query($connection, $query);
 
     if (!$result) {
@@ -719,22 +719,24 @@ function cancel_event($event_id, $account_name) {
     return $result;
 }
 
-function approve_signup($event_id, $account_name, $position) {
-    $query = "DELETE from dbpendingsignups where username LIKE '$account_name' AND eventname LIKE $event_id";
+function approve_signup($event_id, $account_name, $position, $notes) {
+    $query = "DELETE from dbpendingsignups where username = '$account_name' AND eventname = $event_id";
     $connection = connect();
     $result = mysqli_query($connection, $query);
     $result = boolval($result);
-    
-    $query2 = "INSERT INTO dbeventpersons (userID, eventID, position) VALUES ('$account_name', '$event_id', '$position')";
-    //$connection = connect();
+
+    echo "hello" . $account_name;
+
+    $query2 = "insert into dbeventpersons (eventID, userID, position, notes) values ('$event_id', '$account_name',  '$position', '$notes')";
     $result2 = mysqli_query($connection, $query2);
-    $result2 = boolval($result2);
-    mysqli_close($connection);
-    return $result;
+    //$result2 = boolval($result2);
+    //mysqli_close($connection);
+    mysqli_commit($connection);
+    return $result2;
 }
 
-function reject_signup($event_id, $account_name) {
-    $query = "DELETE from dbpendingsignups where username LIKE '$account_name' AND eventname LIKE '$event_id'";
+function reject_signup($event_id, $account_name, $position, $notes) {
+    $query = "DELETE from dbpendingsignups where username = '$account_name' AND eventname = '$event_id'";
     $connection = connect();
     $result = mysqli_query($connection, $query);
     $result = boolval($result);

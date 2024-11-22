@@ -13,13 +13,14 @@
     $id = $args['id'];
     $user_id = $args['user_id'];
     $position = $args['position'];
+    $notes = $args['notes'];
 
     if (!$id) {
         header('Location: index.php');
         die();
     }
-    if (approve_signup($id, $user_id, $position)) {
-        header('Location: viewEventSignUps.php?pendingSignupSuccess');
+    if (approve_signup($id, $user_id, $position, $notes)) {
+        header('Location: viewEventSignUps.php?pendingSignupSuccess&id=' . $id);
         die();
     }
     header('Location: index.php');

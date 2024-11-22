@@ -18,7 +18,7 @@ $args = sanitize($_GET);
 $id = $args['id'] ?? null;
 
 if (!$id) {
-    echo $args['id'] . 'Event ID is missing.';
+    'Event ID is missing.';
     die();
 }
 
@@ -62,6 +62,8 @@ $access_level = $_SESSION['access_level'];
 <html lang="en">
 <head>
     <?php require_once('universal.inc'); ?>
+    <link rel="stylesheet" href="css/event.css" type="text/css" />
+
     <title>View Event Details | <?php echo htmlspecialchars($event_info['name']); ?></title>
     <link rel="stylesheet" href="css/messages.css" />
 
@@ -86,10 +88,11 @@ $access_level = $_SESSION['access_level'];
     <?php require_once('header.php'); ?>
 
     <h1>View Sign-Up List</h1>
-    <main class="general">
     <?php if (isset($_GET['pendingSignupSuccess'])) : ?>
         <div class="happy-toast">Sign-up request resolved successfully.</div>
     <?php endif ?>
+
+    <main class="general">
 
         <h2><?php echo htmlspecialchars($event_info['name']); ?></h2>
 
@@ -156,7 +159,7 @@ $access_level = $_SESSION['access_level'];
                                             <input type="hidden" name="event_id" value="<?php echo htmlspecialchars($id); ?>">
                                             <input type="hidden" name="user_id" value="<?php echo htmlspecialchars($signup['username']); ?>">
                                         </form>
-                                        <button onclick="showResolutionConfirmation()" class="button danger">Resolve</button>
+                                        <button onclick="showResolutionConfirmation()" class="button">Resolve</button>
 
                                     </td>
                                 <?php endif; ?>
@@ -175,7 +178,7 @@ $access_level = $_SESSION['access_level'];
     <div id="resolution-confirmation-wrapper" class="modal-content hidden">
     <div class="modal-content">
         <p>Would you like to approve or reject this sign-up request?</p>
-            <button onclick="showApprove()" class="button danger">Approve</button>
+            <button onclick="showApprove()" class="button success">Approve</button>
             <button onclick="showReject()" class="button danger">Reject</button>
             <button onclick="document.getElementById('resolution-confirmation-wrapper').classList.add('hidden')" id="cancel-cancel" class="button cancel">Cancel</button>
         </div>
@@ -187,10 +190,11 @@ $access_level = $_SESSION['access_level'];
         <form method="post" action="approveSignup.php">
                         <input type="submit" value="Approve" class="button danger">
                         <input type="hidden" name="id" value="<?= $_REQUEST['id'] ?>">
-                        <input type="hidden" name="role" value="<?= $signup['position'] ?>">
-                        <input type="hidden" name="user_id" value="<php?= $signup['username'] ?>">
-                        <button onclick="document.getElementById('approve-confirmation-wrapper').classList.add('hidden')" id="cancel-cancel" class="button cancel">Cancel</button>
+                        <input type="hidden" name="user_id" value="<?=$signup['username']?>">
+                        <input type="hidden" name="position" value="<?=$signup['role']?>">
+                        <input type="hidden" name="notes" value="<?=$signup['notes']?>">
         </form>
+        <button onclick="document.getElementById('approve-confirmation-wrapper').classList.add('hidden')" id="cancel-cancel" class="button cancel">Cancel</button>
         </div>
     </div>
     <div id="reject-confirmation-wrapper" class="modal-content hidden">
@@ -199,10 +203,12 @@ $access_level = $_SESSION['access_level'];
         <p>This action cannot be undone</p>
         <form method="post" action="rejectSignup.php">
                         <input type="submit" value="Reject" class="button danger">
-                        <input type="hidden" name="id" value="<?= $_REQUEST['id'] ?>">
-                        <input type="hidden" name="user_id" value="<?= $signup['username'] ?>">
-                        <input type="hidden" name="id" value="<php?= $signup['position'] ?>">
+                        <input type="hidden" name="id" value="<?=$_REQUEST['id']?>">
+                        <input type="hidden" name="user_id" value="<?=$signup['username']?>">
+                        <input type="hidden" name="position" value="<?=$signup['role']?>">
+                        <input type="hidden" name="notes" value="<?=$signup['notes']?>">
         </form>
+        <button onclick="document.getElementById('reject-confirmation-wrapper').classList.add('hidden')" id="cancel-cancel" class="button cancel">Cancel</button>
         </div>
     </div>
 </body>

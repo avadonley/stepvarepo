@@ -278,6 +278,7 @@ td.label {
     width: 100vw;
     height: 100vh;
     background-color: rgba(0, 0, 0, .3);
+    max-width: none;
 }
 
 #approve-confirmation-wrapper {
@@ -289,6 +290,7 @@ td.label {
     width: 100vw;
     height: 100vh;
     background-color: rgba(0, 0, 0, .3);
+    max-width: none;
 }
 
 #reject-confirmation-wrapper {
@@ -300,6 +302,7 @@ td.label {
     width: 100vw;
     height: 100vh;
     background-color: rgba(0, 0, 0, .3);
+    max-width: none;
 }
 
 #delete-confirmation {
