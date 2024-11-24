@@ -102,6 +102,16 @@
 //     $displayTimeEnd = "Invalid or missing data.";
 // }
 
+// TEMPORARY
+// TODO GET RID OF
+// $time = "03:02 PM";
+// $convertedTime = validate12hTimeAndConvertTo24hAmPm($time);
+// if (!$convertedTime) {
+//     echo "Invalid time format: " . htmlspecialchars($time);
+// } else {
+//     echo "Converted time: $convertedTime";
+// }
+
 // Fetch event data from session
 if (isset($_GET['eventId'], $_GET['user'], $_GET['start_time'], $_GET['end_time'])) {
     $eventId = htmlspecialchars($_GET['eventId']);
@@ -186,8 +196,12 @@ if (isset($_GET['eventId'], $_GET['user'], $_GET['start_time'], $_GET['end_time'
 // }
 require_once('include/input-validation.php');
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    $startTime = trim($_POST['start-time']);
-    $endTime = trim($_POST['end-time']);
+    $startTime = trim($_POST['start-time'] ?? '');
+    $endTime = trim($_POST['end-time'] ?? '');
+    echo "STARTTTT: ";
+    echo $startTime;
+    echo "ENDDDD: ";
+    echo $endTime;
 
     if (!empty($startTime) && !empty($endTime)) {
         $formattedStartDateTime = date("Y-m-d H:i:s", strtotime($startTime));
@@ -200,12 +214,17 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $formattedEndDateTime = date("Y-m-d H:i:s", strtotime($endTime));
 // Y-m-d needed before times too
 // use this to convert start time and end time
-$validated = validate12hTimeRangeAndConvertTo24h($args["start-time"], $args["end-time"]);
+$validated = validate12hTimeRangeAndConvertTo24hAmPm($_POST['start-time'], $_POST['end-time']);
+// AmPm version vs not no diff at top?
 if (!$validated) {
     $errors .= '<p>The provided time range was invalid.</p>';
 }
 $startTime = $args['start-time'] = $validated[0];
 $endTime = $args['end-time'] = $validated[1];
+echo "START: ";
+echo $startTime;
+echo "END: ";
+echo $endTime;
 
         // Connect to the database
         $connection = connect();
