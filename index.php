@@ -99,7 +99,7 @@
                     </div>
                     <div class="dashboard-item" data-link="editHours.php">
                         <img src="images/add-person.svg">
-                        <span>View & Change Event Hours</span>
+                        <span><center>View & Change Event Hours</center></span>
                     </div>
                 <?php endif ?>
 
@@ -121,11 +121,11 @@
                 <?php if ($notRoot) : ?>
                     <div class="dashboard-item" data-link="volunteerReport.php">
                         <img src="images/volunteer-history.svg">
-                        <span>View My Hours</span>
+                        <span><center>View Volunteering Report</center></span>
                     </div>
                 <div class="dashboard-item" data-link="editHours.php">
                         <img src="images/add-person.svg">
-                        <span>View & Change My Event Hours</span>
+                        <span><center>View & Change My Event Hours</center></span>
                     </div>
                 <?php endif ?>
                 <div class="dashboard-item" data-link="changePassword.php">

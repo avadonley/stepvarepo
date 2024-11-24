@@ -329,15 +329,15 @@
 
             <!-- end of Thomas's work-->
 
-            <?php if ($access_level < 2) : ?>
+            <?php /*if ($access_level < 2) : ?>
                 <?php if ($event_info["completed"] == "no") : ?>
                     <button onclick="showCancelConfirmation()" class="button danger">Cancel My Sign-Up</button>
                 <?php endif ?>
-            <?php endif ?>
+            <?php endif*/ ?>
 
             <?php if ($access_level >= 2) : ?>
 
-                <a href="viewSignUpList.php?id=<?php echo $id; ?>"class = "button signup">View Event Signups</a>
+                <a href="viewEventSignups.php?id=<?php echo $id; ?>"class = "button signup">View Event Signups</a>
 
                 <!-- Archive and Unarchive buttons by Thomas -->
 
