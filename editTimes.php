@@ -236,13 +236,13 @@ $startTime = $args['start-time'] = $validated[0];
 $endTime = $args['end-time'] = $validated[1];
 //echo "START: ";
 // Combine date and time
-$formattedStartDateTime = $formattedStartDateTime . ' ' . date("Y-m-d", strtotime($oldStartTime)) . ':00';
+$formattedStartDateTime = $formattedStartDateTime . ' ' . $startTime . ':00';
 
 
 // Use the string in your query or other operations
 //echo "START: " . $formattedStartDateTime;
 // Combine date and time
-$formattedEndDateTime = $formattedEndDateTime . ' ' . date("Y-m-d", strtotime($oldEndTime)) . ':00';
+$formattedEndDateTime = $formattedEndDateTime . ' ' . $endTime . ':00';
 
 //echo "END: ";
 //echo $formattedEndDateTime; 
@@ -254,7 +254,7 @@ $formattedEndDateTime = $formattedEndDateTime . ' ' . date("Y-m-d", strtotime($o
         // Prepare the SQL query
         $query = "UPDATE dbpersonhours 
                   SET start_time = '" . $formattedStartDateTime . "', end_time = '" . $formattedEndDateTime .  "'" .
-                  " WHERE (personID = '" . $user . "') AND (eventID = " . $eventId . ") AND (start_time = '" . $oldStartTime . "') AND (end_time = '" . $oldEndTime . "')";
+                  " WHERE personID = '" . $user . "' AND eventID = " . $eventId;
         // Debugging: Echo the query to see what is being executed
 //echo "SQL Query: " . $query . "<br>";
                   $stmt = mysqli_prepare($connection, $query);
@@ -271,7 +271,7 @@ $formattedEndDateTime = $formattedEndDateTime . ' ' . date("Y-m-d", strtotime($o
         // Execute the query
 if (mysqli_query($connection, $query)) {
     // On successful update, redirect to the desired URL with query parameters
-    header("Location: http://localhost/stepvarepo/editTimes.php?eventId=$eventId&user=" . urlencode($user) . "&start_time=" . urlencode($formattedStartDateTime) . "&end_time=" . urlencode($formattedEndDateTime));
+    header("Location: https://jenniferp130.sg-host.com/stepvarepo/editTimes.php?eventId=$eventId&user=" . urlencode($user) . "&start_time=" . urlencode($formattedStartDateTime) . "&end_time=" . urlencode($formattedEndDateTime));
     exit(); // Make sure to call exit after the header to stop further code execution
 } else {
     echo "Error updating hours: " . mysqli_error($connection);
