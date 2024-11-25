@@ -145,33 +145,6 @@
         }
         return date("H:i", strtotime($time));
     }
-
-    function validate12hTimeAndConvertTo24hAmPm($time) {
-        // Validate the format HH:MM AM/PM
-        if (preg_match('/^(0[1-9]|1[0-2]):[0-5][0-9] (AM|PM)$/', $time, $matches)) {
-            // Convert to 24-hour format
-            $date = DateTime::createFromFormat('h:i A', $time);
-            if ($date) {
-                return $date->format('H:i');
-            }
-        }
-        return false; // Invalid format
-    }
-
-    function validate12hTimeRangeAndConvertTo24hAmPm($start, $end) {
-        $start = validate12hTimeAndConvertTo24hAmPm($start);
-        $end = validate12hTimeAndConvertTo24hAmPm($end);
-    
-        if (!$start || !$end) {
-            return false; // Invalid format for either time
-        }
-    
-        if (strtotime($start) >= strtotime($end)) {
-            return false; // End time must be after start time
-        }
-    
-        return [$start, $end]; // Return the converted times
-    }
     
 
     function validateAndFilterPhoneNumber($number) {
