@@ -254,7 +254,7 @@ $formattedEndDateTime = $formattedEndDateTime . ' ' . $endTime . ':00';
         // Prepare the SQL query
         $query = "UPDATE dbpersonhours 
                   SET start_time = '" . $formattedStartDateTime . "', end_time = '" . $formattedEndDateTime .  "'" .
-                  " WHERE personID = '" . $user . "' AND eventID = " . $eventId;
+                  " WHERE personID = '" . $user . "', eventID = " . $eventId . ", start_time = '" . $oldStartTime . "', AND end_time = '" . $oldEndTime . "'";
         // Debugging: Echo the query to see what is being executed
 //echo "SQL Query: " . $query . "<br>";
                   $stmt = mysqli_prepare($connection, $query);
