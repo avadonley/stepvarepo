@@ -236,13 +236,13 @@ $startTime = $args['start-time'] = $validated[0];
 $endTime = $args['end-time'] = $validated[1];
 //echo "START: ";
 // Combine date and time
-$formattedStartDateTime = $formattedStartDateTime . ' ' . $startTime . ':00';
+$formattedStartDateTime = $formattedStartDateTime . ' ' . $oldStartTime . ':00';
 
 
 // Use the string in your query or other operations
 //echo "START: " . $formattedStartDateTime;
 // Combine date and time
-$formattedEndDateTime = $formattedEndDateTime . ' ' . $endTime . ':00';
+$formattedEndDateTime = $formattedEndDateTime . ' ' . $oldEndTime . ':00';
 
 //echo "END: ";
 //echo $formattedEndDateTime; 
