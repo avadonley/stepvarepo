@@ -107,7 +107,7 @@ function remove_person($id) {
  * if not in table, return false
  */
 
-function retrieve_person($id) { // (username! not id)
+function retrieve_person($id): bool|Person { // (username! not id)
     $con=connect();
     $query = "SELECT * FROM dbpersons WHERE id = '" . $id . "'";
     $result = mysqli_query($con,$query);
