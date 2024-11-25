@@ -26,6 +26,7 @@
         $required = array(
             "event-name", "account-name", "start-time", "departure-time", /*"skills",*/ /*"diet-restrictions", "disabilities", "materials", "role"*/
         );
+
         if (!wereRequiredFieldsSubmitted($args, $required)) {
             echo 'bad form data';
             die();
@@ -41,6 +42,7 @@
                 echo 'bad time range';
                 die();
             }
+
             $departureTime = $args['departure-time'] = $validated2[0];
             $name = htmlspecialchars_decode($args['name']);
             $account_name = htmlspecialchars_decode($args['account-name']);
@@ -58,14 +60,17 @@
                 //die();
             //}
             $restricted = htmlspecialchars(string: isset($_GET['restricted']) ? $_GET['restricted'] : '');
-           
+
             if($restricted == "Yes") {
                 $name = htmlspecialchars(string: isset($_GET['event_name']) ? $_GET['event_name'] : '');
+                //echo "hey";
                 $id = request_event_signup($name, $account_name, $role, $signup);
+
                 if(!$id){
-                    header(header: 'Location: requestFailed.php');
-                    exit();
+                    header('Location: requestFailed.php');
+                    die();
                 }
+                
                 //$name = htmlspecialchars(string: isset($_GET['event_name']) ? $_GET['event_name'] : '');
                 //$id = sign_up_for_event($name, $account_name, $role, $notes);
                 header('Location: signupPending.php');

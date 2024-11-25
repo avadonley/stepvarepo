@@ -1,6 +1,7 @@
 <?php
     session_cache_expire(30);
     session_start();
+    header("refresh:2; url=viewAllEvents.php");
 ?>
     <!DOCTYPE html>
     <html>
@@ -20,7 +21,3 @@
             <p class="centered">The administrator will review your request shortly</p>
         </body>
     </html>
-
-    <?php
-    header("refresh:2; url=viewAllEvents.php");
-    exit();

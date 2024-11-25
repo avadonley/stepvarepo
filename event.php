@@ -232,6 +232,7 @@
             $event_name = $event_info['name'];
             $event_date = date('l, F j, Y', strtotime($event_info['date']));
             $event_startTime = time24hto12h($event_info['startTime']);
+            $event_endTime = time24hto12h($event_info['endTime']);
             $event_description = $event_info['description'];
             require_once('include/time.php');
         ?>
@@ -257,7 +258,7 @@
                 </tr>
                 <tr>
                     <td class="label">Time</td>
-                    <td><?php echo $event_startTime; ?></td>
+                    <td><?php echo $event_startTime . " - " . $event_endTime; ?></td>
                 </tr>
                 <tr>
                     <td class="label">Location</td>

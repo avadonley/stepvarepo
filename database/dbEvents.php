@@ -166,7 +166,6 @@ function fetch_pending($eventID) {
     if (!$result) {
         die('Query failed: ' . mysqli_error($connection));
     }
-
     $signups = [];
     while ($row = mysqli_fetch_assoc($result)) {
         $signups[] = $row;
@@ -407,16 +406,15 @@ function fetch_event_by_id($id) {
 
 function create_event($event) {
     $connection = connect();
-    $id = $event["id"];
     $name = $event["name"];
     //$abbrevName = $event["abbrev-name"];
     $date = $event["date"];
-    $startTime = $event["startTime"];
-    $endTime = "23:59";
+    $startTime = $event["start-time"];    
+    $endTime = $event["end-time"];
     $description = $event["description"];
-    $capacity = $event["capacity"];
-    $completed = $event["completed"];
-    $event_type = $event["event_type"];
+    //$capacity = $event["capacity"];
+    //$completed = $event["completed"];
+    //$event_type = $event["event_type"];
     $restricted_signup = $event["role"];
     if ($restricted_signup == "r") {
         $restricted = 1;
