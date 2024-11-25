@@ -145,7 +145,6 @@
         }
         return date("H:i", strtotime($time));
     }
-    
 
     function validateAndFilterPhoneNumber($number) {
         $number = preg_replace("/[^0-9]/", "", $number);
