@@ -54,6 +54,7 @@ if (!$event_info) {
 // Fetch signups for the event
 $signups = fetch_event_signups($id);
 $pending_signups = fetch_pending($id);
+
 //$signups = $signups + $pending_signups;
 $access_level = $_SESSION['access_level'];
 ?>
@@ -102,7 +103,15 @@ $access_level = $_SESSION['access_level'];
             <p class="error"><?php echo htmlspecialchars($remove_error); ?></p>
         <?php endif; ?>
 
-        <?php if (count($signups) > 0): ?>
+        <p>
+            <?php if (count($signups) === 1): ?>
+                1 person has signed up for this event.
+            <?php else: ?>
+                <?php echo htmlspecialchars(count($signups)); ?> people have signed up for this event.
+            <?php endif; ?>
+        </p>
+        
+        <?php if (count($signups) > 0 || count($pending_signups) > 0): ?>
             <div class="table-wrapper">
                 <table class="general">
                     <thead>
@@ -144,6 +153,7 @@ $access_level = $_SESSION['access_level'];
                         <?php endforeach; ?>
                         <?php foreach ($pending_signups as $signup): 
                             $user_info = retrieve_person($signup['username']);
+                            if ($user_info) {
                             $position_label = $signup['role'] === 'p' ? 'Participant' : ($signup['role'] === 'v' ? 'Volunteer' : 'Unknown');
                             $pending = check_if_signed_up($args['id'], $signup['username']);
                             ?>
@@ -164,7 +174,10 @@ $access_level = $_SESSION['access_level'];
                                     </td>
                                 <?php endif; ?>
                             </tr>
-                        <?php endforeach; ?>
+                        <?php 
+                            }
+                        endforeach;
+                        ?>
                     </tbody>
                 </table>
             </div>
@@ -172,7 +185,7 @@ $access_level = $_SESSION['access_level'];
             <p>No users have signed up for this event yet.</p>
         <?php endif; ?>
 
-        <a class="button cancel" href="dashboard.php">Return to Dashboard</a>
+        <a class="button cancel" href="index.php">Return to Dashboard</a>
     </main>
 
     <div id="resolution-confirmation-wrapper" class="modal-content hidden">

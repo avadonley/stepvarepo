@@ -17,3 +17,4 @@
     <?php
     header("refresh:2; url=viewAllEvents.php");
     exit();
+    ?>
