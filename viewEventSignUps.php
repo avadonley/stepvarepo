@@ -17,11 +17,6 @@ error_reporting(E_ALL);
 $args = sanitize($_GET);
 $id = $args['id'] ?? null;
 
-if (!$id) {
-    'Event ID is missing.';
-    die();
-}
-
 // Handle user removal
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $event_id = $_POST['event_id'] ?? null;
@@ -201,7 +196,7 @@ $access_level = $_SESSION['access_level'];
         <p>Are you sure you want to approve this sign-up request?</p>
         <p>This action cannot be undone</p>
         <form method="post" action="approveSignup.php">
-                        <input type="submit" value="Approve" class="button danger">
+                        <input type="submit" value="Approve" class="button success">
                         <input type="hidden" name="id" value="<?= $_REQUEST['id'] ?>">
                         <input type="hidden" name="user_id" value="<?=$signup['username']?>">
                         <input type="hidden" name="position" value="<?=$signup['role']?>">

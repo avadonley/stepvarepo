@@ -98,6 +98,7 @@
         $permission_array['eventsuccess.php'] = 2;
         $permission_array['viewsignuplist.php'] = 2;
         $permission_array['vieweventsignups.php'] = 2;
+        $permission_array['viewalleventsignups.php'] = 2;
 
         $permission_array['edithours.php'] = 2;
         $permission_array['eventlist.php'] = 1;
@@ -108,6 +109,7 @@
         $permission_array['adminviewingevents.php'] = 2;
         $permission_array['signuppending.php'] = 1;
         $permission_array['requestfailed.php'] = 1;
+        
         // LOWERCASE
 
 

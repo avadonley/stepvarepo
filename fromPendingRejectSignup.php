@@ -12,16 +12,15 @@
     $args = sanitize($_POST);
     $id = $args['id'];
     $user_id = $args['user_id'];
-    $position = $args['position'];
     $notes = $args['notes'];
+    $position = $args['position'];
 
     if (!$id) {
-        echo var_dump($args);
-       // header('Location: index.php');
-        //die();
+        header('Location: index.php');
+        die();
     }
-    if (approve_signup($id, $user_id, $position, $notes)) {
-        header(header: 'Location: viewEventSignUps.php?pendingSignupSuccess&id=' . $id);
+    if (reject_signup($id, $user_id, $notes, $position)) {
+        header('Location: viewAllEventSignUps.php?pendingSignupSuccess');
         die();
     }
     header('Location: index.php');
