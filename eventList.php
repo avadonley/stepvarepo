@@ -91,8 +91,16 @@ $event_ids = get_attended_event_ids($username);
 
                             <?php foreach ($shifts as $shift): ?>
                                 <tr>
-                                    <td><?php echo $shift['start_time']?></td>
-                                    <td><?php echo $shift['end_time']?></td>
+
+                                    <?php
+                                        $start_date_time = explode(' ', $shift['start_time']);
+                                        
+
+                                        $end_date_time = explode(' ', $shift['end_time']);
+                                    ?>
+
+                                    <td><?php echo time24hto12h($start_date_time[1])?></td>
+                                    <td><?php echo time24hto12h($end_date_time[1])?></td>
 
                                     <?php
                                         $start_time = strtotime($shift['start_time']);
@@ -109,6 +117,7 @@ $event_ids = get_attended_event_ids($username);
                                         <input type="hidden" name="end_time" value="<?php echo htmlspecialchars($shift['end_time']); ?>" />
                                         
                                         <!-- Submit button for editing -->
+                                    
                                         <td><button type="submit" class="button edit-button">Edit</button></td>
                                     </form>
 
@@ -116,8 +125,15 @@ $event_ids = get_attended_event_ids($username);
                                 </tr>
                             <?php endforeach ?>
                         </table>
-
-                        <center><button class="button success" style="width: 50%; margin: 25px;">Add a new check-in</button></center>
+                        <form method="GET" action="setTimes.php">
+                            <!-- Hidden inputs to pass data -->
+                            <input type="hidden" name="eventID" value="<?php echo htmlspecialchars($event['id']); ?>" />
+                            <input type="hidden" name="eventName" value="<?php echo htmlspecialchars($event['name']); ?>" />
+                            <input type="hidden" name="userID" value="<?php echo htmlspecialchars($username); ?>" />
+                        
+                            <!-- Submit button for adding -->
+                            <center><button class="button success" style="width: 50%; margin: 25px;">Add a new check-in</button></center>
+                        </form>
 
                     </fieldset>
 
