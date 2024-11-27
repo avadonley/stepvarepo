@@ -41,7 +41,10 @@ require_once('database/dbEvents.php');
 require_once('database/dbPersons.php');
 
 // Fetch events attended by the user
-$events = get_events_attended_by_2($username);
+//$events = get_events_attended_by_2($username);
+
+// Fetch eventIDs attended by the user
+$events = get_attended_event_ids($username);
 ?>
 
 <!DOCTYPE html>
@@ -58,6 +61,7 @@ $events = get_events_attended_by_2($username);
         <main class="general">
             <?php if (!empty($events)): ?>
                 <ul class="event-list">
+                    <fieldset class="section-box">
                     <?php foreach ($events as $event): ?>
                         <li class="event-item">
                             <form method="GET" action="editTimes.php">
