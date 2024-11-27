@@ -101,10 +101,6 @@ $event_ids = get_attended_event_ids($username);
                                     ?>
                                     <td><?php echo floatPrecision($duration, 2) ?></td>
 
-                                    
-
-
-
                                     <form method="GET" action="editTimes.php">
                                         <!-- Hidden inputs to pass data -->
                                         <input type="hidden" name="eventId" value="<?php echo htmlspecialchars($event['id']); ?>" />
@@ -116,32 +112,15 @@ $event_ids = get_attended_event_ids($username);
                                         <td><button type="submit" class="button edit-button">Edit</button></td>
                                     </form>
 
-                                    <td><button class="button edit-button" style="background-color: #dc3545">Delete</button></td>
+                                    <td><button class="button danger">Delete</button></td>
                                 </tr>
                             <?php endforeach ?>
                         </table>
+
+                        <center><button class="button success" style="width: 50%; margin: 25px;">Add a new check-in</button></center>
+
                     </fieldset>
 
-                    <!--<li class="event-item">
-                        <form method="GET" action="editTimes.php">-->
-                            <!-- Hidden inputs to pass data -->
-                            <!--<input type="hidden" name="eventId" value="<?php echo htmlspecialchars($event['eventID']); ?>" />
-                            <input type="hidden" name="user" value="<?php echo htmlspecialchars($username); ?>" />
-                            <input type="hidden" name="start_time" value="<?php echo htmlspecialchars($event['start_time']); ?>" />
-                            <input type="hidden" name="end_time" value="<?php echo htmlspecialchars($event['end_time']); ?>" />-->
-                            
-                            <!-- Event details display -->
-                            <!--<div class="event-details">
-                                <p><strong>Event ID:</strong> <?php echo htmlspecialchars($event['eventID']); ?></p>
-                                <p><strong>Event Name:</strong> <?php echo htmlspecialchars(get_event_from_id($event['eventID'])); ?></p>
-                                <p><strong>Start Time:</strong> <?php echo htmlspecialchars($event['start_time']); ?></p>
-                                <p><strong>End Time:</strong> <?php echo htmlspecialchars($event['end_time']); ?></p>
-                            </div>-->
-                            
-                            <!-- Submit button for editing -->
-                            <!--<button type="submit" class="button edit-button">Edit Event</button>
-                        </form>
-                    </li>-->
                 <?php endforeach; ?>
             <?php else: ?>
                 <p class="no-events-message">No events attended by <?php echo htmlspecialchars($username); ?>.</p>
