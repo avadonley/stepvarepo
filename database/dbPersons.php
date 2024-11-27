@@ -905,6 +905,26 @@ function find_user_names($name) {
             return []; // Return an empty array if no results are found
         }
     }
+
+    function get_check_in_outs($personID, $event) {
+        $con=connect();
+        $query = "SELECT start_time, end_time FROM dbpersonhours WHERE personID = '" .$personID. "' and eventID = '" .$event. "'";            
+        $result = mysqli_query($con, $query);
+
+
+        if ($result) {
+            $row = [];
+            while ($row = mysqli_fetch_assoc($result)) {
+                $rows[] = $row; // Collect only the event IDs
+            }
+            mysqli_free_result($result);
+            mysqli_close($con);
+            return $rows;  // Return an array of event IDs
+        } else {
+            mysqli_close($con);
+            return []; // Return an empty array if no results are found
+        }
+    }
     /*@@@ end Thomas */
     
     function get_events_attended_by_2($personID) {
