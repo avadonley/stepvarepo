@@ -84,7 +84,10 @@
                         <img src="images/new-event.svg">
                         <span>Create Event</span>
                     </div>
-                    
+                    <div class="dashboard-item" data-link="viewAllEventSignUps.php">
+                        <img src="images/new-event.svg">
+                        <span><center>View Pending Sign-Ups</center></span>
+                    </div>
                     <div class="dashboard-item" data-link="personSearch.php">
                         <img src="images/person-search.svg">
                         <span>Find Volunteer</span>

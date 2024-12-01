@@ -227,7 +227,7 @@
         ?>
         <!---->
         
-        <?php    
+        <?php
             require_once('include/output.php');
             $event_name = $event_info['name'];
             $event_date = date('l, F j, Y', strtotime($event_info['date']));
@@ -293,7 +293,15 @@
                     <td class="label">Access Level</td>
                     <td>
                         <?php 
-                            echo $access_level >= 2 ? "Restricted" : "Unrestricted";
+                        $event = fetch_event_by_id($args['id']);
+                        //echo var_dump($event);
+                        if($access_level >= 2) {
+                            if($event['restricted_signup'] == 1)
+                                echo "Restricted";
+                            else
+                            echo "Unrestricted";
+                        }
+                            //echo $access_level >= 2 ? "Restricted" : "Unrestricted";
                         ?>
                     </td>
                 </tr>

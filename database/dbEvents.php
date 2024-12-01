@@ -175,6 +175,70 @@ function fetch_pending($eventID) {
     return $signups;
 }
 
+function fetch_all_pending() {
+    $connection = connect();
+    $query = "SELECT eventname, username, role, notes FROM dbpendingsignups";
+    $result = mysqli_query($connection, $query);
+
+    if (!$result) {
+        die('Query failed: ' . mysqli_error($connection));
+    }
+    $signups = [];
+    while ($row = mysqli_fetch_assoc($result)) {
+        $signups[] = $row;
+    }
+
+    mysqli_close($connection);
+    return $signups;
+}
+
+function all_pending_names() {
+    $connection = connect();
+    $query = "SELECT eventname FROM dbpendingsignups";
+    $result = mysqli_query($connection, $query);
+
+    if (!$result) {
+        die('Query failed: ' . mysqli_error($connection));
+    }
+
+    $signups = [];
+    while ($row = mysqli_fetch_assoc($result)) {
+        $signups[] = $row;
+    }
+
+    $event_names = [];
+    $length = sizeof($signups);
+    for ($x = 0; $x < $length; $x++) {
+        $val = (int)$signups[$x]['eventname'];
+        $query2 = "SELECT name FROM dbevents WHERE id = $val";
+        $result2 = mysqli_query($connection, $query2);
+        while ($row = mysqli_fetch_assoc($result2)) {
+            $event_names[] = $row;
+        }
+    }
+
+    mysqli_close($connection);
+    return $event_names;
+}
+
+function all_pending_ids() {
+    $connection = connect();
+    $query = "SELECT eventname FROM dbpendingsignups";
+    $result = mysqli_query($connection, $query);
+
+    if (!$result) {
+        die('Query failed: ' . mysqli_error($connection));
+    }
+
+    $signups = [];
+    while ($row = mysqli_fetch_assoc($result)) {
+        $signups[] = $row;
+    }
+
+    mysqli_close($connection);
+    return $signups;
+}
+
 function remove_user_from_event($event_id, $user_id) {    
     $query = "DELETE FROM dbeventpersons WHERE eventID LIKE '$event_id' AND userID LIKE '$user_id'";
     $connection = connect();
@@ -720,6 +784,7 @@ function cancel_event($event_id, $account_name) {
 function approve_signup($event_id, $account_name, $position, $notes) {
     $query = "DELETE from dbpendingsignups where username = '$account_name' AND eventname = $event_id";
     $connection = connect();
+    echo "username " . $account_name . " eventname " . $event_id;
     $result = mysqli_query($connection, $query);
     $result = boolval($result);
 

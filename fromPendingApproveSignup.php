@@ -21,7 +21,7 @@
         //die();
     }
     if (approve_signup($id, $user_id, $position, $notes)) {
-        header(header: 'Location: viewEventSignUps.php?pendingSignupSuccess&id=' . $id);
+        header(header: 'Location: viewAllEventSignUps.php?pendingSignupSuccess');
         die();
     }
     header('Location: index.php');
