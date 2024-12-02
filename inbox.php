@@ -30,8 +30,9 @@
         <main class="general">
             <h2>Your Notifications</h2>
             <?php 
-                //require_once('database/dbMessages.php');
-                $messages = array(); //get_user_messages($userID);
+                require_once('database/dbMessages.php');
+                //$messages = array(); //get_user_messages($userID);
+                $messages = get_user_messages($userID);
                 if (count($messages) > 0): ?>
                 <div class="table-wrapper">
                     <table class="general">

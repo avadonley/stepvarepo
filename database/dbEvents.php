@@ -468,6 +468,22 @@ function fetch_event_by_id($id) {
     return null;
 }
 
+function fetch_event_name_by_id($id) {
+    $connection = connect();
+    $id = mysqli_real_escape_string($connection, $id);
+    $query = "select * from dbevents where id = '$id'";
+    $result = mysqli_query($connection, $query);
+    $event = mysqli_fetch_assoc($result);
+    if ($event) {
+        require_once('include/output.php');
+        $event = $event["name"];
+        mysqli_close($connection);
+        return $event;
+    }
+    mysqli_close($connection);
+    return null;
+}
+
 function create_event($event) {
     $connection = connect();
     $name = $event["name"];
