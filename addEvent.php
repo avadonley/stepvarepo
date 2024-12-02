@@ -129,6 +129,10 @@
                 </fieldset>
                 <label for="name">* Description </label>
                 <input type="text" id="description" name="description" required placeholder="Enter description">
+                <label for="name">Location </label>
+                <input type="text" id="location" name="location" placeholder="Enter location">
+                <label for="name">Capacity </label>
+                <input type="number" id="capacity" name="capacity" placeholder="Enter capacity (e.g. 1-99)">
                 <!-- Service function
                 <fieldset>
                     <label for="name">* Service </label>
