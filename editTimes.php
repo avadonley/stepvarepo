@@ -207,6 +207,8 @@ if (isset($_GET['eventId'], $_GET['user'], $_GET['start_time'], $_GET['end_time'
 //     echo "Raw Input: ";
 //     print_r($_POST);
 // }
+
+
 require_once('include/input-validation.php');
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $startTime = trim($_POST['start-time'] ?? '');
@@ -243,6 +245,7 @@ $formattedStartDateTime = $formattedStartDateTime . ' ' . $startTime . ':00';
 //echo "START: " . $formattedStartDateTime;
 // Combine date and time
 $formattedEndDateTime = $formattedEndDateTime . ' ' . $endTime . ':00';
+
 
 //echo "END: ";
 //echo $formattedEndDateTime; 
@@ -295,10 +298,18 @@ if (mysqli_query($connection, $query)) {
     <body>
         <?php require_once('header.php') ?>
         <h1>Edit Event</h1>
+        <?php
+        echo "<p>rain</p>";
+        echo "<p>EndFormatted:" . $formattedEndDateTime . "</p>";
+        echo "<p>" . $formattedStartDateTime . "</p>";
+        echo "<p>" . $oldStartTime . "</p>";
+        echo "<p>" . $oldEndTime . "</p>";
+        ?>
         <main class="date">
             <h2>Edit this time: 
             </h2>            
             <form id="new-event-form" method="post">
+            <p><?= $formattedEndDateTime ?></p>  
             <p><strong>Start Time: </strong><?= htmlspecialchars($displayTimeStart); ?></p>  
             <p><strong>End Time: </strong><?= htmlspecialchars($displayTimeEnd); ?></p> 
             <!--  <label for="name">* Event Name </label>
