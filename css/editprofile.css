@@ -984,6 +984,37 @@ table.general th, table.general td {
     background-color: #0056b3;
 }
 
+/* @@@ Thomas here */
+
+.button.success {
+    background-color: #28a745;
+    color: #fff;
+}
+
+.button.success:hover {
+    background-color: #218838;
+}
+
+.button.danger {
+    background-color: #dc3545;
+    color: #fff;
+}
+
+.button.danger:hover {
+    background-color: #c82333;
+}
+
+.button.cancel {
+    background-color: #6c757d !important;
+    color: #fff !important;
+}
+
+.button.cancel:hover {
+    background-color: #5a6268!important;
+}
+
+/* end Thomas */
+
 .error-message {
     color: red;
     font-weight: bold;
@@ -995,5 +1026,3 @@ table.general th, table.general td {
     font-size: 1.2em;
     color: #555;
 }
-
-

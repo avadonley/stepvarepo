@@ -882,6 +882,50 @@ function find_user_names($name) {
         }
     }
     
+    /* @@@ Thomas
+     * 
+     * This funcion returns a list of eventIDs that a given user has attended.
+     */
+    function get_attended_event_ids($personID) {
+        $con=connect();
+        $query = "SELECT DISTINCT eventID FROM dbpersonhours WHERE personID = '" .$personID. "'";            
+        $result = mysqli_query($con, $query);
+
+
+        if ($result) {
+            $rows = [];
+            while ($row = mysqli_fetch_assoc($result)) {
+                $rows[] = $row['eventID']; // Collect only the event IDs
+            }
+            mysqli_free_result($result);
+            mysqli_close($con);
+            return $rows;  // Return an array of event IDs
+        } else {
+            mysqli_close($con);
+            return []; // Return an empty array if no results are found
+        }
+    }
+
+    function get_check_in_outs($personID, $event) {
+        $con=connect();
+        $query = "SELECT start_time, end_time FROM dbpersonhours WHERE personID = '" .$personID. "' and eventID = '" .$event. "'";            
+        $result = mysqli_query($con, $query);
+
+
+        if ($result) {
+            $row = [];
+            while ($row = mysqli_fetch_assoc($result)) {
+                $rows[] = $row; // Collect only the event IDs
+            }
+            mysqli_free_result($result);
+            mysqli_close($con);
+            return $rows;  // Return an array of event IDs
+        } else {
+            mysqli_close($con);
+            return []; // Return an empty array if no results are found
+        }
+    }
+    /*@@@ end Thomas */
     
     function get_events_attended_by_2($personID) {
         // Prepare the SQL query to select rows where personID matches
