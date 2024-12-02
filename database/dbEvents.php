@@ -476,7 +476,16 @@ function create_event($event) {
     $startTime = $event["start-time"];    
     $endTime = $event["end-time"];
     $description = $event["description"];
-    //$capacity = $event["capacity"];
+    if (isset($event["capacity"])) {
+        $capacity = $event["capacity"];
+    } else {
+        $capacity = 999;
+    }
+    if (isset($event["location"])) {
+        $location = $event["location"];
+    } else {
+        $location = "";
+    }
     //$completed = $event["completed"];
     //$event_type = $event["event_type"];
     $restricted_signup = $event["role"];
@@ -492,8 +501,8 @@ function create_event($event) {
     //$animal = $event["animal"];
     $completed = "no";
     $query = "
-        insert into dbevents (name, date, startTime, endTime, restricted_signup, description, capacity, completed)
-        values ('$name', '$date', '$startTime', '$endTime', $restricted, '$description', '0', '$completed')
+        insert into dbevents (name, date, startTime, endTime, restricted_signup, description, capacity, completed, location)
+        values ('$name', '$date', '$startTime', '$endTime', $restricted, '$description', $capacity, '$completed', '$location')
     ";
     $result = mysqli_query($connection, $query);
     if (!$result) {
@@ -530,11 +539,11 @@ function update_event($eventID, $eventDetails) {
     #$restricted = $eventDetails["restricted"];
     $endTime = $eventDetails["end-time"];
     $description = $eventDetails["description"];
-    #$capacity = $eventDetails["capacity"];
+    $capacity = $eventDetails["capacity"];
     #$completed = $eventDetails["completed"];
     #$event_type = $eventDetails["event_type"];
     #$restricted_signup = $eventDetails["restricted_signup"];
-    #$location = $eventDetails["location"];
+    $location = $eventDetails["location"];
     //$services = $eventDetails["service"];
     
     #$completed = $eventDetails["completed"];
@@ -547,7 +556,7 @@ function update_event($eventID, $eventDetails) {
     #    where id='$eventID'
     #";
     $query = "
-        update dbevents set id='$id', name='$name', date='$date', startTime='$startTime', endTime='$endTime', description='$description'
+        update dbevents set id='$id', name='$name', date='$date', startTime='$startTime', endTime='$endTime', description='$description', location='$location', capacity=$capacity
         where id='$eventID'
     ";
     $result = mysqli_query($connection, $query);

@@ -234,6 +234,8 @@
             $event_startTime = time24hto12h($event_info['startTime']);
             $event_endTime = time24hto12h($event_info['endTime']);
             $event_description = $event_info['description'];
+            $event_location = $event_info['location'];
+            $event_capacity = $event_info['capacity'];
             require_once('include/time.php');
         ?>
 
@@ -263,30 +265,7 @@
                 <tr>
                     <td class="label">Location</td>
                     <td>
-                        <?php 
-                            if (isset($event_location)) {
-                                $locations = get_location($event_location);
-                                foreach($locations as $location) {
-                                    echo $location['name'];
-                                }
-                            } else {
-                                echo "Location not specified.";
-                            }
-                        ?>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="label">Location Address</td>
-                    <td>
-                        <?php 
-                            if (isset($event_location)) {
-                                foreach($locations as $location) {
-                                    echo $location['address'];
-                                }
-                            } else {
-                                echo "Address not available.";
-                            }
-                        ?>
+                        <?php echo $event_location; ?>
                     </td>
                 </tr>
                 <tr>
@@ -308,6 +287,10 @@
                 <tr>
                     <td class="label">Description</td>
                     <td id="description-cell"><?php echo $event_description; ?></td>
+                </tr>
+                <tr>
+                    <td class="label">Capacity</td>
+                    <td id="description-cell"><?php echo $event_capacity; ?></td>
                 </tr>
             </table>
         </div>
