@@ -20,6 +20,9 @@
         die();
     }
     if (reject_signup($id, $user_id, $notes, $position)) {
+        require_once('database/dbMessages.php');
+        $event_name = fetch_event_name_by_id($id);
+        send_system_message($user_id, "Your sign-up has been rejected", "Your sign up for $event_name has been denied.");
         header('Location: viewEventSignUps.php?pendingSignupSuccess&id=' . $id);
         die();
     }
