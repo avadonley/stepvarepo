@@ -252,6 +252,7 @@ $formattedEndDateTime = $formattedEndDateTime . ' ' . $endTime;
         // Execute the query
 if (mysqli_query($connection, $query)) {
     // On successful update, redirect to the desired URL with query parameters
+    // CHANGE IF LOCALHOST OR NOT
     //header("Location: https://jenniferp130.sg-host.com/stepvarepo/editTimes.php?eventId=$eventId&user=" . urlencode($user) . "&start_time=" . urlencode($formattedStartDateTime) . "&end_time=" . urlencode($formattedEndDateTime));
     header("Location: http://localhost/stepvarepo/editTimes.php?eventId=$eventId&user=" . urlencode($user) . "&start_time=" . urlencode($formattedStartDateTime) . "&end_time=" . urlencode($formattedEndDateTime));
     exit(); // Make sure to call exit after the header to stop further code execution
