@@ -115,6 +115,7 @@ $access_level = $_SESSION['access_level'];
                             <th>Last Name</th>
                             <th>User ID</th>
                             <th>Position</th>
+                            <th>Notes</th>
                             <th>Pending</th>
                             <?php if ($access_level >= 2): ?>
                                 <th>Actions</th>
@@ -126,12 +127,48 @@ $access_level = $_SESSION['access_level'];
                             $user_info = retrieve_person($signup['userID']);
                             $position_label = $signup['position'] === 'p' ? 'Participant' : ($signup['position'] === 'v' ? 'Volunteer' : 'Unknown');
                             $pending = check_if_signed_up($args['id'], $signup['userID']);
+                            $notes = isset($signup['notes']) && ($signup['notes'] !== '' && $signup['notes'] !== NULL) ? $signup['notes'] : 'No notes.';
+                                
                             ?>
                             <tr>
                                 <td><?php echo htmlspecialchars($user_info->get_first_name()); ?></td>
                                 <td><?php echo htmlspecialchars($user_info->get_last_name()); ?></td>
                                 <td><a href="viewProfile.php?id=<?php echo urlencode($signup['userID']); ?>"><?php echo htmlspecialchars($signup['userID']); ?></a></td>
                                 <td><?php echo htmlspecialchars($position_label); ?></td>
+                                <td>
+                                <?php
+                                // Check if there are notes, otherwise set to 'No notes.'
+                                $formatted_notes = isset($signup['notes']) && ($signup['notes'] !== '' && $signup['notes'] !== NULL) ? $signup['notes'] : 'No notes.';
+
+                                // Handle empty categories (before the pipe) by replacing them with N/A
+                                $formatted_notes = preg_replace('/Skills:\s*\|/', 'Skills: N/A', $formatted_notes);
+                                $formatted_notes = preg_replace('/Dietary restrictions:\s*\|/', 'Dietary restrictions: N/A', $formatted_notes);
+                                $formatted_notes = preg_replace('/Disabilities:\s*\|/', 'Disabilities: N/A', $formatted_notes);
+                                $formatted_notes = preg_replace('/Materials:\s*(\||$)/', 'Materials: N/A', $formatted_notes);
+
+                                // Ensure we remove any trailing ' | ' at the end of the string
+                                $formatted_notes = preg_replace('/\s*\|\s*$/', '', $formatted_notes);
+
+                                // Replace the ' | ' between the categories with a line break
+                                $formatted_notes = preg_replace('/\s*\|\s*/', "<br>", htmlspecialchars($formatted_notes));
+
+                                // Add line breaks after "N/A" categories, but only after those that actually have content
+                                $formatted_notes = preg_replace('/(Skills: N\/A|Dietary restrictions: N\/A|Disabilities: N\/A|Materials: N\/A)/', '$1<br>', $formatted_notes);
+
+                                // Ensure there are line breaks between different categories even if they contain other values
+                                $formatted_notes = preg_replace('/(Skills: .+|Dietary restrictions: .+|Disabilities: .+|Materials: .+)/', '$0<br>', $formatted_notes);
+
+                                // If no notes are provided, replace 'No notes.' with 'No notes.' followed by a line break
+                                $formatted_notes = str_replace("No notes.", "No notes.<br>", $formatted_notes);
+
+                                // Display the formatted notes with correct line breaks
+                                echo nl2br($formatted_notes);
+                                ?>
+
+
+
+                                </td>
+
                                 <td><?php if($pending == '0') echo "Yes"; elseif($pending == '1') echo "No"?></td>
                                 <?php if ($access_level >= 2 && $pending == "1"): ?>
                                     <td>
@@ -149,35 +186,37 @@ $access_level = $_SESSION['access_level'];
                         <?php foreach ($pending_signups as $signup): 
                             $user_info = retrieve_person($signup['username']);
                             if ($user_info) {
-                            $position_label = $signup['role'] === 'p' ? 'Participant' : ($signup['role'] === 'v' ? 'Volunteer' : 'Unknown');
-                            $pending = check_if_signed_up($args['id'], $signup['username']);
-                            ?>
-                            <tr>
-                                <td><?php echo htmlspecialchars($user_info->get_first_name()); ?></td>
-                                <td><?php echo htmlspecialchars($user_info->get_last_name()); ?></td>
-                                <td><a href="viewProfile.php?id=<?php echo urlencode($signup['username']); ?>"><?php echo htmlspecialchars($signup['username']); ?></a></td>
-                                <td><?php echo htmlspecialchars($position_label); ?></td>
-                                <td><?php if($pending == '0') echo "Yes"; elseif($pending == '1') echo "No"?></td>
-                                <?php if ($access_level >= 2 && $pending == "0"): ?>
-                                    <td>
-                                        <form method="POST" style="display:inline;">
-                                            <input type="hidden" name="event_id" value="<?php echo htmlspecialchars($id); ?>">
-                                            <input type="hidden" name="user_id" value="<?php echo htmlspecialchars($signup['username']); ?>">
-                                        </form>
-                                        <button onclick="showResolutionConfirmation()" class="button">Resolve</button>
-
-                                    </td>
-                                <?php endif; ?>
-                            </tr>
-                        <?php 
+                                $position_label = $signup['role'] === 'p' ? 'Participant' : ($signup['role'] === 'v' ? 'Volunteer' : 'Unknown');
+                                $pending = check_if_signed_up($args['id'], $signup['username']);
+                                // Check if notes exist or not
+                                $notes = isset($signup['notes']) && $signup['notes'] !== '' ? $signup['notes'] : 'No notes.';
+                                ?>
+                                <tr>
+                                    <td><?php echo htmlspecialchars($user_info->get_first_name()); ?></td>
+                                    <td><?php echo htmlspecialchars($user_info->get_last_name()); ?></td>
+                                    <td><a href="viewProfile.php?id=<?php echo urlencode($signup['username']); ?>"><?php echo htmlspecialchars($signup['username']); ?></a></td>
+                                    <td><?php echo htmlspecialchars($position_label); ?></td>
+                                    <td><?php echo htmlspecialchars($notes); ?></td>
+                                    <td><?php if($pending == '0') echo "Yes"; elseif($pending == '1') echo "No"; ?></td>
+                                    <?php if ($access_level >= 2 && $pending == "0"): ?>
+                                        <td>
+                                            <form method="POST" style="display:inline;">
+                                                <input type="hidden" name="event_id" value="<?php echo htmlspecialchars($id); ?>">
+                                                <input type="hidden" name="user_id" value="<?php echo htmlspecialchars($signup['username']); ?>">
+                                            </form>
+                                            <button onclick="showResolutionConfirmation()" class="button">Resolve</button>
+                                        </td>
+                                    <?php endif; ?>
+                                </tr>
+                            <?php 
                             }
                         endforeach;
                         ?>
+
                     </tbody>
                 </table>
             </div>
         <?php else: ?>
-            <p>No users have signed up for this event yet.</p>
         <?php endif; ?>
 
         <a class="button cancel" href="index.php">Return to Dashboard</a>
