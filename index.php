@@ -25,6 +25,7 @@
 <html>
     <head>
         <?php require('universal.inc'); ?>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
         <title>Step VA Volunteer System | Dashboard</title>
     </head>
     <body>
@@ -81,11 +82,11 @@
                 <!-- ADMIN ONLY -->
                 <?php if ($_SESSION['access_level'] >= 2): ?>
                     <div class="dashboard-item" data-link="addEvent.php">
-                        <img src="images/new-event.svg">
+                        <i class="fa-solid fa-plus" font-size: 70px;></i>
                         <span>Create Event</span>
                     </div>
                     <div class="dashboard-item" data-link="viewAllEventSignUps.php">
-                        <img src="images/new-event.svg">
+                        <i class="fa-solid fa-users"></i>
                         <span><center>View Pending Sign-Ups</center></span>
                     </div>
                     <div class="dashboard-item" data-link="personSearch.php">
