@@ -45,6 +45,13 @@
                 'skills', 'professional_experience', 'disability_accomodation_needs'
             );
 
+            // Set optional fields if they exist
+            $how_you_heard_of_stepva = isset($args['how_you_heard_of_stepva']) ? $args['how_you_heard_of_stepva'] : '';
+            $preferred_feedback_method = isset($args['preferred_feedback_method']) ? $args['preferred_feedback_method'] : '';
+            $hobbies = isset($args['hobbies']) ? $args['hobbies'] : '';
+            $professional_experience = isset($args['professional_experience']) ? $args['professional_experience'] : '';
+            $disability_accomodation_needs = isset($args['disability_accomodation_needs']) ? $args['disability_accomodation_needs'] : '';
+
             $errors = false;
             if (!wereRequiredFieldsSubmitted($args, $required)) {
                 $errors = true;
