@@ -95,8 +95,8 @@
 
             $startTime = time24hto12h($startTime);
             //$date = date('l, F j, Y', timestamp: strtotime($date));
-            require_once('database/dbMessages.php');
-            send_system_message($userID, "Your sign-up has been approved.", "Thank you!");
+            //require_once('database/dbMessages.php');
+            //send_system_message($userID, "Your sign-up has been approved.", "Thank you!");
             //system_message_all_users_except($userID, "Your sign-up has been approved!", "Congratulations!");
             //header(header: "Location: eventApproved.php?id=$id&createSuccess");
             //header(header: "Location: eventApproved.php?id=$id&createSuccess");
