@@ -237,6 +237,60 @@
         </fieldset>
 
         <fieldset class="section-box">
+            <legend>Volunteer Training</legend>
+
+            <p>Please provide details about your training status.</p>
+
+            <label for="training_complete"><em>* </em>Training Completed</label>
+            <div class="radio-group">
+                <?php $trainingComplete = $person->get_training_complete(); ?>
+                <input type="radio" id="training-complete-yes" name="training_complete" value="1" 
+                    <?php if ($trainingComplete == '1') echo 'checked'; ?> required>
+                <label for="training-complete-yes">Yes</label>
+                <input type="radio" id="training-complete-no" name="training_complete" value="0" 
+                    <?php if ($trainingComplete == '0') echo 'checked'; ?> required>
+                <label for="training-complete-no">No</label>
+            </div>
+
+            <div id="training-date-container" style="display: none;">
+                <label for="training_date">Training Date</label>
+                <input type="date" id="training_date" name="training_date" 
+                    value="<?php echo hsc($person->get_training_date()); ?>" 
+                    max="<?php echo date('Y-m-d'); ?>" 
+                    placeholder="Enter training date">
+            </div>
+        </fieldset>
+
+        <script>
+            // Function to toggle the visibility and required attribute of the training_date input
+            function toggleTrainingDateVisibility() {
+                const trainingCompleteYes = document.getElementById('training-complete-yes');
+                const trainingDateContainer = document.getElementById('training-date-container');
+                const trainingDateInput = document.getElementById('training_date');
+
+                if (trainingCompleteYes.checked) {
+                    // Show the training date field and make it required
+                    trainingDateContainer.style.display = 'block';
+                    trainingDateInput.required = true;
+                } else {
+                    // Hide the training date field and remove its required status
+                    trainingDateContainer.style.display = 'none';
+                    trainingDateInput.required = false;
+                }
+            }
+
+            // Add event listeners to the radio buttons
+            document.getElementById('training-complete-yes').addEventListener('change', toggleTrainingDateVisibility);
+            document.getElementById('training-complete-no').addEventListener('change', toggleTrainingDateVisibility);
+
+            // Initial check on page load
+            document.addEventListener('DOMContentLoaded', toggleTrainingDateVisibility);
+        </script>
+
+
+
+
+        <fieldset class="section-box">
             <legend>Optional Information</legend>
 
             <label>How did you hear about StepVA?</label>

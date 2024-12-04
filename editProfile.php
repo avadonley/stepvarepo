@@ -148,7 +148,12 @@
         $hobbies = $args['hobbies'];
         $professional_experience = $args['professional_experience'];
         $disability_accomodation_needs = $args['disability_accomodation_needs'];
-
+        $training_complete = isset($args['training_complete']) ? $args['training_complete'] : 0;
+        $training_date = validateDate($args['training_date']);
+        if (!$training_date) {
+            $errors = true;
+            // echo 'bad dob';
+        }
         if ($errors) {
             $updateSuccess = false;
         }
@@ -160,7 +165,7 @@
             $emergency_contact_phone_type, $emergency_contact_relation, $type,
             $school_affiliation, $tshirt_size, $how_you_heard_of_stepva,
             $preferred_feedback_method, $hobbies, $professional_experience,
-            $disability_accomodation_needs
+            $disability_accomodation_needs, $training_complete, $training_date
         );
         if ($result) {
             if ($editingSelf) {

@@ -39,6 +39,18 @@
                 'school_affiliation', 'username', 'password',
                 'volunteer_or_participant', 'photo_release', 'photo_release_notes'
             );
+            
+            // Capture the volunteer_or_participant value from the form
+            $volunteer_or_participant = isset($_POST['volunteer_or_participant']) ? $_POST['volunteer_or_participant'] : null;  
+
+            
+            if ($volunteer_or_participant == 'v') {
+                // Check for the training_complete and training_date fields
+                if (empty($_POST['training_complete']) || empty($_POST['training_date'])) {
+                    $errors[] = "Training complete and training date are required for volunteers.";
+                }
+            }
+            
 
             $optional = array(
                 'how_you_heard_of_stepva', 'preferred_feedback_method', 'hobbies',
@@ -134,10 +146,15 @@
             $password = password_hash($args['password'], PASSWORD_BCRYPT);
 
             $how_you_heard_of_stepva = $args['how_you_heard_of_stepva'];
+            // Safely access preferred_feedback_method
             $preferred_feedback_method = $args['preferred_feedback_method'];
+
             $hobbies = $args['hobbies'];
             $professional_experience = $args['professional_experience'];
             $disability_accomodation_needs = $args['disability_accomodation_needs'];
+
+            $training_complete = isset($args['training_complete']) ? (int)$args['training_complete'] : 0;
+            $training_date = isset($args['training_date']) ? $args['training_date'] : null;
 
             if ($errors) {
                 echo '<p>Your form submission contained unexpected input.</p>';
@@ -145,6 +162,7 @@
             }
 
             $status = "Active";
+            
             
             $newperson = new Person(
                 $id, // (id = username)
@@ -176,7 +194,9 @@
                 $preferred_feedback_method,
                 $hobbies,
                 $professional_experience,
-                $disability_accomodation_needs
+                $disability_accomodation_needs,
+                $training_complete,
+                $training_date
             );
 
             $result = add_person($newperson);
