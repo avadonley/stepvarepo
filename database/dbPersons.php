@@ -258,6 +258,14 @@ function fetch_volunteering_hours($personID, $eventID) {
     return -1; // no check-ins found
 }
 
+
+/* */
+function delete_check_in($userID, $eventID, $start_time, $end_time) {
+    $con=connect();
+    $query = "DELETE FROM dbpersonhours WHERE personID = '" .$userID. "' AND eventID = '" .$eventID. "' AND start_Time = '" .$start_time. "' AND end_time = '" .$end_time. "'";
+    $result = mysqli_query($con, $query);
+}
+
 /*@@@ end Thomas */
 
 /*
