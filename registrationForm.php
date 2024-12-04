@@ -185,6 +185,76 @@
 
         </fieldset>
 
+        <fieldset class="section-box" id="training-info-section" style="display: none;">
+            <legend>Training Information</legend>
+            <p>If you are a volunteer, please indicate your training status.</p>
+
+            <div id="training-info">
+                <label><em>* </em>Training Complete?</label>
+                <div class="radio-group">
+                    <input type="radio" id="training-complete-yes" name="training_complete" value="1">
+                    <label for="training-complete-yes">Yes</label>
+                    <input type="radio" id="training-complete-no" name="training_complete" value="0">
+                    <label for="training-complete-no">No</label>
+                </div>
+
+                <label for="training_date" id="training-date-label" style="display: none;">Training Date</label>
+                <input type="date" id="training_date" name="training_date" placeholder="Enter training date" style="display: none;" max="<?php echo date('Y-m-d'); ?>">
+            </div>
+        </fieldset>
+
+        <script>
+            // Function to toggle the visibility of the training section based on volunteer or participant selection
+            function toggleTrainingSection() {
+                const volunteerOrParticipant = document.querySelector('input[name="volunteer_or_participant"]:checked').value;
+                const trainingInfoSection = document.getElementById('training-info-section');  // Entire training section
+                const trainingInfo = document.getElementById('training-info'); // Inside content (questions)
+
+                // Show the entire training section only if the user is a volunteer
+                if (volunteerOrParticipant === 'v') {
+                    trainingInfoSection.style.display = 'block';
+                } else {
+                    trainingInfoSection.style.display = 'none';
+                }
+
+                // Also hide the training date field initially if the section is visible
+                toggleTrainingDateField();
+            }
+
+            // Function to toggle the visibility of the training date field based on training complete selection
+            function toggleTrainingDateField() {
+                const trainingCompleteYes = document.getElementById('training-complete-yes');
+                const trainingCompleteNo = document.getElementById('training-complete-no');
+                const trainingDateField = document.getElementById('training_date');
+                const trainingDateLabel = document.getElementById('training-date-label');
+
+                // Show the training date field and its label if "Yes" is selected for training complete
+                if (trainingCompleteYes.checked) {
+                    trainingDateField.style.display = 'inline';
+                    trainingDateLabel.style.display = 'inline';
+                } else {
+                    trainingDateField.style.display = 'none';
+                    trainingDateLabel.style.display = 'none';
+                }
+            }
+
+            // Event listeners for changes in volunteer/participant selection and training complete status
+            document.querySelectorAll('input[name="volunteer_or_participant"]').forEach(radio => {
+                radio.addEventListener('change', toggleTrainingSection);
+            });
+            
+            document.getElementById('training-complete-yes').addEventListener('change', toggleTrainingDateField);
+            document.getElementById('training-complete-no').addEventListener('change', toggleTrainingDateField);
+
+            // Initial check on page load
+            document.addEventListener('DOMContentLoaded', () => {
+                toggleTrainingSection(); // Ensure the training section is correctly displayed on page load
+                toggleTrainingDateField(); // Ensure the training date field is correctly displayed based on the selection
+            });
+        </script>
+
+
+
         <fieldset class="section-box">
             <legend>Login Credentials</legend>
             

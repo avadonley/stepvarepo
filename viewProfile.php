@@ -169,6 +169,35 @@
             </fieldset>
 
             <fieldset class="section-box">
+                <legend>Volunteer Training</legend>
+
+                <p>Details about the volunteer's training status.</p>
+
+                <div class="field-pair">
+                    <label>Training Completed</label>
+                    <p>
+                        <?php 
+                            $trainingComplete = $user->get_training_complete();
+                            echo ($trainingComplete == '1') ? 'Yes' : 'No'; 
+                        ?>
+                    </p>
+                </div>
+
+                <?php if ($trainingComplete == '1'): ?>
+                    <div class="field-pair" id="training-date-container">
+                        <label>Training Date</label>
+                        <p>
+                            <?php 
+                                $trainingDate = $user->get_training_date();
+                                echo $trainingDate ? date('d/m/Y', strtotime($trainingDate)) : 'Not Provided';
+                            ?>
+                        </p>
+                    </div>
+                <?php endif; ?>
+            </fieldset>
+
+
+            <fieldset class="section-box">
                 <legend>Volunteer Information</legend>
 
                 <div class="field-pair">

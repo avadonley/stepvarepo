@@ -75,7 +75,9 @@ function add_person($person) {
             $person->get_archived() . '","' .
             $person->get_emergency_contact_last_name() . '","' .
             $person->get_photo_release() . '","' .
-            $person->get_photo_release_notes() . '");'
+            $person->get_photo_release_notes() . '");' .
+            $person->get_training_complete() . '","' .
+            $person->get_training_date() . '");'
         );
         mysqli_close($con);
         return true;
@@ -399,7 +401,9 @@ function make_a_person($result_row) {
         $result_row['preferred_feedback_method'],
         $result_row['hobbies'],
         $result_row['professional_experience'],
-        $result_row['disability_accomodation_needs']
+        $result_row['disability_accomodation_needs'],
+        $result_row['training_complete'],
+        $result_row['training_date']
     );
 
     return $thePerson;
@@ -616,8 +620,10 @@ function get_logged_hours($from, $to, $name_from, $name_to, $venue) {
         $emergency_contact_phone_type, $emergency_contact_relation, $type,
         $school_affiliation, $tshirt_size, $how_you_heard_of_stepva,
         $preferred_feedback_method, $hobbies, $professional_experience,
-        $disability_accomodation_needs
+        $disability_accomodation_needs, $training_complete, $training_date
     ) {
+
+    
         $query = "update dbpersons set 
             first_name='$first_name', last_name='$last_name', birthday='$birthday',
             street_address='$street_address', city='$city', state='$state',
@@ -630,7 +636,9 @@ function get_logged_hours($from, $to, $name_from, $name_to, $venue) {
             school_affiliation='$school_affiliation', tshirt_size='$tshirt_size',
             how_you_heard_of_stepva='$how_you_heard_of_stepva', preferred_feedback_method='$preferred_feedback_method',
             hobbies='$hobbies', professional_experience='$professional_experience',
-            disability_accomodation_needs='$disability_accomodation_needs'
+            disability_accomodation_needs='$disability_accomodation_needs',
+            training_complete='$training_complete',
+            training_date='$training_date'
             where id='$id'";
         $connection = connect();
         $result = mysqli_query($connection, $query);
