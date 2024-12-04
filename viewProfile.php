@@ -171,7 +171,7 @@
             <fieldset class="section-box">
                 <legend>Volunteer Training</legend>
 
-                <p>Details about the volunteer's training status.</p>
+                <p>Details about volunteer's training status.</p>
 
                 <div class="field-pair">
                     <label>Training Completed</label>
@@ -196,43 +196,85 @@
                 <?php endif; ?>
             </fieldset>
 
-
             <fieldset class="section-box">
                 <legend>Volunteer Information</legend>
-
+                
+                <!--
+                Volunteer or participant
                 <div class="field-pair">
                     <label>Role</label>
                     <p><?php echo ucfirst($user->get_type()) ?></p>
                 </div>
-                
+                -->
+
                 <div class="field-pair">
                     <label>School Affiliation</label>
                     <p><?php echo $user->get_school_affiliation() ?></p>
                 </div>
 
                 <div class="field-pair">
-                    <label>Tshirt Size</label>
-                    <p><?php echo ucfirst($user->get_tshirt_size()) ?></p>
+                    <label>T-Shirt Size</label>
+                    <p><?php echo ucfirst($user->get_tshirt_size() ?: "Not specified") ?></p>
                 </div>
 
                 <div class="field-pair">
-                    <label>Accomodations</label>
-                    <p><?php echo ucfirst($user->get_disability_accomodation_needs()) ?></p>
+                    <label>Accommodations</label>
+                    <p><?php echo ucfirst($user->get_disability_accomodation_needs() ?: "Not specified") ?></p>
                 </div>
                 
                 <div class="field-pair">
                     <label>Professional Experience</label>
-                    <p><?php echo ucfirst($user->get_professional_experience()) ?></p>
+                    <p><?php echo ucfirst($user->get_professional_experience() ?: "Not specified") ?></p>
                 </div>
 
                 <div class="field-pair">
                     <label>Hobbies</label>
-                    <p><?php echo ucfirst($user->get_hobbies()) ?></p>
+                    <p><?php echo ucfirst($user->get_hobbies() ?: "Not specified") ?></p>
                 </div>
 
                 <div class="field-pair">
-                    <label>How You Heard of StepVa</label>
-                    <p><?php echo ucfirst($user->get_how_you_heard_of_stepva()) ?></p>
+                    <label>How You Heard of StepVA</label>
+                    <p><?php echo ucfirst($user->get_how_you_heard_of_stepva() ?: "Not specified") ?></p>
+                </div>
+
+                <!-- Adding Photo Release Information -->
+                <div class="field-pair">
+                    <label>Photo Release Restrictions</label>
+                    <p><?php echo ucfirst($user->get_photo_release()) ?></p>
+                </div>
+
+                <div class="field-pair">
+                    <label>Photo Release Notes</label>
+                    <p><?php echo ucfirst($user->get_photo_release_notes() ?: "Not specified") ?></p>
+                </div>
+            </fieldset>
+
+            <fieldset class="section-box">
+                <legend>Emergency Contact Information</legend>
+
+                <div class="field-pair">
+                    <label>Emergency Contact First Name</label>
+                    <p><?php echo ucfirst($user->get_emergency_contact_first_name()) ?></p>
+                </div>
+
+                <div class="field-pair">
+                    <label>Emergency Contact Last Name</label>
+                    <p><?php echo ucfirst($user->get_emergency_contact_last_name()) ?></p>
+                </div>
+
+                <div class="field-pair">
+                    <label>Emergency Contact Phone</label>
+                    <p><?php echo $user->get_emergency_contact_phone() ?></p>
+                </div>
+
+                <div class="field-pair">
+                    <label>Emergency Contact Phone Type</label>
+                    <p><?php echo ucfirst($user->get_emergency_contact_phone_type()) ?></p>
+                </div>
+
+                <div class="field-pair">
+                    <label>Emergency Contact Relation</label>
+                    <p><?php echo ucfirst($user->get_emergency_contact_relation()) ?></p>
                 </div>
             </fieldset>
 

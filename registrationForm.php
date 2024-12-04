@@ -132,12 +132,19 @@
 
             <p>Here are a few other pieces on information we need from you.</p>
 
+            <!--
+            This is functional code for a user to select if they are a 
+            volunteer or participant
             <label><em>* </em>Are you a volunteer or a participant?</label>
             <div class="radio-group">
                 <input type="radio" id="v" name="volunteer_or_participant" value="v" required><label for="volunteer_or_participant">Volunteer</label>
                 <input type="radio" id="p" name="volunteer_or_participant" value="p" required><label for="volunteer_or_participant">Participant</label>
             </div>
+            -->
+            <!-- Default value for volunteer_or_participant -->
+            <input type="hidden" name="volunteer_or_participant" value="v">
 
+            
             <label><em>* </em>T-Shirt Size</label>
             <div class="radio-group">
                 <input type="radio" id="xs" name="tshirt_size" value="xs" required><label for="tshirt_size">XS</label>
@@ -188,7 +195,7 @@
 
         <fieldset class="section-box" id="training-info-section" style="display: none;">
             <legend>Training Information</legend>
-            <p>If you are a volunteer, please indicate your training status.</p>
+            <!--<p>If you are a volunteer, please indicate your training status.</p>-->
 
             <div id="training-info">
                 <label><em>* </em>Training Complete?</label>
@@ -207,9 +214,9 @@
         <script>
             // Function to toggle the visibility of the training section based on volunteer or participant selection
             function toggleTrainingSection() {
-                const volunteerOrParticipant = document.querySelector('input[name="volunteer_or_participant"]:checked').value;
+                // Get the value of the hidden input field
+                const volunteerOrParticipant = document.querySelector('input[name="volunteer_or_participant"]').value;
                 const trainingInfoSection = document.getElementById('training-info-section');  // Entire training section
-                const trainingInfo = document.getElementById('training-info'); // Inside content (questions)
 
                 // Show the entire training section only if the user is a volunteer
                 if (volunteerOrParticipant === 'v') {
