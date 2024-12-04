@@ -75,7 +75,7 @@ function add_person($person) {
             $person->get_archived() . '","' .
             $person->get_emergency_contact_last_name() . '","' .
             $person->get_photo_release() . '","' .
-            $person->get_photo_release_notes() . '");' .
+            $person->get_photo_release_notes() . '","' .
             $person->get_training_complete() . '","' .
             $person->get_training_date() . '");'
         );
