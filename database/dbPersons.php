@@ -905,7 +905,7 @@ function find_user_names($name) {
      */
     function get_attended_event_ids($personID) {
         $con=connect();
-        $query = "SELECT DISTINCT eventID FROM dbpersonhours WHERE personID = '" .$personID. "'";            
+        $query = "SELECT DISTINCT eventID FROM dbpersonhours WHERE personID = '" .$personID. "' ORDER BY eventID DESC";            
         $result = mysqli_query($con, $query);
 
 
