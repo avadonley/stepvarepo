@@ -109,7 +109,7 @@ function remove_person($id) {
  * if not in table, return false
  */
 
-function retrieve_person($id): bool|Person { // (username! not id)
+function retrieve_person($id) { // (username! not id)
     $con=connect();
     $query = "SELECT * FROM dbpersons WHERE id = '" . $id . "'";
     $result = mysqli_query($con,$query);
@@ -258,15 +258,6 @@ function fetch_volunteering_hours($personID, $eventID) {
         return $total_time;
     }
     return -1; // no check-ins found
-}
-
-
-/* Delete a single check-in/check-out pair as defined by the given parameters */
-function delete_check_in($userID, $eventID, $start_time, $end_time) {
-    $con=connect();
-    $query = "DELETE FROM dbpersonhours WHERE personID = '" .$userID. "' AND eventID = '" .$eventID. "' AND start_time = '" .$start_time. "' AND end_time = '" .$end_time. "' LIMIT 1";
-    $result = mysqli_query($con, $query);
-    mysqli_close($con);
 }
 
 /*@@@ end Thomas */
@@ -631,8 +622,6 @@ function get_logged_hours($from, $to, $name_from, $name_to, $venue) {
         $preferred_feedback_method, $hobbies, $professional_experience,
         $disability_accomodation_needs, $training_complete, $training_date
     ) {
-
-    
         $query = "update dbpersons set 
             first_name='$first_name', last_name='$last_name', birthday='$birthday',
             street_address='$street_address', city='$city', state='$state',
@@ -899,50 +888,6 @@ function find_user_names($name) {
         }
     }
     
-    /* @@@ Thomas
-     * 
-     * This funcion returns a list of eventIDs that a given user has attended.
-     */
-    function get_attended_event_ids($personID) {
-        $con=connect();
-        $query = "SELECT DISTINCT eventID FROM dbpersonhours WHERE personID = '" .$personID. "'";            
-        $result = mysqli_query($con, $query);
-
-
-        if ($result) {
-            $rows = [];
-            while ($row = mysqli_fetch_assoc($result)) {
-                $rows[] = $row['eventID']; // Collect only the event IDs
-            }
-            mysqli_free_result($result);
-            mysqli_close($con);
-            return $rows;  // Return an array of event IDs
-        } else {
-            mysqli_close($con);
-            return []; // Return an empty array if no results are found
-        }
-    }
-
-    function get_check_in_outs($personID, $event) {
-        $con=connect();
-        $query = "SELECT start_time, end_time FROM dbpersonhours WHERE personID = '" .$personID. "' and eventID = '" .$event. "'";            
-        $result = mysqli_query($con, $query);
-
-
-        if ($result) {
-            $row = [];
-            while ($row = mysqli_fetch_assoc($result)) {
-                $rows[] = $row; // Collect only the event IDs
-            }
-            mysqli_free_result($result);
-            mysqli_close($con);
-            return $rows;  // Return an array of event IDs
-        } else {
-            mysqli_close($con);
-            return []; // Return an empty array if no results are found
-        }
-    }
-    /*@@@ end Thomas */
     
     function get_events_attended_by_2($personID) {
         // Prepare the SQL query to select rows where personID matches

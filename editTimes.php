@@ -235,7 +235,7 @@ $formattedEndDateTime = $formattedEndDateTime . ' ' . $endTime;
         // Prepare the SQL query
         $query = "UPDATE dbpersonhours 
                   SET start_time = '" . $formattedStartDateTime . "', end_time = '" . $formattedEndDateTime .  "'" .
-                  " WHERE personID = '" . $user . "' AND eventID = " . $eventId . " AND start_time = '" . $displayTimeStartSQL . "' AND end_time = '" . $displayTimeEndSQL . "'";
+                  " WHERE personID = '" . $user . "' AND eventID = " . $eventId . " AND start_time = '" . $displayTimeStartSQL . "' AND end_time = '" . $displayTimeEndSQL . "' LIMIT 1";
         // Debugging: Echo the query to see what is being executed
 //echo "SQL Query: " . $query . "<br>";
                   $stmt = mysqli_prepare($connection, $query);
@@ -253,7 +253,12 @@ $formattedEndDateTime = $formattedEndDateTime . ' ' . $endTime;
 if (mysqli_query($connection, $query)) {
     // On successful update, redirect to the desired URL with query parameters
     // CHANGE IF LOCALHOST OR NOT
-    header("Location: editTimes.php?eventId=$eventId&user=" . urlencode($user) . "&start_time=" . urlencode($formattedStartDateTime) . "&end_time=" . urlencode($formattedEndDateTime));
+    if ($accessLevel == 1) {
+        header('Location: eventList.php');
+    } else {
+        header('Location: eventList.php?username=' . $user);
+    }
+    //header("Location: editTimes.php?eventId=$eventId&user=" . urlencode($user) . "&start_time=" . urlencode($formattedStartDateTime) . "&end_time=" . urlencode($formattedEndDateTime));
     //header("Location: http://localhost/stepvarepo/editTimes.php?eventId=$eventId&user=" . urlencode($user) . "&start_time=" . urlencode($formattedStartDateTime) . "&end_time=" . urlencode($formattedEndDateTime));
     exit(); // Make sure to call exit after the header to stop further code execution
 } else {
