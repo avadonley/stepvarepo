@@ -121,7 +121,16 @@ $event_ids = get_attended_event_ids($username);
                                         <td><button type="submit" class="button edit-button" style="height:48px;width:150px">Edit</button></td>
                                     </form>
 
-                                    <td><button class="button danger" style="height:48px;width:150px">Delete</button></td>
+                                    <td><button class="button danger" onclick="confirmAction('<?php echo $shift['start_time']?>', '<?php echo $shift['end_time']?>')">Delete</button></td>
+
+                                    <script>
+                                    function confirmAction(start_time, end_time) {
+                                        if (confirm("Are you sure you want to delete this check-in?")) {
+                                            // If the user clicks "OK", navigate to the link
+                                            window.location.href = 'deleteTimes.php?userID=<?php echo htmlspecialchars($username); ?>&eventID=<?php echo htmlspecialchars($event['id']); ?>&start_time=' + start_time + '&end_time=' + end_time;
+                                        }
+                                    }
+                                    </script>
                                 </tr>
                             <?php endforeach ?>
                         </table>
