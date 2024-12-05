@@ -53,6 +53,7 @@
                                 <th style="width:1px">Restricted</th>
                                 <th>Title</th>
                                 <th style="width:1px">Date</th>
+                                <th style="width:1px">Capacity</th>
                                 <th style="width:1px"></th>
                             </tr>
                         </thead>
@@ -77,12 +78,18 @@
                                     } else {
                                         $restricted_signup = "Yes";
                                     }
+                                    
+                                    // Fetch signups for the event
+                                    $signups = fetch_event_signups($eventID);
+                                    $numSignups = count($signups); // Number of people signed up
+                                    
                                     //if($accessLevel < 3) {
                                         echo "
                                         <tr data-event-id='$eventID'>
                                             <td>$restricted_signup</td>
                                             <td><a href='event.php?id=$eventID'>$title</a></td>
                                             <td>$date</td>
+                                            <td>$numSignups / $capacity</td>
                                             <td><a class='button sign-up' href='eventSignUp.php?event_name=" . urlencode($title) . '&restricted=' . urlencode($restricted_signup) . "'>Sign Up</a></td>
                                         </tr>";
                                     //} else {
