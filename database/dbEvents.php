@@ -248,6 +248,15 @@ function remove_user_from_event($event_id, $user_id) {
     return $result;
 }
 
+function remove_user_from_pending_event($event_id, $user_id) {    
+    $query = "DELETE FROM dbpendingsignups WHERE eventname = '$event_id' AND username = '$user_id'";
+    $connection = connect();
+    $result = mysqli_query($connection, $query);
+    $result = boolval($result);
+    mysqli_close($connection);
+    return $result;
+}
+
 /* @@@ Thomas's work! */
 /*
  * Returns true if the given event is archived.
@@ -461,22 +470,6 @@ function fetch_event_by_id($id) {
     if ($event) {
         require_once('include/output.php');
         $event = hsc($event);
-        mysqli_close($connection);
-        return $event;
-    }
-    mysqli_close($connection);
-    return null;
-}
-
-function fetch_event_name_by_id($id) {
-    $connection = connect();
-    $id = mysqli_real_escape_string($connection, $id);
-    $query = "select * from dbevents where id = '$id'";
-    $result = mysqli_query($connection, $query);
-    $event = mysqli_fetch_assoc($result);
-    if ($event) {
-        require_once('include/output.php');
-        $event = $event["name"];
         mysqli_close($connection);
         return $event;
     }

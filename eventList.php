@@ -118,10 +118,10 @@ $event_ids = get_attended_event_ids($username);
                                         
                                         <!-- Submit button for editing -->
                                     
-                                        <td><button type="submit" class="button edit-button">Edit</button></td>
+                                        <td><button type="submit" class="button edit-button" style="height:48px;width:150px">Edit</button></td>
                                     </form>
 
-                                    <td><button class="button danger">Delete</button></td>
+                                    <td><button class="button danger" style="height:48px;width:150px">Delete</button></td>
                                 </tr>
                             <?php endforeach ?>
                         </table>

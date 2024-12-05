@@ -106,23 +106,6 @@
             <label for="birthday"><em>* </em>Date of Birth</label>
             <input type="date" id="birthday" name="birthday" value="<?php echo hsc($person->get_birthday()); ?>" required placeholder="Choose your birthday" max="<?php echo date('Y-m-d'); ?>">
 
-            <!--<label for="gender"><em>* </em>Gender</label>
-            <select id="gender" name="gender" required>
-                <?php/*
-                    $genders = ['Male', 'Female', 'Other'];
-                    $currentGender = $person->get_gender();
-                    foreach ($genders as $gender):
-                */?>
-                    <?php// if ($currentGender == $gender): ?>
-                        <option value="<?php// echo $gender ?>" selected><?php// echo $gender ?></option>
-                    <?php// else: ?>
-                        <option value="<?php// echo $gender ?>"><?php// echo $gender ?></option>
-                    <?php// endif ?>
-                <?php// endforeach ?>-->
-                <!-- <option value="Female">Female</option> -->
-                <!-- <option value="Other">Other</option> -->
-            </select>
-
 
             <label for="street_address"><em>* </em>Street Address</label>
             <input type="text" id="street_address" name="street_address" value="<?php echo hsc($person->get_street_address()); ?>" required placeholder="Enter your street address">
@@ -206,11 +189,13 @@
 
             <label>Account Type</label>
             
+            <!--
             <?php $account_type = $person->get_type()?>
             <div class="radio-group">
                 <input type="radio" id="volunteer" name="type" value="volunteer" <?php if ($account_type == 'volunteer') echo 'checked'; ?> required><label for="type">Volunteer</label>
                 <input type="radio" id="participant" name="type" value="participant" <?php if ($account_type == 'participant') echo 'checked'; ?> required><label for="type">Participant</label>
             </div>
+            -->
 
             <label for="school_affiliation"><em>* </em>School Affiliation</label>
             <input type="text" id="school_affiliation" name="school_affiliation" value="<?php echo hsc($person->get_school_affiliation()); ?>" required placeholder="Enter your affiliated school.">
@@ -298,9 +283,14 @@
 
             <label>What is your preferred contact method?</label>
             <div class="radio-group">
-            <?php $preferred_contact_method = $person->get_preferred_feedback_method()?>
-                <input type="radio" id="text" name="preferred_feedback_method" value="text" <?php if ($preferred_contact_method == 'text') echo 'checked'; ?> ><label for="preferred_feedback_method">Text</label>
-                <input type="radio" id="email" name="preferred_feedback_method" value="email"> <?php if ($preferred_contact_method == 'email') echo 'checked'; ?> <label for="preferred_feedback_method">Email</label>
+                <input type="radio" id="text" name="preferred_feedback_method" value="text">
+                <label for="text">Text</label>
+                
+                <input type="radio" id="email" name="preferred_feedback_method" value="email">
+                <label for="email">Email</label>
+                
+                <input type="radio" id="no-preference" name="preferred_feedback_method" value="No preference" checked>
+                <label for="no-preference">No preference</label>
             </div>
 
             <label>What are your hobbies? Are there any specific skills/interests you have that you believe could be useful for volunteering at StepVA?</label>

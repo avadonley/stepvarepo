@@ -24,11 +24,26 @@
     if ($accessLevel == 1) {
         $user = $_SESSION['_id'];
     }
+    $eventId = isset($_GET['eventId']) ? htmlspecialchars($_GET['eventId']) : null;
+    $oldStartTime = isset($_GET['start_time']) ? htmlspecialchars($_GET['start_time']) : null;
+    $oldEndTime = isset($_GET['end_time']) ? htmlspecialchars($_GET['end_time']) : null;
+    //$UNIX = 0;
+
+    // Ensure fallback values or error handling
+    if (!$eventId || !$oldStartTime || !$oldEndTime) {
+        echo "Missing required data.";
+        die(); // Stop further execution
+    }
     // if (!isset($_GET['date'])) {
     //     header('Location: calendar.php');
     //     die();
     // }
-    require_once('include/input-validation.php');
+    // debugged variables
+//     echo "<pre>";
+// print_r($_GET);
+// print_r($_POST);
+// echo "</pre>";
+//     require_once('include/input-validation.php');
   //  $get = sanitize($_GET);
     //$eventIDGiven = $get['id'];
     
@@ -125,8 +140,8 @@ if (isset($_GET['eventId'], $_GET['user'], $_GET['start_time'], $_GET['end_time'
     else {
     $user = htmlspecialchars($_GET['user']);
     }
-    $oldStartTime = htmlspecialchars($_GET['start_time']);
-    $oldEndTime = htmlspecialchars($_GET['end_time']);
+    $oldStartTime = htmlspecialchars($_GET['start_time']); // good
+    $oldEndTime = htmlspecialchars($_GET['end_time']); // good
     //$eventData = $_SESSION['edit_event'];
 
     //$eventID = $eventData['id'];
@@ -138,75 +153,32 @@ if (isset($_GET['eventId'], $_GET['user'], $_GET['start_time'], $_GET['end_time'
     $timeStampEnd = strtotime($oldEndTime);
 
     $displayTimeStart = $timeStampStart !== false 
-        ? date("l, F j, Y, H:i:s", $timeStampStart)  
+        ? date("l, F j, Y, g:i:s A", $timeStampStart)  
         : "Invalid time format.";
 
     $displayTimeEnd = $timeStampEnd !== false 
-        ? date("l, F j, Y, H:i:s", $timeStampEnd) 
+        ? date("l, F j, Y, g:i:s A", $timeStampEnd) 
         : "Invalid time format.";
+    
+    $displayTimeStartSQL = $oldStartTime !== false ? date("Y-m-d H:i:s", $timeStampStart) : null;
+    $displayTimeEndSQL = $oldEndTime !== false ? date("Y-m-d H:i:s", $timeStampEnd) : null;
+
+  //  echo $displayTimeEndSQL;
+   // echo $displayTimeStartSQL;
+    
+    // Validate conversion
+    if (!$displayTimeStartSQL || !$displayTimeEndSQL) {
+        echo "Invalid date or time format.";
+       // die();
+    }
 } else {
     $displayTimeStart = "Invalid or missing data.";
     $displayTimeEnd = "Invalid or missing data.";
 }
 ?>
 <?php
-// Check if the form has been submitted
-// if ($_SERVER["REQUEST_METHOD"] === "POST") {
-//     // Get the submitted form data and sanitize inputs
-//     $startTime = trim($_POST['start-time']);
-//     $endTime = trim($_POST['end-time']);
 
-//     // Check if both start time and end time are not empty
-//     if (!empty($startTime) && !empty($endTime)) {
-//         // Convert the times to a standard format if needed
-//     // Convert the times to a standard format with date
-//     $startDateTime = date("Y-m-d H:i:s", strtotime($eventDate . ' ' . $startTime));
-//     $endDateTime = date("Y-m-d H:i:s", strtotime($eventDate . ' ' . $endTime));
 
-//     $formattedStartDateTime = $startDateTime->format('Y-m-d H:i:s');
-//     $formattedEndDateTime = $endDateTime->format('Y-m-d H:i:s');
-
-//     echo $formattedStartDateTime;
-//     echo "<br>";
-//     echo $formattedEndDateTime;
-//     echo "<br>";
-
-//         // Connect to the database
-//         $connection = connect(); // Assumes you have a connect() function for database connection
-
-//         // Prepare the SQL query to update the hours
-//         $query = "UPDATE dbpersonhours SET start_time = ?, end_time = ? WHERE personID = ? AND eventID = ?";
-
-//         // Prepare statement to avoid SQL injection
-//         $stmt = mysqli_prepare($connection, $query);
-
-//         // Replace these with actual values for personID and eventID
-//         $eventID = $id; // e.g., from session or other source
-//         $personID = $user; // e.g., passed to this page or session
-//         //$oldStartTime = $old_start_time;
-
-//         // Bind parameters to the SQL query
-//         mysqli_stmt_bind_param($stmt, "ssss", $startDateTime, $endDateTime, $personID, $eventID);
-
-//         // Execute the query
-//         if (mysqli_stmt_execute($stmt)) {
-//             echo "Volunteer hours updated successfully.";
-//         } else {
-//             echo "Error updating hours: " . mysqli_error($connection);
-//         }
-
-//         // Close statement and connection
-//         mysqli_stmt_close($stmt);
-//         mysqli_close($connection);
-
-//     } else {
-//         echo "Please fill in both start and end times.";
-//     }
-// }
-// if ($_SERVER["REQUEST_METHOD"] === "POST") {
-//     echo "Raw Input: ";
-//     print_r($_POST);
-// }
 require_once('include/input-validation.php');
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $startTime = trim($_POST['start-time'] ?? '');
@@ -218,13 +190,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     //echo $user;
 
     if (!empty($startTime) && !empty($endTime)) {
-        $formattedStartDateTime = date("Y-m-d", strtotime($startTime));
+        $formattedStartDateTime = date("Y-m-d", strtotime($displayTimeStartSQL));
        // echo $formattedStartDateTime;
       //  echo $timeStampStart;
         //$ymdStartDate = strtotime($displayTimeStart->format('Y-m-d'));
        // $formattedStartDateTime->modify($ymdStartDate);
        // echo $formattedStartDateTime;
-        $formattedEndDateTime = date("Y-m-d", strtotime($endTime));
+        $formattedEndDateTime = date("Y-m-d", strtotime($displayTimeEndSQL));
 // Y-m-d needed before times too
 // use this to convert start time and end time
 $validated = validate12hTimeRangeAndConvertTo24h($_POST['start-time'], $_POST['end-time']);
@@ -234,19 +206,28 @@ if (!$validated) {
 }
 $startTime = $args['start-time'] = $validated[0];
 $endTime = $args['end-time'] = $validated[1];
+//echo "start:" . $startTime;
+//echo $endTime;
 //echo "START: ";
 // Combine date and time
-$formattedStartDateTime = $formattedStartDateTime . ' ' . $startTime . ':00';
+$formattedStartDateTime = $formattedStartDateTime . ' ' . $startTime;
 
 
 // Use the string in your query or other operations
 //echo "START: " . $formattedStartDateTime;
 // Combine date and time
-$formattedEndDateTime = $formattedEndDateTime . ' ' . $endTime . ':00';
+$formattedEndDateTime = $formattedEndDateTime . ' ' . $endTime;
+
+
+
 
 //echo "END: ";
 //echo $formattedEndDateTime; 
 //echo "<br>" . $user . "<br>" . $eventId;
+
+        //echo $displayTimeStartSQL;
+        //echo $displayTimeEndSQL;
+        //echo $oldStartTime;
 
         // Connect to the database
         $connection = connect();
@@ -254,7 +235,7 @@ $formattedEndDateTime = $formattedEndDateTime . ' ' . $endTime . ':00';
         // Prepare the SQL query
         $query = "UPDATE dbpersonhours 
                   SET start_time = '" . $formattedStartDateTime . "', end_time = '" . $formattedEndDateTime .  "'" .
-                  " WHERE personID = '" . $user . "' AND eventID = " . $eventId;
+                  " WHERE personID = '" . $user . "' AND eventID = " . $eventId . " AND start_time = '" . $displayTimeStartSQL . "' AND end_time = '" . $displayTimeEndSQL . "'";
         // Debugging: Echo the query to see what is being executed
 //echo "SQL Query: " . $query . "<br>";
                   $stmt = mysqli_prepare($connection, $query);
@@ -271,7 +252,9 @@ $formattedEndDateTime = $formattedEndDateTime . ' ' . $endTime . ':00';
         // Execute the query
 if (mysqli_query($connection, $query)) {
     // On successful update, redirect to the desired URL with query parameters
+    // CHANGE IF LOCALHOST OR NOT
     header("Location: editTimes.php?eventId=$eventId&user=" . urlencode($user) . "&start_time=" . urlencode($formattedStartDateTime) . "&end_time=" . urlencode($formattedEndDateTime));
+    //header("Location: http://localhost/stepvarepo/editTimes.php?eventId=$eventId&user=" . urlencode($user) . "&start_time=" . urlencode($formattedStartDateTime) . "&end_time=" . urlencode($formattedEndDateTime));
     exit(); // Make sure to call exit after the header to stop further code execution
 } else {
     echo "Error updating hours: " . mysqli_error($connection);
@@ -295,10 +278,18 @@ if (mysqli_query($connection, $query)) {
     <body>
         <?php require_once('header.php') ?>
         <h1>Edit Event</h1>
+        <!-- <?php
+        echo "<p>rain</p>";
+        echo "<p>EndFormatted:" . $formattedEndDateTime . "</p>";
+        echo "<p>" . $formattedStartDateTime . "</p>";
+        echo "<p>" . $oldStartTime . "</p>";
+        echo "<p>" . $oldEndTime . "</p>";
+        ?> -->
         <main class="date">
             <h2>Edit this time: 
             </h2>            
             <form id="new-event-form" method="post">
+            <!-- <p><?= $formattedEndDateTime ?></p>   -->
             <p><strong>Start Time: </strong><?= htmlspecialchars($displayTimeStart); ?></p>  
             <p><strong>End Time: </strong><?= htmlspecialchars($displayTimeEnd); ?></p> 
             <!--  <label for="name">* Event Name </label>

@@ -182,6 +182,35 @@
                     </tbody>
                 </table>
             </div>
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">            
+            
+            <?php
+            //archive = grey
+            //restricted = red
+            //signed up for = green
+            //blue = unrestricted
+            ?>
+            <center>
+            <p></p>
+            <i class="fa-solid fa-circle fa-xl" style="color: #c73d06;"></i>
+                 <span style="font-size: 25px;">
+                    Restricted
+                </span>
+            <i class="fa-solid fa-circle" style="color: #00aeef"> </i>
+                <span style="font-size: 25px;">
+                    Unrestricted
+                </span>
+            <i class="fa-solid fa-circle" style="color: #aaaaaa"> </i>
+                <span style="font-size: 25px;">
+                    Archived
+                </span>
+            <i class="fa-solid fa-circle" style="color: #1cc202"> </i>
+                <span style="font-size: 25px;">
+                    Signed-Up
+                </span>
+            </center>
+                            <p></p>
+        
             <div id="calendar-footer">
                 <a class="button cancel" href="index.php">Return to Dashboard</a>
             </div>

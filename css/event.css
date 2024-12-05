@@ -728,9 +728,3 @@ td {
     color: #ad0000; /* Change color on hover */
     text-decoration: none;
 }
-
-table.general td, table.general th {
-    padding: 10px;
-    text-align: left;
-    word-wrap: break-word;
-}

@@ -17,16 +17,6 @@
     }  
     include 'database/dbEvents.php';
     //include 'domain/Event.php';
-
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        $eventID = $_POST['event_id'] ?? null;
-        if ($eventID && remove_user_from_event($eventID, $userID)) {
-            echo "Successfully canceled your registration for the event.";
-        } else {
-            echo "Failed to cancel the registration.";
-        }
-    }
-    
 ?>
 <!DOCTYPE html>
 <html>
@@ -68,6 +58,9 @@
                         </thead>
                         <tbody class="standout">
                             <?php 
+                                #require_once('database/dbPersons.php');
+                                #require_once('include/output.php');
+                                #$id_to_name_hash = [];
                                 foreach ($upcomingEvents as $event) {
                                     $eventID = $event->getID();
                                     $title = $event->getName();
@@ -79,36 +72,31 @@
                                     $completed = $event->getCompleted();
                                     $event_type = $event->getEventType();
                                     $restricted_signup = $event->getRestrictedSignup();
-                                    $restricted_signup = $restricted_signup == 0 ? "No" : "Yes";
-
-                                    // Check if the user is signed up
-                                    $isSignedUp = check_if_signed_up($eventID, $userID);
-
-                                    echo "
-                                    <tr data-event-id='$eventID'>
-                                        <td>$restricted_signup</td>
-                                        <td><a href='event.php?id=$eventID'>$title</a></td>
-                                        <td>$date</td>
-                                        <td>";
-                                    
-                                    // Show appropriate button
-                                    if ($isSignedUp) {
-                                        echo "
-                                        <form method='POST' style='display:inline;'>
-                                            <input type='hidden' name='event_id' value='$eventID'>
-                                            <button type='submit' class='button danger' onclick='return confirm(\"Are you sure you want to cancel this event?\");'>Cancel</button>
-                                        </form>";
+                                    if ($restricted_signup == 0) {
+                                        $restricted_signup = "No";
                                     } else {
-                                        echo "<a class='button sign-up' href='eventSignUp.php?event_name=" . urlencode($title) . "&restricted=" . urlencode($restricted_signup) . "'>Sign Up</a>";
+                                        $restricted_signup = "Yes";
                                     }
-
-                                    echo "</td>
-                                    </tr>";
-                                }
+                                    //if($accessLevel < 3) {
+                                        echo "
+                                        <tr data-event-id='$eventID'>
+                                            <td>$restricted_signup</td>
+                                            <td><a href='event.php?id=$eventID'>$title</a></td>
+                                            <td>$date</td>
+                                            <td><a class='button sign-up' href='eventSignUp.php?event_name=" . urlencode($title) . '&restricted=' . urlencode($restricted_signup) . "'>Sign Up</a></td>
+                                        </tr>";
+                                    //} else {
+                                        /*echo "
+                                        <tr data-event-id='$eventID'>
+                                            <td>$restricted_signup</td>
+                                            <td><a href='Event.php?id=$eventID'>$title</a></td> <!-- Link updated here -->
+                                            <td>$date</td>
+                                            <td></td>
+                                        </tr>";
+                                    }
+                                */}
                             ?>
                         </tbody>
-
-
                     </table>
                 </div>
                 <?php else: ?>

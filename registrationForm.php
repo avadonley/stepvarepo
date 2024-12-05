@@ -1,4 +1,4 @@
-<h1>New Volunteer/Participant Registration</h1>
+<h1>New Volunteer Registration</h1>
 <main class="signup-form">
     <form class="signup-form" method="post">
         <h2>Registration Form</h2>

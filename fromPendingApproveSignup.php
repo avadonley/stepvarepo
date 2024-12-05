@@ -12,18 +12,15 @@
     $args = sanitize($_POST);
     $id = $args['id'];
     $user_id = $args['user_id'];
-    $position = $args['position'];
     $notes = $args['notes'];
+    $position = $args['position'];
 
     if (!$id) {
-        echo var_dump($args);
-       // header('Location: index.php');
-        //die();
+        //echo var_dump($args);
+        header('Location: index.php');
+        die();
     }
     if (approve_signup($id, $user_id, $position, $notes)) {
-        require_once('database/dbMessages.php');
-        $event_name = fetch_event_name_by_id($id);
-        send_system_message($user_id, "Your restricted event sign-up has been approved", "You are now signed up for $event_name. Congratulations!");
         header(header: 'Location: viewAllEventSignUps.php?pendingSignupSuccess');
         die();
     }

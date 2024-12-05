@@ -16,15 +16,14 @@
     $notes = $args['notes'];
 
     if (!$id) {
-        echo var_dump($args);
-       // header('Location: index.php');
-        //die();
+        header('Location: index.php');
+        die();
     }
     if (approve_signup($id, $user_id, $position, $notes)) {
         require_once('database/dbMessages.php');
         $event_name = fetch_event_name_by_id($id);
         send_system_message($user_id, "Your restricted event signup has been approved", "You are now signed up for $event_name. Congratulations!");
-        header(header: 'Location: viewEventSignUps.php?pendingSignupSuccess&id=' . $id);
+        header('Location: viewEventSignUps.php?pendingSignupSuccess&id=' . $id);
         die();
     }
     header('Location: index.php');

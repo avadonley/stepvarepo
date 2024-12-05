@@ -100,9 +100,15 @@ $access_level = $_SESSION['access_level'];
 
         <p>
             <?php if (count($signups) === 1): ?>
-                1 person has signed up for this event.
+                <p>1 person has signed up for this event.</p>
             <?php else: ?>
-                <?php echo htmlspecialchars(count($signups)); ?> people have signed up for this event.
+                <p><?php echo htmlspecialchars(count($signups)); ?> people have signed up for this event.</p>
+            <?php endif; ?>
+           
+            <?php if (count($pending_signups) === 1): ?>
+                <p>1 sign-up is pending for this event.</p>
+            <?php else: ?>
+                <p><?php echo htmlspecialchars(count($pending_signups)); ?> sign-ups are pending for this event.</p>
             <?php endif; ?>
         </p>
         
@@ -114,7 +120,10 @@ $access_level = $_SESSION['access_level'];
                             <th>First Name</th>
                             <th>Last Name</th>
                             <th>User ID</th>
+                            <!-- 
+                            Volunteer or Participant
                             <th>Position</th>
+                            -->
                             <th>Notes</th>
                             <th>Pending</th>
                             <?php if ($access_level >= 2): ?>
@@ -134,36 +143,43 @@ $access_level = $_SESSION['access_level'];
                                 <td><?php echo htmlspecialchars($user_info->get_first_name()); ?></td>
                                 <td><?php echo htmlspecialchars($user_info->get_last_name()); ?></td>
                                 <td><a href="viewProfile.php?id=<?php echo urlencode($signup['userID']); ?>"><?php echo htmlspecialchars($signup['userID']); ?></a></td>
+                                <!--
+                                Volunteer or Participant
                                 <td><?php echo htmlspecialchars($position_label); ?></td>
+                                -->
                                 <td>
                                 <?php
-                                // Check if there are notes, otherwise set to 'No notes.'
-                                $formatted_notes = isset($signup['notes']) && ($signup['notes'] !== '' && $signup['notes'] !== NULL) ? $signup['notes'] : 'No notes.';
+                                    $formatted_notes = isset($signup['notes']) && ($signup['notes'] !== '' && $signup['notes'] !== NULL) ? $signup['notes'] : 'No notes.';
 
-                                // Handle empty categories (before the pipe) by replacing them with N/A
-                                $formatted_notes = preg_replace('/Skills:\s*\|/', 'Skills: N/A', $formatted_notes);
-                                $formatted_notes = preg_replace('/Dietary restrictions:\s*\|/', 'Dietary restrictions: N/A', $formatted_notes);
-                                $formatted_notes = preg_replace('/Disabilities:\s*\|/', 'Disabilities: N/A', $formatted_notes);
-                                $formatted_notes = preg_replace('/Materials:\s*(\||$)/', 'Materials: N/A', $formatted_notes);
+                                    // Handle empty categories (before the pipe) by replacing them with N/A
+                                    $formatted_notes = preg_replace('/Skills:\s*\|/', 'Skills: N/A', $formatted_notes);
+                                    $formatted_notes = preg_replace('/Dietary restrictions:\s*\|/', 'Dietary restrictions: N/A', $formatted_notes);
+                                    $formatted_notes = preg_replace('/Disabilities:\s*\|/', 'Disabilities: N/A', $formatted_notes);
+                                    $formatted_notes = preg_replace('/Materials:\s*(\||$)/', 'Materials: N/A', $formatted_notes);
 
-                                // Ensure we remove any trailing ' | ' at the end of the string
-                                $formatted_notes = preg_replace('/\s*\|\s*$/', '', $formatted_notes);
+                                    // Ensure we remove any trailing ' | ' at the end of the string
+                                    $formatted_notes = preg_replace('/\s*\|\s*$/', '', $formatted_notes);
 
-                                // Replace the ' | ' between the categories with a line break
-                                $formatted_notes = preg_replace('/\s*\|\s*/', "<br>", htmlspecialchars($formatted_notes));
+                                    // Replace the ' | ' between the categories with a line break
+                                    $formatted_notes = preg_replace('/\s*\|\s*/', "<br>", htmlspecialchars($formatted_notes));
 
-                                // Add line breaks after "N/A" categories, but only after those that actually have content
-                                $formatted_notes = preg_replace('/(Skills: N\/A|Dietary restrictions: N\/A|Disabilities: N\/A|Materials: N\/A)/', '$1<br>', $formatted_notes);
+                                    // Add line breaks after "N/A" categories, but only after those that actually have content
+                                    $formatted_notes = preg_replace('/(Skills: N\/A|Dietary restrictions: N\/A|Disabilities: N\/A|Materials: N\/A)/', '$1<br>', $formatted_notes);
 
-                                // Ensure there are line breaks between different categories even if they contain other values
-                                $formatted_notes = preg_replace('/(Skills: .+|Dietary restrictions: .+|Disabilities: .+|Materials: .+)/', '$0<br>', $formatted_notes);
+                                    // Ensure there are line breaks between different categories even if they contain other values
+                                    $formatted_notes = preg_replace('/(Skills: .+|Dietary restrictions: .+|Disabilities: .+|Materials: .+)/', '$0<br>', $formatted_notes);
 
-                                // If no notes are provided, replace 'No notes.' with 'No notes.' followed by a line break
-                                $formatted_notes = str_replace("No notes.", "No notes.<br>", $formatted_notes);
+                                    // Check for the specific "no meaningful notes" format and replace it
+                                    if (trim($formatted_notes) === "Skills: N/A<br>Dietary restrictions: N/A<br>Disabilities: N/A<br>Materials: N/A<br>") {
+                                        $formatted_notes = "No notes";
+                                    }
 
-                                // Display the formatted notes with correct line breaks
-                                echo nl2br($formatted_notes);
-                                ?>
+                                    // If no notes are provided, replace 'No notes.' with 'No notes.' followed by a line break
+                                    $formatted_notes = str_replace("No notes.", "No notes.<br>", $formatted_notes);
+
+                                    // Display the formatted notes with correct line breaks
+                                    echo nl2br($formatted_notes);
+?>
 
 
 

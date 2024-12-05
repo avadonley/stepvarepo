@@ -49,16 +49,20 @@ $access_level = $_SESSION['access_level']; ?>
     <link rel="stylesheet" href="css/messages.css" />
 
     <script>
-        function showResolutionConfirmation($ei, $ui) {
-            document.getElementById('resolution-confirmation-wrapper-<?=$ei?>-<?=$ui?>').classList.remove('hidden');
+        function showResolutionConfirmation(ei, ui) {
+            document.getElementById('resolution-confirmation-wrapper-' + ei + '-' + ui).classList.remove('hidden');
             return false;
         }
-        function showApprove($ei, $ui) {
-            document.getElementById('approve-confirmation-wrapper<?=$ei?>-<?=$ui?>').classList.remove('hidden');
+        function showApprove(ei, ui) {
+            document.getElementById('resolution-confirmation-wrapper-' + ei + '-' + ui).classList.add('hidden');
+            document.getElementById('reject-confirmation-wrapper-' + ei + '-' + ui).classList.add('hidden');
+            document.getElementById('approve-confirmation-wrapper-' + ei + '-' + ui).classList.remove('hidden');
             return false;
         }
-        function showReject($ei, $ui) {
-            document.getElementById('reject-confirmation-wrapper-<?=$ei?>-<?=$ui?>').classList.remove('hidden');
+        function showReject(ei, ui) {
+            document.getElementById('resolution-confirmation-wrapper-' + ei + '-' + ui).classList.add('hidden');
+            document.getElementById('approve-confirmation-wrapper-' + ei + '-' + ui).classList.add('hidden');
+            document.getElementById('reject-confirmation-wrapper-' + ei + '-' + ui).classList.remove('hidden');
             return false;
         }
     </script>
@@ -68,7 +72,7 @@ $access_level = $_SESSION['access_level']; ?>
 <body>
     <?php require_once('header.php'); ?>
 
-    <h1>View Sign-Up List</h1>
+    <h1>View Pending Sign-Ups List</h1>
     <?php if (isset($_GET['pendingSignupSuccess'])): ?>
         <div class="happy-toast">Sign-up request resolved successfully.</div>
     <?php endif ?>
@@ -135,21 +139,23 @@ $access_level = $_SESSION['access_level']; ?>
                                         </form>
                                         <?php $ei = $event['eventname'];
                                         $ui = $event['username']; ?>
-                                        <button onclick="showResolutionConfirmation(<?=$ei?>, <?=$ui?>)" class="button">Resolve</button>
+                                        <button onclick="showResolutionConfirmation(<?=$ei?>, '<?=$ui?>')" class="button">Resolve</button>
                                     </td>
                                 <?php endif; ?>
                             </tr>
-                            <div id="resolution-confirmation-wrapper-<?= $event_id['eventname'] ?>-<?= $event['username'] ?>" class="modal-content hidden">
+                            <div id="resolution-confirmation-wrapper-<?= $event_id['eventname'] ?>-<?= $event['username'] ?>" class="modal-content hidden" style = "margin:auto">
                                 <div class="modal-content">
+                                <?php $en = $event_id['eventname'];
+                                $un = $event['username']; ?>
                                     <p>Would you like to approve or reject this sign-up request?</p>
-                                    <button onclick="showApprove($event_id['eventname'], $event['username'])" class="button success">Approve</button>
-                                    <button onclick="showReject($event_id['eventname'], $event['username'])" class="button danger">Reject</button>
+                                    <button onclick="showApprove(<?=$en?>, '<?=$un?>')" class="button success">Approve</button>
+                                    <button onclick="showReject(<?=$en?>, '<?=$un?>')" class="button danger">Reject</button>
                                     <button
                                         onclick="document.getElementById('resolution-confirmation-wrapper-<?= $event_id['eventname'] ?>-<?= $event['username'] ?>').classList.add('hidden')"
                                         id="cancel-cancel" class="button cancel">Cancel</button>
                                 </div>
                             </div>
-                            <div id="approve-confirmation-wrapper-<?= $event_id['eventname'] ?>-<?= $event['username'] ?>" class="modal-content hidden">
+                            <div id="approve-confirmation-wrapper-<?= $event_id['eventname'] ?>-<?= $event['username'] ?>" class="modal-content hidden" style = "margin:auto">
                                 <div class="modal-content">
                                     <p>Are you sure you want to approve this sign-up request?</p>
                                     <p>This action cannot be undone</p>
@@ -165,7 +171,7 @@ $access_level = $_SESSION['access_level']; ?>
                                         id="cancel-cancel" class="button cancel">Cancel</button>
                                 </div>
                             </div>
-                            <div id="reject-confirmation-wrapper-<?= $event_id['eventname'] ?>-<?= $event['username'] ?>" class="modal-content hidden">
+                            <div id="reject-confirmation-wrapper-<?= $event_id['eventname'] ?>-<?= $event['username'] ?>" class="modal-content hidden" style = "margin:auto">
                                 <div class="modal-content">
                                     <p>Are you sure you want to reject this sign-up request?</p>
                                     <p>This action cannot be undone</p>

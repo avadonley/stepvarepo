@@ -28,19 +28,35 @@ $user_id = $_SESSION['_id']; // Store user ID from session
 // Handle cancellation of events
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $event_id = $_POST['event_id'] ?? null;
+    $pending_event_id = $_POST['pending_event_id'] ?? null;
 
     if (!$event_id) {
-        echo "Event ID is missing.";
-        die();
+        if(!$pending_event_id) {
+            echo "Event ID is missing.";
+            die();
+        }
     }
 
-    // Fetch the event name before canceling
-    $event_name = fetch_event_name($event_id);
+    if($event_id) {
+        // Fetch the event name before canceling
+        $event_name = fetch_event_name($event_id);
 
-    if (remove_user_from_event($event_id, $user_id)) {
-        $cancel_success = "Successfully canceled your registration for event: $event_name.";
-    } else {
-        $cancel_error = "Failed to cancel registration for event $event_id.";
+        if (remove_user_from_event($event_id, $user_id)) {
+            require_once('database/dbMessages.php');
+            send_system_message("vmsroot", "$user_id cancelled their sign up for $event_name", "$user_id cancelled their sign up for $event_name");
+            $cancel_success = "Successfully canceled your registration for event: $event_name.";
+        } else {
+            $cancel_error = "Failed to cancel registration for event $event_id.";
+        }
+    } elseif($pending_event_id) {
+        // Fetch the event name before canceling
+        $event_name = fetch_event_name($pending_event_id);
+
+        if (remove_user_from_pending_event($pending_event_id, $user_id)) {
+            $cancel_success = "Successfully canceled your request for event: $event_name.";
+        } else {
+            $cancel_error = "Failed to cancel registration for event $pending_event_id.";
+        }
     }
 }
 
@@ -82,7 +98,28 @@ function fetch_event_name($event_id) {
     return $event['name'] ?? 'Unknown Event';
 }
 
+function fetch_my_pending($userid) {
+    $connection = connect();
+    $query = "SELECT e.id, e.name, e.date 
+              FROM dbevents e
+              INNER JOIN dbpendingsignups ep ON e.id = ep.eventname
+              WHERE ep.username = '$userid'";
+    $result = mysqli_query($connection, $query);
+
+    if (!$result) {
+        die('Query failed: ' . mysqli_error($connection));
+    }
+    $pending = [];
+    while ($row = mysqli_fetch_assoc($result)) {
+        $pending[] = $row;
+    }
+
+    mysqli_close($connection);
+    return $pending;
+}
+
 $upcoming_events = fetch_user_events($user_id);
+$pending_events = fetch_my_pending($user_id);
 ?>
 
 <!DOCTYPE html>
@@ -137,8 +174,48 @@ $upcoming_events = fetch_user_events($user_id);
                 </table>
             </div>
         <?php else: ?>
-            <p>You have no upcoming events.</p>
+            <p>You have no sign-ups.</p>
         <?php endif; ?>
+        
+        <?php if (count($pending_events) > 0): ?>
+            <p </p>
+            <p>Pending sign-ups:</p>
+            <div class="table-wrapper">
+                <table class="general">
+                    <thead>
+                        <tr>
+                            <th>Event Name</th>
+                            <th>Date</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php foreach ($pending_events as $event): ?>
+                            <tr>
+                                <td>
+                                    <!-- Link the event name to the event.php page with event ID as query parameter -->
+                                    <a href="event.php?id=<?php echo htmlspecialchars($event['id']); ?>">
+                                        <?php echo htmlspecialchars($event['name']); ?>
+                                    </a>
+                                </td>
+                                <td><?php echo htmlspecialchars($event['date']); ?></td>
+                                <td>
+                                    <form method="POST" style="display:inline;">
+                                        <input type="hidden" name="pending_event_id" value="<?php echo htmlspecialchars($event['id']); ?>">
+                                        <button type="submit" class="button danger" onclick="return confirm('Are you sure you want to cancel your sign-up request for this event?');">
+                                            Cancel
+                                        </button>
+                                    </form>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
+            </div>
+            <?php else: ?>
+            <p </p>
+                <p>You have no pending sign-ups.</p>
+            <?php endif; ?>
 
         <a class="button cancel" href="index.php">Return to Dashboard</a>
     </main>

@@ -85,16 +85,18 @@
                         <i class="fa-solid fa-plus" font-size: 70px;></i>
                         <span>Create Event</span>
                     </div>
+
                     <div class="dashboard-item" data-link="viewAllEventSignUps.php">
                         <i class="fa-solid fa-users"></i>
                         <span><center>View Pending Sign-Ups</center></span>
                     </div>
+                    
                     <div class="dashboard-item" data-link="personSearch.php">
                         <img src="images/person-search.svg">
                         <span>Find Volunteer</span>
                     </div>
                     <div class="dashboard-item" data-link="adminViewingEvents.php">
-                        <img src="images/new-event.svg">
+                        <i class="fa-solid fa-list"></i>
                         <span>View Events</span>
                     </div>
                     <div class="dashboard-item" data-link="register.php">
@@ -102,7 +104,7 @@
                         <span>Register Volunteer</span>
                     </div>
                     <div class="dashboard-item" data-link="editHours.php">
-                        <img src="images/add-person.svg">
+                        <i class="fa-regular fa-clock"></i>
                         <span><center>View & Change Event Hours</center></span>
                     </div>
                 <?php endif ?>
@@ -118,7 +120,7 @@
                         <span>Edit Profile</span>
                     </div>
                     <div class="dashboard-item" data-link="viewMyUpcomingEvents.php">
-                        <img src="images/view-profile.svg">
+                        <i class="fa-solid fa-list"></i>
                         <span>My Upcoming Events</span>
                     </div>
                 <?php endif ?>

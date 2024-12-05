@@ -18,18 +18,6 @@ function showCancelConfirmation() {
     $('#cancel-confirmation-wrapper').removeClass('hidden');
 }
 
-function showResolutionConfirmation() {
-    $('#approve-confirmation-wrapper').removeClass('hidden');
-}
-
-function showApprove() {
-    $('#resolution-confirmation-wrapper').removeClass('hidden');
-}
-
-function showReject() {
-    $('#reject-confirmation-wrapper').removeClass('hidden');
-}
-
 function hideCompleteConfirmation(e) {
     if (e.target === this) {
         $('#complete-confirmation-wrapper').addClass('hidden');
