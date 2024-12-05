@@ -196,6 +196,8 @@
                 <input type="radio" id="participant" name="type" value="participant" <?php if ($account_type == 'participant') echo 'checked'; ?> required><label for="type">Participant</label>
             </div>
             -->
+            <input type="hidden" name="type" value="v">
+
 
             <label for="school_affiliation"><em>* </em>School Affiliation</label>
             <input type="text" id="school_affiliation" name="school_affiliation" value="<?php echo hsc($person->get_school_affiliation()); ?>" required placeholder="Enter your affiliated school.">
@@ -283,13 +285,16 @@
 
             <label>What is your preferred contact method?</label>
             <div class="radio-group">
-                <input type="radio" id="text" name="preferred_feedback_method" value="text">
+                <?php $preferred_feedback_method = $person->get_preferred_feedback_method(); ?>
+
+                <input type="radio" id="text" name="preferred_feedback_method" value="text" <?php if ($type == 'text') echo 'checked'; ?> required>
                 <label for="text">Text</label>
                 
-                <input type="radio" id="email" name="preferred_feedback_method" value="email">
+                <input type="radio" id="email" name="preferred_feedback_method" value="email" <?php if ($type == 'email') echo 'checked'; ?> required>
                 <label for="email">Email</label>
                 
-                <input type="radio" id="no-preference" name="preferred_feedback_method" value="No preference" checked>
+                <input type="radio" id="no-preference" name="preferred_feedback_method" value="no-preference" 
+                <?php if ($preferred_feedback_method == 'no-preference') echo 'checked'; ?> required>
                 <label for="no-preference">No preference</label>
             </div>
 

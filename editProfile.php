@@ -162,7 +162,7 @@
             $id, $first_name, $last_name, $birthday, $street_address, $city, $state,
             $zip_code, $email, $phone1, $phone1type, $emergency_contact_first_name,
             $emergency_contact_last_name, $emergency_contact_phone,
-            $emergency_contact_phone_type, $emergency_contact_relation, $type
+            $emergency_contact_phone_type, $emergency_contact_relation, $type,
             $school_affiliation, $tshirt_size, $how_you_heard_of_stepva,
             $preferred_feedback_method, $hobbies, $professional_experience,
             $disability_accomodation_needs, $training_complete, $training_date
