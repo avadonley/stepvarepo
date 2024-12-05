@@ -21,22 +21,16 @@ include_once(dirname(__FILE__).'/../domain/Person.php');
  * add a person to dbPersons table: if already there, return false
  */
 
-function add_person($person) {
+ function add_person($person) {
     if (!$person instanceof Person)
         die("Error: add_person type mismatch");
-    $con=connect();
+
+    $con = connect();
     $query = "SELECT * FROM dbpersons WHERE id = '" . $person->get_id() . "'";
-    $result = mysqli_query($con,$query);
-    //if there's no entry for this id, add it
+    $result = mysqli_query($con, $query);
+
+    // if there's no entry for this id, add it
     if ($result == null || mysqli_num_rows($result) == 0) {
-        /*mysqli_query($con,'INSERT INTO dbPersons (id, first_name, last_name, birthday, email, password) VALUES("' .
-            $person->get_id() . '","' .
-            $person->get_first_name() . '","' .
-            $person->get_last_name() . '","' .
-            $person->get_birthday() . '","' .
-            $person->get_email() . '","' .
-            $person->get_password() . '");'
-        );*/
         mysqli_query($con, 'INSERT INTO dbpersons VALUES ("' .
             $person->get_id() . '","' .
             $person->get_start_date() . '","' .
@@ -77,14 +71,19 @@ function add_person($person) {
             $person->get_photo_release() . '","' .
             $person->get_photo_release_notes() . '","' .
             $person->get_training_complete() . '","' .
-            $person->get_training_date() . '");'
-        );
+            $person->get_training_date() . '","' .
+            $person->get_orientation_complete() . '","' . 
+            $person->get_orientation_date() . '","' .
+            $person->get_background_complete() . '","' .
+            $person->get_background_date() . '");');
+        
         mysqli_close($con);
         return true;
     }
     mysqli_close($con);
     return false;
 }
+
 
 /*
  * remove a person from dbPersons table.  If already there, return false
@@ -412,7 +411,11 @@ function make_a_person($result_row) {
         $result_row['professional_experience'],
         $result_row['disability_accomodation_needs'],
         $result_row['training_complete'],
-        $result_row['training_date']
+        $result_row['training_date'],
+        $result_row['orientation_complete'],
+        $result_row['orientation_date'],
+        $result_row['background_complete'],
+        $result_row['background_date']
     );
 
     return $thePerson;
@@ -629,7 +632,8 @@ function get_logged_hours($from, $to, $name_from, $name_to, $venue) {
         $emergency_contact_phone_type, $emergency_contact_relation, $type,
         $school_affiliation, $tshirt_size, $how_you_heard_of_stepva,
         $preferred_feedback_method, $hobbies, $professional_experience,
-        $disability_accomodation_needs, $training_complete, $training_date
+        $disability_accomodation_needs, $training_complete, $training_date, $orientation_complete,
+        $orientation_date, $background_complete, $background_date
     ) {
 
     
@@ -647,7 +651,11 @@ function get_logged_hours($from, $to, $name_from, $name_to, $venue) {
             hobbies='$hobbies', professional_experience='$professional_experience',
             disability_accomodation_needs='$disability_accomodation_needs',
             training_complete='$training_complete',
-            training_date='$training_date'
+            training_date='$training_date',
+            orientation_complete='$orientation_complete',
+            orientation_date='$orientation_date',
+            background_complete='$background_complete',
+            background_date='$background_date'
             where id='$id'";
         $connection = connect();
         $result = mysqli_query($connection, $query);

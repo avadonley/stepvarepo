@@ -171,7 +171,7 @@
             <fieldset class="section-box">
                 <legend>Volunteer Training</legend>
 
-                <p>Details about volunteer's training status.</p>
+                <p>Details about the volunteer's training status.</p>
 
                 <div class="field-pair">
                     <label>Training Completed</label>
@@ -195,6 +195,63 @@
                     </div>
                 <?php endif; ?>
             </fieldset>
+
+            <fieldset class="section-box">
+                <legend>Volunteer Orientation</legend>
+
+                <p>Details about the volunteer's orientation status.</p>
+
+                <div class="field-pair">
+                    <label>Orientation Completed</label>
+                    <p>
+                        <?php 
+                            $orientationComplete = $user->get_orientation_complete();
+                            echo ($orientationComplete == '1') ? 'Yes' : 'No'; 
+                        ?>
+                    </p>
+                </div>
+
+                <?php if ($orientationComplete == '1'): ?>
+                    <div class="field-pair" id="orientation-date-container">
+                        <label>Orientation Date</label>
+                        <p>
+                            <?php 
+                                $orientationDate = $user->get_orientation_date();
+                                echo $orientationDate ? date('d/m/Y', strtotime($orientationDate)) : 'Not Provided';
+                            ?>
+                        </p>
+                    </div>
+                <?php endif; ?>
+            </fieldset>
+
+            <fieldset class="section-box">
+                <legend>Volunteer Background Check</legend>
+
+                <p>Details about the volunteer's background check status.</p>
+
+                <div class="field-pair">
+                    <label>Background Check Completed</label>
+                    <p>
+                        <?php 
+                            $backgroundComplete = $user->get_background_complete();
+                            echo ($backgroundComplete == '1') ? 'Yes' : 'No'; 
+                        ?>
+                    </p>
+                </div>
+
+                <?php if ($backgroundComplete == '1'): ?>
+                    <div class="field-pair" id="background-date-container">
+                        <label>Background Check Date</label>
+                        <p>
+                            <?php 
+                                $backgroundDate = $user->get_background_date();
+                                echo $backgroundDate ? date('d/m/Y', strtotime($backgroundDate)) : 'Not Provided';
+                            ?>
+                        </p>
+                    </div>
+                <?php endif; ?>
+            </fieldset>
+
 
             <fieldset class="section-box">
                 <legend>Volunteer Information</legend>

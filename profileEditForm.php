@@ -248,33 +248,103 @@
             </div>
         </fieldset>
 
-        <script>
-            // Function to toggle the visibility and required attribute of the training_date input
-            function toggleTrainingDateVisibility() {
-                const trainingCompleteYes = document.getElementById('training-complete-yes');
-                const trainingDateContainer = document.getElementById('training-date-container');
-                const trainingDateInput = document.getElementById('training_date');
+        <fieldset class="section-box">
+            <legend>Volunteer Orientation</legend>
 
-                if (trainingCompleteYes.checked) {
-                    // Show the training date field and make it required
-                    trainingDateContainer.style.display = 'block';
-                    trainingDateInput.required = true;
+            <p>Please provide details about your orientation status.</p>
+
+            <label for="orientation_complete"><em>* </em>Orientation Completed</label>
+            <div class="radio-group">
+                <?php $orientationComplete = $person->get_orientation_complete();?>
+                <input type="radio" id="orientation-complete-yes" name="orientation_complete" value="1" 
+                    <?php if ($orientationComplete == '1') echo 'checked'; ?> required>
+                <label for="orientation-complete-yes">Yes</label>
+                <input type="radio" id="orientation-complete-no" name="orientation_complete" value="0" 
+                    <?php if ($orientationComplete == '0') echo 'checked'; ?> required>
+                <label for="orientation-complete-no">No</label>
+            </div>
+
+            <div id="orientation-date-container" style="display: none;">
+                <label for="orientation_date">Orientation Date</label>
+                <input type="date" id="orientation_date" name="orientation_date" 
+                    value="<?php echo hsc($person->get_orientation_date()); ?>" 
+                    max="<?php echo date('Y-m-d'); ?>" 
+                    placeholder="Enter orientation date">
+            </div>
+        </fieldset>
+
+        <fieldset class="section-box">
+            <legend>Background Check</legend>
+
+            <p>Please provide details about your background check status.</p>
+
+            <label for="background_complete"><em>* </em>Background Check Completed</label>
+            <div class="radio-group">
+                <?php $backgroundComplete = $person->get_background_complete(); ?>
+                <input type="radio" id="background-complete-yes" name="background_complete" value="1" 
+                    <?php if ($backgroundComplete == '1') echo 'checked'; ?> required>
+                <label for="background-complete-yes">Yes</label>
+                <input type="radio" id="background-complete-no" name="background_complete" value="0" 
+                    <?php if ($backgroundComplete == '0') echo 'checked'; ?> required>
+                <label for="background-complete-no">No</label>
+            </div>
+
+            <div id="background-date-container" style="display: none;">
+                <label for="background_date">Background Check Date</label>
+                <input type="date" id="background_date" name="background_date" 
+                    value="<?php echo hsc($person->get_background_date()); ?>" 
+                    max="<?php echo date('Y-m-d'); ?>" 
+                    placeholder="Enter background check date">
+            </div>
+        </fieldset>
+
+        <script>
+            // Function to toggle the visibility and required attribute of the date inputs based on the radio buttons
+            function toggleStatusDateVisibility(statusType) {
+                const statusCompleteYes = document.getElementById(statusType + '-complete-yes');
+                const statusDateContainer = document.getElementById(statusType + '-date-container');
+                const statusDateInput = document.getElementById(statusType + '_date');
+
+                if (statusCompleteYes.checked) {
+                    // Show the date field and make it required
+                    statusDateContainer.style.display = 'block';
+                    statusDateInput.required = true;
                 } else {
-                    // Hide the training date field and remove its required status
-                    trainingDateContainer.style.display = 'none';
-                    trainingDateInput.required = false;
+                    // Hide the date field and remove its required status
+                    statusDateContainer.style.display = 'none';
+                    statusDateInput.required = false;
                 }
             }
 
-            // Add event listeners to the radio buttons
-            document.getElementById('training-complete-yes').addEventListener('change', toggleTrainingDateVisibility);
-            document.getElementById('training-complete-no').addEventListener('change', toggleTrainingDateVisibility);
+            // Add event listeners for each section
+            document.getElementById('training-complete-yes').addEventListener('change', function() {
+                toggleStatusDateVisibility('training');
+            });
+            document.getElementById('training-complete-no').addEventListener('change', function() {
+                toggleStatusDateVisibility('training');
+            });
+
+            document.getElementById('orientation-complete-yes').addEventListener('change', function() {
+                toggleStatusDateVisibility('orientation');
+            });
+            document.getElementById('orientation-complete-no').addEventListener('change', function() {
+                toggleStatusDateVisibility('orientation');
+            });
+
+            document.getElementById('background-complete-yes').addEventListener('change', function() {
+                toggleStatusDateVisibility('background');
+            });
+            document.getElementById('background-complete-no').addEventListener('change', function() {
+                toggleStatusDateVisibility('background');
+            });
 
             // Initial check on page load
-            document.addEventListener('DOMContentLoaded', toggleTrainingDateVisibility);
+            document.addEventListener('DOMContentLoaded', function() {
+                toggleStatusDateVisibility('training');
+                toggleStatusDateVisibility('orientation');
+                toggleStatusDateVisibility('background');
+            });
         </script>
-
-
 
 
         <fieldset class="section-box">

@@ -49,6 +49,16 @@
                 if (empty($_POST['training_complete']) || empty($_POST['training_date'])) {
                     $errors[] = "Training complete and training date are required for volunteers.";
                 }
+
+                // Check for the orientation_complete and orientation_date fields
+                if (empty($_POST['orientation_complete']) || empty($_POST['orientation_date'])) {
+                    $errors[] = "Orientation complete and orientation date are required for volunteers.";
+                }
+                
+                // Check for the background_complete and background_date fields
+                if (empty($_POST['background_complete']) || empty($_POST['background_date'])) {
+                    $errors[] = "Background check complete and background check date are required for volunteers.";
+                }
             }
             
 
@@ -156,6 +166,12 @@
             $training_complete = isset($args['training_complete']) ? (int)$args['training_complete'] : 0;
             $training_date = isset($args['training_date']) ? $args['training_date'] : null;
 
+            $orientation_complete = isset($args['orientation_complete']) ? (int)$args['orientation_complete'] : 0;
+            $orientation_date = isset($args['orientation_date']) ? $args['orientation_date'] : null;
+
+            $background_complete = isset($args['background_complete']) ? (int)$args['background_complete'] : 0;
+            $background_date = isset($args['background_date']) ? $args['background_date'] : null;
+
             if ($errors) {
                 echo '<p>Your form submission contained unexpected input.</p>';
                 die();
@@ -196,7 +212,11 @@
                 $professional_experience,
                 $disability_accomodation_needs,
                 $training_complete,
-                $training_date
+                $training_date,
+                $orientation_complete,
+                $orientation_date,
+                $background_complete,
+                $background_date
             );
 
             $result = add_person($newperson);
