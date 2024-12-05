@@ -925,7 +925,7 @@ function find_user_names($name) {
 
     function get_check_in_outs($personID, $event) {
         $con=connect();
-        $query = "SELECT start_time, end_time FROM dbpersonhours WHERE personID = '" .$personID. "' and eventID = '" .$event. "'";            
+        $query = "SELECT start_time, end_time FROM dbpersonhours WHERE personID = '" .$personID. "' and eventID = '" .$event. "' AND end_time IS NOT NULL";            
         $result = mysqli_query($con, $query);
 
 
