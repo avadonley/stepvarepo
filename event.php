@@ -339,6 +339,7 @@
                     <form method="POST" action="" onsubmit="return confirmAction('unarchive')">
                         <input type="hidden" name="unarchiving" value="1">
                         <input type="hidden" name="eventID" value="<?php echo $event_info['id']; ?>">
+                        <input type="hidden" name="id" value="<?php echo $event_info['id']; ?>">
                         <button type="submit" class="button">Unarchive</button>
                     </form>
 
@@ -346,6 +347,7 @@
                     <form method="POST" action="" onsubmit="return confirmAction('archive')">
                         <input type="hidden" name="archiving" value="1">
                         <input type="hidden" name="eventID" value="<?php echo $event_info['id']; ?>">
+                        <input type="hidden" name="id" value="<?php echo $event_info['id']; ?>">
                         <button type="submit" class="button">Archive</button>
                     </form>
 
