@@ -304,6 +304,7 @@
                     <input type="hidden" name="checking_in" value="1">
                     <input type="hidden" name="personID" value="<?php echo $user->get_id(); ?>">
                     <input type="hidden" name="eventID" value="<?php echo $event_info['id']; ?>">
+                    <input type="hidden" name="id" value="<?php echo $event_info['id']; ?>">
                     <input type="hidden" name="timestamp" value="<?php echo date("Y-m-d H:i:s", time()); ?>">
                     <button type="submit" class="button success">Check-In</button>
                 </form>
@@ -314,6 +315,7 @@
                     <input type="hidden" name="checking_out" value="1">
                     <input type="hidden" name="personID" value="<?php echo $user->get_id(); ?>">
                     <input type="hidden" name="eventID" value="<?php echo $event_info['id']; ?>">
+                    <input type="hidden" name="id" value="<?php echo $event_info['id']; ?>">
                     <input type="hidden" name="timestamp" value="<?php echo date("Y-m-d H:i:s", time()); ?>">
                     <button type="submit" class="button danger">Check-Out</button>
                 </form>
