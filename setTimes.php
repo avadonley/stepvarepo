@@ -46,6 +46,12 @@
 		check_out($userID, $eventID, $formatted_end_time);
 
 		$success = 1;
+
+        if ($accessLevel == 1) {
+            header('Location: eventList.php');
+        } else {
+            header('Location: eventList.php?username=' . $userID);
+        }
 	}
 
     require_once('include/input-validation.php');
