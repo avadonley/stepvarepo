@@ -84,9 +84,9 @@ $event_ids = get_attended_event_ids($username);
                             <tr>
                                 <th>Start Time</th>
                                 <th>End Time</th>
-                                <th>Duration (minutes)</th>
-                                <th></th>
-                                <th></th>
+                                <th style="padding-right: 0;">Duration (minutes)</th>
+                                <th style="width: 200px;"></th>
+                                <th style="width: 200px;"></th>
                             </tr>
 
                             <?php foreach ($shifts as $shift): ?>
@@ -107,7 +107,7 @@ $event_ids = get_attended_event_ids($username);
                                         $end_time = strtotime($shift['end_time']);
                                         $duration = ($end_time - $start_time)/60; // minutes
                                     ?>
-                                    <td><?php echo floatPrecision($duration, 2) ?></td>
+                                    <td style="padding-right: 0;"><?php echo floatPrecision($duration, 2) ?></td>
 
                                     <form method="GET" action="editTimes.php">
                                         <!-- Hidden inputs to pass data -->
@@ -118,10 +118,10 @@ $event_ids = get_attended_event_ids($username);
                                         
                                         <!-- Submit button for editing -->
                                     
-                                        <td><button type="submit" class="button edit-button" style="height:48px;width:150px">Edit</button></td>
+                                        <td style="padding-left: 0; padding-right: 0;"><button type="submit" class="button edit-button" style="height:48px; width:150px;">Edit</button></td>
                                     </form>
 
-                                    <td><button class="button danger" onclick="confirmAction('<?php echo $event['id']?>', '<?php echo $shift['start_time']?>', '<?php echo $shift['end_time']?>')">Delete</button></td>
+                                    <td style="padding-left: 0; padding-right: 0;"><button class="button danger" style="height:48px; width:150px;" onclick="confirmAction('<?php echo $event['id']?>', '<?php echo $shift['start_time']?>', '<?php echo $shift['end_time']?>')">Delete</button></td>
 
                                     <script>
                                     function confirmAction(eventID, start_time, end_time) {
