@@ -50,8 +50,8 @@
             <p>Today is <?php echo date('l, F j, Y'); ?>.</p>
             <div id="dashboard">
                 <?php
-                    //require_once('database/dbMessages.php');
-                    $unreadMessageCount = 0; //get_user_unread_count($person->get_id());
+                    require_once('database/dbMessages.php');
+                    $unreadMessageCount = get_user_unread_count($person->get_id());
                     $inboxIcon = 'inbox.svg';
                     if ($unreadMessageCount) {
                         $inboxIcon = 'inbox-unread.svg';
@@ -86,7 +86,14 @@
                     </div>
                     <div class="dashboard-item" data-link="viewAllEventSignUps.php">
                         <img src="images/new-event.svg">
-                        <span><center>View Pending Sign-Ups</center></span>
+                        <span><center>View Pending Sign-Ups <?php 
+                        require_once('database/dbEvents.php');
+                        require_once('database/dbPersons.php');
+                        $pendingsignups = all_pending_names();
+                        if (sizeof($pendingsignups) > 0) {
+                            echo ' (' . sizeof($pendingsignups) . ')';
+                        }
+                    ?></center></span>
                     </div>
                     <div class="dashboard-item" data-link="personSearch.php">
                         <img src="images/person-search.svg">
