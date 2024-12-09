@@ -156,10 +156,8 @@ $(function() {
    // });
 
     $('#password').change(function() {
-        // Get the value of the entered password
         var password = $(this).val();
     
-        // Define the password validation criteria using regular expressions
         var isValidLength = password.length >= 8;
         var hasNumber = /\d/.test(password);
         var hasUppercase = /[A-Z]/.test(password);
@@ -167,10 +165,8 @@ $(function() {
 
         // Check if the password meets all the criteria
         if (isValidLength && hasNumber && hasUppercase && hasLowercase) {
-            // Hide the error message if the password is secure
              $('#password-error').addClass('hidden');
         } else {
-            // Show the error message if the password is not secure
             $('#password-error').removeClass('hidden');
         }
     });
@@ -302,6 +298,23 @@ $(function() {
     /* changePassword.php */
     $('form#password-change').submit(function(e) {
         let passwordField = $('#new-password');
+        let password = passwordField.val();
+
+        var isValidLength = password.length >= 8;
+        var hasNumber = /\d/.test(password);
+        var hasUppercase = /[A-Z]/.test(password);
+        var hasLowercase = /[a-z]/.test(password);
+
+        if (!isValidLength || !hasNumber || !hasUppercase || !hasLowercase) {   //makes sure password is secure
+            scrollIntoView(passwordField);
+            passwordField.focus();
+            $('#password-error').removeClass('hidden');
+            errors = true;
+        } else {
+            $('#password-error').addClass('hidden');
+        }
+        
+
         if (passwordField.val() != $('#new-password-reenter').val()) {
             scrollIntoView(passwordField);
             passwordField.focus();
@@ -316,6 +329,21 @@ $(function() {
             $('#password-match-error').addClass('hidden');
         } else {
             $('#password-match-error').removeClass('hidden');
+        }
+    });
+    $('#new-password').change(function() {
+        var password = $(this).val();
+    
+        var isValidLength = password.length >= 8;
+        var hasNumber = /\d/.test(password);
+        var hasUppercase = /[A-Z]/.test(password);
+        var hasLowercase = /[a-z]/.test(password);
+
+        // Check if the password meets all the criteria
+        if (isValidLength && hasNumber && hasUppercase && hasLowercase) {
+             $('#password-error').addClass('hidden');
+        } else {
+            $('#password-error').removeClass('hidden');
         }
     });
     

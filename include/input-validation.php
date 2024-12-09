@@ -219,9 +219,9 @@
         }
     
         // Check if password contains at least one special character
-        if (!preg_match('/[\W_]/', $pass)) {
-            return false;
-        }
+        //if (!preg_match('/[\W_]/', $pass)) {
+        //    return false;
+        //}
     
         // If all checks pass, return true
         return $pass;
