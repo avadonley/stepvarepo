@@ -55,12 +55,23 @@ function validateTimeRange(start, end) {
 }
 
 function validate12hTimeRange(start, end) {
-    start = time12hTo24h(start);
-    end = time12hTo24h(end);
-    if (!start || !end) {
-        return false;
+    // Parse times into Date objects
+    const parseTime = (time) => {
+        const [_, hours, minutes, period] = time.match(/^(\d{1,2}):(\d{2})\s*([APap][Mm])$/) || [];
+        if (!hours || !minutes || !period) return null;
+        const date = new Date();
+        date.setHours(period.toLowerCase() === 'pm' && hours !== '12' ? parseInt(hours) + 12 : parseInt(hours) % 12);
+        date.setMinutes(parseInt(minutes));
+        return date;
+    };
+
+    const startTime = parseTime(start);
+    const endTime = parseTime(end);
+
+    if (!startTime || !endTime) {
+        return false; // Invalid format
     }
-    return start < end;
+    return startTime < endTime; // Ensure start is before end
 }
 
 function validateDateRange(start, end) {
@@ -207,9 +218,10 @@ $(function() {
             event.preventDefault();
         }
     });
-    $('form#new-event-form').submit(function(e) {
-        let start = $('#start-time').val();
-        let end = $('#end-time').val();
+    // Update form submit logic
+    $('form#new-event-form').submit(function (e) {
+        const start = $('#start-time').val();
+        const end = $('#end-time').val();
         if (!validate12hTimeRange(start, end)) {
             scrollIntoView($('#start-time'));
             $('#date-range-error').removeClass('hidden');
@@ -218,6 +230,7 @@ $(function() {
             $('#date-range-error').addClass('hidden');
         }
     });
+    
 
     /* date.php */
     $('table.event th').click(function() {

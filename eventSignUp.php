@@ -31,19 +31,32 @@
             echo 'bad form data';
             die();
         } else {
-            $validated = validate12hTimeRangeAndConvertTo24h($args["start-time"], "11:59 PM");
-            if (!$validated) {
-                echo 'bad time range';
-                die();
+            // $validated = validate12hTimeRangeAndConvertTo24h($args["start-time"], "11:59 PM");
+            // if (!$validated) {
+            //     echo 'bad time range';
+            //     die();
+            // }
+            $startTime = $args['start-time'];
+            // $validated2 = validate12hTimeRangeAndConvertTo24h($args["departure-time"], "11:59 PM");
+            // if (!$validated2) {
+            //     echo 'bad time range';
+            //     die();
+            // }
+
+            $departureTime = $args['departure-time'];
+
+            // address trying to validate time range of start time and end time
+            $validatedDepartureTimeAfterStartTime = validate12hTimeRange($startTime, $departureTime);
+            if (!$validatedDepartureTimeAfterStartTime) {
+                $startTime = "BROKEN";
+                $departureTime = "BROKEN";
             }
-            $startTime = $args['start-time'] = $validated[0];
-            $validated2 = validate12hTimeRangeAndConvertTo24h($args["departure-time"], "11:59 PM");
-            if (!$validated2) {
-                echo 'bad time range';
-                die();
+            else {
+                $startTime = validate12hTimeAndConvertTo24h($startTime);
+                $endTime = validate12hTimeAndConvertTo24h($endTime);
             }
 
-            $departureTime = $args['departure-time'] = $validated2[0];
+            
             $name = htmlspecialchars_decode($args['name']);
             $account_name = htmlspecialchars_decode($args['account-name']);
             $role = $args['role'];
