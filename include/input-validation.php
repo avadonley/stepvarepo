@@ -218,10 +218,10 @@
             return false;
         }
     
-        // Check if password contains at least one special character
-        //if (!preg_match('/[\W_]/', $pass)) {
-        //    return false;
-        //}
+        // Check if password contains at least one number
+        if (!preg_match('/[0-9]/', $pass)) {
+            return false;
+        }
     
         // If all checks pass, return true
         return $pass;
