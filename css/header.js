@@ -147,6 +147,34 @@ $(function() {
         element.focus();
     });
 
+   // $('#password').change(function() {
+   //     if ($(this).val() == 'hey') {
+    //        $('#password-unsecure-error').addClass('hidden');
+    //    } else {
+    //        $('#password-unsecure-error').removeClass('hidden');
+    //    }
+   // });
+
+    $('#password').change(function() {
+        // Get the value of the entered password
+        var password = $(this).val();
+    
+        // Define the password validation criteria using regular expressions
+        var isValidLength = password.length >= 8;
+        var hasNumber = /\d/.test(password);
+        var hasUppercase = /[A-Z]/.test(password);
+        var hasLowercase = /[a-z]/.test(password);
+
+        // Check if the password meets all the criteria
+        if (isValidLength && hasNumber && hasUppercase && hasLowercase) {
+            // Hide the error message if the password is secure
+             $('#password-error').addClass('hidden');
+        } else {
+            // Show the error message if the password is not secure
+            $('#password-error').removeClass('hidden');
+        }
+    });
+
     // Show password match error if passwords don't match
     // as user clicks out of the password re-enter input
     $('#password-reenter').change(function() {
@@ -177,6 +205,22 @@ $(function() {
     $('form.signup-form').submit(function(event) {
         let errors = false;
         let passwordField = $('#password');
+        let password = passwordField.val();
+
+        var isValidLength = password.length >= 8;
+        var hasNumber = /\d/.test(password);
+        var hasUppercase = /[A-Z]/.test(password);
+        var hasLowercase = /[a-z]/.test(password);
+
+        if (!isValidLength || !hasNumber || !hasUppercase || !hasLowercase) {
+            scrollIntoView(passwordField);
+            passwordField.focus();
+            $('#password-error').removeClass('hidden');
+            errors = true;
+        } else {
+            $('#password-error').addClass('hidden');
+        }
+
         if (passwordField.val() != $('#password-reenter').val()) {
             scrollIntoView(passwordField);
             passwordField.focus();
