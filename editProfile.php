@@ -181,7 +181,7 @@
             $preferred_feedback_method, $hobbies, $professional_experience,
             $disability_accomodation_needs, $training_complete, $training_date,
             $orientation_complete, $orientation_date, $background_complete,
-            $background_date
+            $background_date, $photo_release, $photo_release_notes
         );
         if ($result) {
             if ($editingSelf) {

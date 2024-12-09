@@ -53,12 +53,17 @@
             }
             $password = $_POST['password'];
             $newPassword = $_POST['new-password'];
+            $securePassword = isSecurePassword($_POST['new-password']);
+
             $user = retrieve_person($userID);
             if (!password_verify($password, $user->get_password())) {
                 $error1 = true;
             } else if($password == $newPassword) {     // old password is same as new one
                 $error2 = true;
-            } else {
+            } else if (!$securePassword) {
+                $error3 = true;
+            } 
+            else {
                 $hash = password_hash($newPassword, PASSWORD_BCRYPT);
                 change_password($userID, $hash);
                 header('Location: index.php?pcSuccess');
@@ -81,6 +86,8 @@
                 <p class="error-toast">Your entry for Current Password was incorrect.</p>
             <?php elseif (isset($error2)): ?>
                 <p class="error-toast">New password must be different from current password.</p>
+            <?php elseif (isset($error3)): ?>
+                <p class="error-toast">Your new password must contain at least 8 characters, one uppercase letter, one lowercase letter, and one number.</p>
             <?php endif ?>
             <form id="password-change" method="post">
                 <?php if (!$forced): ?>
@@ -91,6 +98,7 @@
                 <?php endif ?>
                 <label for="new-password">New Password</label>
                 <input type="password" id="new-password" name="new-password" placeholder="Enter new password" required>
+                <p id="password-error" class="error hidden">Password needs to be at least 8 characters long, contain at least one number, one uppercase letter, and one lowercase letter!</p>
                 <label for="reenter-new-password">New Password</label>
                 <input type="password" id="new-password-reenter" placeholder="Re-enter new password" required>
                 <p id="password-match-error" class="error hidden">Passwords must match!</p>
