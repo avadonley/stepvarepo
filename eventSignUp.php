@@ -31,29 +31,25 @@
             echo 'bad form data';
             die();
         } else {
-            // $validated = validate12hTimeRangeAndConvertTo24h($args["start-time"], "11:59 PM");
-            // if (!$validated) {
-            //     echo 'bad time range';
-            //     die();
-            // }
-            $startTime = $args['start-time'];
-            // $validated2 = validate12hTimeRangeAndConvertTo24h($args["departure-time"], "11:59 PM");
-            // if (!$validated2) {
-            //     echo 'bad time range';
-            //     die();
-            // }
+            $validated = validate12hTimeRangeAndConvertTo24h($args["start-time"], "11:59 PM");
+            if (!$validated) {
+                echo 'bad time range';
+                die();
+            }
+            $startTime = $args['start-time'] = $validated[0];
+            $validated2 = validate12hTimeRangeAndConvertTo24h($args["departure-time"], "11:59 PM");
+            if (!$validated2) {
+                echo 'bad time range';
+                die();
+            }
 
-            $departureTime = $args['departure-time'];
+            $departureTime = $args['departure-time'] = $validated2[0];
 
             // address trying to validate time range of start time and end time
-            $validatedDepartureTimeAfterStartTime = validate12hTimeRange($startTime, $departureTime);
+            $validatedDepartureTimeAfterStartTime = validate24hTimeRange($startTime, $departureTime);
             if (!$validatedDepartureTimeAfterStartTime) {
-                $startTime = "BROKEN";
-                $departureTime = "BROKEN";
-            }
-            else {
-                $startTime = validate12hTimeAndConvertTo24h($startTime);
-                $endTime = validate12hTimeAndConvertTo24h($endTime);
+                echo 'bad time range';
+                die();
             }
 
             
