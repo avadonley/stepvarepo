@@ -26,6 +26,7 @@
         $required = array(
             "event-name", "account-name", "start-time", "departure-time", /*"skills",*/ /*"diet-restrictions", "disabilities", "materials", "role"*/
         );
+
         if (!wereRequiredFieldsSubmitted($args, $required)) {
             echo 'bad form data';
             die();
@@ -41,7 +42,17 @@
                 echo 'bad time range';
                 die();
             }
+
             $departureTime = $args['departure-time'] = $validated2[0];
+
+            // address trying to validate time range of start time and end time
+            $validatedDepartureTimeAfterStartTime = validate24hTimeRange($startTime, $departureTime);
+            if (!$validatedDepartureTimeAfterStartTime) {
+                header("Location: eventFailureBadDepartureTime.php");
+                die();
+            }
+
+            
             $name = htmlspecialchars_decode($args['name']);
             $account_name = htmlspecialchars_decode($args['account-name']);
             $role = $args['role'];
@@ -57,15 +68,36 @@
                 //echo 'bad args';
                 //die();
             //}
-            if($event['role'] == "r") {
-                //echo "Yay!";
+            $restricted = htmlspecialchars(string: isset($_GET['restricted']) ? $_GET['restricted'] : '');
+
+            if($restricted == "Yes") {
+                $name = htmlspecialchars(string: isset($_GET['event_name']) ? $_GET['event_name'] : '');
+                //echo "hey";
+                $id = request_event_signup($name, $account_name, $role, $signup);
+
+                if(!$id){
+                    header('Location: requestFailed.php');
+                    die();
+                }
+                
+                require_once('database/dbMessages.php');
+                send_system_message($userID, "Your restricted event sign-up has sent to an admin.", "Your request to sign up for $name will be reviewed by an admin shortly. You will get another notification when you get approved or denied.");
+                //send_system_message("vmsroot", "$userID requested to sign up for a restricted event", "$userID requested to sign up for $name. Please review.");
+
+                //$name = htmlspecialchars(string: isset($_GET['event_name']) ? $_GET['event_name'] : '');
+                //$id = sign_up_for_event($name, $account_name, $role, $notes);
+                header('Location: signupPending.php');
+                die();
             } else {
-                $name = htmlspecialchars(isset($_GET['event_name']) ? $_GET['event_name'] : '');
-            $id = sign_up_for_event($name, $account_name, $role, $notes);
+                $name = htmlspecialchars(string: isset($_GET['event_name']) ? $_GET['event_name'] : '');
+            
+                $id = sign_up_for_event($name, $account_name, $role, $notes);
             if(!$id){
-                header('Location: eventFailure.php');
+                header(header: 'Location: eventFailure.php');
                 exit();
             }
+            require_once('database/dbMessages.php');
+            send_system_message($userID, "Your sign-up has been approved.", "Thank you for signing up for $name!");
             header('Location: signupSuccess.php');
 
             //require_once('include/output.php');
@@ -73,8 +105,8 @@
 
             $startTime = time24hto12h($startTime);
             //$date = date('l, F j, Y', timestamp: strtotime($date));
-            require_once('database/dbMessages.php');
-            system_message_all_users_except($userID, "Your sign-up has been approved!", "Congratulations!");
+            //require_once('database/dbMessages.php');
+            //system_message_all_users_except($userID, "Your sign-up has been approved!", "Congratulations!");
             //header(header: "Location: eventApproved.php?id=$id&createSuccess");
             //header(header: "Location: eventApproved.php?id=$id&createSuccess");
             die();

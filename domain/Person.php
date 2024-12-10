@@ -46,6 +46,14 @@ class Person {
 	private $status;
 	private $archived;
 
+	// TRAINING REQS
+	private $training_complete;
+	private $training_date;
+	private $orientation_complete;
+	private $orientation_date;
+	private $background_complete;
+	private $background_date;
+
 	// OPTIONAL FIELDS
 	private $how_you_heard_of_stepva;
     private $preferred_feedback_method;
@@ -61,7 +69,9 @@ class Person {
 						$state, $zip_code, $phone1, $phone1type, $email, $emergency_contact_first_name,
 						$emergency_contact_last_name, $emergency_contact_phone, $emergency_contact_phone_type,
 						$emergency_contact_relation, $tshirt_size, $school_affiliation, $photo_release, $photo_release_notes, $type, $status, $archived,
-						$how_you_heard_of_stepva, $preferred_feedback_method, $hobbies, $professional_experience, $disability_accomodation_needs
+						$how_you_heard_of_stepva, $preferred_feedback_method, $hobbies, $professional_experience, $disability_accomodation_needs, 
+						$training_complete, $training_date, $orientation_complete,
+						$orientation_date, $background_complete, $background_date
 						) {
 		$this->id = $id; // (username)
 		$this->password = $password;
@@ -93,6 +103,12 @@ class Person {
 		$this->hobbies = $hobbies;
 		$this->professional_experience = $professional_experience;
 		$this->disability_accomodation_needs = $disability_accomodation_needs;
+		$this->training_complete = $training_complete;
+        $this->training_date = $training_date;
+		$this->orientation_complete = $orientation_complete;
+        $this->orientation_date = $orientation_date;
+		$this->background_complete = $background_complete;
+        $this->background_date = $background_date;
 
 		// access_level = 1 for users, and = 3 for admin
 		if ($id == 'vmsroot') {
@@ -226,6 +242,30 @@ class Person {
 
 	function get_disability_accomodation_needs() {
 		return $this->disability_accomodation_needs;
+	}
+
+	function get_training_complete() {
+        return $this->training_complete;
+    }
+
+    function get_training_date() {
+        return $this->training_date;
+    }
+
+	function get_orientation_complete() {
+		return $this->orientation_complete;
+	}
+	
+	function get_orientation_date() {
+		return $this->orientation_date;
+	}
+	
+	function get_background_complete() {
+		return $this->background_complete;
+	}
+	
+	function get_background_date() {
+		return $this->background_date;
 	}
 
 }

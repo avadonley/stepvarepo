@@ -21,16 +21,22 @@ include_once(dirname(__FILE__).'/../domain/Person.php');
  * add a person to dbPersons table: if already there, return false
  */
 
- function add_person($person) {
+function add_person($person) {
     if (!$person instanceof Person)
         die("Error: add_person type mismatch");
-
-    $con = connect();
+    $con=connect();
     $query = "SELECT * FROM dbpersons WHERE id = '" . $person->get_id() . "'";
-    $result = mysqli_query($con, $query);
-
-    // if there's no entry for this id, add it
+    $result = mysqli_query($con,$query);
+    //if there's no entry for this id, add it
     if ($result == null || mysqli_num_rows($result) == 0) {
+        /*mysqli_query($con,'INSERT INTO dbPersons (id, first_name, last_name, birthday, email, password) VALUES("' .
+            $person->get_id() . '","' .
+            $person->get_first_name() . '","' .
+            $person->get_last_name() . '","' .
+            $person->get_birthday() . '","' .
+            $person->get_email() . '","' .
+            $person->get_password() . '");'
+        );*/
         mysqli_query($con, 'INSERT INTO dbpersons VALUES ("' .
             $person->get_id() . '","' .
             $person->get_start_date() . '","' .
@@ -72,18 +78,17 @@ include_once(dirname(__FILE__).'/../domain/Person.php');
             $person->get_photo_release_notes() . '","' .
             $person->get_training_complete() . '","' .
             $person->get_training_date() . '","' .
-            $person->get_orientation_complete() . '","' . 
+            $person->get_orientation_complete() . '","' .
             $person->get_orientation_date() . '","' .
             $person->get_background_complete() . '","' .
-            $person->get_background_date() . '");');
-        
+            $person->get_background_date() . '");'
+        );
         mysqli_close($con);
         return true;
     }
     mysqli_close($con);
     return false;
 }
-
 
 /*
  * remove a person from dbPersons table.  If already there, return false
@@ -108,7 +113,7 @@ function remove_person($id) {
  * if not in table, return false
  */
 
-function retrieve_person($id): bool|Person { // (username! not id)
+function retrieve_person($id) { // (username! not id)
     $con=connect();
     $query = "SELECT * FROM dbpersons WHERE id = '" . $id . "'";
     $result = mysqli_query($con,$query);
@@ -257,15 +262,6 @@ function fetch_volunteering_hours($personID, $eventID) {
         return $total_time;
     }
     return -1; // no check-ins found
-}
-
-
-/* Delete a single check-in/check-out pair as defined by the given parameters */
-function delete_check_in($userID, $eventID, $start_time, $end_time) {
-    $con=connect();
-    $query = "DELETE FROM dbpersonhours WHERE personID = '" .$userID. "' AND eventID = '" .$eventID. "' AND start_time = '" .$start_time. "' AND end_time = '" .$end_time. "' LIMIT 1";
-    $result = mysqli_query($con, $query);
-    mysqli_close($con);
 }
 
 /*@@@ end Thomas */
@@ -635,8 +631,6 @@ function get_logged_hours($from, $to, $name_from, $name_to, $venue) {
         $disability_accomodation_needs, $training_complete, $training_date, $orientation_complete,
         $orientation_date, $background_complete, $background_date
     ) {
-
-    
         $query = "update dbpersons set 
             first_name='$first_name', last_name='$last_name', birthday='$birthday',
             street_address='$street_address', city='$city', state='$state',
@@ -650,12 +644,8 @@ function get_logged_hours($from, $to, $name_from, $name_to, $venue) {
             how_you_heard_of_stepva='$how_you_heard_of_stepva', preferred_feedback_method='$preferred_feedback_method',
             hobbies='$hobbies', professional_experience='$professional_experience',
             disability_accomodation_needs='$disability_accomodation_needs',
-            training_complete='$training_complete',
-            training_date='$training_date',
-            orientation_complete='$orientation_complete',
-            orientation_date='$orientation_date',
-            background_complete='$background_complete',
-            background_date='$background_date'
+            training_complete='$training_complete', training_date='$training_date', orientation_complete='$orientation_complete',
+            orientation_date='$orientation_date', background_complete='$background_complete', background_date='$background_date'
             where id='$id'";
         $connection = connect();
         $result = mysqli_query($connection, $query);
@@ -907,50 +897,6 @@ function find_user_names($name) {
         }
     }
     
-    /* @@@ Thomas
-     * 
-     * This funcion returns a list of eventIDs that a given user has attended.
-     */
-    function get_attended_event_ids($personID) {
-        $con=connect();
-        $query = "SELECT DISTINCT eventID FROM dbpersonhours WHERE personID = '" .$personID. "' ORDER BY eventID DESC";            
-        $result = mysqli_query($con, $query);
-
-
-        if ($result) {
-            $rows = [];
-            while ($row = mysqli_fetch_assoc($result)) {
-                $rows[] = $row['eventID']; // Collect only the event IDs
-            }
-            mysqli_free_result($result);
-            mysqli_close($con);
-            return $rows;  // Return an array of event IDs
-        } else {
-            mysqli_close($con);
-            return []; // Return an empty array if no results are found
-        }
-    }
-
-    function get_check_in_outs($personID, $event) {
-        $con=connect();
-        $query = "SELECT start_time, end_time FROM dbpersonhours WHERE personID = '" .$personID. "' and eventID = '" .$event. "' AND end_time IS NOT NULL";            
-        $result = mysqli_query($con, $query);
-
-
-        if ($result) {
-            $row = [];
-            while ($row = mysqli_fetch_assoc($result)) {
-                $rows[] = $row; // Collect only the event IDs
-            }
-            mysqli_free_result($result);
-            mysqli_close($con);
-            return $rows;  // Return an array of event IDs
-        } else {
-            mysqli_close($con);
-            return []; // Return an empty array if no results are found
-        }
-    }
-    /*@@@ end Thomas */
     
     function get_events_attended_by_2($personID) {
         // Prepare the SQL query to select rows where personID matches

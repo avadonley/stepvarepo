@@ -106,23 +106,6 @@
             <label for="birthday"><em>* </em>Date of Birth</label>
             <input type="date" id="birthday" name="birthday" value="<?php echo hsc($person->get_birthday()); ?>" required placeholder="Choose your birthday" max="<?php echo date('Y-m-d'); ?>">
 
-            <!--<label for="gender"><em>* </em>Gender</label>
-            <select id="gender" name="gender" required>
-                <?php/*
-                    $genders = ['Male', 'Female', 'Other'];
-                    $currentGender = $person->get_gender();
-                    foreach ($genders as $gender):
-                */?>
-                    <?php// if ($currentGender == $gender): ?>
-                        <option value="<?php// echo $gender ?>" selected><?php// echo $gender ?></option>
-                    <?php// else: ?>
-                        <option value="<?php// echo $gender ?>"><?php// echo $gender ?></option>
-                    <?php// endif ?>
-                <?php// endforeach ?>-->
-                <!-- <option value="Female">Female</option> -->
-                <!-- <option value="Other">Other</option> -->
-            </select>
-
 
             <label for="street_address"><em>* </em>Street Address</label>
             <input type="text" id="street_address" name="street_address" value="<?php echo hsc($person->get_street_address()); ?>" required placeholder="Enter your street address">
@@ -206,11 +189,15 @@
 
             <label>Account Type</label>
             
+            <!--
             <?php $account_type = $person->get_type()?>
             <div class="radio-group">
                 <input type="radio" id="volunteer" name="type" value="volunteer" <?php if ($account_type == 'volunteer') echo 'checked'; ?> required><label for="type">Volunteer</label>
                 <input type="radio" id="participant" name="type" value="participant" <?php if ($account_type == 'participant') echo 'checked'; ?> required><label for="type">Participant</label>
             </div>
+            -->
+            <input type="hidden" name="type" value="v">
+
 
             <label for="school_affiliation"><em>* </em>School Affiliation</label>
             <input type="text" id="school_affiliation" name="school_affiliation" value="<?php echo hsc($person->get_school_affiliation()); ?>" required placeholder="Enter your affiliated school.">
@@ -237,6 +224,130 @@
         </fieldset>
 
         <fieldset class="section-box">
+            <legend>Volunteer Training</legend>
+
+            <p>Please provide details about your training status.</p>
+
+            <label for="training_complete"><em>* </em>Training Completed</label>
+            <div class="radio-group">
+                <?php $trainingComplete = $person->get_training_complete(); ?>
+                <input type="radio" id="training-complete-yes" name="training_complete" value="1" 
+                    <?php if ($trainingComplete == '1') echo 'checked'; ?> required>
+                <label for="training-complete-yes">Yes</label>
+                <input type="radio" id="training-complete-no" name="training_complete" value="0" 
+                    <?php if ($trainingComplete == '0') echo 'checked'; ?> required>
+                <label for="training-complete-no">No</label>
+            </div>
+
+            <div id="training-date-container" style="display: none;">
+                <label for="training_date">Training Date</label>
+                <input type="date" id="training_date" name="training_date" 
+                    value="<?php echo hsc($person->get_training_date()); ?>" 
+                    max="<?php echo date('Y-m-d'); ?>" 
+                    placeholder="Enter training date">
+            </div>
+        </fieldset>
+
+        <fieldset class="section-box">
+            <legend>Volunteer Orientation</legend>
+
+            <p>Please provide details about your orientation status.</p>
+
+            <label for="orientation_complete"><em>* </em>Orientation Completed</label>
+            <div class="radio-group">
+                <?php $orientationComplete = $person->get_orientation_complete();?>
+                <input type="radio" id="orientation-complete-yes" name="orientation_complete" value="1" 
+                    <?php if ($orientationComplete == '1') echo 'checked'; ?> required>
+                <label for="orientation-complete-yes">Yes</label>
+                <input type="radio" id="orientation-complete-no" name="orientation_complete" value="0" 
+                    <?php if ($orientationComplete == '0') echo 'checked'; ?> required>
+                <label for="orientation-complete-no">No</label>
+            </div>
+
+            <div id="orientation-date-container" style="display: none;">
+                <label for="orientation_date">Orientation Date</label>
+                <input type="date" id="orientation_date" name="orientation_date" 
+                    value="<?php echo hsc($person->get_orientation_date()); ?>" 
+                    max="<?php echo date('Y-m-d'); ?>" 
+                    placeholder="Enter orientation date">
+            </div>
+        </fieldset>
+
+        <fieldset class="section-box">
+            <legend>Background Check</legend>
+
+            <p>Please provide details about your background check status.</p>
+
+            <label for="background_complete"><em>* </em>Background Check Completed</label>
+            <div class="radio-group">
+                <?php $backgroundComplete = $person->get_background_complete(); ?>
+                <input type="radio" id="background-complete-yes" name="background_complete" value="1" 
+                    <?php if ($backgroundComplete == '1') echo 'checked'; ?> required>
+                <label for="background-complete-yes">Yes</label>
+                <input type="radio" id="background-complete-no" name="background_complete" value="0" 
+                    <?php if ($backgroundComplete == '0') echo 'checked'; ?> required>
+                <label for="background-complete-no">No</label>
+            </div>
+
+            <div id="background-date-container" style="display: none;">
+                <label for="background_date">Background Check Date</label>
+                <input type="date" id="background_date" name="background_date" 
+                    value="<?php echo hsc($person->get_background_date()); ?>" 
+                    max="<?php echo date('Y-m-d'); ?>" 
+                    placeholder="Enter background check date">
+            </div>
+        </fieldset>
+
+        <script>
+            // Function to toggle the visibility and required attribute of the date inputs based on the radio buttons
+            function toggleStatusDateVisibility(statusType) {
+                const statusCompleteYes = document.getElementById(statusType + '-complete-yes');
+                const statusDateContainer = document.getElementById(statusType + '-date-container');
+                const statusDateInput = document.getElementById(statusType + '_date');
+
+                if (statusCompleteYes.checked) {
+                    // Show the date field and make it required
+                    statusDateContainer.style.display = 'block';
+                    statusDateInput.required = true;
+                } else {
+                    // Hide the date field and remove its required status
+                    statusDateContainer.style.display = 'none';
+                    statusDateInput.required = false;
+                }
+            }
+
+            // Add event listeners for each section
+            document.getElementById('training-complete-yes').addEventListener('change', function() {
+                toggleStatusDateVisibility('training');
+            });
+            document.getElementById('training-complete-no').addEventListener('change', function() {
+                toggleStatusDateVisibility('training');
+            });
+
+            document.getElementById('orientation-complete-yes').addEventListener('change', function() {
+                toggleStatusDateVisibility('orientation');
+            });
+            document.getElementById('orientation-complete-no').addEventListener('change', function() {
+                toggleStatusDateVisibility('orientation');
+            });
+
+            document.getElementById('background-complete-yes').addEventListener('change', function() {
+                toggleStatusDateVisibility('background');
+            });
+            document.getElementById('background-complete-no').addEventListener('change', function() {
+                toggleStatusDateVisibility('background');
+            });
+
+            // Initial check on page load
+            document.addEventListener('DOMContentLoaded', function() {
+                toggleStatusDateVisibility('training');
+                toggleStatusDateVisibility('orientation');
+                toggleStatusDateVisibility('background');
+            });
+        </script>
+
+
+        <fieldset class="section-box">
             <legend>Optional Information</legend>
 
             <label>How did you hear about StepVA?</label>
@@ -244,9 +355,17 @@
 
             <label>What is your preferred contact method?</label>
             <div class="radio-group">
-            <?php $preferred_contact_method = $person->get_preferred_feedback_method()?>
-                <input type="radio" id="text" name="preferred_feedback_method" value="text" <?php if ($preferred_contact_method == 'text') echo 'checked'; ?> ><label for="preferred_feedback_method">Text</label>
-                <input type="radio" id="email" name="preferred_feedback_method" value="email"> <?php if ($preferred_contact_method == 'email') echo 'checked'; ?> <label for="preferred_feedback_method">Email</label>
+                <?php $preferred_feedback_method = $person->get_preferred_feedback_method(); ?>
+
+                <input type="radio" id="text" name="preferred_feedback_method" value="text" <?php if ($type == 'text') echo 'checked'; ?> required>
+                <label for="text">Text</label>
+                
+                <input type="radio" id="email" name="preferred_feedback_method" value="email" <?php if ($type == 'email') echo 'checked'; ?> required>
+                <label for="email">Email</label>
+                
+                <input type="radio" id="no-preference" name="preferred_feedback_method" value="no-preference" 
+                <?php if ($preferred_feedback_method == 'no-preference') echo 'checked'; ?> required>
+                <label for="no-preference">No preference</label>
             </div>
 
             <label>What are your hobbies? Are there any specific skills/interests you have that you believe could be useful for volunteering at StepVA?</label>

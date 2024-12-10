@@ -69,6 +69,7 @@
         $permission_array['viewprofile.php'] = 1;
         $permission_array['viewnotification.php'] = 1;
         $permission_array['volunteerreport.php'] = 1;
+        $permission_array['viewmyupcomingevents.php'] = 1;
         //pages only managers can view
         $permission_array['viewallevents.php'] = 0;
         $permission_array['personsearch.php'] = 2;
@@ -95,7 +96,9 @@
         $permission_array['animal.php'] = 2;
         $permission_array['editanimal.php'] = 2;
         $permission_array['eventsuccess.php'] = 2;
+        $permission_array['viewsignuplist.php'] = 2;
         $permission_array['vieweventsignups.php'] = 2;
+        $permission_array['viewalleventsignups.php'] = 2;
 
         $permission_array['edithours.php'] = 2;
         $permission_array['eventlist.php'] = 1;
@@ -104,6 +107,11 @@
         $permission_array['signupsuccess.php'] = 1;
         $permission_array['edittimes.php'] = 1;
         $permission_array['adminviewingevents.php'] = 2;
+        $permission_array['signuppending.php'] = 1;
+        $permission_array['requestfailed.php'] = 1;
+        $permission_array['settimes.php'] = 1;
+        $permission_array['eventfailurebaddeparturetime.php'] = 1;
+        
         // LOWERCASE
 
 

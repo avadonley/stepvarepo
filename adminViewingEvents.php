@@ -73,7 +73,7 @@
                                         echo "
                                         <tr data-event-id='$eventID'>
                                             <td>$restricted_signup</td>
-                                            <td><a href='Event.php?id=$eventID'>$title</a></td> <!-- Link updated here -->
+                                            <td><a href='event.php?id=$eventID'>$title</a></td> <!-- Link updated here -->
                                             <td>$date</td>
                                             <td><a class='button sign-up' href='eventSignUp.php'>Sign Up</a></td>
                                         </tr>";
@@ -81,7 +81,7 @@
                                         echo "
                                         <tr data-event-id='$eventID'>
                                             <td>$restricted_signup</td>
-                                            <td><a href='Event.php?id=$eventID'>$title</a></td> <!-- Link updated here -->
+                                            <td><a href='event.php?id=$eventID'>$title</a></td> <!-- Link updated here -->
                                             <td>$date</td>
                                             <td></td>
                                         </tr>";

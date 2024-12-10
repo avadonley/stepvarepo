@@ -249,7 +249,7 @@ function remove_user_from_event($event_id, $user_id) {
 }
 
 function remove_user_from_pending_event($event_id, $user_id) {    
-    $query = "DELETE FROM dbpendingsignups WHERE eventname = '$event_id' AND username = '$user_id'";
+    $query = "DELETE FROM dbpendingsignups WHERE eventname = $event_id AND username LIKE '$user_id'";
     $connection = connect();
     $result = mysqli_query($connection, $query);
     $result = boolval($result);

@@ -1,4 +1,4 @@
-<h1>New Volunteer/Participant Registration</h1>
+<h1>New Volunteer Registration</h1>
 <main class="signup-form">
     <form class="signup-form" method="post">
         <h2>Registration Form</h2>
@@ -132,12 +132,19 @@
 
             <p>Here are a few other pieces on information we need from you.</p>
 
+            <!--
+            This is functional code for a user to select if they are a 
+            volunteer or participant
             <label><em>* </em>Are you a volunteer or a participant?</label>
             <div class="radio-group">
                 <input type="radio" id="v" name="volunteer_or_participant" value="v" required><label for="volunteer_or_participant">Volunteer</label>
                 <input type="radio" id="p" name="volunteer_or_participant" value="p" required><label for="volunteer_or_participant">Participant</label>
             </div>
+            -->
+            <!-- Default value for volunteer_or_participant -->
+            <input type="hidden" name="volunteer_or_participant" value="v">
 
+            
             <label><em>* </em>T-Shirt Size</label>
             <div class="radio-group">
                 <input type="radio" id="xs" name="tshirt_size" value="xs" required><label for="tshirt_size">XS</label>
@@ -170,8 +177,9 @@
 
             <label>What is your preferred contact method?</label>
             <div class="radio-group">
-                <input type="radio" id="text" name="preferred_feedback_method" value="text"><label for="preferred_feedback_method">Text</label>
-                <input type="radio" id="email" name="preferred_feedback_method" value="email"><label for="preferred_feedback_method">Email</label>
+                <input type="radio" id="text" name="preferred_feedback_method" value="text"><label for="preferred_contact_method">Text</label>
+                <input type="radio" id="email" name="preferred_feedback_method" value="email"><label for="preferred_contact_method">Email</label>
+                <input type="radio" id="no-preference" name="preferred_feedback_method" value="No preference" checked><label for="preferred_feedback_method">No preference</label>
             </div>
 
             <label>What are your hobbies? Are there any specific skills/interests you have that you believe could be useful for volunteering at StepVA?</label>
@@ -184,6 +192,143 @@
             <input type="text" id="disability_accomodation_needs" name="disability_accomodation_needs" placeholder="">
 
         </fieldset>
+
+        <fieldset class="section-box" id="training-info-section" style="display: none;">
+            <legend>Training Information</legend>
+            <!--<p>If you are a volunteer, please indicate your training status.</p>-->
+
+            <div id="training-info">
+                <label><em>* </em>Training Complete?</label>
+                <div class="radio-group">
+                    <input type="radio" id="training-complete-yes" name="training_complete" value="1">
+                    <label for="training-complete-yes">Yes</label>
+                    <input type="radio" id="training-complete-no" name="training_complete" value="0">
+                    <label for="training-complete-no">No</label>
+                </div>
+
+                <label for="training_date" id="training-date-label" style="display: none;">Training Date</label>
+                <input type="date" id="training_date" name="training_date" placeholder="Enter training date" style="display: none;" max="<?php echo date('Y-m-d'); ?>">
+
+                <!-- Orientation Information -->
+                <label><em>* </em>Orientation Complete?</label>
+                <div class="radio-group">
+                    <input type="radio" id="orientation-complete-yes" name="orientation_complete" value="1">
+                    <label for="orientation-complete-yes">Yes</label>
+                    <input type="radio" id="orientation-complete-no" name="orientation_complete" value="0">
+                    <label for="orientation-complete-no">No</label>
+                </div>
+
+                <label for="orientation_date" id="orientation-date-label" style="display: none;">Orientation Date</label>
+                <input type="date" id="orientation_date" name="orientation_date" placeholder="Enter orientation date" style="display: none;" max="<?php echo date('Y-m-d'); ?>">
+
+                <!-- Background Information -->
+                <label><em>* </em>Background Check Complete?</label>
+                <div class="radio-group">
+                    <input type="radio" id="background-complete-yes" name="background_complete" value="1">
+                    <label for="background-complete-yes">Yes</label>
+                    <input type="radio" id="background-complete-no" name="background_complete" value="0">
+                    <label for="background-complete-no">No</label>
+                </div>
+
+                <label for="background_date" id="background-date-label" style="display: none;">Background Date</label>
+                <input type="date" id="background_date" name="background_date" placeholder="Enter background date" style="display: none;" max="<?php echo date('Y-m-d'); ?>">
+            </div>
+        </fieldset>
+
+        <script>
+            // Function to toggle the visibility of the training section based on volunteer or participant selection
+            function toggleTrainingSection() {
+                // Get the value of the hidden input field
+                const volunteerOrParticipant = document.querySelector('input[name="volunteer_or_participant"]').value;
+                const trainingInfoSection = document.getElementById('training-info-section'); // Entire training section
+
+                // Show the entire training section only if the user is a volunteer
+                if (volunteerOrParticipant === 'v') {
+                    trainingInfoSection.style.display = 'block';
+                } else {
+                    trainingInfoSection.style.display = 'none';
+                }
+
+                // Also hide the date fields initially if the section is visible
+                toggleTrainingDateField();
+                toggleOrientationDateField();
+                toggleBackgroundDateField();
+            }
+
+            // Function to toggle the visibility of the training date field based on training complete selection
+            function toggleTrainingDateField() {
+                const trainingCompleteYes = document.getElementById('training-complete-yes');
+                const trainingCompleteNo = document.getElementById('training-complete-no');
+                const trainingDateField = document.getElementById('training_date');
+                const trainingDateLabel = document.getElementById('training-date-label');
+
+                // Show the training date field and its label if "Yes" is selected for training complete
+                if (trainingCompleteYes.checked) {
+                    trainingDateField.style.display = 'inline';
+                    trainingDateLabel.style.display = 'inline';
+                } else {
+                    trainingDateField.style.display = 'none';
+                    trainingDateLabel.style.display = 'none';
+                }
+            }
+
+            // Function to toggle the visibility of the orientation date field based on orientation complete selection
+            function toggleOrientationDateField() {
+                const orientationCompleteYes = document.getElementById('orientation-complete-yes');
+                const orientationCompleteNo = document.getElementById('orientation-complete-no');
+                const orientationDateField = document.getElementById('orientation_date');
+                const orientationDateLabel = document.getElementById('orientation-date-label');
+
+                // Show the orientation date field and its label if "Yes" is selected for orientation complete
+                if (orientationCompleteYes.checked) {
+                    orientationDateField.style.display = 'inline';
+                    orientationDateLabel.style.display = 'inline';
+                } else {
+                    orientationDateField.style.display = 'none';
+                    orientationDateLabel.style.display = 'none';
+                }
+            }
+
+            // Function to toggle the visibility of the background date field based on background complete selection
+            function toggleBackgroundDateField() {
+                const backgroundCompleteYes = document.getElementById('background-complete-yes');
+                const backgroundCompleteNo = document.getElementById('background-complete-no');
+                const backgroundDateField = document.getElementById('background_date');
+                const backgroundDateLabel = document.getElementById('background-date-label');
+
+                // Show the background date field and its label if "Yes" is selected for background complete
+                if (backgroundCompleteYes.checked) {
+                    backgroundDateField.style.display = 'inline';
+                    backgroundDateLabel.style.display = 'inline';
+                } else {
+                    backgroundDateField.style.display = 'none';
+                    backgroundDateLabel.style.display = 'none';
+                }
+            }
+
+            // Event listeners for changes in volunteer/participant selection and the complete statuses
+            document.querySelectorAll('input[name="volunteer_or_participant"]').forEach(radio => {
+                radio.addEventListener('change', toggleTrainingSection);
+            });
+
+            document.getElementById('training-complete-yes').addEventListener('change', toggleTrainingDateField);
+            document.getElementById('training-complete-no').addEventListener('change', toggleTrainingDateField);
+
+            document.getElementById('orientation-complete-yes').addEventListener('change', toggleOrientationDateField);
+            document.getElementById('orientation-complete-no').addEventListener('change', toggleOrientationDateField);
+
+            document.getElementById('background-complete-yes').addEventListener('change', toggleBackgroundDateField);
+            document.getElementById('background-complete-no').addEventListener('change', toggleBackgroundDateField);
+
+            // Initial check on page load
+            document.addEventListener('DOMContentLoaded', () => {
+                toggleTrainingSection(); // Ensure the training section is correctly displayed on page load
+                toggleTrainingDateField(); // Ensure the training date field is correctly displayed based on the selection
+                toggleOrientationDateField(); // Ensure the orientation date field is correctly displayed based on the selection
+                toggleBackgroundDateField(); // Ensure the background date field is correctly displayed based on the selection
+            });
+        </script>
+
 
         <fieldset class="section-box">
             <legend>Login Credentials</legend>

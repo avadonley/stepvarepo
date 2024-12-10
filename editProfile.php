@@ -148,7 +148,26 @@
         $hobbies = $args['hobbies'];
         $professional_experience = $args['professional_experience'];
         $disability_accomodation_needs = $args['disability_accomodation_needs'];
+        $training_complete = isset($args['training_complete']) ? $args['training_complete'] : 0;
+        $training_date = validateDate($args['training_date']);
+        if (!$training_date) {
+            $errors = true;
+            // echo 'training date';
+        }
+        // For the new fields, default to 0 if not set
+        $orientation_complete = isset($args['orientation_complete']) ? $args['orientation_complete'] : 0;
+        $orientation_date = validateDate($args['orientation_date']);
+        if (!$orientation_date) {
+            $errors = true;
+            // echo 'bad orientation date';
+        }
 
+        $background_complete = isset($args['background_complete']) ? $args['background_complete'] : 0;
+        $background_date = validateDate($args['background_date']);
+        if (!$background_date) {
+            $errors = true;
+            // echo 'bad background date';
+        }
         if ($errors) {
             $updateSuccess = false;
         }
@@ -160,7 +179,9 @@
             $emergency_contact_phone_type, $emergency_contact_relation, $type,
             $school_affiliation, $tshirt_size, $how_you_heard_of_stepva,
             $preferred_feedback_method, $hobbies, $professional_experience,
-            $disability_accomodation_needs
+            $disability_accomodation_needs, $training_complete, $training_date,
+            $orientation_complete, $orientation_date, $background_complete,
+            $background_date
         );
         if ($result) {
             if ($editingSelf) {
