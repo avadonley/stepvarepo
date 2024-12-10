@@ -42,6 +42,7 @@
                                     <th style="width:1px">From</th>
                                     <th>Title</th>
                                     <th style="width:1px">Received</th>
+                                    <th style="width:1px">Delete</th>
                                 </tr>
                             </thead>
                             <tbody class="standout">
@@ -84,6 +85,9 @@
                                                 <td>$sender</td>
                                                 <td>$title</td>
                                                 <td>$month/$day/$year $time</td>
+                                                <td>
+                                                    <button class='delete-button' data-message-id='$messageID'>Delete Notification</button>
+                                                </td>
                                             </tr>";
                                     }
                                 ?>
@@ -101,6 +105,7 @@
                                 <th style="width:1px">From</th>
                                 <th>Title</th>
                                 <th style="width:1px">Received</th>
+                                <th style="width:1px">Delete</th>
                             </tr>
                         </thead>
                         <tbody class="standout">
@@ -143,6 +148,9 @@
                                             <td>$sender</td>
                                             <td>$title</td>
                                             <td>$month/$day/$year $time</td>
+                                            <td>
+                                                <button class='delete-button' data-message-id='$messageID'>Delete Notification</button>
+                                            </td>
                                         </tr>";
                                 }
                             ?>
