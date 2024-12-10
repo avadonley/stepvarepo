@@ -66,7 +66,8 @@ function fetch_user_events($user_id) {
     $query = "SELECT e.id, e.name, e.date 
               FROM dbevents e
               INNER JOIN dbeventpersons ep ON e.id = ep.eventID
-              WHERE ep.userID = '$user_id'";
+              WHERE ep.userID = '$user_id'
+              ORDER BY e.date ASC";
     $result = mysqli_query($connection, $query);
 
     if (!$result) {

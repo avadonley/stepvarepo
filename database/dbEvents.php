@@ -399,6 +399,36 @@ function get_all_events() {
     return $theEvents;
  }
 
+ function get_all_events_sorted_by_date_not_archived() {
+    $con=connect();
+    $query = "SELECT * FROM dbevents" .
+            " WHERE completed = 'no'" .
+            " ORDER BY date ASC";
+    $result = mysqli_query($con,$query);
+    $theEvents = array();
+    while ($result_row = mysqli_fetch_assoc($result)) {
+        $theEvent = make_an_event($result_row);
+        $theEvents[] = $theEvent;
+    }
+    mysqli_close($con);
+    return $theEvents;
+ }
+
+ function get_all_events_sorted_by_date_and_archived() {
+    $con=connect();
+    $query = "SELECT * FROM dbevents" .
+            " WHERE completed = 'yes'" .
+            " ORDER BY date ASC";
+    $result = mysqli_query($con,$query);
+    $theEvents = array();
+    while ($result_row = mysqli_fetch_assoc($result)) {
+        $theEvent = make_an_event($result_row);
+        $theEvents[] = $theEvent;
+    }
+    mysqli_close($con);
+    return $theEvents;
+ }
+
 // retrieve only those events that match the criteria given in the arguments
 function getonlythose_dbEvents($name, $day, $venue) {
    $con=connect();
