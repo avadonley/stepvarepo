@@ -1,6 +1,6 @@
 # Setp VA Volunteer Management System
 ## Purpose
-This project is the result of a semesters' worth of collaboration among UMW students. The goal of the project was to create a web application that the Old Dominion Humane Society organization could utilize to make it easier to manage animals and the medicines/medical treatments/vaccines that these animals recieve at the ODHS. At-a-glance features include a web-based calendar of events, event sign up, volunteer registration & login system, reporting system, basic notification system, animal registration/archiving/report generation, and location and service creation.
+This project is the result of a semesters' worth of collaboration among UMW students. The goal of the project was to create a web application that Step VA could utilize to make it easier to track and manage both volunteers and events. At-a-glance features include a web-based calendar of events, event sign up, volunteer registration & login system, reporting system and basic notification system.
 
 ## Authors
 The Step VA is based on an old open source project named "Homebase". [Homebase](https://a.link.will.go.here/) was originally developed for the Ronald McDonald Houses in Maine and Rhode Island by Oliver Radwan, Maxwell Palmer, Nolan McNair, Taylor Talmage, and Allen Tucker.
@@ -9,18 +9,16 @@ Modifications to the original Homebase code were made by the Fall 2022 semester'
 
 A major overhaul to the existing system took place during the Spring 2023 semester, throwing out and restructuring many of the existing database tables. Very little original Homebase code remains. This team consisted of Lauren Knight, Zack Burnley, Matt Nguyen, Rishi Shankar, Alip Yalikun, and Tamra Arant. Every page and feature of the app was changed by this team.
 
-The Gwyneth's Gifts VMS code was modified in the Fall of 2023, revamping the code into the present Step VA code. Many of the existing database tables were reused, and many other tables were added. Some portions of the software's functionality were reused from the Gwyneth's Gifts VMS code. Other functions were created to fill the needs of the Step VA. The team that made these modifications and changes consisted of Garrett Moore, Artis Hart, Riley Tugeau, Julia Barnes, Ryan Warren, and Collin Rugless.
+The Gwyneth's Gifts VMS code was modified in the Fall of 2023, revamping the code into the present Step VA code. Many of the existing database tables were reused, and many other tables were added. Some portions of the software's functionality were reused from the Gwyneth's Gifts VMS code. Other functions were created to fill the needs of the Gwyneth's Gifts. The team that made these modifications and changes consisted of Garrett Moore, Artis Hart, Riley Tugeau, Julia Barnes, Ryan Warren, and Collin Rugless.
 
 Ava Donley is a new contributor for this code.
 
 ## User Types
-There are two types of users (also referred to as 'roles') within the ODHS.
+There are two types of users (also referred to as 'roles') within Step VA.
 * Admins
-* SuperAdmins
+* Volunteers
 
-SuperAdmins have the ability to manage users, generate reports, assign users to events, reset user passwords, and modify a user's status.
-
-Admins have all of the abilities that SuperAdmins have, but they cannot modify other users information.
+Admins can create and edit events, view and approve sign-ups, 
 
 Users of any type can have their status changed by SuperAdmins to Inactive to prevent them from signing up for events. Inactive users will also stop appearing in the list of volunteers available to be assigned. Additionally, the reports page allows staff members to filter out inactive users.
 
