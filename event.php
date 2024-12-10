@@ -365,7 +365,14 @@
             <a href="viewAllEvents.php" class="button cancel">Return to All Events</a>
 
             <!-- Sign Up for Event Button -->
-            <a href="eventSignUp.php?event_name=<?= isset($event_info['name']) ? urlencode($event_info['name']) : 'Untitled Event' ?>" class="button signup">Sign Up for Event</a>
+            <?
+            if ($event_info['restricted_signup'] == 1) {
+                $restricted = "Yes";
+            } else {
+                $restricted = "No";
+            }
+             ?>
+            <a href="eventSignUp.php?event_name=<?= isset($event_info['name']) ? urlencode($event_info['name']) : 'Untitled Event' ?>&restricted=<?=$restricted?>" class="button signup">Sign Up for Event</a>
 
         </div>
 
