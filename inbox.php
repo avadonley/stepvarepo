@@ -33,6 +33,7 @@
                 //$messages = array(); //get_user_messages($userID);
                 $messages = get_user_read_messages($userID);
                 $newMessages = get_user_unread_messages($userID);
+                mark_all_as_read($userID);
                 if (count($newMessages) > 0): ?>
                     <div class="table-wrapper">
                         <h2>New Notifications</h2>
