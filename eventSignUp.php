@@ -48,7 +48,7 @@
             // address trying to validate time range of start time and end time
             $validatedDepartureTimeAfterStartTime = validate24hTimeRange($startTime, $departureTime);
             if (!$validatedDepartureTimeAfterStartTime) {
-                header("Location: index.php");
+                header("Location: eventFailureBadDepartureTime.php");
                 die();
             }
 
