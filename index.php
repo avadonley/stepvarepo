@@ -101,6 +101,10 @@
                         <img src="images/add-person.svg">
                         <span>View & Change Event Hours</span>
                     </div>
+                    <div class="dashboard-item" data-link="resources.php">
+                        <img src="images/upload-resources.svg">
+                        <span>Upload resources</span>
+                    </div>
                 <?php endif ?>
 
                 <!-- FOR VOLUNTEERS AND PARTICIPANTS ONLY -->
