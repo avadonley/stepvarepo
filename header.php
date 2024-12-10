@@ -110,6 +110,7 @@
         $permission_array['signuppending.php'] = 1;
         $permission_array['requestfailed.php'] = 1;
         $permission_array['settimes.php'] = 1;
+        $permission_array['eventfailurebaddeparturetime.php'] = 1;
         
         // LOWERCASE
 

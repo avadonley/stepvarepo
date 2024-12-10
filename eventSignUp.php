@@ -44,6 +44,15 @@
             }
 
             $departureTime = $args['departure-time'] = $validated2[0];
+
+            // address trying to validate time range of start time and end time
+            $validatedDepartureTimeAfterStartTime = validate24hTimeRange($startTime, $departureTime);
+            if (!$validatedDepartureTimeAfterStartTime) {
+                header("Location: eventFailureBadDepartureTime.php");
+                die();
+            }
+
+            
             $name = htmlspecialchars_decode($args['name']);
             $account_name = htmlspecialchars_decode($args['account-name']);
             $role = $args['role'];
