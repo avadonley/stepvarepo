@@ -28,13 +28,73 @@
         <?php require_once('header.php') ?>
         <h1>Inbox</h1>
         <main class="general">
-            <h2>Your Notifications</h2>
             <?php 
                 require_once('database/dbMessages.php');
                 //$messages = array(); //get_user_messages($userID);
-                $messages = get_user_messages($userID);
+                $messages = get_user_read_messages($userID);
+                $newMessages = get_user_unread_messages($userID);
+                if (count($newMessages) > 0): ?>
+                    <div class="table-wrapper">
+                        <h2>New Notifications</h2>
+                        <table class="general">
+                            <thead>
+                                <tr>
+                                    <th style="width:1px">From</th>
+                                    <th>Title</th>
+                                    <th style="width:1px">Received</th>
+                                </tr>
+                            </thead>
+                            <tbody class="standout">
+                                <?php 
+                                    require_once('database/dbPersons.php');
+                                    require_once('include/output.php');
+                                    $id_to_name_hash = [];
+                                    foreach ($newMessages as $message) {
+                                        $sender = $message['senderID'];
+                                        if (isset($id_to_name_hash[$sender])) {
+                                            $sender = $id_to_name_hash[$sender];
+                                        } else {
+                                            $lookup = get_name_from_id($sender);
+                                            $id_to_name_hash[$sender] = $lookup;
+                                            $sender = $lookup;
+                                        }
+                                        $messageID = $message['id'];
+                                        $title = $message['title'];
+                                        $timePacked = $message['time'];
+                                        $pieces = explode('-', $timePacked);
+                                        $year = $pieces[0];
+                                        $month = $pieces[1];
+                                        $day = $pieces[2];
+                                        $time = time24hto12h($pieces[3]);
+                                        $class = 'message';
+                                        if (!$message['wasRead']) {
+                                            $class .= ' unread';
+                                        }
+                                        if ($message['prioritylevel'] == 1) {
+                                            $class .= ' prio1';
+                                        }
+                                        if ($message['prioritylevel'] == 2) {
+                                            $class .= ' prio2';
+                                        }
+                                        if ($message['prioritylevel'] == 3) {
+                                            $class .= ' prio3';
+                                        }
+                                        echo "
+                                            <tr class='$class' data-message-id='$messageID'>
+                                                <td>$sender</td>
+                                                <td>$title</td>
+                                                <td>$month/$day/$year $time</td>
+                                            </tr>";
+                                    }
+                                ?>
+                            </tbody>
+                        </table>
+                    </div>
+                <?php endif ?>
+                <?php
                 if (count($messages) > 0): ?>
                 <div class="table-wrapper">
+                    <h2>Past Notifications</h2>
                     <table class="general">
                         <thead>
                             <tr>

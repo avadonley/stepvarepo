@@ -26,6 +26,48 @@ function get_user_messages($userID) {
     return $messages;
 }
 
+function get_user_unread_messages($userID) {
+    $query = "select * from dbmessages
+              where recipientID='$userID' AND wasread = 0
+              order by time ASC";
+    $connection = connect();
+    $result = mysqli_query($connection, $query);
+    if (!$result) {
+        mysqli_close($connection);
+        return null;
+    }
+    $messages = mysqli_fetch_all($result, MYSQLI_ASSOC);
+    foreach ($messages as &$message) {
+        foreach ($message as $key => $value) {
+            $message[$key] = htmlspecialchars($value);
+        }
+    }
+    unset($message);
+    mysqli_close($connection);
+    return $messages;
+}
+
+function get_user_read_messages($userID) {
+    $query = "select * from dbmessages
+              where recipientID='$userID' AND wasread = 1
+              order by time ASC";
+    $connection = connect();
+    $result = mysqli_query($connection, $query);
+    if (!$result) {
+        mysqli_close($connection);
+        return null;
+    }
+    $messages = mysqli_fetch_all($result, MYSQLI_ASSOC);
+    foreach ($messages as &$message) {
+        foreach ($message as $key => $value) {
+            $message[$key] = htmlspecialchars($value);
+        }
+    }
+    unset($message);
+    mysqli_close($connection);
+    return $messages;
+}
+
 function get_user_unread_count($userID) {
     $query = "select count(*) from dbmessages 
         where recipientID='$userID' and wasRead=0";
@@ -87,6 +129,19 @@ function send_system_message($to, $title, $body) {
 function mark_read($id) {
     $query = "update dbmessages set wasRead=1
               where id='$id'";
+    $connection = connect();
+    $result = mysqli_query($connection, $query);
+    if (!$result) {
+        mysqli_close($connection);
+        return false;
+    }
+    mysqli_close($connection);
+    return true;
+}
+
+function mark_all_as_read($userID) {
+    $query = "update dbmessages set wasRead=1
+              where recipientID='$userID'";
     $connection = connect();
     $result = mysqli_query($connection, $query);
     if (!$result) {
