@@ -77,7 +77,6 @@ Below are the steps required to run the project on your local machine for develo
   * Leave everything else untouched
 10. Navigate to [http://localhost/ODHS-Animal/](http://localhost/ODHS-Animal/) 
 11. Log into the root user account using the username `vmsroot` with password `vmsroot`
-12. Change the root user password to a strong password
 
 Installation is now complete.
 
