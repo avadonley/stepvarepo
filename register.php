@@ -153,8 +153,13 @@
             $id = $args['username'];
             // May want to enforce password requirements at this step
             //$username = $args['username'];
-            $password = password_hash($args['password'], PASSWORD_BCRYPT);
-
+            $password = isSecurePassword($args['password']);
+            if (!$password) {
+                $errors = true;
+            } else {
+                $password = password_hash($args['password'], PASSWORD_BCRYPT);
+            } 
+            
             $how_you_heard_of_stepva = $args['how_you_heard_of_stepva'];
             // Safely access preferred_feedback_method
             $preferred_feedback_method = $args['preferred_feedback_method'];

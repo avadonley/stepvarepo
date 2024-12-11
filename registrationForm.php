@@ -340,6 +340,7 @@
 
             <label for="password"><em>* </em>Password</label>
             <input type="password" id="password" name="password" placeholder="Enter a strong password" required>
+            <p id="password-error" class="error hidden">Password needs to be at least 8 characters long, contain at least one number, one uppercase letter, and one lowercase letter!</p>
 
             <label for="password-reenter"><em>* </em>Re-enter Password</label>
             <input type="password" id="password-reenter" name="password-reenter" placeholder="Re-enter password" required>

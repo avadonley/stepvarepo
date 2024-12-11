@@ -633,7 +633,7 @@ function get_logged_hours($from, $to, $name_from, $name_to, $venue) {
         $school_affiliation, $tshirt_size, $how_you_heard_of_stepva,
         $preferred_feedback_method, $hobbies, $professional_experience,
         $disability_accomodation_needs, $training_complete, $training_date, $orientation_complete,
-        $orientation_date, $background_complete, $background_date
+        $orientation_date, $background_complete, $background_date, $photo_release, $photo_release_notes
     ) {
 
     
@@ -655,7 +655,9 @@ function get_logged_hours($from, $to, $name_from, $name_to, $venue) {
             orientation_complete='$orientation_complete',
             orientation_date='$orientation_date',
             background_complete='$background_complete',
-            background_date='$background_date'
+            background_date='$background_date',
+            photo_release='$photo_release',
+            photo_release_notes='$photo_release_notes'
             where id='$id'";
         $connection = connect();
         $result = mysqli_query($connection, $query);
