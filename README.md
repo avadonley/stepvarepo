@@ -68,12 +68,12 @@ Below are the steps required to run the project on your local machine for develo
 4. Start the XAMPP MySQL server and Apache server
 5. Open the PHPMyAdmin console by navigating to [http://localhost/phpmyadmin/](http://localhost/phpmyadmin/)
 6. Create a new database named `odhsmd`. With the database created, navigate to it by clicking on it in the lefthand pane
-7. Import the `vms.sql` file located in `htdocs/ODHS-Animal/sql` into this new database
+7. Import the `odhsmd.sql` file located in `stepvarepo/sql` into this new database
 8. Create a new user by navigating to `Privileges -> New -> Add user account`
 9. Enter the following credentials for the new user:
-  * Name: `homebasedb`
+  * Name: `odhsmd`
   * Hostname: `Local`
-  * Password: `homebasedb`
+  * Password: `odhsmd`
   * Leave everything else untouched
 10. Navigate to [http://localhost/ODHS-Animal/](http://localhost/ODHS-Animal/) 
 11. Log into the root user account using the username `vmsroot` with password `vmsroot`
