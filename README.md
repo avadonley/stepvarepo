@@ -64,7 +64,7 @@ Below are the steps required to run the project on your local machine for develo
   * For Mac, the htdocs path is `/Applications/XAMPP/xamppfiles/htdocs`
   * For Ubuntu, the htdocs path is `/opt/lampp/htdocs/`
   * For Windows, the htdocs path is `C:\xampp\htdocs`
-3. Clone the Step VA repo by running the following command: 'https://github.com/crugless54/ODHS-Animal.git'
+3. Clone the Step VA repo by running the following command: 'https://github.com/avadonley/stepvarepo.git'
 4. Start the XAMPP MySQL server and Apache server
 5. Open the PHPMyAdmin console by navigating to [http://localhost/phpmyadmin/](http://localhost/phpmyadmin/)
 6. Create a new database named `homebasedb`. With the database created, navigate to it by clicking on it in the lefthand pane
