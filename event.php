@@ -246,11 +246,20 @@
                 <a href="editEvent.php?id=<?= $id ?>" title="Edit Event" class="edit-icon">
                     <i class="fas fa-pencil-alt"></i>
                 <a href="deleteEvent.php?id=<?= $id ?>" title="Delete Event" class="delete-icon" 
-                    onclick="return confirm('Are you sure you want to delete this event?');">
+                    onclick="return confirmDelete(<?= htmlspecialchars($id) ?>);">
                         <i class="fas fa-trash"></i>
                 </a>
             <?php endif; ?>
         </h2>
+
+        <script>
+            function confirmDelete() {
+                if (confirm("Are you sure you want to delete this event?")) {
+                    // If the user clicks "OK", navigate to the link
+                    window.location.href = 'deleteEvent.php?eventID=' + eventID;
+                }
+            }
+        </script>
 
                 <div id="table-wrapper">
             <table>
@@ -265,7 +274,7 @@
                 <tr>
                     <td class="label">Location</td>
                     <td>
-                        <?php echo $event_location; ?>
+                        <?php echo wordwrap($event_location, 50, "<br />\n"); ?>
                     </td>
                 </tr>
                 <tr>
@@ -286,7 +295,9 @@
                 </tr>
                 <tr>
                     <td class="label">Description</td>
-                    <td id="description-cell"><?php echo $event_description; ?></td>
+                    <td>
+                        <?php echo wordwrap($event_description, 50, "<br />\n"); ?>
+                    </td>
                 </tr>
                 <tr>
                     <td class="label">Capacity</td>
@@ -304,8 +315,8 @@
                     <input type="hidden" name="checking_in" value="1">
                     <input type="hidden" name="personID" value="<?php echo $user->get_id(); ?>">
                     <input type="hidden" name="eventID" value="<?php echo $event_info['id']; ?>">
-                    <input type="hidden" name="id" value="<?php echo $event_info['id']; ?>">
                     <input type="hidden" name="timestamp" value="<?php echo date("Y-m-d H:i:s", time()); ?>">
+                    <input type="hidden" name="id" value="<?php echo $event_info['id']; ?>">
                     <button type="submit" class="button success">Check-In</button>
                 </form>
             <?php endif ?>
@@ -315,8 +326,8 @@
                     <input type="hidden" name="checking_out" value="1">
                     <input type="hidden" name="personID" value="<?php echo $user->get_id(); ?>">
                     <input type="hidden" name="eventID" value="<?php echo $event_info['id']; ?>">
-                    <input type="hidden" name="id" value="<?php echo $event_info['id']; ?>">
                     <input type="hidden" name="timestamp" value="<?php echo date("Y-m-d H:i:s", time()); ?>">
+                    <input type="hidden" name="id" value="<?php echo $event_info['id']; ?>">
                     <button type="submit" class="button danger">Check-Out</button>
                 </form>
             <?php endif ?>
@@ -366,14 +377,19 @@
 
             <!-- Sign Up for Event Button -->
             <?
-            if ($event_info['restricted_signup'] == 1) {
+            if ($event_capacity > count(getvolunteers_byevent($event['id']))) {
+              if ($event['restricted_signup'] == 1) {
                 $restricted = "Yes";
+                } else {
+                    $restricted = "No";
+                }
+                echo "<a href='eventSignUp.php?event_name=" . urlencode($event_name) . "'&restricted=" . $restricted . " class='button signup'>Sign Up for Event</a>";
             } else {
-                $restricted = "No";
-            }
-             ?>
-            <a href="eventSignUp.php?event_name=<?= isset($event_info['name']) ? urlencode($event_info['name']) : 'Untitled Event' ?>&restricted=<?=$restricted?>" class="button signup">Sign Up for Event</a>
+                echo "<a class='button danger'>Sign-ups Closed!</a>";
 
+            }
+            ?>
+            
         </div>
 
         <!-- Confirmation Modals -->
@@ -448,4 +464,3 @@
     </main>
 </body>
 </html>
-
