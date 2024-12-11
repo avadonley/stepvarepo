@@ -28,50 +28,31 @@ There is also a root admin account with username 'vmsroot'. The default password
 Below is an in-depth list of features that were implemented within the system
 * User registration and log in
 * Dashboard
-* User Management
+* Volunteer Management
   * Change own password
   * View volunteer hours (print-friendly)
   * Modify profile
-  * 
   * Reset password
-  * User search
-* Appointments and Appointment Management
-  * Calendar with appointment listings
-  * Calendar day view with appointment listings
-  * Appointment search
-  * Appointment details page
+  * User Search
+* Events and Event Management
+  * Calendar with event listings
+  * Calendar day view with event listings
+  * Event search
+  * Event details page
   * Volunteer event sign up
-  * Assign Volunteer to event
-  * Attach event training media (links, pictures, videos)
-  * Attach post-event media (Admin/SuperAdmin only)
-  * View Appointment Roster (print-friendly)
-  * Modify appointment details
-  * Create new appointment
-  * Delete appointment
-  * Complete appointment
+  * View Upcoming Events
+  * View Volunteer Event Roster
+  * Modify event details
+  * Create new event
+  * Delete event
+  * Complete event
+  * Check-in and check-out for event
 * Reports (print-friendly)
-  * General Animal Reports
+  * Volunteer Hour Reports
 * Notification system, with notifications generated when
-  * A user signs up for an event (sent to all staff members)
-  * A user is assigned to an event by a staff member (sent to that volunteer)
-  * A new event is created by a staff member (sent to all users)
-  * An appointment is close
-  * An appointment is due today
-  * An appointment is overdue
-* Animal Management
-  * Create Animals
-  * Modify Animals
-  * Delete Animals
-  * Archive Animals
-  * Search Animals in the database
-* Services
-  * Create Service
-  * Modify Service
-  * Delete Service
-* Locations
-  * Create Location
-  * Modify Location
-  * Delete Location
+  * A volunteer has reqiested sign-up
+  * A user has canceled their sign-up
+  * Approved sign-up
 
 ## Design Documentation
 Several types of diagrams describing the design of the Step VA, including sequence diagrams and use case diagrams, are available. Please contact Dr. Polack for access.
