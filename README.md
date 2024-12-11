@@ -107,7 +107,21 @@ Follow these steps to transfter your localhost version of the Step VA code to Si
 6. Navigate to the 'dbInfo.php' page in your Siteground files. Inside the connect() function, you will see a series of PHP variables. ($host, $database, $user, $pass) Change the server name in the 'if' statement to the name of your server, and change the $database, $user, and $pass variables to the database name, user name, and password that you created in step 3. 
 
 ### Clearing the SiteGround cache
-There may occasionally be a hiccup if the caching system provided by SiteGround decides to cache one of the application's pages in an erroneous way. The cache can be cleared via the Dashboard by navigating to Speed -> Caching on the lefthand side of the control panel, choosing the DYNAMIC CACHE option in the center of the screen, and then clicking the Flush Cache option with a small broom icon under Actions.
+#### Chrome
+1. Open Chrome and click on the three-dot menu icon in the top-right corner.
+2. Navigate to **More Tools** > **Clear Browsing Data**.
+3. In the pop-up window:
+   - Select the **Time Range** (e.g., "Last 24 hours" or "All time").
+   - Check the box for **Cached images and files**.
+4. Click **Clear Data**.
+
+#### Safari
+1. Open Safari and click on **Safari** in the menu bar at the top of the screen.
+2. Select **Preferences** > **Privacy**.
+3. Click the **Manage Website Data** button.
+4. In the pop-up window, click **Remove All**, then confirm by selecting **Remove Now**.
+
+Clearing your cache will help ensure that you're seeing the latest updates to the application. If you continue experiencing issues, consider reaching out for further support.
 
 ## External Libraries and APIs
 The only outside library utilized by the Step VA is the jQuery library. The version of jQuery used by the system is stored locally within the repo, within the lib folder. jQuery was used to implement form validation and the hiding/showing of certain page elements. Additionally, the Font Awesome library was used for some of the icon pictures. This library is linked in the headers of some files "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css".
