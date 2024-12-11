@@ -31,6 +31,7 @@ Below is an in-depth list of features that were implemented within the system
 * Volunteer Management
   * Change own password
   * View volunteer hours (print-friendly)
+  * Change hours
   * Modify profile
   * Reset password
   * User Search
