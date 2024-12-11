@@ -18,11 +18,11 @@ There are two types of users (also referred to as 'roles') within Step VA.
 * Admins
 * Volunteers
 
-Admins can create and edit events, view and approve sign-ups, 
+Admins can create and edit events, view and approve sign-ups, and view sign-ups and volunteer hours.
 
-Users of any type can have their status changed by SuperAdmins to Inactive to prevent them from signing up for events. Inactive users will also stop appearing in the list of volunteers available to be assigned. Additionally, the reports page allows staff members to filter out inactive users.
+Volunteers can create and edit their profile, sign up for events, check-in and check-out of events, and view their hours. Volunteer accounts can be archived by the Admin if the account is no longer in use.
 
-There is also a root admin account with username 'vmsroot'. The default password for this account is 'vmsroot', but it must be changed upon initial log in. This account has hardcoded SuperAdmin privileges but cannot be assigned to events and does not have a user profile. It is crucial that this account be given a strong password and that the password be easily remembered, as it cannot easily be reset. This account should be used for system administration purposes only.
+There is also a root admin account with username 'vmsroot'. The default password for this account is 'vmsroot'. This account has hardcoded Admin privileges. It is crucial that this account be given a strong password and that the password be easily remembered, as it cannot easily be reset. This account should be used for system administration purposes only.
 
 ## Features
 Below is an in-depth list of features that were implemented within the system
@@ -32,8 +32,7 @@ Below is an in-depth list of features that were implemented within the system
   * Change own password
   * View volunteer hours (print-friendly)
   * Modify profile
-  * Modify user status
-  * Modify user role (AKA access level) (SuperAdmin only)
+  * 
   * Reset password
   * User search
 * Appointments and Appointment Management
