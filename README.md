@@ -67,7 +67,7 @@ Below are the steps required to run the project on your local machine for develo
 3. Clone the Step VA repo by running the following command: 'https://github.com/avadonley/stepvarepo.git'
 4. Start the XAMPP MySQL server and Apache server
 5. Open the PHPMyAdmin console by navigating to [http://localhost/phpmyadmin/](http://localhost/phpmyadmin/)
-6. Create a new database named `homebasedb`. With the database created, navigate to it by clicking on it in the lefthand pane
+6. Create a new database named `odhsmd`. With the database created, navigate to it by clicking on it in the lefthand pane
 7. Import the `vms.sql` file located in `htdocs/ODHS-Animal/sql` into this new database
 8. Create a new user by navigating to `Privileges -> New -> Add user account`
 9. Enter the following credentials for the new user:
@@ -115,6 +115,7 @@ The only outside library utilized by the Step VA is the jQuery library. The vers
 
 ## Potential Improvements
 Below is a list of improvements that could be made to the system in subsequent semesters.
+* Rename the database
 * Adding special buttons across pages (e.g. ‘View and Change Hours’ may have a ‘Return to My Hours’ option rather than only ‘Return to Dashboard’)
 * Added fucntionality for users who are participants, some participant functionality code exists within the current code, only it is commented out
 * Link calendar to Google calendar, add links to Google forms
