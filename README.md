@@ -1,6 +1,6 @@
 # Setp VA Volunteer Management System
 ## Purpose
-This project is the result of a semesters' worth of collaboration among UMW students. The goal of the project was to create a web application that Step VA could utilize to make it easier to track and manage both volunteers and events. At-a-glance features include a web-based calendar of events, event sign up, volunteer registration & login system, reporting system and basic notification system.
+This project is the result of a semester's worth of collaboration among UMW students. The goal of the project was to create a web application that Step VA could utilize to make it easier to track and manage both volunteers and events. At-a-glance features include a web-based calendar of events, event sign up, volunteer registration & login system, reporting system and basic notification system.
 
 ## Authors
 The ODHS Medicine Tracker is based on an old open source project named "Homebase". [Homebase](https://a.link.will.go.here/) was originally developed for the Ronald McDonald Houses in Maine and Rhode Island by Oliver Radwan, Maxwell Palmer, Nolan McNair, Taylor Talmage, and Allen Tucker.
@@ -50,7 +50,7 @@ Below is an in-depth list of features that were implemented within the system
 * Reports (print-friendly)
   * Volunteer Hour Reports
 * Notification system, with notifications generated when
-  * A volunteer has reqiested sign-up
+  * A volunteer has requested sign-up
   * A user has canceled their sign-up
   * Approved sign-up
 
@@ -102,7 +102,7 @@ Follow these steps to transfter your localhost version of the Step VA code to Si
   - User - Create a user for the database by either selecting the 'Create User' button under the Users tab, or by selecting the 'Add New User' button from the newly created database under the Databases tab. User name is auto-generated and can be changed  if you like.
   - Password - Created when user is created. Password is auto generated and can be changed if you like.
 4. Access the newly created database by navigating to the PHPMyAdmin tab and selecting the 'Access PHPMyAdmin' button. This will redirect you to the PHPMyAdmin page for the database you just created. Navigate to the new database by selecting it from the database list on the left side of the page.
-5. Select the 'Import' option from the database options at the top of the page. Select the 'Choose File' button and impor the "vms.sql" file from your software files.
+5. Select the 'Import' option from the database options at the top of the page. Select the 'Choose File' button and import the "vms.sql" file from your software files.
   - Ensure that you're keeping your .sql file up to date in order to reduce errors in your Siteground code. Keep in mind that Siteground is case-sensitive, and your database names in the Siteground files must be identical to the database names in the database.
 6. Navigate to the 'dbInfo.php' page in your Siteground files. Inside the connect() function, you will see a series of PHP variables. ($host, $database, $user, $pass) Change the server name in the 'if' statement to the name of your server, and change the $database, $user, and $pass variables to the database name, user name, and password that you created in step 3. 
 
@@ -110,13 +110,13 @@ Follow these steps to transfter your localhost version of the Step VA code to Si
 There may occasionally be a hiccup if the caching system provided by SiteGround decides to cache one of the application's pages in an erroneous way. The cache can be cleared via the Dashboard by navigating to Speed -> Caching on the lefthand side of the control panel, choosing the DYNAMIC CACHE option in the center of the screen, and then clicking the Flush Cache option with a small broom icon under Actions.
 
 ## External Libraries and APIs
-The only outside library utilized by the Step VA is the jQuery library. The version of jQuery used by the system is stored locally within the repo, within the lib folder. jQuery was used to implement form validation and the hiding/showing of certain page elements. 
+The only outside library utilized by the Step VA is the jQuery library. The version of jQuery used by the system is stored locally within the repo, within the lib folder. jQuery was used to implement form validation and the hiding/showing of certain page elements. Additionally, the Font Awesome library was used for some of the icon pictures. This library is linked in the headers of some files "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css".
 
 ## Potential Improvements
 Below is a list of improvements that could be made to the system in subsequent semesters.
 * Rename the database
 * Adding special buttons across pages (e.g. ‘View and Change Hours’ may have a ‘Return to My Hours’ option rather than only ‘Return to Dashboard’)
-* Added fucntionality for users who are participants, some participant functionality code exists within the current code, only it is commented out
+* Added functionality for users who are participants, some participant functionality code exists within the current code, only it is commented out
 * Link calendar to Google calendar, add links to Google forms
 * Edits so screen size may no longer affect alignment of headers and tables
 * Remove the admin's ability to sign up admin account for an event
