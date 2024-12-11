@@ -89,7 +89,7 @@ In the event of being locked out of the root user, the following steps will allo
 4. You may now log in with the username and password `vmsroot`
 
 ## Platform
-Dr. Polack chose SiteGround as the platform on which to host the project. Below are some guides on how to manage the live project.
+Dr. Polack chose SiteGrounds as the platform on which to host the project. Below are some guides on how to manage the live project.
 
 ### SiteGround Dashboard
 Access to the SiteGround Dashboard requires a SiteGround account with access. Access is managed by Dr. Polack.
@@ -111,23 +111,24 @@ Follow these steps to transfter your localhost version of the Step VA code to Si
 There may occasionally be a hiccup if the caching system provided by SiteGround decides to cache one of the application's pages in an erroneous way. The cache can be cleared via the Dashboard by navigating to Speed -> Caching on the lefthand side of the control panel, choosing the DYNAMIC CACHE option in the center of the screen, and then clicking the Flush Cache option with a small broom icon under Actions.
 
 ## External Libraries and APIs
-The only outside library utilized by the Step VA is the jQuery library. The version of jQuery used by the system is stored locally within the repo, within the lib folder. jQuery was used to implement form validation and the hiding/showing of certain page elements.
+The only outside library utilized by the Step VA is the jQuery library. The version of jQuery used by the system is stored locally within the repo, within the lib folder. jQuery was used to implement form validation and the hiding/showing of certain page elements. 
 
 ## Potential Improvements
 Below is a list of improvements that could be made to the system in subsequent semesters.
-* The system could generate emails and send them to users (would require access to an @odhs.com email address)
-  * For user email verification
-  * For password reset
-  * For nofications/messages received (see below)
-* The notification system could be turned into a full-fledged messaging system
-  * The existing dbMessages table is set up to allow this
-* Reports
-  * Additional reports could be added
-  * Visual components could be added (graphs)
-* If a better webhosting option was chosen, file upload for pictures and documents would be better than having to use outside resources such as Google Docs or imgur for file upload
+* Adding special buttons across pages (e.g. ‘View and Change Hours’ may have a ‘Return to My Hours’ option rather than only ‘Return to Dashboard’)
+* Added fucntionality for users who are participants, some participant functionality code exists within the current code, only it is commented out
+* Link calendar to Google calendar, add links to Google forms
+* Edits so screen size may no longer affect alignment of headers and tables
+* Remove the admin's ability to sign up admin account for an event
+* Increase password security
+* Ensure volunteers cannot sign up for events during time frames in which they will be signed up for another event
+* If an admin creates conflicting events, bring it to their attention while allowing the option to continue
+* If an admin exceeds the occupancy limit, bring it to their attention while allowing the option to continue
+* Notifications: add delete functionality to the button, add a ‘view message’ functionality when a message is selected
+* Additonal items related to volunteer training
 
 ## License
 The project remains under the [GNU General Public License v3.0](https://www.gnu.org/licenses/gpl.txt).
 
 ## Acknowledgements
-Thank you to Dr. Polack for the chance to work on this exciting project. A lot of love went into making it!
+Thank you to Dr. Polack and Step VA for the chance to work on this exciting project. A lot of love went into making it!
