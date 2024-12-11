@@ -1,8 +1,7 @@
-<?php
+<?php session_cache_expire(30);
+    session_start();
     // Make session information accessible, allowing us to associate
     // data with the logged-in user.
-    session_cache_expire(30);
-    session_start();
 
     ini_set("display_errors",1);
     error_reporting(E_ALL);
@@ -19,7 +18,7 @@
     // Require admin privileges
     if ($accessLevel < 2) {
         header('Location: login.php');
-        echo 'bad access level';
+        //echo 'bad access level';
         die();
     }
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -27,13 +26,13 @@
         require_once('database/dbEvents.php');
         $args = sanitize($_POST, null);
         $required = array(
-            "name", "date", "start-time", "role", "description",
+            "name", "date", "start-time", "end-time", "role", "description",
         );
         if (!wereRequiredFieldsSubmitted($args, $required)) {
             echo 'bad form data';
             die();
         } else {
-            $validated = validate12hTimeRangeAndConvertTo24h($args["start-time"], "11:59 PM");
+            $validated = validate12hTimeRangeAndConvertTo24h($args["start-time"], $args["end-time"]);
             if (!$validated) {
                 echo 'bad time range';
                 die();
@@ -41,21 +40,24 @@
 
             $restricted_signup = $args['role'];
             
+            
             $startTime = $args['start-time'] = $validated[0];
+            $endTime = $args['end-time'] = $validated[1];
             $date = $args['date'] = validateDate($args["date"]);
             //$capacity = intval($args["capacity"]);
             //$abbrevLength = strlen($args['abbrev-name']);
             //if (!$startTime || !$date || $abbrevLength > 11){
-            if (!$startTime || !$date > 11){
+            if (!$startTime || !$endTime || !$date > 11){
                 echo 'bad args';
                 die();
             }
-            var_dump($args);
+            //var_dump($args);
             $id = create_event($args);
             if(!$id){
-                echo "Oopsy!";
+                //echo "Oopsy!";
                 die();
             } else {
+                //echo'<script> location.replace("eventSuccess.php"); </script>';
                 header('Location: eventSuccess.php');
                 exit();
             }
@@ -95,8 +97,7 @@
     //$sql = "SELECT * FROM `dbServices`";
     //$all_services = mysqli_query($con,$sql);
 
-?>
-<!DOCTYPE html>
+?><!DOCTYPE html>
 <html>
     <head>
         <?php require_once('universal.inc') ?>
@@ -118,6 +119,8 @@
                 <input type="date" id="date" name="date" <?php if ($date) echo 'value="' . $date . '"'; ?> min="<?php echo date('Y-m-d'); ?>" required>
                 <label for="name">* Start Time </label>
                 <input type="text" id="start-time" name="start-time" pattern="([1-9]|10|11|12):[0-5][0-9] ?([aApP][mM])" required placeholder="Enter start time. Ex. 12:00 PM">
+                <label for="name">* End Time </label>
+                <input type="text" id="end-time" name="end-time" pattern="([1-9]|10|11|12):[0-5][0-9] ?([aApP][mM])" required placeholder="Enter end time. Ex. 1:00 PM">
                 <fieldset>
                 <label for="role"> * Restrictions </label>
             <div class="radio-group">
@@ -127,6 +130,10 @@
                 </fieldset>
                 <label for="name">* Description </label>
                 <input type="text" id="description" name="description" required placeholder="Enter description">
+                <label for="name">Location </label>
+                <input type="text" id="location" name="location" required placeholder="Enter location">
+                <label for="name">Capacity </label>
+                <input type="number" id="capacity" name="capacity" required placeholder="Enter capacity (e.g. 1-99)">
                 <!-- Service function
                 <fieldset>
                     <label for="name">* Service </label>

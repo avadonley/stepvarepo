@@ -55,12 +55,23 @@ function validateTimeRange(start, end) {
 }
 
 function validate12hTimeRange(start, end) {
-    start = time12hTo24h(start);
-    end = time12hTo24h(end);
-    if (!start || !end) {
-        return false;
+    // Parse times into Date objects
+    const parseTime = (time) => {
+        const [_, hours, minutes, period] = time.match(/^(\d{1,2}):(\d{2})\s*([APap][Mm])$/) || [];
+        if (!hours || !minutes || !period) return null;
+        const date = new Date();
+        date.setHours(period.toLowerCase() === 'pm' && hours !== '12' ? parseInt(hours) + 12 : parseInt(hours) % 12);
+        date.setMinutes(parseInt(minutes));
+        return date;
+    };
+
+    const startTime = parseTime(start);
+    const endTime = parseTime(end);
+
+    if (!startTime || !endTime) {
+        return false; // Invalid format
     }
-    return start < end;
+    return startTime < endTime; // Ensure start is before end
 }
 
 function validateDateRange(start, end) {
@@ -147,6 +158,21 @@ $(function() {
         element.focus();
     });
 
+    $('#password').change(function() {
+        var password = $(this).val();
+    
+        var isValidLength = password.length >= 8;
+        var hasNumber = /\d/.test(password);
+        var hasUppercase = /[A-Z]/.test(password);
+        var hasLowercase = /[a-z]/.test(password);
+        // Check if the password meets all the criteria
+        if (isValidLength && hasNumber && hasUppercase && hasLowercase) {
+             $('#password-error').addClass('hidden');
+        } else {
+            $('#password-error').removeClass('hidden');
+        }
+    });
+
     // Show password match error if passwords don't match
     // as user clicks out of the password re-enter input
     $('#password-reenter').change(function() {
@@ -177,6 +203,22 @@ $(function() {
     $('form.signup-form').submit(function(event) {
         let errors = false;
         let passwordField = $('#password');
+        let password = passwordField.val();
+
+        var isValidLength = password.length >= 8;
+        var hasNumber = /\d/.test(password);
+        var hasUppercase = /[A-Z]/.test(password);
+        var hasLowercase = /[a-z]/.test(password);
+
+        if (!isValidLength || !hasNumber || !hasUppercase || !hasLowercase) {
+            scrollIntoView(passwordField);
+            passwordField.focus();
+            $('#password-error').removeClass('hidden');
+            errors = true;
+        } else {
+            $('#password-error').addClass('hidden');
+        }
+        
         if (passwordField.val() != $('#password-reenter').val()) {
             scrollIntoView(passwordField);
             passwordField.focus();
@@ -207,9 +249,10 @@ $(function() {
             event.preventDefault();
         }
     });
-    $('form#new-event-form').submit(function(e) {
-        let start = $('#start-time').val();
-        let end = $('#end-time').val();
+    // Update form submit logic
+    $('form#new-event-form').submit(function (e) {
+        const start = $('#start-time').val();
+        const end = $('#end-time').val();
         if (!validate12hTimeRange(start, end)) {
             scrollIntoView($('#start-time'));
             $('#date-range-error').removeClass('hidden');
@@ -218,6 +261,7 @@ $(function() {
             $('#date-range-error').addClass('hidden');
         }
     });
+    
 
     /* date.php */
     $('table.event th').click(function() {
@@ -258,6 +302,19 @@ $(function() {
     /* changePassword.php */
     $('form#password-change').submit(function(e) {
         let passwordField = $('#new-password');
+        let password = passwordField.val();
+        var isValidLength = password.length >= 8;
+        var hasNumber = /\d/.test(password);
+        var hasUppercase = /[A-Z]/.test(password);
+        var hasLowercase = /[a-z]/.test(password);
+        if (!isValidLength || !hasNumber || !hasUppercase || !hasLowercase) {   //makes sure password is secure
+            scrollIntoView(passwordField);
+            passwordField.focus();
+            $('#password-error').removeClass('hidden');
+            errors = true;
+        } else {
+            $('#password-error').addClass('hidden');
+        }
         if (passwordField.val() != $('#new-password-reenter').val()) {
             scrollIntoView(passwordField);
             passwordField.focus();
@@ -272,6 +329,20 @@ $(function() {
             $('#password-match-error').addClass('hidden');
         } else {
             $('#password-match-error').removeClass('hidden');
+        }
+    });
+     $('#new-password').change(function() {
+        var password = $(this).val();
+    
+        var isValidLength = password.length >= 8;
+        var hasNumber = /\d/.test(password);
+        var hasUppercase = /[A-Z]/.test(password);
+        var hasLowercase = /[a-z]/.test(password);
+        // Check if the password meets all the criteria
+        if (isValidLength && hasNumber && hasUppercase && hasLowercase) {
+             $('#password-error').addClass('hidden');
+        } else {
+            $('#password-error').removeClass('hidden');
         }
     });
     

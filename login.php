@@ -45,13 +45,15 @@
                 // hard code root privileges
                 if ($user->get_id() == 'vmsroot') {
                     $_SESSION['access_level'] = 3;
+                    header('Location: index.php');
                 }
-                if ($changePassword) {
-                    $_SESSION['access_level'] = 0;
-                    $_SESSION['change-password'] = true;
-                    header('Location: changePassword.php');
-                    die();
-                } else {
+                //if ($changePassword) {
+                //    $_SESSION['access_level'] = 0;
+                //    $_SESSION['change-password'] = true;
+                //    header('Location: changePassword.php');
+                //    die();
+                //} 
+                else {
                     header('Location: index.php');
                     die();
                 }
@@ -84,7 +86,7 @@
             <form method="post">
                 <?php
                     if ($badLogin) {
-                        echo '<span class="error">No login with that e-mail and password combination currently exists.</span>';
+                        echo '<span class="error">No login with that username and password combination currently exists.</span>';
                     }
                 ?>
                 <label for="username">Username</label>

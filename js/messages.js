@@ -1,11 +1,14 @@
 function sendDelete(id) {
-    sendAJAXRequest('deleteNotification.php?id=' + id, { }, deleteCallback);
+    sendAJAXRequest('deleteNotification.php?id=' + id, {}, deleteCallback);
 }
 
 function deleteCallback() {
     let response = JSON.parse(this.responseText);
     if (response.result) {
-        window.location = 'inbox.php?deleteSuccess';
+        // Remove the row from the table without refreshing the page
+        $('tr[data-message-id="' + this.responseText + '"]').remove();
+    } else {
+        alert('Failed to delete the notification.');
     }
 }
 
@@ -20,13 +23,15 @@ function sendAJAXRequest(url, requestData, onSuccess, onFailure) {
 }
 
 $(function() {
+    $('.delete-button').click(function(e) {
+        e.preventDefault();
+
+        let id = $(this).data('message-id');
+        sendDelete(id); 
+    });
+
     $('tr.message').click(function() {
         let id = $(this).data('message-id');
         window.location = 'viewNotification.php?id=' + id;
-    });
-
-    $('#delete-button').click(function() {
-        let id = $(this).data('message-id');
-        sendDelete(id);
     });
 });

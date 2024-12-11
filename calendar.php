@@ -103,6 +103,8 @@
                 <div class="happy-toast">Event completed successfully.</div>
             <?php elseif (isset($_GET['cancelSuccess'])) : ?>
                 <div class="happy-toast">Event canceled successfully.</div>
+                <?php elseif (isset($_GET['cancelSuccess'])) : ?>
+                <div class="happy-toast">Event canceled successfully.</div>
             <?php endif ?>
             <div class="table-wrapper">
                 <table id="calendar">
@@ -140,24 +142,28 @@
                                 }
                                 $eventsStr = '';
                                 $e = date('Y-m-d', $date);
+
                                 if (isset($events[$e])) {
                                     $dayEvents = $events[$e];
                                     foreach ($dayEvents as $info) {
-                                        if($info['restricted_signup'] == 1) { //Restricted Event
-                                            $backgroundCol = '#c73d06'; // Sets background color to a red to show the restriction
-                                        } else {
-                                            $backgroundCol = '#1a7024'; //Otherwise keeps background as green
-                                        }
 
-                                        if($info["completed"] == "no"){ //Uncompleted events
-                                            $eventsStr .= '<a class="calendar-event" style="background-color:#1a7024" href="event.php?id=' . $info['id'] . '&user_id=' . $_SESSION['_id'] . '">' . htmlspecialchars_decode($info['name']) . '</a>';
-                                        } else { //Completed Events
-                                            $eventsStr .= '<a class="calendar-event" href="event.php?id=' . $info['id'] . '">' . htmlspecialchars_decode($info['name']) .  ' </a>';
+                                        $backgroundCol = '#00aeef'; // default color
+
+                                        if (is_archived($info['id'])) { // archived event
+                                            if ($_SESSION['access_level'] < 2) {
+                                                continue; // users cannot see archived events
+                                            }
+                                            $backgroundCol = '#aaaaaa';
+
+                                        } elseif (check_if_signed_up($info['id'], $_SESSION['_id'])) {
+                                            $backgroundCol = '#1cc202';// user is signed-up for event
+
+                                        } elseif($info['restricted_signup'] == 1) { //Restricted Event
+                                            $backgroundCol = '#c73d06'; // Sets background color to a red to show the restriction
                                         }
-                                        // More visual changes for resrticted and unrestricted events to be made below
-                                        //if($info['restricted'] == 1) { 
-                                            //$eventsStr = $eventsStr . 'R'
-                                        //}
+                                        
+                                        $eventsStr .= '<a class="calendar-event" style="background-color: ' . $backgroundCol . '" href="event.php?id=' . $info['id'] . '&user_id=' . $_SESSION['_id'] . '">' . htmlspecialchars_decode($info['name']) . '</a>';
+
                                     }
                                 }
                                 echo '<td class="calendar-day' . $extraClasses . '" ' . $extraAttributes . ' data-date="' . date('Y-m-d', $date) . '">
@@ -175,6 +181,35 @@
                     </tbody>
                 </table>
             </div>
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">            
+            
+            <?php
+            //archive = grey
+            //restricted = red
+            //signed up for = green
+            //blue = unrestricted
+            ?>
+            <center>
+            <p></p>
+            <i class="fa-solid fa-circle fa-xl" style="color: #c73d06;"></i>
+                 <span style="font-size: 25px;">
+                    Restricted
+                </span>
+            <i class="fa-solid fa-circle" style="color: #00aeef"> </i>
+                <span style="font-size: 25px;">
+                    Unrestricted
+                </span>
+            <i class="fa-solid fa-circle" style="color: #aaaaaa"> </i>
+                <span style="font-size: 25px;">
+                    Archived
+                </span>
+            <i class="fa-solid fa-circle" style="color: #1cc202"> </i>
+                <span style="font-size: 25px;">
+                    Signed-Up
+                </span>
+            </center>
+                            <p></p>
+        
             <div id="calendar-footer">
                 <a class="button cancel" href="index.php">Return to Dashboard</a>
             </div>

@@ -4,6 +4,7 @@ session_start();
 ini_set("display_errors", 1);
 error_reporting(E_ALL);
 
+// Check access levels and initialize user data
 $loggedIn = false;
 $accessLevel = 0;
 $userID = null;
@@ -19,21 +20,15 @@ if ($accessLevel < 1) {
     die();
 }
 
-# security: if admin access, use ?username from link
+// Handle admin username selection
 if ($accessLevel >= 2) {
-if (isset($_GET['username'])) {
-    $username = $_GET['username'];
-}
-# if admin does not provide username, redirect to editHours.php
-else {
-    // Redirect back to the form if username is not provided
-    header('Location: editHours.php'); // Change this to your form page name
-    die();
-}
-}
-# security: force user to stay as their username regardless of whats in the link
-else if ($accessLevel == 1){ 
-    // security: force user to not have ?user in link if its there
+    if (isset($_GET['username'])) {
+        $username = $_GET['username'];
+    } else {
+        header('Location: editHours.php');
+        die();
+    }
+} elseif ($accessLevel == 1) {
     if (isset($_GET['username'])) {
         header('Location: eventList.php');
         die();
@@ -41,56 +36,121 @@ else if ($accessLevel == 1){
     $username = $_SESSION['_id'];
 }
 
+require_once('include/input-validation.php');
+require_once('database/dbEvents.php');
+require_once('database/dbPersons.php');
+require_once('include/output.php');
+require_once('domain/Person.php');
 
-    
-    // Include necessary files and sanitize input
-    require_once('include/input-validation.php');
-    require_once('database/dbEvents.php');
-    require_once('database/dbPersons.php');
+// Fetch events attended by the user
+//$events = get_events_attended_by_2($username);
 
-    // Fetch events attended by the user
-    $events = get_events_attended_by_2($username);
-    ?>
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <?php require_once('universal.inc') ?>
-        <link rel="stylesheet" href="css/editprofile.css" type="text/css" />
-        <title>Step VA | User Events</title>
-    </head>
-    <body>
-        <?php require_once('header.php') ?>
-        <div class="container">
-            <h1>Events attended by <?php echo htmlspecialchars($username); ?></h1>
-            <main class="general">
-                <?php
-                if (!empty($events)) {
-                    echo "<ul class='event-list'>";
-                    
-                    foreach ($events as $event) {
-                        echo "<li class='event-item'>";
-                        echo "<div class='event-details'>";
-                        echo "<strong>Event ID:</strong> " . htmlspecialchars($event['eventID']) . "<br>";
-                        
-                        $eventName = get_event_from_id($event['eventID']);
-                        echo "<strong>Event Name:</strong> " . htmlspecialchars($eventName) . "<br>";
-                        echo "<strong>Start Time:</strong> " . htmlspecialchars($event['start_time']) . "<br>";
-                        echo "<strong>End Time:</strong> " . $event['end_time'] . "<br>";
-                        echo "</div>";
-                        
-                        echo '<a class="button edit-button" href="editTimes.php?id=' . $event['eventID'] . '&user=' . $username . '&old_start_time=' . $event['start_time'] . '">Edit Event</a>';
-                        echo "</li>";
-                    }
-                    
-                    echo "</ul>";
-                } else {
-                    echo "<p class='no-events-message'>No events attended by $username.</p>";
-                }
-                ?>
-                <a class="button cancel" href="index.php" style="margin-top: -.5rem">Return to Dashboard</a>
-            </main>
-        </div>
-    </body>
-    </html>
-    <?php
+// Fetch eventIDs attended by the user
+$event_ids = get_attended_event_ids($username);
 ?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <?php require_once('universal.inc'); ?>
+    <link rel="stylesheet" href="css/editprofile.css" type="text/css" />
+    <title>Step VA | User Events</title>
+</head>
+<body>
+    <?php require_once('header.php'); ?>
+        <?php if ($accessLevel > 1) : ?>
+            <?php
+                $person = retrieve_person($username);
+                $name = $person->get_first_name() . ' ' . $person->get_last_name() . "'s";
+            ?>
+            <h1><?php echo $name ?> Event Attendance Log</h1>
+        <?php else : ?>
+            <h1>Your Event Attendance Log</h1>
+        <?php endif ?>
+
+        <main class="general">
+            <?php if (!empty($event_ids)): ?>
+
+                <?php foreach ($event_ids as $event_id): ?>
+
+                    <?php $event = retrieve_event2($event_id); ?>
+
+                    <fieldset class="section-box">
+                        <h2><?php echo htmlspecialchars($event['name']) ?></h2>
+
+                        <?php $shifts = get_check_in_outs($username, $event['id']); ?>
+
+                        <table class="general">
+                            <tr>
+                                <th>Start Time</th>
+                                <th>End Time</th>
+                                <th style="padding-right: 0;">Duration (minutes)</th>
+                                <th style="width: 200px;"></th>
+                                <th style="width: 200px;"></th>
+                            </tr>
+
+                            <?php foreach ($shifts as $shift): ?>
+                                <tr>
+
+                                    <?php
+                                        $start_date_time = explode(' ', $shift['start_time']);
+                                        
+
+                                        $end_date_time = explode(' ', $shift['end_time']);
+                                    ?>
+
+                                    <td><?php echo time24hto12h($start_date_time[1])?></td>
+                                    <td><?php echo time24hto12h($end_date_time[1])?></td>
+
+                                    <?php
+                                        $start_time = strtotime($shift['start_time']);
+                                        $end_time = strtotime($shift['end_time']);
+                                        $duration = ($end_time - $start_time)/60; // minutes
+                                    ?>
+                                    <td style="padding-right: 0;"><?php echo floatPrecision($duration, 2) ?></td>
+
+                                    <form method="GET" action="editTimes.php">
+                                        <!-- Hidden inputs to pass data -->
+                                        <input type="hidden" name="eventId" value="<?php echo htmlspecialchars($event['id']); ?>" />
+                                        <input type="hidden" name="user" value="<?php echo htmlspecialchars($username); ?>" />
+                                        <input type="hidden" name="start_time" value="<?php echo htmlspecialchars($shift['start_time']); ?>" />
+                                        <input type="hidden" name="end_time" value="<?php echo htmlspecialchars($shift['end_time']); ?>" />
+                                        
+                                        <!-- Submit button for editing -->
+                                    
+                                        <td style="padding-left: 0; padding-right: 0;"><button type="submit" class="button edit-button" style="height:48px; width:150px;">Edit</button></td>
+                                    </form>
+
+                                    <td style="padding-left: 0; padding-right: 0;"><button class="button danger" style="height:48px; width:150px;" onclick="confirmAction('<?php echo $event['id']?>', '<?php echo $shift['start_time']?>', '<?php echo $shift['end_time']?>')">Delete</button></td>
+
+                                    <script>
+                                    function confirmAction(eventID, start_time, end_time) {
+                                        if (confirm("Are you sure you want to delete this check-in?")) {
+                                            // If the user clicks "OK", navigate to the link
+                                            window.location.href = 'deleteTimes.php?userID=<?php echo htmlspecialchars($username); ?>&eventID=' + eventID + '&start_time=' + start_time + '&end_time=' + end_time;
+                                        }
+                                    }
+                                    </script>
+                                </tr>
+                            <?php endforeach ?>
+                        </table>
+                        <form method="GET" action="setTimes.php">
+                            <!-- Hidden inputs to pass data -->
+                            <input type="hidden" name="eventID" value="<?php echo htmlspecialchars($event['id']); ?>" />
+                            <input type="hidden" name="eventName" value="<?php echo htmlspecialchars($event['name']); ?>" />
+                            <input type="hidden" name="userID" value="<?php echo htmlspecialchars($username); ?>" />
+                        
+                            <!-- Submit button for adding -->
+                            <center><button class="button success" style="width: 50%; margin: 25px;">Add a new check-in</button></center>
+                        </form>
+
+                    </fieldset>
+
+                <?php endforeach; ?>
+            <?php else: ?>
+                <p class="no-events-message">No events attended by <?php echo htmlspecialchars($username); ?>.</p>
+            <?php endif; ?>
+            <a class="button cancel" href="index.php" style="margin-top: -.5rem">Return to Dashboard</a>
+        </main>
+</body>
+</html>

@@ -70,7 +70,7 @@
                                         <tr>
                                             <th>First</th>
                                             <th>Last</th>
-                                            <th>E-mail</th>
+                                            <th>Username</th>
                                             <th>Phone Number</th>
 											<th>Zip Code</th>
                                             <th>Photo Release</th>
@@ -123,8 +123,8 @@
             <p>Use the form below to find a volunteer or participant. At least one search criterion is required.</p>
             <label for="name">Name</label>
             <input type="text" id="name" name="name" value="<?php if (isset($name)) echo htmlspecialchars($_GET['name']) ?>" placeholder="Enter the user's first and/or last name">
-            <label for="id">E-mail</label>
-            <input type="text" id="id" name="id" value="<?php if (isset($id)) echo htmlspecialchars($_GET['id']) ?>" placeholder="Enter the user's email address (login ID)">
+            <label for="id">Username</label>
+            <input type="text" id="id" name="id" value="<?php if (isset($id)) echo htmlspecialchars($_GET['id']) ?>" placeholder="Enter the user's username (login ID)">
            
 		<label for="phone">Phone Number</label>
             <input type="tel" id="phone" name="phone" value="<?php if (isset($phone)) echo htmlspecialchars($_GET['phone']) ?>" placeholder="Enter the user's phone number">

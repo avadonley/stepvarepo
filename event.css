@@ -1,8 +1,10 @@
 @media only screen and (min-width: 1024px) {
     main.event-info {
         margin: 0 auto;
-        max-width: 600px; /* Adjust as needed */
         text-align: center;
+        word-wrap: break-word;
+        max-width: 90%; /* Ensure responsive design */
+        box-sizing: border-box;
     }
 
     div.pair > input[type=submit] {
@@ -16,11 +18,12 @@
 
 div.pair {
     display: flex;
-    flex-direction: row;
+    flex-direction: column; /* For narrow screens */
     width: 100%;
     align-items: stretch;
     gap: 0.5rem;
 }
+
 
 /* Page Sections */
 
@@ -335,6 +338,7 @@ td.label {
     padding: 0.25rem;
 }
 
+
 #complete-confirmation {
     z-index: 99;
     background-color: var(--page-background-color);
@@ -384,9 +388,10 @@ td.label {
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
     text-align: center;
     width: 100%;
+    flex-direction: column;
+    gap: 1rem;
 }
 
 .event-info {
@@ -434,6 +439,8 @@ table td {
     font-weight: bold;
     text-align: left;
     color: #333;
+    padding: 10px;
+    margin-right: 10px;
 }
 
 table td .label {
@@ -621,6 +628,7 @@ td {
     background-color: #fff;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    overflow: visible;
 }
 
 /* Section styling for personal info, contact, etc. */
@@ -728,3 +736,25 @@ td {
     color: #ad0000; /* Change color on hover */
     text-decoration: none;
 }
+
+.event-info, .description-cell {
+    word-break: break-word;
+    overflow-wrap: break-word;
+}
+
+#table-wrapper {
+    max-width: 100%;
+    overflow-x: auto;
+    margin: 0 auto;
+}
+
+table {
+    width: 100%;
+    table-layout: fixed;
+    word-wrap: break-word;
+}
+td {
+    white-space: pre-wrap; /* Ensures text wraps within table cells */
+    word-break: break-word;
+}
+

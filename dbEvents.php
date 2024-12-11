@@ -55,21 +55,7 @@ function add_event($event) {
     return false;
 }
 
-/*function fetch_event_name_by_id($id) {
-    $connection = connect();
-    $id = mysqli_real_escape_string($connection, $id);
-    $query = "select name from dbevents where id = '$id'";
-    $result = mysqli_query($connection, $query);
-    $event = mysqli_fetch_assoc($result);
-    if ($event) {
-        require_once('include/output.php');
-        $event = hsc($event);
-        mysqli_close($connection);
-        return $event;
-    }
-    mysqli_close($connection);
-    return null;
-}*/
+
 
 function request_event_signup($eventID, $account_name, $role, $notes) {
     $connection = connect();
@@ -263,7 +249,7 @@ function remove_user_from_event($event_id, $user_id) {
 }
 
 function remove_user_from_pending_event($event_id, $user_id) {    
-    $query = "DELETE FROM dbpendingsignups WHERE eventname = '$event_id' AND username = '$user_id'";
+    $query = "DELETE FROM dbpendingsignups WHERE eventname = $event_id AND username LIKE '$user_id'";
     $connection = connect();
     $result = mysqli_query($connection, $query);
     $result = boolval($result);
@@ -403,36 +389,6 @@ function get_all_events() {
     $con=connect();
     $query = "SELECT * FROM dbevents" . 
             " ORDER BY completed";
-    $result = mysqli_query($con,$query);
-    $theEvents = array();
-    while ($result_row = mysqli_fetch_assoc($result)) {
-        $theEvent = make_an_event($result_row);
-        $theEvents[] = $theEvent;
-    }
-    mysqli_close($con);
-    return $theEvents;
- }
- 
- function get_all_events_sorted_by_date_not_archived() {
-    $con=connect();
-    $query = "SELECT * FROM dbevents" .
-            " WHERE completed = 'no'" .
-            " ORDER BY date ASC";
-    $result = mysqli_query($con,$query);
-    $theEvents = array();
-    while ($result_row = mysqli_fetch_assoc($result)) {
-        $theEvent = make_an_event($result_row);
-        $theEvents[] = $theEvent;
-    }
-    mysqli_close($con);
-    return $theEvents;
- }
-
- function get_all_events_sorted_by_date_and_archived() {
-    $con=connect();
-    $query = "SELECT * FROM dbevents" .
-            " WHERE completed = 'yes'" .
-            " ORDER BY date ASC";
     $result = mysqli_query($con,$query);
     $theEvents = array();
     while ($result_row = mysqli_fetch_assoc($result)) {
@@ -846,11 +802,11 @@ function cancel_event($event_id, $account_name) {
 function approve_signup($event_id, $account_name, $position, $notes) {
     $query = "DELETE from dbpendingsignups where username = '$account_name' AND eventname = $event_id";
     $connection = connect();
-    //echo "username " . $account_name . " eventname " . $event_id;
+    echo "username " . $account_name . " eventname " . $event_id;
     $result = mysqli_query($connection, $query);
     $result = boolval($result);
 
-    //echo "hello" . $account_name;
+    echo "hello" . $account_name;
 
     $query2 = "insert into dbeventpersons (eventID, userID, position, notes) values ('$event_id', '$account_name',  '$position', '$notes')";
     $result2 = mysqli_query($connection, $query2);

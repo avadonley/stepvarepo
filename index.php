@@ -25,6 +25,7 @@
 <html>
     <head>
         <?php require('universal.inc'); ?>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
         <title>Step VA Volunteer System | Dashboard</title>
     </head>
     <body>
@@ -50,8 +51,8 @@
             <p>Today is <?php echo date('l, F j, Y'); ?>.</p>
             <div id="dashboard">
                 <?php
-                    //require_once('database/dbMessages.php');
-                    $unreadMessageCount = 0; //get_user_unread_count($person->get_id());
+                    require_once('database/dbMessages.php');
+                    $unreadMessageCount = get_user_unread_count($person->get_id());
                     $inboxIcon = 'inbox.svg';
                     if ($unreadMessageCount) {
                         $inboxIcon = 'inbox-unread.svg';
@@ -81,8 +82,20 @@
                 <!-- ADMIN ONLY -->
                 <?php if ($_SESSION['access_level'] >= 2): ?>
                     <div class="dashboard-item" data-link="addEvent.php">
-                        <img src="images/new-event.svg">
+                        <i class="fa-solid fa-plus" font-size: 70px;></i>
                         <span>Create Event</span>
+                    </div>
+
+                    <div class="dashboard-item" data-link="viewAllEventSignUps.php">
+                        <i class="fa-solid fa-users"></i>
+                        <span><center>View Pending Sign-Ups <?php 
+                        require_once('database/dbEvents.php');
+                        require_once('database/dbPersons.php');
+                        $pendingsignups = all_pending_names();
+                        if (sizeof($pendingsignups) > 0) {
+                            echo ' (' . sizeof($pendingsignups) . ')';
+                        }
+                    ?></center></span>
                     </div>
                     
                     <div class="dashboard-item" data-link="personSearch.php">
@@ -90,7 +103,7 @@
                         <span>Find Volunteer</span>
                     </div>
                     <div class="dashboard-item" data-link="adminViewingEvents.php">
-                        <img src="images/new-event.svg">
+                        <i class="fa-solid fa-list"></i>
                         <span>View Events</span>
                     </div>
                     <div class="dashboard-item" data-link="register.php">
@@ -98,8 +111,12 @@
                         <span>Register Volunteer</span>
                     </div>
                     <div class="dashboard-item" data-link="editHours.php">
-                        <img src="images/add-person.svg">
-                        <span>View & Change Event Hours</span>
+                        <i class="fa-regular fa-clock"></i>
+                        <span><center>View & Change Event Hours</center></span>
+                    </div>
+                    <div class="dashboard-item" data-link="resources.php">
+                        <i class="fa-solid fa-arrow-up-from-bracket"></i>
+                        <span><center>Upload Resources</center></span>
                     </div>
                 <?php endif ?>
 
@@ -113,15 +130,19 @@
                         <img src="images/manage-account.svg">
                         <span>Edit Profile</span>
                     </div>
+                    <div class="dashboard-item" data-link="viewMyUpcomingEvents.php">
+                        <i class="fa-solid fa-list"></i>
+                        <span>My Upcoming Events</span>
+                    </div>
                 <?php endif ?>
                 <?php if ($notRoot) : ?>
                     <div class="dashboard-item" data-link="volunteerReport.php">
                         <img src="images/volunteer-history.svg">
-                        <span>View My Hours</span>
+                        <span><center>View Volunteering Report</center></span>
                     </div>
                 <div class="dashboard-item" data-link="editHours.php">
                         <img src="images/add-person.svg">
-                        <span>View & Change My Event Hours</span>
+                        <span><center>View & Change My Event Hours</center></span>
                     </div>
                 <?php endif ?>
                 <div class="dashboard-item" data-link="changePassword.php">

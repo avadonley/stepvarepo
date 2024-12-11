@@ -43,12 +43,12 @@
             $startTime = $args['start-time'] = $validated[0];
             $endTime = $args['end-time'] = $validated[1];
             $date = $args['date'] = validateDate($args["date"]);
-           // $capacity = intval($args["capacity"]);
-           // $assignedVolunteerCount = count(getvolunteers_byevent($id));
-           // $difference = $assignedVolunteerCount - $capacity;
-           // if ($capacity < $assignedVolunteerCount) {
-            //    $errors .= "<p>There are currently $assignedVolunteerCount volunteers assigned to this event. The new capacity must not exceed this number. You must remove $difference volunteer(s) from the event to reduce the capacity to $capacity.</p>";
-           // }
+            $capacity = intval($args["capacity"]);
+            $assignedVolunteerCount = count(getvolunteers_byevent($id));
+            $difference = $assignedVolunteerCount - $capacity;
+            if ($capacity < $assignedVolunteerCount) {
+               $errors .= "<p>There are currently $assignedVolunteerCount volunteers assigned to this event. The new capacity must not exceed this number. You must remove $difference volunteer(s) from the event to reduce the capacity to $capacity.</p>";
+            }
             if (!$startTime || !$date > 11){
                 $errors .= '<p>Your request was missing arguments.</p>';
             }
@@ -118,6 +118,10 @@
                 <input type="text" id="end-time" name="end-time" value="<?php echo time24hto12h($event['endTime']) ?>" pattern="([1-9]|10|11|12):[0-5][0-9] ?([aApP][mM])" required placeholder="Enter end time. Ex. 12:00 PM">
                 <label for="name">Description </label>
                 <input type="text" id="description" name="description" value="<?php echo $event['description'] ?>" required placeholder="Enter description">
+                <label for="name">Location </label>
+                <input type="text" id="location" name="location" value="<?php echo $event['location'] ?>" placeholder="Enter location">
+                <label for="name">Capacity </label>
+                <input type="number" id="capacity" name="capacity" value="<?php echo $event['capacity'] ?>" placeholder="Enter capacity (e.g. 1-99)">
                 <!--<fieldset>
                     <label for="name">* Service </label>
                     </?php 

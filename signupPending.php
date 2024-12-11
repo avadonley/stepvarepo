@@ -10,10 +10,14 @@
             <title>Step VA | Sign-Up for Event</title>
         </head>
         <body>
+            <style>
+            .centered {
+            text-align: center;
+            }
+            </style>
+
             <?php require_once('header.php') ?>
-            <h1>Oops! You are already signed up for this event.</h1>
+            <h1>Sign-Up Request Sent!</h1>
+            <p class="centered">The administrator will review your request shortly</p>
         </body>
     </html>
-
-    <?php
-    exit();

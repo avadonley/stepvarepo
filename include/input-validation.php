@@ -202,4 +202,29 @@
         return filter_var($url, FILTER_VALIDATE_URL);
     }
 
+      function isSecurePassword($pass) {
+        // Check if password is at least 8 characters long
+        if (strlen($pass) < 8) {
+            return false;
+        }
+    
+        // Check if password contains at least one uppercase letter
+        if (!preg_match('/[A-Z]/', $pass)) {
+            return false;
+        }
+    
+        // Check if password contains at least one lowercase letter
+        if (!preg_match('/[a-z]/', $pass)) {
+            return false;
+        }
+    
+        // Check if password contains at least one number
+        if (!preg_match('/[0-9]/', $pass)) {
+            return false;
+        }
+    
+        // If all checks pass, return true
+        return $pass;
+    }
+
 //There was a question mark followed by a > here before
